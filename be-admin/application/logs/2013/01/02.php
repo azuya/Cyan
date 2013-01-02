@@ -4,3 +4,7 @@
 2013-01-02 17:42:54 --- DEBUG: #0 /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php(125): Kohana_Core::modules(Array)
 #1 /Users/anders/Sites/Bliss-Engine/index.php(102): require('/Users/anders/S...')
 #2 {main} in /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php:125
+2013-01-02 21:05:21 --- EMERGENCY: Kohana_Exception [ 0 ]: Attempted to load an invalid or missing module 'userguide' at 'MODPATH/userguide' ~ SYSPATH/classes/Kohana/Core.php [ 579 ] in /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php:125
+2013-01-02 21:05:21 --- DEBUG: #0 /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php(125): Kohana_Core::modules(Array)
+#1 /Users/anders/Sites/Bliss-Engine/index.php(102): require('/Users/anders/S...')
+#2 {main} in /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php:125
