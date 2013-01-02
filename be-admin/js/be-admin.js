@@ -1,10 +1,6 @@
-/**
- * Bobolo CMS **************************************************************************************************
- *
- * $Date: 2010-01-28 10:31:12 +0100 (Thu, 28 Jan 2010) $
- * $Rev: 788 $
- *
- */
+/*
+@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js";
+*/
 
 // Starta jQuery
 $(document).ready(function(){
@@ -60,6 +56,19 @@ $(document).ready(function(){
 		delay:		{ show: 500, hide: 100 },
 		placement:	'top'
 	});
+
+    // Popover
+	$("a[rel=popover]")
+		.popover({
+			animation:	true,
+			delay:		{ show: 500, hide: 100 },
+			placement:	'right',
+			html:		true
+		})
+		.click(function(e) {
+			e.preventDefault()
+		});
+	
 
 	
 });

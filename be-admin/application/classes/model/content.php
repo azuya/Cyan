@@ -25,11 +25,13 @@ class Model_Content extends ORM {
 				array('not_empty'), // validation type
 			),
 			'content' => array (
-				// array('not_empty'),
+				/*
+				array('not_empty'),
 				array(
 					'min_length',
 					array(':value', 10)
 				),
+				*/
 			),
 			'type_id' => array ( // property name to validate
 				array('not_empty'), // validation type

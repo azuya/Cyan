@@ -20,7 +20,6 @@ body {
 	background-image: url("../img/bg-body.png");
 	background-repeat: repeat-x;
 	height: 100%;
-	overflow: hidden;
 }
 
 body.sticky-menu {
@@ -101,51 +100,18 @@ header.navbar {
 
 @media (max-width: 979px) {
 	header.navbar .navbar-menu .navbar-inner {
-		height: @navbarHeight;
 		min-height: @navbarHeight;
+		height: auto;
+	}	
+}
+
+footer {
+	padding: 10px 0;
+	
+	div.inner {
+		padding: 0 20px 0 0;
+		margin-left: @tools_width;
 	}
-}
-
-.subhead {
-	text-align: left;
-	border-bottom: 1px solid #DDD;
-}
-
-.subhead h1 {
-	font-size: 60px;
-}
-
-.jumbotron {
-	position: relative;
-	padding: 40px 0;
-	color: white;
-	text-align: left;
-	text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
-	background: #020031;
-	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6D3353));
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
-	-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
-	-moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-	box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
-}
-
-.jumbotron .container {
-	position: relative;
-	z-index: 2;
-}
-
-.jumbotron h1 {
-	font-size: 50px;
-	font-weight: bold;
-	letter-spacing: -1px;
-	line-height: 1;
-}
-
-.footer {
-	padding: 40px 0;
-	margin-top: 40px;
-	background: #FBFBFB;
-	border-top: 1px solid #EBEBEC;
 }
 
 .login {
@@ -216,7 +182,6 @@ header.navbar {
 }
 
 #be-main {
-	background: @main_bg;
 	position: relative;
 	
 	padding: 0;
@@ -357,6 +322,41 @@ header.navbar {
 			.border-radius(0 0 3px 3px);
 		}
 	}
+}
+
+@media (max-width: 767px) {
+	#be-main {
+		padding-right: 0;
+	}
+	
+	#be-main div.be-tools {
+		display: none;
+	}
+
+	#be-main div.be-main {
+		margin-left: 0;
+	}
+}
+
+ul.content-types {
+	background: #f00;
+	margin: 0;
+	padding: 0;
+	list-style: none outside none;
+
+	> li {
+		float: left;
+		
+		> div > a {
+			background: #0f0;
+			width: 80px;
+			height: 80px;
+			display: block;
+			margin: 0 10px 10px 0;
+		}
+
+	}
+
 }
 
 #be-screens {

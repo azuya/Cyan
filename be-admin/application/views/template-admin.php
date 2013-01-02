@@ -50,12 +50,9 @@
 	</div>
 
 	<!-- Footer -->
-	<!--
-	<div class="footer">
-	Footer....
-	</div>
-	-->
+	<?php include("be-admin/application/static/admin-footer.php"); ?>
 
+	<!-- Script -->
 	<?php include("be-admin/application/static/admin-scripts.php"); ?>
 </body>
 </html>

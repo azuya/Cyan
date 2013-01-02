@@ -39,8 +39,9 @@ if ($user) {
 						<ul class="dropdown-menu">
 							<li><?php echo HTML::anchor("", __("View site")); ?></li>
 							<li class="divider"></li>
-							<li><?php echo HTML::anchor("dashboard", __("Dashboard")); ?></li>
 							<li><?php echo HTML::anchor("content", __("Content")); ?></li>
+							<li class="divider"></li>
+							<li><?php echo HTML::anchor("dashboard", __("Dashboard")); ?></li>
 							<li class="divider"></li>
 							<li><?php echo HTML::anchor("help", __("Help")); ?></li>
 							<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org"); ?></li>
@@ -69,10 +70,10 @@ if ($user) {
 						<a href="">View</a>
 					</li>
 					<li>
-						<?php echo HTML::anchor("content/edit/".Arr::get($_GET, 'id', '0'), __("Edit")); ?>
+						<?php echo HTML::anchor("content/edit/".Arr::get($_GET, 'c', '0'), __("Edit")); ?>
 					</li>
 					<li class="dropdown">
-						<a href="index.html#about" class="dropdown-toggle" data-toggle="dropdown"><?php echo __("Settings");?> <b class="caret"></b></a>
+						<a href="index.html#about" class="dropdown-toggle" data-toggle="dropdown"><?php echo __("Configuration");?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><?php echo HTML::anchor("option", __("Site settings")); ?></li>
 							<li class="divider"></li>
