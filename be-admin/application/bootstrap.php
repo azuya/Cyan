@@ -93,7 +93,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'		=> '/kohana-project/',
+	'base_url'		=> '/Bliss-Engine/',
 	'index_file'	=> false,
 	'caching'		=> false, // true
 	'errors'		=> true,
