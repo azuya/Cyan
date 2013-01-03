@@ -1,5 +1,5 @@
 /*
-@codekit-append "bootstrap.min.js";
+@codekit-append "bootstrap.min.js", "css_browser_selector.js";
 */
 
 $.be						= {};

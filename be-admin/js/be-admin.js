@@ -10,20 +10,18 @@ $(document).ready(function(){
 		$(this).parent().toggleClass('children-open');
 	});
 
-	// Stickynav 
-	var sticky = $('#admin-menu');
-
 	// Calculate stickynav height if exist	
-	if (sticky.length) {
+	// if (sticky.length) {
 	
-		var stickyheight = $(sticky).outerHeight();
-		var stickytop = $(sticky).offset().top - parseFloat($(sticky).css('marginTop').replace(/auto/, 0));
+		// var stickyheight = $(sticky).outerHeight();
+		// var stickytop = $(sticky).offset().top - parseFloat($(sticky).css('marginTop').replace(/auto/, 0));
 		// var stickybottom = $('#content_bottom').offset().top - parseFloat($('#content_bottom').css('marginTop').replace(/auto/, 0));
 		   
 		// Add scroll event listener
 		$(window).scroll(function(event){
 
 			var y = $(this).scrollTop();
+			/*
 			var offset = sticky.offset();
 
 			// Flytta med nedåt
@@ -34,6 +32,7 @@ $(document).ready(function(){
 				$(sticky).removeClass('fixed');
 				$("body").removeClass('sticky-menu');
 			}
+			*/
 			
 			if (y >= 40) {
 				$("#ScrollToTop").removeClass('Offscreen');
@@ -42,7 +41,7 @@ $(document).ready(function(){
 			}
 			
 		});
-	}
+	// }
 
 	$("#ScrollToTop").click(function() {
 		$('html, body').animate({ scrollTop: 0 }, 'fast');

@@ -3,21 +3,10 @@
 $user = Auth::instance()->get_user();
 
 if ($user) {
+	$content_types = ORM::factory('content_type')->find_all();
 ?>
 
-<header class="navbar">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="brand" href="">Bliss Engine</a>
-			
-			<form class="navbar-form pull-right">
-				<div class="input-append">
-					<input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button"><i class="icon-search"></i></button>
-				</div>
-			</form>
-			
-		</div>
-	</div>
+	<div class="navbar navbar-inverse navbar-fixed-top">
 
     <div class="navbar-menu" id="admin-menu">
       <div class="navbar-inner">
@@ -31,15 +20,24 @@ if ($user) {
 
 				<!-- Left Menu -->
 				<ul class="nav">
-					<!--
-					<li class="active"><a href="index.html#">Home</a></li>
-					-->
+				
+					<!-- Goff -->
+					<li class="dropdown">
+						<a href="index.html#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-star icon-white"></i></a>
+						<ul class="dropdown-menu">
+							<li><?php echo HTML::anchor("about", __("About Bliss Engine")); ?></li>
+							<li class="divider"></li>
+							<li><?php echo HTML::anchor("help", __("Help")); ?></li>
+							<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org"); ?></li>
+							<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", "Support forums"); ?></li>
+						</ul>
+					</li>
+
+					<!-- Site menu -->
 					<li class="dropdown">
 						<a href="index.html#campaigns" class="dropdown-toggle" data-toggle="dropdown"><?php echo "MY sitename";?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><?php echo HTML::anchor("", __("View site")); ?></li>
-							<li class="divider"></li>
-							<li><?php echo HTML::anchor("content", __("Content")); ?></li>
 							<li class="divider"></li>
 							<li><?php echo HTML::anchor("dashboard", __("Dashboard")); ?></li>
 							<li class="divider"></li>
@@ -49,12 +47,27 @@ if ($user) {
 							<li><?php echo HTML::anchor("about", __("About Bliss Engine")); ?></li>
 						</ul>
 					</li>
+					
+					<!-- Content -->
+					<li class="dropdown">
+						<a href="index.html#add" class="dropdown-toggle" data-toggle="dropdown"><?php echo __("Content");?> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><?php echo HTML::anchor("content", __("Content")); ?></li>
+							<li class="divider"></li>
+							<?php
+							foreach ($content_types as $item) {
+								echo "<li>".HTML::anchor("content/index/?content-type=".$item->id, $item->name)."</li>";
+							}
+							?>
+						</ul>
+					</li>
+
+					<!-- Add -->
 					<li class="dropdown">
 						<a href="index.html#add" class="dropdown-toggle" data-toggle="dropdown"><?php echo __("Add");?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							
 							<?php
-					        $content_types = ORM::factory('content_type')->find_all();
 							foreach ($content_types as $item) {
 								echo "<li>".HTML::anchor("content/new/?content-type=".$item->id, $item->name)."</li>";
 							}
@@ -106,7 +119,7 @@ if ($user) {
         </div>
       </div>
     </div>
-</header>
-
-<button id="ScrollToTop" class="Button WhiteButton Indicator Offscreen" type="button">&uarr;</button>
+    
+	</div> <!-- /.navbar -->
+	
 <?php } ?>

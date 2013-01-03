@@ -30,23 +30,26 @@
 <body>
     
 	<!-- Header -->
-	<?php include("be-admin/application/static/admin-menu.php"); ?>
+	<?php include("be-admin/application/static/admin-header.php"); ?>
 	
-	<!-- Content -->
-	<div id="be-main" class="container-fluid">
-		<?php if ($user) : ?>
-		
-			<div class="be-tools">
-			<?php include("be-admin/application/static/admin-tools.php"); ?>
-			</div>
+	<!-- Wrapper -->
+	<div id="wrap">
+	
+		<!-- Content -->
+		<div id="be-container" class="container-fluid">
+			<?php if ($user) : ?>
 			
-		<?php endif; ?>
-			
-		<div class="be-main">
-			<div id="be-screens">
+				<div class="be-tools">
+				<?php include("be-admin/application/static/admin-tools.php"); ?>
+				</div>
+				
+			<?php endif; ?>
+				
+			<div class="be-main">
 				<?php echo $content; ?>
 			</div>
 		</div>
+
 	</div>
 
 	<!-- Footer -->
