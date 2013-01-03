@@ -1,4 +1,4 @@
-# Bliss Engine
+# Bliss Engine CMS
 
 [Bliss Engine](http://www.blissenginge.org/) is an elegant, open source, and object oriented HMVC CMS built using PHP5.
 
