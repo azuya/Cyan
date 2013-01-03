@@ -51,11 +51,12 @@ $(document).ready(function(){
 	// !Bootstrap
 	
 	// Tooltip
-	$('.be-tooltip').tooltip({
-		animation:	true,
-		delay:		{ show: 500, hide: 100 },
-		placement:	'top'
-	});
+	$("*[rel=tooltip]")
+		.tooltip({
+			animation:	true,
+			delay:		{ show: 500, hide: 100 },
+			placement:	'top',
+		});
 
     // Popover
 	$("a[rel=popover]")
