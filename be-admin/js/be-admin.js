@@ -48,13 +48,15 @@ $(document).ready(function(){
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
 	
-	// !Bootstrap
+	/* 
+	 * !Bootstrap
+	 */
 	
 	// Tooltip
 	$("*[rel=tooltip]")
 		.tooltip({
-			animation:	true,
-			delay:		{ show: 500, hide: 100 },
+			animation:	false,
+			delay:		{ show: 500, hide: 0 },
 			placement:	'top',
 		});
 
@@ -69,7 +71,5 @@ $(document).ready(function(){
 		.click(function(e) {
 			e.preventDefault()
 		});
-	
-
 	
 });
