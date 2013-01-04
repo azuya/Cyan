@@ -98,14 +98,23 @@ if ($user) {
 						</ul>
 					</li>
 
-					<!--
+					<!-- Notifications -->
 					<li class="dropdown">
-						<a href="#" class="btn">1</a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="social-count-right">5</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><?php echo HTML::anchor("messages/", "<i class=\"icon-envelope\"></i> ".sprintf(__("%d messages"), 3)); ?></li>
+							<li class="divider"></li>
+							<li><?php echo HTML::anchor("content/", sprintf(__("%d new content"), 2)); ?></li>
+						</ul>
 					</li>
-					-->
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user->username; ?> <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle name" data-toggle="dropdown">
+							<img height="20" src="https://secure.gravatar.com/avatar/676cb2730f0afc5abd5a9c279d532aff?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="20">
+							<?php echo $user->username; ?> <b class="caret"></b>
+						</a>
 						<ul class="dropdown-menu">
 							<li><?php echo HTML::anchor("user/profile", __("My profile")); ?></li>
 							<li class="divider"></li>

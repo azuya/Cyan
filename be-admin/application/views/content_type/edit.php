@@ -1,13 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="content-type-edit-<?php echo $content->id; ?>" class="screen active">
+<div id="content_type-edit-<?php echo $content->id; ?>" class="screen active">
 
-	<?php echo Form::open('content_type/post/'.$content->id, array("class" => "form-horizontal")); ?>
+	<div class="be-tools">
+		<?php include("be-admin/application/static/admin-tools.php"); ?>
+	</div>
+	
+	<div class="be-main">
+		
+		<?php echo Form::open('content_type/post/'.$content->id, array("class" => "form-horizontal")); ?>
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo __("Add new content"); ?></h1>
+				<h1><?php echo __("New content type"); ?></h1>
 			</div>
-			
+
 			<div class="actions">
 				<?php echo Form::submit('submit', __('Submit'), array('class'=>'btn btn-primary')); ?>
 			</div>
@@ -29,6 +35,8 @@
 			</div>
 			
 		</div>
-	<?php echo Form::close(); ?>
-	
+		<?php echo Form::close(); ?>
+		
+	</div> <!-- be-main -->
+
 </div>

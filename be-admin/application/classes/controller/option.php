@@ -6,54 +6,70 @@ class Controller_Option extends Controller_Template {
     const MODULE = 'option';
      
     public function action_index() {
-        $contents = ORM::factory('option')->find_all(); // loads all content object from table
+        $options = ORM::factory('option')->find_all(); // loads all content object from table
          
         // $view = new View('content/index');
         // $view->set("content", $posts); // set "posts" object to view
         //$this->response->body($view);
         
-        $this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $contents);
+        $this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $options);
     }
      
     // loads the new content form
     public function action_new() {
-        $content = new Model_Option();
+        $option = new Model_Option();
          
         //$view = new View('content/edit');
         //$view->set("content", $posts);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $content);
+        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $option);
 
     }
      
     // edit the content
     public function action_edit() {
-        $content_id = $this->request->param('id');
-        $content = new Model_Option($content_id);
+        $id = $this->request->param('id');
+        $option = new Model_Option($id);
  
         // $view = new View('content/edit');
         // $view->set("content", $posts);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $content);
+        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $option);
     }
  
     // delete the content
     public function action_delete() {
-        $content_id = $this->request->param('id');
-        $content = new Model_Option($content_id);
+        $id = $this->request->param('id');
+        $option = new Model_Option($id);
  
-        $content->delete();
+        $option->delete();
         $this->redirect(self::MODULE);
     }
      
     // save the content
     public function action_post() {
-        $content_id = $this->request->param('id');
-        $posts = new Model_Option($content_id);
-        $posts->values($_POST); // populate $posts object from $_POST array
-        $posts->save(); // saves content to database
-         
-        $this->redirect(self::MODULE);
+    
+        $id = $this->request->param('id');
+        $option = new Model_Option($id);
+        $option->values($_POST); // populate $option object from $_POST array
+		$errors = array();
+		
+		try
+		{
+			$option->save(); // saves content to database
+			$this->redirect(self::MODULE);
+		}
+		
+		catch (ORM_Validation_Exception $ex)
+		{
+			$errors = $ex->errors('validation');
+		}
+		
+		$view = new View('option/edit');
+		$view->set("content", $option);
+		$view->set('errors', $errors);
+		
+		$this->template->set('content', $view);
     }
  
 }

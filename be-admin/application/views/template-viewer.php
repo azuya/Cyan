@@ -13,6 +13,14 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-admin/css/be-admin.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/css/style.css">
 
+    <?php
+	// Load the user information
+	$user = Auth::instance()->get_user();
+
+    if ($user) : ?>
+    <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <?php endif; ?>
+
 	<!--
 	<script src="<?php echo URL::site(null, true, false); ?>be-admin/js/jquery-1.8.2.min.js"></script>
 	-->
@@ -32,10 +40,8 @@
 </style>
 </head> 
 <body>
-	<?php
-	// Load and display admin menu if logged in
-	include("be-admin/application/static/admin-menu.php");
-	?>
+	<!-- Admin menu -->
+	<?php require Kohana::find_file('static', 'admin-menu','php'); ?>
 
 	<!-- Content -->
 	<div id="global-container">
@@ -43,9 +49,7 @@
 	</div>
 	<!-- / Content -->
     	
-	<?php
-	// Insert admin scripts at bottom
-	include("be-admin/application/static/admin-scripts.php");
-	?>
+	<!-- Script -->
+	<?php require Kohana::find_file('static', 'admin-scripts','php'); ?>
 </body>
 </html>

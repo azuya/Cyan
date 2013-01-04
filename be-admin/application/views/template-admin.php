@@ -10,8 +10,8 @@
 	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-admin/css/be-admin.css">
 
+    <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
 	<!--
-    <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans">
 	<script src="<?php echo URL::site(null, true, false); ?>be-admin/js/jquery-1.8.2.min.js"></script>
 	-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -28,34 +28,23 @@
 	<link rel="apple-touch-icon-precomposed" href="<?php echo URL::site(null, true, false); ?>be-admin/ico/apple-touch-icon-57-precomposed.png">
 </head> 
 <body>
-    
 	<!-- Header -->
-	<?php include("be-admin/application/static/admin-header.php"); ?>
+	<?php require Kohana::find_file('static', 'admin-header','php'); ?>
 	
 	<!-- Wrapper -->
 	<div id="wrap">
 	
 		<!-- Content -->
 		<div id="be-container" class="container-fluid">
-			<?php if ($user) : ?>
-			
-				<div class="be-tools">
-				<?php include("be-admin/application/static/admin-tools.php"); ?>
-				</div>
-				
-			<?php endif; ?>
-				
-			<div class="be-main">
-				<?php echo $content; ?>
-			</div>
+			<?php echo $content; ?>
 		</div>
 
 	</div>
 
 	<!-- Footer -->
-	<?php include("be-admin/application/static/admin-footer.php"); ?>
+	<?php require Kohana::find_file('static', 'admin-footer','php'); ?>
 
 	<!-- Script -->
-	<?php include("be-admin/application/static/admin-scripts.php"); ?>
+	<?php require Kohana::find_file('static', 'admin-scripts','php'); ?>
 </body>
 </html>

@@ -35,15 +35,15 @@ $(document).ready(function(){
 			*/
 			
 			if (y >= 40) {
-				$("#ScrollToTop").removeClass('Offscreen');
+				$("#scroll-to-top").removeClass('offscreen');
 			} else {
-				$("#ScrollToTop").addClass('Offscreen');
+				$("#scroll-to-top").addClass('offscreen');
 			}
 			
 		});
 	// }
 
-	$("#ScrollToTop").click(function() {
+	$("#scroll-to-top").click(function() {
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
 	

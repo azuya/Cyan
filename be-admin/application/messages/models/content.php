@@ -15,3 +15,5 @@ return array(
         'email_available' => 'This email address is already in use.',
     )
 );
+
+?>

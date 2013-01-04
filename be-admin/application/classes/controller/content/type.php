@@ -9,7 +9,7 @@ class Controller_Content_Type extends Controller_Template {
         $content_types = ORM::factory('content_type')->find_all(); // loads all content object from table
          
         // $view = new View('content/index');
-        // $view->set("content", $posts); // set "posts" object to view
+        // $view->set("content", $content_type); // set "posts" object to view
         //$this->response->body($view);
         
         $this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $content_types);
@@ -20,7 +20,7 @@ class Controller_Content_Type extends Controller_Template {
         $content_type = new Model_Content_Type();
          
         //$view = new View('content/edit');
-        //$view->set("content", $posts);
+        //$view->set("content", $content_type);
         // $this->response->body($view);
         $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $content_type);
 
@@ -28,19 +28,19 @@ class Controller_Content_Type extends Controller_Template {
      
     // edit the content
     public function action_edit() {
-        $content_id = $this->request->param('id');
-        $content_type = new Model_Content_Type($content_id);
+        $id = $this->request->param('id');
+        $content_type = new Model_Content_Type($id);
  
         // $view = new View('content/edit');
-        // $view->set("content", $posts);
+        // $view->set("content", $content_type);
         // $this->response->body($view);
         $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $content_type);
     }
  
     // delete the content
     public function action_delete() {
-        $content_type_id = $this->request->param('id');
-        $content_type = new Model_Content_Type($content_type_id);
+        $id = $this->request->param('id');
+        $content_type = new Model_Content_Type($id);
  
         $content_type->delete();
         $this->redirect(self::MODULE);
@@ -48,9 +48,10 @@ class Controller_Content_Type extends Controller_Template {
      
     // save the content
     public function action_post() {
-        $content_type_id = $this->request->param('id');
-        $content_type = new Model_Content_Type($content_type_id);
-        $content_type->values($_POST); // populate $posts object from $_POST array
+    
+        $id = $this->request->param('id');
+        $content_type = new Model_Content_Type($id);
+        $content_type->values($_POST); // populate $content_type object from $_POST array
 		$errors = array();
 		
 		try

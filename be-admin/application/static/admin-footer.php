@@ -3,4 +3,4 @@
 </div>
 
 <!-- Scroll to top -->
-<button id="ScrollToTop" class="Button WhiteButton Indicator Offscreen" type="button">&uarr;</button>
+<button id="scroll-to-top" class="offscreen" type="button">&uarr;</button>

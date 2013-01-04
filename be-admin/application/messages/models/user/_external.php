@@ -8,3 +8,5 @@ return array(
         'matches'		=> __('The password fields did not match.'),
     ),
 );
+
+?>

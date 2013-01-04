@@ -128,10 +128,27 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+
+
+Route::set('admin','admin(/<controller>(/<action>(/<id>)))')
+	->defaults(array(
+	    'controller' => 'dashboard',
+	    'action'     => 'index',
+	));
+
+/*    
+Route::set('admin','be(/<ad>(/<affiliate>))')
+	->defaults(array(
+	    'controller' => 'dashboard',
+	    'action'     => 'index',
+	));
+*/
+  
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'viewer',
 		'action'     => 'index',
 	));
 
+// My own cookie salt
 Cookie::$salt = '432b275f5baae6e507ae2af18a0ce2c8702a1333';
