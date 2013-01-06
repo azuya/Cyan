@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
  
-class Controller_Option extends Controller_Template {
+class Controller_Option extends Controller_Admin {
      
-	public $template = 'template-admin';
     const MODULE = 'option';
      
-    public function action_index() {
+    public function action_index()
+    {
         $options = ORM::factory('option')->find_all(); // loads all content object from table
          
         // $view = new View('content/index');
@@ -16,7 +16,8 @@ class Controller_Option extends Controller_Template {
     }
      
     // loads the new content form
-    public function action_new() {
+    public function action_new()
+    {
         $option = new Model_Option();
          
         //$view = new View('content/edit');
@@ -27,7 +28,8 @@ class Controller_Option extends Controller_Template {
     }
      
     // edit the content
-    public function action_edit() {
+    public function action_edit()
+    {
         $id = $this->request->param('id');
         $option = new Model_Option($id);
  
@@ -38,7 +40,8 @@ class Controller_Option extends Controller_Template {
     }
  
     // delete the content
-    public function action_delete() {
+    public function action_delete()
+    {
         $id = $this->request->param('id');
         $option = new Model_Option($id);
  
@@ -47,7 +50,8 @@ class Controller_Option extends Controller_Template {
     }
      
     // save the content
-    public function action_post() {
+    public function action_post()
+    {
     
         $id = $this->request->param('id');
         $option = new Model_Option($id);

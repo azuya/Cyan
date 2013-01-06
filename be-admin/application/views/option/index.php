@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="content_type-index" class="screen active">
+<div id="option-index" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>

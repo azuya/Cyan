@@ -9,13 +9,13 @@
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-			<h1>Bliss Engine <small>0.1 Alfa</small></h1>
+			<h1><?php echo $site["bliss_engine"]["name"]; ?> <small><?php echo $site["bliss_engine"]["version"]; ?></small></h1>
 			</div>
 		</div>
 		
 		<div class="be-content">
 			<p class="lead">
-				This is the first private beta on Bliss Engine, the fabulous new CMS by Bobolo.
+				This is the first alpha of Bliss Engine, the fabulous new CMS by Bobolo.
 			</p>
 			
 			<ul>
@@ -24,6 +24,12 @@
 				<li>Bootstrap <span class="muted">2.2.2</span></li>
 				<li>CKEditor <span class="muted">4</span></li>
 			</ul>
+			
+			<h2>Stuff</h2>
+			
+			<p>
+				<a href="https://github.com/andersd/Bliss-Engine">Bliss Engine on GitHub</a>
+			</p>
 		</div>
 	</div> <!-- be-main -->
 

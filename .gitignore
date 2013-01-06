@@ -1,4 +1,6 @@
 
-.htaccess
-application/logs/*
-.DS_Store*
+/.htaccess
+/be-admin/application/logs/
+/be-admin/application/cache/
+
+*/.DS_Store/*

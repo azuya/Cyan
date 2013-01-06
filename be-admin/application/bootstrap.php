@@ -72,6 +72,7 @@ I18n::lang('en-us');
  * Note: If you supply an invalid environment name, a PHP warning will be thrown
  * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
  */
+ 
 if (isset($_SERVER['KOHANA_ENV']))
 {
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
@@ -113,42 +114,24 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'auth'       => MODPATH.'auth',       // Basic authentication
-	'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'minion'     => MODPATH.'minion',     // CLI Tasks
-	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	'auth'			=> MODPATH.'auth',       // Basic authentication
+	'cache'			=> MODPATH.'cache',      // Caching with multiple backends
+	// 'codebench'	=> MODPATH.'codebench',  // Benchmarking tool
+	'database'		=> MODPATH.'database',   // Database access
+	// 'image'		=> MODPATH.'image',      // Image manipulation
+	// 'minion'		=> MODPATH.'minion',     // CLI Tasks
+	'orm'			=> MODPATH.'orm',        // Object Relationship Mapping
+	// 'unittest'	=> MODPATH.'unittest',   // Unit testing
+	// 'userguide'	=> MODPATH.'userguide',  // User guide and API documentation
+
+	'Pagination'	=> MODPATH.'pagination',
 	));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-
-
-Route::set('admin','admin(/<controller>(/<action>(/<id>)))')
-	->defaults(array(
-	    'controller' => 'dashboard',
-	    'action'     => 'index',
-	));
-
-/*    
-Route::set('admin','be(/<ad>(/<affiliate>))')
-	->defaults(array(
-	    'controller' => 'dashboard',
-	    'action'     => 'index',
-	));
-*/
-  
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'viewer',
-		'action'     => 'index',
-	));
+require APPPATH.'routes'.EXT;
 
 // My own cookie salt
 Cookie::$salt = '432b275f5baae6e507ae2af18a0ce2c8702a1333';

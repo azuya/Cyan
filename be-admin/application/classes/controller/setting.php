@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
  
-class Controller_Settings extends Controller_Template {
-     
-	public $template = 'template-admin';
+class Controller_Settings extends Controller_Admin {
+
     const MODULE = 'settings';
      
-    public function action_index() {
+    public function action_index()
+    {
         $all_settings = ORM::factory('settings')->find_all(); // loads all settings object from table
          
         // $view = new View('settings/index');
@@ -15,7 +15,8 @@ class Controller_Settings extends Controller_Template {
     }
      
     // loads the new settings form
-    public function action_new() {
+    public function action_new()
+    {
         $settings = new Model_Settings();
          
         //$view = new View('settings/edit');
@@ -26,7 +27,8 @@ class Controller_Settings extends Controller_Template {
     }
      
     // edit the settings
-    public function action_edit() {
+    public function action_edit()
+    {
         $settings_id = $this->request->param('id');
         $settings = new Model_Settings($settings_id);
  
@@ -37,7 +39,8 @@ class Controller_Settings extends Controller_Template {
     }
  
     // save the settings
-    public function action_post() {
+    public function action_post()
+    {
         $settings_id = $this->request->param('id');
         $settings = new Model_Settings($settings_id);
         $settings->values($_POST); // populate $settings object from $_POST array

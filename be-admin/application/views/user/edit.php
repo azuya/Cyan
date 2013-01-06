@@ -1,42 +1,53 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
-
+ 
 <div id="user-edit-<?php echo $content->id; ?>" class="screen active">
 
-	<?php $errors = isset($errors) ? $errors : array(); ?>
-	<?php echo Form::open('user/post/'.$content->id, array("class" => "form-horizontal")); ?>
+	<div class="be-tools">
+		<?php include("be-admin/application/static/admin-tools.php"); ?>
+	</div>
 	
+	<div class="be-main">
+		<?php $errors = isset($errors) ? $errors : array(); ?>
+		<?php echo Form::open('user/post/'.$content->id, array("class" => "form-horizontal")); ?>
+
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo __("Create option"); ?> <small class="be-tooltip" title="Tooltip är coolt och fungerar ju från start!">?</small></h1>
+				<h1>
+					<?php echo Form::checkbox('active', 1, (bool) $content->active, array("id" => "active", "class" => "big")); ?>
+					<span id="headline-username"><?php echo $content->username; ?></span>
+				</h1>
 			</div>
-			
+
 			<div class="actions">
 				<?php echo Form::submit('submit', __('Submit'), array('class'=>'btn btn-primary')); ?>
 			</div>
 		</div>
 		
 		<div class="be-content">
-		
+			<?php $errors = isset($errors) ? $errors : array(); ?>
+			
 			<div class="control-group">
 				<?php echo Form::label('username', __("Username"), array("class" => "control-label", "for" => "username")); ?>
 				<div class="controls"><?php echo Form::input('username', $content->username, array("placeholder" => __("Username"), "id" => "username")); ?></div>
+				<span class="label label-important"><?php echo Arr::get($errors, 'username');?></span>
 			</div>
 		
 			<div class="control-group">
 				<?php echo Form::label('email', __("Email"), array("class" => "control-label", "for" => "email")); ?>
 				<div class="controls"><?php echo Form::input('email', $content->email, array("placeholder" => __("Email"), "id" => "email")); ?></div>
+				<span class="label label-important"><?php echo Arr::get($errors, 'email');?></span>
 			</div>
 		
+			<!--
 			<div class="control-group">
 				<?php echo Form::label('password', __("Password"), array("class" => "control-label", "for" => "password")); ?>
 				<div class="controls"><?php echo Form::input('password', $content->password, array("placeholder" => __("Password"), "id" => "password")); ?></div>
 			</div>
+			-->
 		
-			<div class="control-group">
-				<div class="controls"><?php echo Form::submit('submit', __('Submit'), array('class'=>'btn btn-primary')); ?></div>
-			</div>
+		</div> <!-- be-content -->
 		
-		</div>
-	<?php echo Form::close(); ?>
+		<?php echo Form::close(); ?>
+	</div> <!-- be-main -->
 
 </div>

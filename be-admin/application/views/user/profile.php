@@ -1,22 +1,28 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="media-profile" class="screen active">
+<div id="user-profile" class="screen active">
 
-	<?php $errors = isset($errors) ? $errors : array(); ?>
-	<?php echo Form::open('user/post', array("class" => "form-horizontal")); ?>
+	<div class="be-tools">
+		<?php include("be-admin/application/static/admin-tools.php"); ?>
+	</div>
 	
+	<div class="be-main">
+		<?php $errors = isset($errors) ? $errors : array(); ?>
+		<?php echo Form::open('user/post/', array("class" => "form-horizontal")); ?>
+
 		<div class="be-header">
 			<div class="title">
-				<h1>Info for user "<?php echo $user->username; ?>"</h1>
+				<h1><?php echo __("My profile"); ?></h1>
 			</div>
-			
+
 			<div class="actions">
 				<?php echo Form::submit('submit', __('Submit'), array('class'=>'btn btn-primary')); ?>
 			</div>
 		</div>
 		
 		<div class="be-content">
-	
+			<?php $errors = isset($errors) ? $errors : array(); ?>
+			
 			<div class="tabbable"> <!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
@@ -25,9 +31,6 @@
 			
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab1">
-			
-			
-						<legend>Legend</legend>
 						
 						<div class="control-group">
 							<?php echo Form::label('username', __("Username"), array("class" => "control-label", "for" => "username")); ?>
@@ -50,7 +53,7 @@
 						</div>
 						 
 						<div class="control-group">
-							<?php echo Form::label('password', __("Password"), array("class" => "control-label", "placeholder" => __("Password"))); ?>
+							<?php echo Form::label('password', __("Password"), array("class" => "control-label")); ?>
 							<div class="controls"><?php echo Form::password('password', '', array("placeholder" => __("Password"), "id" => "password")); ?></div>
 						</div>
 						 
@@ -58,15 +61,18 @@
 						    <li><?php echo __("Number of logins") ?>: <?php echo Num::format($user->logins, 0, false); ?></li>
 						    <li><?php echo __("Last login") ?>: <?php echo Date::fuzzy_span(strtotime($user->last_login)); ?></li>			    
 						</ul>
-					</div>
+					</div> <!-- tab-pane -->
+				
 					<div class="tab-pane" id="tab2">
 						<p>Howdy, I'm in Section 2.</p>
 					</div>
-				</div>
-			
-			</div>
-		
+				
+				</div> <!-- tab-content -->
+
+			</div> <!-- tabbable -->
+						
 		</div>
-	<?php echo Form::close(); ?>
+		<?php echo Form::close(); ?>
+	</div> <!-- be-main -->
 
 </div>
