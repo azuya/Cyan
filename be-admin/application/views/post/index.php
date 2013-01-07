@@ -28,6 +28,7 @@ $types = ORM::factory('type')->find_all();
 			
 			<div class="actions left">
 				<?php
+				
 				if ($selected_type_id)
 				{ 
 					echo HTML::anchor("admin/post/new?type=".$selected_type_id, "<i class=\"icon-plus-sign\"></i> ".__("New content"), array("class" => "btn"));
@@ -56,11 +57,11 @@ $types = ORM::factory('type')->find_all();
 			
 			<div class="actions">
 
-				<div class="item">
+				<div class="item pull-right">
 					<?php echo $item_count." ".__("items"); ?>
 				</div>
 
-				<div class="btn-group">
+				<div class="btn-group pull-right">
 					<button class="btn"><?php echo __("Sort"); ?></button>
 					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 					<ul class="dropdown-menu">
@@ -70,23 +71,16 @@ $types = ORM::factory('type')->find_all();
 						<li><a tabindex="-1" href="#"><?php echo __("Created date"); ?></a></li>
 						<li><a tabindex="-1" href="#"><?php echo __("Modified date"); ?></a></li>
 					</ul>
-				</div><div class="btn-group">
+				</div>
+				
+				<div class="btn-group pull-right">
 					<button class="btn"><?php echo __("Filter"); ?></button>
 					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 					<ul class="dropdown-menu">
-						<?php foreach ($types as $type) {
-							echo "<li>";
-							
-							if ($type->id == $selected_type_id) {
-								$active_icon = "<i class=\"icon-ok\"></i> ";
-							} else {
-								$active_icon = "";
-							}
-							
-							echo HTML::anchor("admin/post/?type=".$type->id, $active_icon.Text::limit_chars($type->name, 20, "…", true));
-							echo "</li>";
-						}
-						?>
+						<?php foreach ($types as $type) :
+							$active_icon = ($type->id == $selected_type_id) ? "<i class=\"icon-ok\"></i> " : "";
+							printf('<li>%s</li>', HTML::anchor("admin/post/?type=".$type->id, $active_icon.Text::limit_chars($type->name, 20, "…", true)));
+					    endforeach; ?>
 						<li class="divider"></li>
 						<li>
 						<?php
@@ -98,7 +92,9 @@ $types = ORM::factory('type')->find_all();
 						?>
 						</li>
 					</ul>
-				</div><div class="btn-group">
+				</div>
+				
+				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="icon-align-justify"></i>
 					</a>

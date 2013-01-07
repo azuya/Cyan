@@ -9,6 +9,7 @@ class Controller_Post extends Controller_Admin {
      
     public function action_index()
     {
+	    
 	    // Get page number
 	    $query = $this->request->query();
 	    $page = isset($query['page']) ? $query['page'] : 0;
@@ -59,7 +60,8 @@ class Controller_Post extends Controller_Admin {
    		$this->template->content = View::factory(self::MODULE.'/index')
 			->bind('contents', $posts)
 			->set('item_count', $count)
-			->bind('pagination', $pagination);
+			->set('query', $this->request->query())
+			->set('pagination', $pagination);
     }
      
 	public function action_view()
@@ -77,10 +79,9 @@ class Controller_Post extends Controller_Admin {
     {
         $post = new Model_Post();
          
-        //$view = new View('post/edit');
-        //$view->set("content", $posts);
-        // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $post);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('content', $post)
+			->set('query', $this->request->query());
 
     }
      
@@ -90,10 +91,9 @@ class Controller_Post extends Controller_Admin {
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
 		
-		// $view = new View('post/edit');
-		// $view->set("content", $posts);
-		// $this->response->body($view);
-		$this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $post);
+		$this->template->content = View::factory(self::MODULE.'/edit')
+			->bind('content', $post)
+			->set('query', $this->request->query());
     }
  
     // delete the post

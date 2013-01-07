@@ -43,7 +43,7 @@ if ($user) :
 					<li class="dropdown">
 						<a href="index.html#add" class="dropdown-toggle" data-toggle="dropdown"><?php echo __("Content");?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><?php echo HTML::anchor("admin/post", __("Content")); ?></li>
+							<li><?php echo HTML::anchor("admin/post", __("All content")); ?></li>
 							<li class="divider"></li>
 							<?php
 							foreach ($types as $type) {

@@ -12,7 +12,9 @@ class Controller_Option extends Controller_Admin {
         // $view->set("content", $posts); // set "posts" object to view
         //$this->response->body($view);
         
-        $this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $options);
+        $this->template->content = View::factory(self::MODULE.'/index')
+        	->bind('contents', $options)
+        	->set('query', $this->request->query());
     }
      
     // loads the new content form
@@ -23,7 +25,9 @@ class Controller_Option extends Controller_Admin {
         //$view = new View('content/edit');
         //$view->set("content", $posts);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $option);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('content', $option)
+        	->set('query', $this->request->query());
 
     }
      
@@ -36,7 +40,9 @@ class Controller_Option extends Controller_Admin {
         // $view = new View('content/edit');
         // $view->set("content", $posts);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $option);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        ->bind('content', $option)
+        ->set('query', $this->request->query());
     }
  
     // delete the content

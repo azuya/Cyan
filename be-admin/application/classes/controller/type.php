@@ -13,7 +13,9 @@ class Controller_Type extends Controller_Admin {
         // $view->set("content", $type); // set "posts" object to view
         //$this->response->body($view);
         
-        $this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $types);
+        $this->template->content = View::factory(self::MODULE.'/index')
+        	->bind('contents', $types)
+        	->set('query', $this->request->query());
     }
      
     // loads the new content form
@@ -24,7 +26,9 @@ class Controller_Type extends Controller_Admin {
         //$view = new View('content/edit');
         //$view->set("content", $type);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $type);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('content', $type)
+        	->set('query', $this->request->query());
 
     }
      
@@ -37,7 +41,9 @@ class Controller_Type extends Controller_Admin {
         // $view = new View('content/edit');
         // $view->set("content", $type);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $type);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('content', $type)
+        	->set('query', $this->request->query());
     }
  
     // delete the content

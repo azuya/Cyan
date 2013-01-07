@@ -13,7 +13,7 @@
 			</div>
 			
 			<div class="actions left">
-				<?php echo HTML::anchor("user/new", "<i class=\"icon-plus-sign\"></i> ".__("New user"), array("class" => "btn")); ?>
+				<?php echo HTML::anchor("admin/user/new", "<i class=\"icon-plus-sign\"></i> ".__("New user"), array("class" => "btn")); ?>
 			</div>
 		</div>
 		

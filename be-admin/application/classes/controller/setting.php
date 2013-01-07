@@ -11,7 +11,9 @@ class Controller_Settings extends Controller_Admin {
         // $view = new View('settings/index');
         // $view->set("settings", $all_settings); // set "settings" object to view
         //$this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/index')->bind('settings', $all_settings);
+        $this->template->content = View::factory(self::MODULE.'/index')
+        	->bind('settings', $all_settings)
+        	->set('query', $this->request->query());
     }
      
     // loads the new settings form
@@ -22,7 +24,9 @@ class Controller_Settings extends Controller_Admin {
         //$view = new View('settings/edit');
         //$view->set("settings", $settings);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('settings', $settings);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('settings', $settings)
+        	->set('query', $this->request->query());
 
     }
      
@@ -35,7 +39,9 @@ class Controller_Settings extends Controller_Admin {
         // $view = new View('settings/edit');
         // $view->set("settings", $settings);
         // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('settings', $settings);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('settings', $settings)
+        	->set('query', $this->request->query());
     }
  
     // save the settings

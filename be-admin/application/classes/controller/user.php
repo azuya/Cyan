@@ -31,7 +31,8 @@ class Controller_User extends Controller_Base {
 		$this->template->content = View::factory(self::MODULE.'/index')
 			->bind('contents', $users)
 			->set('item_count', $count)
-			->bind('pagination', $pagination);
+			->set('pagination', $pagination)
+			->set('query', $this->request->query());
 
 		$this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $users);
 	}
@@ -84,23 +85,16 @@ class Controller_User extends Controller_Base {
 		}
 	}
 
-	/*
     // loads the new content form
     public function action_new() {
 
-        $this->template->content = View::factory(self::MODULE.'/new')
-            ->bind('errors', $errors)
-            ->bind('message', $message);
-
         $user = new Model_User();
 
-        //$view = new View('content/edit');
-        //$view->set("content", $posts);
-        // $this->response->body($view);
-        $this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $content);
+        $this->template->content = View::factory(self::MODULE.'/edit')
+        	->bind('content', $content)
+			->set('query', $this->request->query());
 
     }
-    */
 
 	// edit the content
 	public function action_edit()
@@ -108,10 +102,9 @@ class Controller_User extends Controller_Base {
 		$user_id = $this->request->param('id');
 		$user = new Model_User($user_id);
 
-		// $view = new View('content/edit');
-		// $view->set("content", $posts);
-		// $this->response->body($view);
-		$this->template->content = View::factory(self::MODULE.'/edit')->bind('content', $user);
+		$this->template->content = View::factory(self::MODULE.'/edit')
+			->bind('content', $user)
+			->set('query', $this->request->query());
 	}
 
 	// delete the content

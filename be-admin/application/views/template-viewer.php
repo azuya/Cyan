@@ -47,7 +47,9 @@
 
 	<!-- Content -->
 	<div id="global-container">
+	-- VIEWER --<br>
     <?php echo $content; ?>
+	-- VIEWER --<br>
 	</div>
 	<!-- / Content -->
     	

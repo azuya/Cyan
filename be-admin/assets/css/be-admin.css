@@ -7936,6 +7936,7 @@ div.navbar .fixed {
   position: relative;
   top: 1px;
   color: #333333;
+  float: left;
 }
 #be-container div.be-main div.be-header div.actions.left {
   float: left;
