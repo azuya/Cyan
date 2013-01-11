@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /be-admin/
+
+Disallow: /admin/
+Disallow: /user/login
+Disallow: /user/logout

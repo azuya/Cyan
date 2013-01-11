@@ -1,8 +1,8 @@
 <?php
 $query = $_GET;
 $q = isset($query['q']) ? $query['q'] : "";
-?>
 
+if (Auth::instance()->logged_in()) : ?>
 <div id="header">
 
 	<!-- Admin menu -->
@@ -18,3 +18,4 @@ $q = isset($query['q']) ? $query['q'] : "";
 	</div>
 
 </div>
+<?php endif; ?>

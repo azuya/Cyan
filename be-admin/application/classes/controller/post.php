@@ -91,8 +91,21 @@ class Controller_Post extends Controller_Admin {
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
 		
+		
+		
+		
+		error_reporting(E_ALL);
+		ini_set('display_errors', true);
+		
+		// Create the pagination object
+		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 1")->set_url("http://example.com/"));
+		Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
+		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 2"));
+		$breadcrumbs = Breadcrumbs::render();
+
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('content', $post)
+			->set('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
     }
  

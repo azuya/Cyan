@@ -8,6 +8,7 @@
 	
 	<div class="be-main">
 		<?php $errors = isset($errors) ? $errors : array(); ?>
+		<?php echo $breadcrumbs; ?>
 		<?php isset($content->type_id) ? $content->type_id : $content->type_id = Arr::get($_GET, 'type', '0'); ?>
 		<?php echo Form::open('post/post/'.$content->id, array("class" => "form-horizontal")); ?>
 

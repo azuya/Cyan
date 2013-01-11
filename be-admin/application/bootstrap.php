@@ -77,6 +77,7 @@ if (isset($_SERVER['KOHANA_ENV']))
 {
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
+Kohana::$environment = ($_SERVER['SERVER_NAME'] !== 'localhost') ? Kohana::PRODUCTION : Kohana::DEVELOPMENT;
 
 /**
  * Initialize Kohana, setting the default options.
@@ -96,7 +97,9 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
 	'base_url'		=> '/Bliss-Engine/',
 	'index_file'	=> false,
-	'caching'		=> false, // true
+	//'caching'		=> false, // true
+	'profile'    => Kohana::$environment !== Kohana::PRODUCTION,
+    'caching'    => Kohana::$environment === Kohana::PRODUCTION,
 	'errors'		=> true,
 ));
 
@@ -118,20 +121,49 @@ Kohana::modules(array(
 	'cache'			=> MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'	=> MODPATH.'codebench',  // Benchmarking tool
 	'database'		=> MODPATH.'database',   // Database access
-	// 'image'		=> MODPATH.'image',      // Image manipulation
+	'image'			=> MODPATH.'image',      // Image manipulation
 	// 'minion'		=> MODPATH.'minion',     // CLI Tasks
 	'orm'			=> MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'	=> MODPATH.'unittest',   // Unit testing
 	// 'userguide'	=> MODPATH.'userguide',  // User guide and API documentation
 
-	'Pagination'	=> MODPATH.'pagination',
+	'breadcrumbs'	=> MODPATH.'breadcrumbs',
+	'pagination'	=> MODPATH.'pagination',
+	'captcha'		=> MODPATH.'captcha',
 	));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-require APPPATH.'routes'.EXT;
+// require APPPATH.'routes'.EXT;
+
+if ( ! Route::cache())
+{
+
+	Route::set('admin','admin(/<controller>(/<action>(/<id>)))')
+		->defaults(array(
+		    'controller' => 'dashboard',
+		    'action'     => 'index',
+		));
+	
+	/*    
+	Route::set('admin','be(/<ad>(/<affiliate>))')
+		->defaults(array(
+		    'controller' => 'dashboard',
+		    'action'     => 'index',
+		));
+	*/
+	
+	// TODO: Make all except /admin/controller/action/… go to the viewer.
+	
+	Route::set('default', '(<controller>(/<action>(/<id>)))')
+		->defaults(array(
+			'controller' => 'viewer',
+			'action'     => 'index',
+		));
+
+}
 
 // My own cookie salt
 Cookie::$salt = '432b275f5baae6e507ae2af18a0ce2c8702a1333';
