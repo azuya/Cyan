@@ -11,7 +11,7 @@
 		<?php echo $breadcrumbs; ?>
 		<?php isset($content->type_id) ? $content->type_id : $content->type_id = Arr::get($_GET, 'type', '0'); ?>
 		<?php echo Form::open('post/post/'.$content->id, array("class" => "form-horizontal")); ?>
-
+		<?php echo Nonce::nonce_field(($content->id) ? "be-update-post-".$content->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">
 				<h1>
@@ -35,6 +35,7 @@
 
 			<div class="actions">
 				<?php echo Form::submit('submit', __('Save'), array('class'=>'btn btn-primary')); ?>
+				<?php // echo HTML::anchor("admin/post", "<i class=\"icon-align-justify\"></i>", array('class'=>'btn')); ?>
 			</div>
 		</div>
 		

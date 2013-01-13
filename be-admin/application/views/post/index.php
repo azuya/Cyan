@@ -144,7 +144,7 @@ $types = ORM::factory('type')->find_all();
 					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author_id, $post->author_id); ?></td>
 					    <td>
 					    	<div class="row-show-on-hover">
-					    	<?php echo HTML::anchor("admin/content/delete/".$post->id, "Delete"); ?>
+					    	<?php echo HTML::anchor(Nonce::nonce_url("admin/post/delete/".$post->id, "be-delete-post-".$post->id), "Delete"); ?>
 					    	</div>
 					    </td>
 					</tr>

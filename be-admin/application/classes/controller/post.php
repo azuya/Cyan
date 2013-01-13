@@ -79,8 +79,15 @@ class Controller_Post extends Controller_Admin {
     {
         $post = new Model_Post();
          
+		// Create the pagination object
+		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post"));
+		// Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
+		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 2"));
+		$breadcrumbs = Breadcrumbs::render();
+
         $this->template->content = View::factory(self::MODULE.'/edit')
         	->bind('content', $post)
+			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
 
     }
@@ -91,21 +98,15 @@ class Controller_Post extends Controller_Admin {
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
 		
-		
-		
-		
-		error_reporting(E_ALL);
-		ini_set('display_errors', true);
-		
 		// Create the pagination object
-		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 1")->set_url("http://example.com/"));
-		Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
+		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
+		// Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
 		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 2"));
 		$breadcrumbs = Breadcrumbs::render();
 
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('content', $post)
-			->set('breadcrumbs', $breadcrumbs)
+			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
     }
  
@@ -115,6 +116,10 @@ class Controller_Post extends Controller_Admin {
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
 		
+		// Nonce ----------------------------------
+		if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-delete-post-".$post_id)) { Nonce::nonce_error(); }
+		// ----------------------------------------
+
 		$post->delete();
 		$this->redirect(self::MODULE);
     }
@@ -125,11 +130,19 @@ class Controller_Post extends Controller_Admin {
         $post_id = $this->request->param('id');
         $post = new Model_Post($post_id);
 
+		// Nonce ----------------------------------
+		if ($post_id) {
+			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-update-post-".$post_id)) { Nonce::nonce_error(); }
+		} else {
+			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-create-post")) { Nonce::nonce_error(); }
+		}
+		// ----------------------------------------
+		
 		// Load the user information
 		$user = Auth::instance()->get_user();
 		
-		$_POST["author_id"] = $user->id;
-		$_POST["active"] = ! empty($_POST['active']);
+		$_POST["author_id"]		= $user->id;
+		$_POST["active"]		= ! empty($_POST['active']);
 
 		// Only created
 		if (!$post_id)
