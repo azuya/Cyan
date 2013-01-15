@@ -35,6 +35,7 @@ if ($user) :
 							<li><?php echo HTML::anchor("admin/help", __("Help")); ?></li>
 							<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org"); ?></li>
 							<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", "Support forums"); ?></li>
+							<li class="divider"></li>
 							<li><?php echo HTML::anchor("admin/about", sprintf(__("About %s"), $site["bliss_engine"]["name"])); ?></li>
 						</ul>
 					</li>

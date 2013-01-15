@@ -22,7 +22,7 @@
 				<li>Kohana <span class="muted">3.3.0</span></li>
 				<li>jQuery <span class="muted">1.8.3</span></li>
 				<li>Bootstrap <span class="muted">2.2.2</span></li>
-				<li>CKEditor <span class="muted">4</span></li>
+				<li>CKEditor <span class="muted">4.0.1</span></li>
 			</ul>
 			
 			<h2>Stuff</h2>
