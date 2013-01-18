@@ -130,6 +130,7 @@ Kohana::modules(array(
 	'breadcrumbs'	=> MODPATH.'breadcrumbs',
 	'pagination'	=> MODPATH.'pagination',
 	'captcha'		=> MODPATH.'captcha',
+	'nonce'			=> MODPATH.'nonce',
 	));
 
 /**

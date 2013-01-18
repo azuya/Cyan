@@ -13,7 +13,9 @@
 	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">
 	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
 
+	<!--
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-admin/assets/css/be-admin.css">
+	-->
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/css/style.css">
 
     <?php

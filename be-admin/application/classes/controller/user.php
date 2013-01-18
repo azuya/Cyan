@@ -232,6 +232,13 @@ class Controller_User extends Controller_Base {
 
 	public function action_login()
 	{
+
+		// Load the user information
+		$user = Auth::instance()->get_user();
+		if ($user) {
+			$this->redirect('admin/dashboard');
+		}
+
 		$this->template->content = View::factory(self::MODULE.'/login')
 			->bind('message', $message);
 
@@ -244,7 +251,7 @@ class Controller_User extends Controller_Base {
 			// If successful, redirect user
 			if ($user)
 			{
-				$this->redirect('dashboard');
+				$this->redirect('admin/dashboard');
 			}
 			else
 			{
@@ -259,7 +266,7 @@ class Controller_User extends Controller_Base {
 		// Log user out
 		Auth::instance()->logout();
 
-		// Redirect to login page
+		// Redirect to start page
 		$this->redirect('');
 	}
 

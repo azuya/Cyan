@@ -13,6 +13,7 @@ return array(
     'site' => array(
         'title'			=> 'Bliss Engine CMS',
         'title_suffix'	=> ' | suffix (change in application/config/app.php)',
+        'file_upload'	=> DOCROOT.DIRECTORY_SEPARATOR.'be-content/files/',
     ),
     
     // Default meta information. will be used for other then post page

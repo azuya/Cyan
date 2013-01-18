@@ -137,14 +137,57 @@ div.navbar {
 	}
 }
 
-.login {
-	width: 500px;
-	display: block;
-	margin: 0 auto;
-	text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+.modal-login {
 
-	h1, h4, p {
+	width: 360px;
+	margin-left: -180px;
+	border: none;
+	top: 20%;
+
+	h2 {
 		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	p.lead {
+		text-align: center;
+		color: @grayLight;
+		font-size: @baseFontSize * 1.1;
+		line-height: @baseLineHeight * 1.1;
+		margin-bottom: 20px;
+	}
+
+	div.controls {
+		width: 100%;
+	}
+
+	#username,
+	#password {
+		background-image: url("../img/be-sprite.png");
+		padding-left: 46px;
+		background-repeat: no-repeat;
+		background-color: @grayLighter;
+		width: 100%;
+		box-sizing: border-box;
+		
+		font-size: 130%;
+		height: 40px;
+	
+		&:focus {
+			background-color: lighten(@grayLighter, 4%);
+		}
+	}
+
+	#username {
+		background-position: 8px 11px;
+	}
+
+	#password {
+		background-position: 8px -44px;
+	}
+	
+	#login {
+		margin-top: 10px;
 	}
 }
 
