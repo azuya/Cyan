@@ -8,7 +8,7 @@
 	
 	<div class="be-main">
 		<?php $errors = isset($errors) ? $errors : array(); ?>
-		<?php echo $breadcrumbs; ?>
+		<?php // echo $breadcrumbs; ?>
 		<?php isset($content->type_id) ? $content->type_id : $content->type_id = Arr::get($_GET, 'type', '0'); ?>
 		<?php echo Form::open('post/post/'.$content->id, array("class" => "form-horizontal")); ?>
 		<?php echo Nonce::nonce_field(($content->id) ? "be-update-post-".$content->id : "be-create-post"); ?>
@@ -42,7 +42,7 @@
 		<div class="be-content">
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
-			<?php echo Form::input('type_id', $content->type_id, array("placeholder" => __("type_id"), "id" => "type_id")); ?>
+			<?php echo Form::hidden('type_id', $content->type_id, array("placeholder" => __("type_id"), "id" => "type_id")); ?>
 
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>

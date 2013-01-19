@@ -8,8 +8,8 @@ return array(
 		'total_items'       => 0,
 		'items_per_page'    => 10,
 		'view'              => 'pagination/basic',
-		'auto_hide'         => true,
-		'first_page_in_url' => true,
+		'auto_hide'         => TRUE,
+		'first_page_in_url' => FALSE,
 	),
 
 );

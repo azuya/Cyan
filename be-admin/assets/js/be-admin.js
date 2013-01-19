@@ -43,6 +43,24 @@ $(document).ready(function(){
 		});
 	// }
 
+	$("header.admin ul.nav > li > a").click(function() {
+		$("header.admin ul.nav").find("li.active").removeClass("active");
+		$(this).parent().addClass("active");
+		
+		$("header.admin ul.nav").find(".submenu").removeClass("active");
+		$(this).next().addClass("active");
+		return false;
+	});
+
+	$("header.admin").mouseleave(function() {
+		$(this).find(".submenu").removeClass("active");
+		$(this).find("li.active").removeClass("active");
+	});
+	
+	$("#search-trigger").click(function() {
+		$("#q").focus();
+	});
+
 	$("#scroll-to-top").click(function() {
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});

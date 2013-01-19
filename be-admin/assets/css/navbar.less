@@ -55,7 +55,7 @@
   font-size: 20px;
   font-weight: 200;
   color: @navbarBrandColor;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  text-shadow: 0 1px 0 @navbarBorder;
   &:hover {
     text-decoration: none;
   }
@@ -182,8 +182,8 @@
 }
 .navbar-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
-  padding-left:  0;
-  padding-right: 0;
+  padding-left:  10px;
+  padding-right: 10px;
   .border-radius(0);
 }
 
@@ -202,7 +202,7 @@
 .navbar-fixed-top,
 .navbar-static-top {
   .navbar-inner {
-    .box-shadow(~"0 1px 2px rgba(0,0,0,.4)");
+    .box-shadow(~"0 1px 2px rgba(0,0,0,.2)");
   }
 }
 
@@ -210,7 +210,7 @@
 .navbar-fixed-bottom {
   bottom: 0;
   .navbar-inner {
-    .box-shadow(~"0 -1px 2px rgba(0,0,0,.4)");
+    .box-shadow(~"0 -1px 2px rgba(0,0,0,.2)");
   }
 }
 
@@ -241,7 +241,7 @@
   padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
   color: @navbarLinkColor;
   text-decoration: none;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  text-shadow: 0 1px 0 @navbarBorder;
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
@@ -272,8 +272,6 @@
   display: none;
   float: right;
   padding: 7px 10px;
-  margin-left: 5px;
-  margin-right: 5px;
   .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
 }
@@ -395,7 +393,7 @@
   .brand,
   .nav > li > a {
     color: @navbarInverseLinkColor;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    text-shadow: 0 -1px 0 @navbarBorder;
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
