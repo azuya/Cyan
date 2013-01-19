@@ -239,7 +239,7 @@ class Controller_User extends Controller_Base {
 			$this->redirect('admin/dashboard');
 		}
 
-		$this->template->content = View::factory(self::MODULE.'/login')
+		$this->template->content = View::factory('login/index')
 			->bind('message', $message);
 
 		if (HTTP_Request::POST == $this->request->method())

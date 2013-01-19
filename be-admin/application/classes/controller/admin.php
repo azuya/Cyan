@@ -17,7 +17,7 @@ class Controller_Admin extends Controller_Base {
 		// if a user is not logged in, redirect to login page
 		if (!$user)
 		{
-			$this->redirect('user/login');
+			$this->redirect('login');
 		}
 	}
 }

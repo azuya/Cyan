@@ -3,11 +3,6 @@
 @import 'bootstrap.less';
 @import 'responsive.less';
 
-@navbar_height:			32px;
-
-@header_height:			60px;
-@bg-header:				#eee;
-
 @footer_height:			50px;
 
 @page_header_height:	50px;
@@ -23,109 +18,70 @@ html {
 
 body {
 	background: @bodyBackground;
-	background-image: url("../img/noise-light.png");
 	height: 100%;
-	padding: @navbar_height 0 0 0;
+	padding: 0;
+	margin: 0;
+	min-width: 320px;
+	min-height: 480px;
+
+	&.clean {
+		background: #4f535c;
+		background-image: url("../img/noise-light.png");
+	}
 }
 
-body.sticky-menu {
-	padding-top: (@navbarHeight + 1px);
+#top {
+	min-height: 100%;
 }
 
 a:hover {
 	text-decoration: none;
 }
 
-div.navbar {
-
-	margin-bottom: 0;
-
-	.navbar-inner {
-		border: 0;
-		padding-left: 0;
-		padding-right: 0;
-		.border-radius(0);
-	}
-
-	.navbar-menu {
-		z-index: (@zindexFixedNavbar + 1);
-	}
-	
-	.navbar-menu .navbar-inner {
-		height: @navbar_height;
-		min-height: @navbar_height;
-		border-bottom: 0;
-		.box-shadow(0 1px 2px rgba(0,0,0,.265));
-	}
-	
-	.navbar-menu .navbar-text {
-		line-height: @navbar_height;
-	}
-	
-	// Links
-	.navbar-menu .nav > li > a {
-	  padding: ((@navbar_height - 20px) / 2) 15px ((@navbar_height - 20px) / 2);
-	}
-
-	.navbar-form .input-append {
-		margin-top: 4px;
-	}
-	
-	.navbar-form .input-append .btn {
-		.box-shadow(none);
-	}
-
-	.navbar .nav > .active > a,
-	.navbar .nav > .active > a:hover,
-	.navbar .nav > .active > a:focus {
-	  .box-shadow(inset 0 1px 2px rgba(0,0,0,.125));
-	}
-
-	.fixed {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
-}
-
-.navbar-fixed-top {
-	margin: 0 -20px;
-}
-
-
-
-#wrap {
+#content {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -(@footer_height) auto;
-}
+	min-height: 100%;
+	padding-top: @navbarHeight;
+	padding-left: 0;
+	padding-right: 0;
 
-#header {
-	height: @header_height;
-
-	.brand {
-		float: left;
-		background: url("../img/logotype-toolbar.png") no-repeat center center;
-		text-indent: -9000px;
-		display: block;
-		width: 120px;
-		height: 36px;
+	&.clean {
 		padding: 0;
-		margin: 2px 0;
-	}
-	
-	.container-fluid {
-		padding-right: 10px;
-	}
-
-	.navbar-search {
-		margin: 15px 0;
+		margin: 0;
 	}
 }
 
-#footer {
+header.admin {
+	min-height: @navbarHeight;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: @zindexFixedNavbar;
+	background: @linkColor;
+	border-bottom: 1px solid darken(@linkColor,10%);
+
+	ul.nav {
+		height: @navbarHeight;
+		
+		> li.active {
+			border-bottom: 4px solid @grayLighter;
+			
+			> a {
+				text-shadow: none;
+				
+				> i.icon-white {
+					background-image: url("../img/glyphicons-halflings.png");
+				}
+			}
+		}
+	}
+}
+
+footer.admin {
 	height: @footer_height;
 	
 	p {
@@ -198,24 +154,6 @@ div.navbar {
 	.box-shadow(0 1px 2px rgba(0,0,0,.5));
 }
 
-.navbar .nav > li span.badge {
-	.border-radius(@borderRadiusSmall);
-	font-size: (@baseFontSize - 2px);
-	padding-left: 5px;
-	padding-right: 5px;
-	.box-shadow(0 1px 1px rgba(0,0,0,.2));
-	.buttonBackground(@btnPrimaryBackground, darken(@btnPrimaryBackground, 10%));
-	margin-top: -2px;
-}
-
-// Remove background color from open dropdown
-.navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.6));
-  background: #333;
-}
-
 #scroll-to-top {
 	right: 15px;
 	bottom: -10px;
@@ -252,101 +190,30 @@ div.navbar {
 	padding: 0;
 	height: 100%;
 
-	border-right: none;
-	padding-right: 10px;
-	
 	margin-bottom: @footer_height;
 
-	div.be-tools {
-		
-		display: block;
-
-		position: absolute;
-		bottom: 0;
-		top: 0;
-		
-		width: @tools_width;
-		margin-left: 0;
-		
-		min-height: 30px;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		float: left;
-		
-		min-height: 150px;
-		
-		> ul {
-			list-style: none outside none;
-			margin: 0;
-			padding: 0;
-			
-			> li {
-				display: block;
-				position: relative;
-				margin: 0;
-				padding: 0;
-				
-				a {
-					display: block;
-					position: relative;
-					height: 60px;
-					width: 100%;
-					text-align: center;
-					font-size: (@baseFontSize - 2px);
-					padding: 10px 0;
-					color: lighten(@textColor, 30%);
-					text-shadow: 0 1px 0 rgba(255,255,255,0.4);
-				
-					> div.tool-icon {
-						background: url("../img/icon.png") no-repeat center center;
-						display: block;
-						position: relative;
-						width: 40px;
-						height: 40px;
-						margin: 0 auto;
-						opacity: 0.4;
-					}
-					
-					> div.tool-label {
-						display: block;
-						position: relative;
-						margin: 0 auto;
-					}
-				}
-				
-				a:hover {
-					color: @textColor;
-
-					> div.tool-icon {
-						opacity: 1;
-					}
-					
-				}
-			}
-		}
-	}
-	
 	div.be-main {
 		display: block;
 
-		min-height: 30px;
+		min-height: 300px;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		
-		margin-left: @tools_width;
+		// margin-left: @tools_width;
 		
 		div.be-header {
-			background: @bg-header;
+			position: fixed;
+			left: 0;
+			right: 0;
+			z-index: @zindexFixedNavbar;
+			background: @grayLighter;
 			
 			padding: 0 20px;
 			
 			height: @page_header_height;
 			border-bottom: 1px solid lighten(@ui_grey, 10%);
 	
-			.border-radius(@baseBorderRadius @baseBorderRadius 0 0);
-			
 			div.title {
 				float: left;
 
@@ -399,7 +266,7 @@ div.navbar {
 				  .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
 				  border: 1px solid @btnBorder;
 				  .border-radius(@baseBorderRadius);
-				  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.2)");
+				  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.1)");
 				}
 
 				// Active state
@@ -414,8 +281,7 @@ div.navbar {
 		
 		div.be-content {
 			background: @white;
-			padding: 10px 20px;
-			.border-radius(0 0 @baseBorderRadius @baseBorderRadius);
+			padding: (@page_header_height + 20px) 20px 10px 20px;
 		}
 	}
 
@@ -429,46 +295,9 @@ div.navbar {
 }
 
 @media (max-width: 979px) {
-	body {
-		padding-top: 0;
-	}
-	
-	#be-search {
-		display: none;
-	}
-
-	div.navbar .navbar-menu .navbar-inner {
-		min-height: @navbarHeight;
-		height: auto;
-	}
 }
 
 @media (max-width: 767px) {
-	#be-container {
-		padding-right: 0;
-	}
-	
-	#header {
-		height: auto;
-	}
-	
-	#be-container div.be-tools {
-		display: none;
-	}
-	
-	#footer {
-		display: none;
-	}
-
-	#be-container div.be-main {
-		margin-left: 0;
-
-		div.be-header,
-		div.be-content {
-			.border-radius(0);
-		}
-
-	}
 }
 
 .name img {

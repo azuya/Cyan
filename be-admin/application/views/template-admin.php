@@ -28,21 +28,26 @@
 	<link rel="apple-touch-icon-precomposed" href="<?php echo URL::site(null, true, false); ?>be-admin/assets/ico/apple-touch-icon-57-precomposed.png">
 </head> 
 <body>
-	<!-- Header -->
-	<?php require Kohana::find_file('static', 'admin-header','php'); ?>
+
+	<div id="top">
+
+		<!-- Header -->
+		<?php require Kohana::find_file('static', 'admin-header','php'); ?>
+		
+		<!-- Wrapper -->
+		<div id="content" class="container-fluid">
+		
+			<!-- Content -->
+			<div id="be-container">
+				<?php echo $content; ?>
+			</div>
 	
-	<!-- Wrapper -->
-	<div id="wrap">
-	
-		<!-- Content -->
-		<div id="be-container" class="container-fluid">
-			<?php echo $content; ?>
 		</div>
+	
+		<!-- Footer -->
+		<?php require Kohana::find_file('static', 'admin-footer','php'); ?>
 
 	</div>
-
-	<!-- Footer -->
-	<?php require Kohana::find_file('static', 'admin-footer','php'); ?>
 
 	<!-- Script -->
 	<?php require Kohana::find_file('static', 'scripts','php'); ?>
