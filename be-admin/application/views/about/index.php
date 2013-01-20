@@ -21,14 +21,14 @@
 			<ul>
 				<li>Kohana <span class="muted">3.3.0</span></li>
 					<ul>
-						<li><a href="https://github.com/shadowhand/pagination">Pagination</a> <span class="muted">3.3 (Master)</span></li>
+						<li><a href="https://github.com/shadowhand/pagination">Pagination</a> <span class="muted">3.2 (Master)</span></li>
 						<li><a href="https://github.com/shadowhand/email">Email</a> <span class="muted">3.3 (Develop)</span></li>
 						<li><a href="https://github.com/shadowhand/purifier">Purifier</a> <span class="muted">3.3 (Develop)</span></li>
 						<li><a href="https://github.com/shadowhand/bonafide">Bonafide</a> <span class="muted">3.2 (Develop)</span></li>
 					</ul>
-				<li>jQuery <span class="muted">1.8.3</span></li>
-				<li>Bootstrap <span class="muted">2.2.2</span></li>
-				<li>CKEditor <span class="muted">4.0.1</span></li>
+				<li><?php echo HTML::anchor("http://jquery.com/", "jQuery"); ?> <span class="muted">1.9.0</span></li>
+				<li><?php echo HTML::anchor("http://twitter.github.com/bootstrap/", "Bootstrap"); ?> <span class="muted">2.2.2</span></li>
+				<li><?php echo HTML::anchor("http://ckeditor.com/", "CKEditor"); ?> <span class="muted">4.0.1</span></li>
 			</ul>
 			
 			<h2>Stuff</h2>

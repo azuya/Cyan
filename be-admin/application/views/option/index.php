@@ -28,12 +28,6 @@
 				</thead>
 				<tbody>
 					<?php foreach ($contents as $content) : ?>
-					<?php
-						// echo "<pre>";
-						// print_r($content);
-						// echo "</pre>";
-					?>
-					
 					<tr>
 					    <td><?php echo HTML::anchor("option/edit/".$content->id, $content->option_name); ?></td>
 					    <td><?php echo $content->option_value; ?></td>

@@ -43,27 +43,31 @@
 					<span class="label label-important"><?php echo Arr::get($errors, 'alias');?></span>
 				</div>
 			</div>
-			
+						
 			<div class="control-group">
-				<?php echo Form::label('parent_id', __("parent_id"), array("class" => "control-label", "for" => "parent_id")); ?>
+				<?php echo Form::label('configuration', __("Configuration"), array("class" => "control-label", "for" => "configuration")); ?>
 				<div class="controls">
-					<?php $types = ORM::factory('type')->find_all();
-						
-						$array_types[0] = "– ".__("None")." –";
-						foreach ($types as $type) {
-							
-							if ($type->id != $content->id) {
-								$array_types[$type->id] = $type->name;
-							}
-							
-						}
-						
-					?>
-					<?php echo Form::select('parent_id', $array_types, $content->parent_id); ?>
-					<span class="label label-important"><?php echo Arr::get($errors, 'parent_id');?></span>
+					<?php echo Form::textarea('configuration', $content->configuration, array("placeholder" => __("Configuration"), "id" => "configuration")); ?>
+					<span class="label label-important"><?php echo Arr::get($errors, 'configuration');?></span>
 				</div>
 			</div>
-			
+						
+			<div class="control-group">
+				<?php echo Form::label('display', __("Display"), array("class" => "control-label", "for" => "display")); ?>
+				<div class="controls">
+					<?php echo Form::textarea('display', $content->display, array("placeholder" => __("Display"), "id" => "display")); ?>
+					<span class="label label-important"><?php echo Arr::get($errors, 'display');?></span>
+				</div>
+			</div>
+						
+			<div class="control-group">
+				<?php echo Form::label('description', __("Description"), array("class" => "control-label", "for" => "description")); ?>
+				<div class="controls">
+					<?php echo Form::textarea('description', $content->description, array("placeholder" => __("Description"), "id" => "description")); ?>
+					<span class="label label-important"><?php echo Arr::get($errors, 'description');?></span>
+				</div>
+			</div>
+						
 		</div>
 		<?php echo Form::close(); ?>
 		

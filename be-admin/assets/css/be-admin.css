@@ -4549,15 +4549,17 @@ input[type="submit"].btn.btn-mini {
   color: #f5f5f5;
   text-decoration: none;
 }
+.navbar .nav > .active {
+  -webkit-box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
+}
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
   color: #666666;
-  text-decoration: none;
   background-color: #f3f3f3;
-  -webkit-box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
 }
 .navbar .btn-navbar {
   display: none;
@@ -5955,6 +5957,12 @@ header.admin ul.nav > li.active > a {
 header.admin ul.nav > li.active > a > i.icon-white {
   background-image: url("../img/glyphicons-halflings.png");
 }
+header.admin .navbar .nav > li > a.brand {
+  margin-left: -15px;
+  font-size: 17px;
+  width: 174px;
+  border-right: 1px solid #00be5d;
+}
 header.admin ul.nav.pull-right > li {
   border-left: 1px solid #00be5d;
 }
@@ -5981,26 +5989,47 @@ header.admin .submenu .inner ul {
   height: 130px;
 }
 header.admin .submenu .inner ul.menu {
-  background: #e5e5e5;
   border-right: 1px solid #cccccc;
-  float: left;
   font-weight: bold;
-  width: 140px;
+  width: 199px;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
-header.admin .submenu .inner ul.items {
-  float: left;
-}
-header.admin .submenu .inner ul.items > li {
-  display: inline-block;
-}
-header.admin .submenu .inner ul a {
+header.admin .submenu .inner ul.menu a {
   color: #333333;
   display: block;
   padding: 4px 10px;
 }
-header.admin .submenu .inner ul a:hover {
+header.admin .submenu .inner ul.items {
+  position: relative;
+  left: 0;
+  right: 0;
+  left: 200px;
+}
+header.admin .submenu .inner ul.items > li {
+  display: block;
+  height: 100%;
+  float: left;
+  margin-right: 5px;
+}
+header.admin .submenu .inner ul.items > li > a {
+  color: #333333;
+  display: block;
+  padding: 4px 10px;
+  height: 102px;
+  width: 80px;
+  margin: 10px 0;
+}
+header.admin .submenu .inner ul.items > li > a:hover {
   text-decoration: none;
   background: #b3b3b3;
+}
+header.admin .submenu .inner ul li.divider {
+  height: 1px;
+  margin: 5px 1px;
+  overflow: hidden;
+  background-color: #cccccc;
 }
 header.admin .submenu.active {
   top: 45px;
@@ -6165,7 +6194,7 @@ footer.admin p {
 #be-container div.be-main div.be-header div.actions {
   float: right;
   height: 36px;
-  padding: 6px 0 6px 10px;
+  padding: 7px 0;
 }
 #be-container div.be-main div.be-header div.actions > .btn {
   line-height: 36px;
@@ -6260,7 +6289,13 @@ footer.admin p {
   display: block;
 }
 @media (max-width: 979px) {
-  
+  header.admin .submenu {
+    display: none;
+  }
+  .navbar .btn-navbar {
+    background: transparent;
+    border: 1px solid #00a451;
+  }
 }
 @media (max-width: 767px) {
   

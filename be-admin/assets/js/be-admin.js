@@ -43,7 +43,7 @@ $(document).ready(function(){
 		});
 	// }
 
-	$("header.admin ul.nav > li > a").click(function() {
+	$("header.admin ul.nav > li > a:not(.no-dropdown)").click(function() {
 		$("header.admin ul.nav").find("li.active").removeClass("active");
 		$(this).parent().addClass("active");
 		

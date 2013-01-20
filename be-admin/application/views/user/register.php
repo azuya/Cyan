@@ -55,7 +55,7 @@
 	</div>
 
 	<div class="modal-footer">
-		<p class="pull-left">Or <?= HTML::anchor('user/login', 'login'); ?> if you have an account already.</p>
+		<p class="pull-left">Or <?= HTML::anchor('login', 'login'); ?> if you have an account already.</p>
 		<?php echo Form::submit('login', __('Register'), array('class'=>'btn btn-primary')); ?>
 	</div>
 

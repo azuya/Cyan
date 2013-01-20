@@ -15,9 +15,11 @@ $types = ORM::factory('type')->find_all();
 			<div class="title">
 				<h1>
 					<?php
-					$selected_type_id = isset($_GET['type']) ? $_GET['type'] : "";
-					if ($selected_type_id) {
-				        $filter_type = new Model_Type($selected_type_id);						
+					$selected_type = isset($_GET['type']) ? $_GET['type'] : "";
+					if ($selected_type == "file") {
+						echo __("Files");
+					} else if ($selected_type) {
+				        $filter_type = new Model_Type($selected_type);						
 						echo $filter_type->name;
 					} else {
 						echo __("Content");						
@@ -29,9 +31,9 @@ $types = ORM::factory('type')->find_all();
 			<div class="actions left">
 				<?php
 				
-				if ($selected_type_id)
+				if ($selected_type)
 				{ 
-					echo HTML::anchor("admin/post/new?type=".$selected_type_id, "<i class=\"icon-plus-sign\"></i> ".__("New content"), array("class" => "btn"));
+					echo HTML::anchor("admin/post/new?type=".$selected_type, "<i class=\"icon-plus-sign\"></i> ".__("New content"), array("class" => "btn"));
 				}
 				else
 				{
@@ -78,13 +80,15 @@ $types = ORM::factory('type')->find_all();
 					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 					<ul class="dropdown-menu">
 						<?php foreach ($types as $type) :
-							$active_icon = ($type->id == $selected_type_id) ? "<i class=\"icon-ok\"></i> " : "";
+							$active_icon = ($type->id == $selected_type) ? "<i class=\"icon-ok\"></i> " : "";
 							printf('<li>%s</li>', HTML::anchor("admin/post/?type=".$type->id, $active_icon.Text::limit_chars($type->name, 20, "…", true)));
 					    endforeach; ?>
 						<li class="divider"></li>
+						<li><?php echo HTML::anchor("admin/post/?type=file",$active_icon."Files"); ?></li>
+						<li class="divider"></li>
 						<li>
 						<?php
-						if ($selected_type_id == "") {
+						if ($selected_type == "") {
 							echo HTML::anchor("admin/post", "<i class=\"icon-ok\"></i> ".__("All"));
 						} else {
 							echo HTML::anchor("admin/post", __("All"));							
@@ -94,7 +98,7 @@ $types = ORM::factory('type')->find_all();
 					</ul>
 				</div>
 				
-				<div class="btn-group pull-right">
+				<div class="btn-group pull-right hidden-phone">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="icon-align-justify"></i>
 					</a>
@@ -119,7 +123,6 @@ $types = ORM::factory('type')->find_all();
 					</tr>
 				</thead>
 				<tbody>
-				
 					<?php foreach ($contents as $post) : ?>
 					<?php
 						if ($post->active) {
@@ -127,6 +130,8 @@ $types = ORM::factory('type')->find_all();
 						} else {
 							$classes = " class=\"inactive\"";
 						}
+						
+						$post_type = ($post->type == "file") ? $post->mime_type : $post->type;
 					?>
 					<tr<?php echo $classes; ?>>
 					    <td>
@@ -140,8 +145,8 @@ $types = ORM::factory('type')->find_all();
 						    	<span class="muted">goff!</span>
 					    	</div>
 					    </td>
-					    <td><?php echo $post->type_id; ?></td>
-					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author_id, $post->author_id); ?></td>
+					    <td><?php echo $post_type; ?></td>
+					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
 					    <td>
 					    	<div class="row-show-on-hover">
 					    	<?php echo HTML::anchor(Nonce::nonce_url("admin/post/delete/".$post->id, "be-delete-post-".$post->id), "Delete"); ?>

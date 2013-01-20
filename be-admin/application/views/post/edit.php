@@ -9,7 +9,7 @@
 	<div class="be-main">
 		<?php $errors = isset($errors) ? $errors : array(); ?>
 		<?php // echo $breadcrumbs; ?>
-		<?php isset($content->type_id) ? $content->type_id : $content->type_id = Arr::get($_GET, 'type', '0'); ?>
+		<?php isset($content->type) ? $content->type : $content->type = Arr::get($_GET, 'type', '0'); ?>
 		<?php echo Form::open('post/post/'.$content->id, array("class" => "form-horizontal")); ?>
 		<?php echo Nonce::nonce_field(($content->id) ? "be-update-post-".$content->id : "be-create-post"); ?>
 		<div class="be-header">
@@ -19,7 +19,7 @@
 					<?php echo __("Add new content"); ?>
 					
 					<span class="dropdown">
-						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $content->type_id; ?><span class="caret"></span></small>
+						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $content->type; ?><span class="caret"></span></small>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 							<?php
 							$types = ORM::factory('type')->find_all();
@@ -42,7 +42,7 @@
 		<div class="be-content">
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
-			<?php echo Form::hidden('type_id', $content->type_id, array("placeholder" => __("type_id"), "id" => "type_id")); ?>
+			<?php echo Form::hidden('type', $content->type, array("placeholder" => __("type"), "id" => "type")); ?>
 
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>

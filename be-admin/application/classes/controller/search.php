@@ -18,7 +18,7 @@ class Controller_Search extends Controller_Admin {
 		if ($type['type'])
 		{
 			$count = $post->reset(FALSE)
-				->where('type_id', '=', $query['type'])
+				->where('type', '=', $query['type'])
 				->count_all(); // 'active', '=', 1
 		}
 		else

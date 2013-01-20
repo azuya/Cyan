@@ -9,25 +9,48 @@ class Controller_Post extends Controller_Admin {
      
     public function action_index()
     {
-	    
+
 	    // Get page number
 	    $query = $this->request->query();
 	    $page = isset($query['page']) ? $query['page'] : 0;
 	    $type = isset($query['type']) ? $query['type'] : NULL;
 
-		$post = ORM::factory('post'); // loads all post object from table
+		// Limit & Offset
+		$limit = $this->_config['ui_settings']['limit_items'];
+		$offset = ($page-1) * $this->_config['ui_settings']['limit_items'];
+		$offset = ($offset > 0) ? $offset : 0;
+
+		// $posts = new Model_Post();
+		$data = array(
+			"type"		=> $type,
+			"limit"		=> $limit,
+			"offset"	=> $offset,
+		);
+	    $posts = Model_Post::load_all($data);
+
+	    /*
+		// $post = ORM::factory('post'); // loads all post object from table
+		$post = ORM::factory('post')
+			// ->with('post_data') // ->with('dept')->with('div')
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->join('post_data', 'LEFT')
+			->on('post_data.post_id', '=', 'post.id')
+			// ->where('post_data.language', '=' , 1)
+			->find_all();
 
 		// Count items
 		if ($type['type'])
 		{
 			$count = $post->reset(FALSE)
-				->where('type_id', '=', $query['type'])
+				->where('type', '=', $query['type'])
 				->count_all(); // 'active', '=', 1
 		}
 		else
 		{
-			$count = $post->reset(FALSE)
-				->count_all(); // 'active', '=', 1
+			// $count = $post->reset(FALSE)
+			//	->count_all(); // 'active', '=', 1
+			$count = $post->count(); // 'active', '=', 1
+			echo "count[$count]";
 			
 		}
 		
@@ -38,7 +61,7 @@ class Controller_Post extends Controller_Admin {
 		if ($type['type'])
 		{
 			$posts = $post->limit($this->_config['ui_settings']['limit_items'])
-						->where('type_id', '=', $query['type'])
+						->where('type', '=', $query['type'])
 						->order_by('title', 'asc')
 						->offset($offset)
 						->find_all();
@@ -50,6 +73,13 @@ class Controller_Post extends Controller_Admin {
 						->order_by('title', 'asc')
 						->find_all();
 		}
+		*/
+		
+		
+		
+		
+		$count = $posts["count"];
+		$posts = $posts["items"];
 		
 		// Create the pagination object
 		$pagination = Pagination::factory(array(
@@ -67,7 +97,24 @@ class Controller_Post extends Controller_Admin {
 	public function action_view()
 	{
 		$post_id = $this->request->param('id');
-		$post = ORM::factory('post', $post_id);
+		
+		// $post = ORM::factory('post', $post_id);
+		
+		// Tutorial med att joina och hålla på:
+		// http://www.geekgumbo.com/2011/05/24/kohana-3-orm-a-working-example/
+		
+		// Strul med ->with():
+		// http://stackoverflow.com/questions/5685021/tables-not-joining-in-kohana-3-1-orm
+		$post = ORM::factory('post')
+			// ->with('post_data') // ->with('dept')->with('div')
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->join('post_data', 'LEFT')
+			->on('post_data.post_id', '=', 'post.id')
+			->where('post.id', '=' , $post_id)
+			->where('post_data.language', '=' , 1)
+			->find();
+		echo "<br><br><br>".Database::instance()->last_query;
+		
 		$view = new View('post/single');
 		$view->set("content", $post);
 		
@@ -141,20 +188,21 @@ class Controller_Post extends Controller_Admin {
 		// Load the user information
 		$user = Auth::instance()->get_user();
 		
-		$_POST["author_id"]		= $user->id;
-		$_POST["active"]		= ! empty($_POST['active']);
+		$values = $this->request->post();
+		$values["author"]		= $user->id;
+		$values["active"]		= ! empty($values['active']);
 
 		// Only created
 		if (!$post_id)
 		{
-			$_POST["created_date"] = date('Y-m-d H:i:s');
+			$values["created_date"] = date('Y-m-d H:i:s');
 		}
 		else
 		{
-			$_POST["modified_date"] = date('Y-m-d H:i:s');
+			$values["modified_date"] = date('Y-m-d H:i:s');
 		}
 
-        $post->values($_POST); // populate $posts object from $_POST array
+        $post->values($values); // populate $posts object from $_POST array
 		$errors = array();
 		
 		try

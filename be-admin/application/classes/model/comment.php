@@ -6,9 +6,9 @@ class Model_Comment extends ORM {
 	protected $_belongs_to = array (
 		
 		// Belongs to only one content
-		'article' => array (
-			'model'			=> 'content',
-			'foreign_key'	=> 'content_id'
+		'post' => array (
+			'model'			=> 'post',
+			'foreign_key'	=> 'post_id'
 		)
 	);
     

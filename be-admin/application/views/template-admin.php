@@ -11,11 +11,11 @@
 	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-admin/assets/css/be-admin.css">
-	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
 	<!--
+	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
 	<script src="<?php echo URL::site(null, true, false); ?>be-admin/js/jquery-1.8.3.min.js"></script>
 	-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["bliss_engine"]["jquery"]; ?>/jquery.min.js"></script>
 	
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -34,7 +34,7 @@
 		<!-- Header -->
 		<?php require Kohana::find_file('static', 'admin-header','php'); ?>
 		
-		<!-- Wrapper -->
+		<!-- Content wrapper -->
 		<div id="content" class="container-fluid">
 		
 			<!-- Content -->
@@ -42,14 +42,14 @@
 				<?php echo $content; ?>
 			</div>
 	
-		</div>
+		</div> <!-- / content wrapper -->
 	
 		<!-- Footer -->
 		<?php require Kohana::find_file('static', 'admin-footer','php'); ?>
 
-	</div>
+	</div> <!-- / top -->
 
-	<!-- Script -->
+	<!-- Scripts -->
 	<?php require Kohana::find_file('static', 'scripts','php'); ?>
 </body>
 </html>

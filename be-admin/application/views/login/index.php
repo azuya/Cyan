@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 
-<?php echo Form::open('user/login'); ?>
+<?php echo Form::open('login'); ?>
 <div class="modal modal-login">
 	
 	<div class="modal-body">

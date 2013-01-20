@@ -6,7 +6,7 @@ class Controller_Dashboard extends Controller_Base_Admin {
 		
 		// $this->response->body('hello, world!');
 
-		// $this->redirect('user/login');
+		// $this->redirect('login');
 
         // $view = new View('dashboard/index');
         // $this->response->body($view);
@@ -16,7 +16,7 @@ class Controller_Dashboard extends Controller_Base_Admin {
 
         // if a user is not logged in, redirect to login page
         if (!$user) {
-            $this->redirect('user/login');
+            $this->redirect('login');
         }
 
         $this->template->content = View::factory('dashboard/index');

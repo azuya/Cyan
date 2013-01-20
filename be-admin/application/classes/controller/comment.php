@@ -4,10 +4,18 @@ class Controller_Comment extends Controller {
      
     public function action_post() {
         $comment = new Model_Comment();
-        $comment->values($this->request->post());
+        $values = $this->request->post();
+
+        // Set now
+        $values["time"] = date("Y-m-d H:i:s");
+        
+        // Post $values
+        $comment->values($values);
+
+		// Save to DB        
         $comment->save();
          
-		$this->redirect("content/view/".$comment->content_id);
+		$this->redirect("post/view/".$comment->post_id);
     }
  
 }

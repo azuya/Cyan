@@ -70,7 +70,7 @@ class Controller_User extends Controller_Base {
 				// Set success message
 				$message = "You have added user '{$user->username}' to the database";
 
-				$this->redirect("user/login/");
+				$this->redirect("login/");
 			}
 
 			catch (ORM_Validation_Exception $exception)
@@ -168,8 +168,8 @@ class Controller_User extends Controller_Base {
 			}
 		}
 
-		// $content_id = $this->request->param('id');
-		// $posts = new Model_User($content_id);
+		// $post_id = $this->request->param('id');
+		// $posts = new Model_User($post_id);
 
 		// $posts->values($_POST); // populate $posts object from $_POST array
 		// $posts->save(); // saves content to database
@@ -230,37 +230,6 @@ class Controller_User extends Controller_Base {
 		$this->redirect("login");
 	}
 
-	public function action_login()
-	{
-
-		// Load the user information
-		$user = Auth::instance()->get_user();
-		if ($user) {
-			$this->redirect('admin/dashboard');
-		}
-
-		$this->template->content = View::factory('login/index')
-			->bind('message', $message);
-
-		if (HTTP_Request::POST == $this->request->method())
-		{
-			// Attempt to login user
-			$remember = array_key_exists('remember', $this->request->post()) ? (bool) $this->request->post('remember') : FALSE;
-			$user = Auth::instance()->login($this->request->post('username'), $this->request->post('password'), $remember);
-
-			// If successful, redirect user
-			if ($user)
-			{
-				$this->redirect('admin/dashboard');
-			}
-			else
-			{
-				$message = 'Login failed';
-			}
-		}
-
-	}
-
 	public function action_logout()
 	{
 		// Log user out
@@ -280,7 +249,7 @@ class Controller_User extends Controller_Base {
 		// if a user is not logged in, redirect to login page
 		if (!$user)
 		{
-			$this->redirect('user/login');
+			$this->redirect('login');
 		}
 	}
 

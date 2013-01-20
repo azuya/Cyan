@@ -1,6 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
 <div class="comment">
-	<span><?php echo $comment->name; ?></span>
-	<pre><?php echo $comment->comment; ?></pre>
+	<strong><?php echo $comment->name; ?></strong>
+	<p><?php echo $comment->time; ?></p>
+	<p><?php echo $comment->comment; ?></p>
 </div>

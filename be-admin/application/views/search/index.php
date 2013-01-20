@@ -71,8 +71,8 @@ $types = ORM::factory('type')->find_all();
 						    	<span class="muted">goff!</span>
 					    	</div>
 					    </td>
-					    <td><?php echo $post->type_id; ?></td>
-					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author_id, $post->author_id); ?></td>
+					    <td><?php echo $post->type; ?></td>
+					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
 					    <td>
 					    	<div class="row-show-on-hover">
 					    	<?php echo HTML::anchor("admin/content/delete/".$post->id, "Delete"); ?>

@@ -16,7 +16,7 @@
 	<br />
 	<?php echo Form::textarea("comment", $comment->comment); ?>
 	<br />
-	<?php echo Form::hidden("content_id", $content->pk()); ?>
+	<?php echo Form::hidden("post_id", $content->pk()); ?>
 
 	<?php echo Form::submit("submit", "Submit"); ?>
 

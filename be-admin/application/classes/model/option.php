@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
  
 class Model_Option extends ORM {
-    // protected $_primary_key = 'type_id'; 
+    // protected $_primary_key = 'type'; 
 
 	public function rules() {
 		return array (

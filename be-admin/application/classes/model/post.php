@@ -8,15 +8,31 @@ class Model_Post extends ORM {
 		// A post can have many comments
 		'comments' => array(
 			'model'			=> 'comment',
-			'foreign_key'	=> 'id',
+			'foreign_key'	=> 'post_id',
 		),
 
-		// A post can belong to many categories
-		// 'categories' => array(
-		// 	'model'			=> 'comment',
-		// 	'foreign_key'	=> 'id',
-		// ),
+		// A post can have many datas
+		'data' => array(
+			'model'			=> 'data',
+			'foreign_key'	=> 'post_id',
+		),
 
+		/*
+		// A post can belong to many categories
+		'categories' => array(
+			'model'			=> 'category',
+			'foreign_key'	=> 'id',
+		),
+		*/
+
+	);
+
+	// Belongs to
+	protected $_belongs_to = array(
+		'type' => array(
+			'model'			=> 'type',
+			'foreign_key'	=> 'post_id',
+		),
 	);
 
 	public function rules() {
@@ -33,7 +49,7 @@ class Model_Post extends ORM {
 				),
 			),
 			*/
-			'type_id' => array ( // property name to validate
+			'type' => array ( // property name to validate
 				array('not_empty'), // validation type
 			),
 		);
@@ -46,4 +62,53 @@ class Model_Post extends ORM {
 		);
 	}
 	*/
+	
+	public static function load_all($data = array("")) {
+		// echo "load_all($data)<br>";
+		
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		
+		$result = array("items" => array(), "count" => 0);
+		
+		// $post = ORM::factory('post'); // loads all post object from table
+		$posts = ORM::factory('post')
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
+			
+		// Language
+		$language = isset($data["language"]) ? $data["language"] : 1;
+		// $posts->where('post_data.language', '=' , $language);
+		
+		// Type
+		if (isset($data["type"])) {
+			$posts->where('type', '=' , $data["type"]);
+		}
+
+		// Limit & offset
+		$posts->limit($data["limit"]);
+		$posts->offset($data["offset"]);
+			
+		// Find all
+		$result["items"] = $posts->find_all();
+		// echo "<br><br><br>load_all(): ".Database::instance()->last_query;
+
+		// Count
+		$count = $posts->reset(FALSE);
+		if (isset($data["type"])) {
+			$posts->where('type', '=' , $data["type"]);
+		}
+		$result["count"] = $posts->count_all(); // 'active', '=', 1
+		// echo "<br><br><br>count_all(): ".Database::instance()->last_query;
+
+		// echo "[".$result["count"]."]<br>";
+
+
+		// echo "<pre>";
+		// print_r($result);
+		// echo "</pre>";
+
+		return $result;
+	}
 }

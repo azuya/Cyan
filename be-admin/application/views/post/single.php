@@ -5,10 +5,12 @@
     <?php echo $content->content; ?>
 </div>
 
-<div id="comments">
+<div class="comments">
 	<?php foreach ($content->comments->find_all() as $comment) : ?>
+
 		<!-- showing a single comment -->
-		<?php echo View::factory('comment/single', array('comment'=>$comment)); ?>
+		<?php echo View::factory('comment/single', array('comment' => $comment)); ?>
+
 	<?php endforeach; ?>
 </div>
 

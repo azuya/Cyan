@@ -257,13 +257,17 @@
 }
 
 // Active nav items
+.navbar .nav > .active {
+  .box-shadow(0 -2px 3px rgba(0,0,0,.4));
+}
+
+// Active nav items
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
   color: @navbarLinkColorActive;
-  text-decoration: none;
   background-color: @navbarLinkBackgroundActive;
-  .box-shadow(0 -2px 3px rgba(0,0,0,.4));
+  text-decoration: none;
 }
 
 // Navbar button for toggling navbar items in responsive layouts
