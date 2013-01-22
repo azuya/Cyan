@@ -6001,6 +6001,10 @@ header.admin .submenu .inner ul.menu a {
   display: block;
   padding: 4px 10px;
 }
+header.admin .submenu .inner ul.menu a:hover {
+  text-decoration: none;
+  background: #b3b3b3;
+}
 header.admin .submenu .inner ul.items {
   position: relative;
   left: 0;
@@ -6157,6 +6161,17 @@ footer.admin p {
 .be-tooltip {
   cursor: help;
 }
+#system-alert {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  margin: 0;
+}
+.name img {
+  float: left;
+  border-radius: 2px;
+  margin-right: 8px;
+}
 #be-container {
   position: relative;
   padding: 0;
@@ -6299,11 +6314,6 @@ footer.admin p {
 }
 @media (max-width: 767px) {
   
-}
-.name img {
-  float: left;
-  border-radius: 2px;
-  margin-right: 8px;
 }
 /* Imports */
 /*!

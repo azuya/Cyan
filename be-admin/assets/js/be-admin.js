@@ -1,5 +1,5 @@
 /*
-@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js", "../../vendor/plupload/js/plupload.full.js";
+@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js", "holder.js", "../../vendor/plupload/js/plupload.full.js";
 */
 
 // Starta jQuery

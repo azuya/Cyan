@@ -8,8 +8,6 @@
 	<meta name="language" content="<?php echo I18n::lang(); ?>">
 	<meta name="viewport" content="width=device-width">
 
-	<base href="<?php echo URL::site(null, true, false); ?>">
-
 	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">
 	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
 

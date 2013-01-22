@@ -5,8 +5,6 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<base href="<?php echo URL::site(null, true, false); ?>">
-
 	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">	
 	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
 	
@@ -36,6 +34,13 @@
 		
 		<!-- Content wrapper -->
 		<div id="content" class="container-fluid">
+		
+			<?php if (true) : ?>
+			<div id="system-alert" class="alert alert-block">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<?php echo __("<strong>Warning!</strong> Someone else is editing this content. It's advised that you don't edit it at the same time."); ?>
+			</div>
+			<?php endif; ?>
 		
 			<!-- Content -->
 			<div id="be-container">

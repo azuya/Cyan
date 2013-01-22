@@ -51,6 +51,7 @@ if ($user) :
 										<li><?php echo HTML::anchor("post/new", __("Add content")); ?></li>
 									</ul>
 									<ul class="items">
+										<li><?php echo HTML::anchor("admin/post", __("All")); ?></li>
 										<?php foreach ($types as $type) : ?>
 											<li><?php echo HTML::anchor("admin/post/?type=".$type->id, $type->name); ?></li>
 										<?php endforeach; ?>
@@ -127,7 +128,9 @@ if ($user) :
 										<li><?php echo HTML::anchor("user/logout", __("Logout")); ?></li>
 									</ul>
 									<ul class="items">
-										<li>Ett item</li>
+										<li>
+											<img data-src="holder.js/50x50">
+										</li>
 										<li>Item två</li>
 										<li>En sak till och så</li>
 									</ul>

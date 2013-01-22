@@ -5,8 +5,6 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<base href="<?php echo URL::site(null, true, false); ?>">
-
 	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">	
 	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
 	

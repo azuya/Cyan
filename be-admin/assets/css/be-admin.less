@@ -117,6 +117,11 @@ header.admin {
 						color: @textColor;
 						display: block;
 						padding: 4px 10px;
+
+						&:hover {
+							text-decoration: none;
+							background: lighten(@grayLight,10%);
+						}
 					}
 	
 				}
@@ -300,6 +305,17 @@ footer.admin {
 	cursor: help;
 }
 
+#system-alert {
+	.border-radius(0);
+	margin: 0;
+}
+
+.name img {
+	float: left;
+	border-radius: @borderRadiusSmall;
+	margin-right: 8px;
+}
+
 #be-container {
 	position: relative;
 	
@@ -423,12 +439,6 @@ footer.admin {
 
 @media (max-width: 767px) {
 	
-}
-
-.name img {
-	float: left;
-	border-radius: @borderRadiusSmall;
-	margin-right: 8px;
 }
 
 /* Imports */

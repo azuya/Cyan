@@ -63,8 +63,12 @@ class Model_Post extends ORM {
 	}
 	*/
 	
-	public static function load_all($data = array("")) {
-		// echo "load_all($data)<br>";
+	public static function load($data = array("")) {
+		// echo "load($data)<br>";
+		
+		if (!is_array($data)) {
+			$data["id"] = $data;
+		}
 		
 		// echo "<pre>";
 		// print_r($data);
@@ -92,7 +96,7 @@ class Model_Post extends ORM {
 			
 		// Find all
 		$result["items"] = $posts->find_all();
-		// echo "<br><br><br>load_all(): ".Database::instance()->last_query;
+		// echo "<br><br><br>load(): ".Database::instance()->last_query;
 
 		// Count
 		$count = $posts->reset(FALSE);
@@ -111,4 +115,31 @@ class Model_Post extends ORM {
 
 		return $result;
 	}
+	
+	public static function loadByID($post_id) {
+		// echo "loadByID($post_id)<br>";
+		
+		// $post = ORM::factory('post'); // loads all post object from table
+		$post = ORM::factory('post')
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
+			
+		// Language
+		$language = isset($data["language"]) ? $data["language"] : 1;
+		$post->where('post_data.language', '=' , $language);
+		$post->where('post.id', '=' , $post_id);
+		
+		// Find
+		$result = $post->find();
+		// echo "<br><br><br>load(): ".Database::instance()->last_query;
+
+		// echo "[".$result["count"]."]<br>";
+
+		// echo "<pre>";
+		// print_r($result);
+		// echo "</pre>";
+
+		return $result;
+	}
+
 }
