@@ -6013,11 +6013,13 @@ header.admin .submenu .inner ul.items {
 }
 header.admin .submenu .inner ul.items > li {
   display: block;
+  position: relative;
   height: 100%;
   float: left;
   margin-right: 5px;
+  height: 110px;
 }
-header.admin .submenu .inner ul.items > li > a {
+header.admin .submenu .inner ul.items > li > a.link {
   color: #333333;
   display: block;
   padding: 4px 10px;
@@ -6025,9 +6027,15 @@ header.admin .submenu .inner ul.items > li > a {
   width: 80px;
   margin: 10px 0;
 }
-header.admin .submenu .inner ul.items > li > a:hover {
+header.admin .submenu .inner ul.items > li > a.link:hover {
   text-decoration: none;
   background: #b3b3b3;
+}
+header.admin .submenu .inner ul.items > li > a.add {
+  background: #0f0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 header.admin .submenu .inner ul li.divider {
   height: 1px;

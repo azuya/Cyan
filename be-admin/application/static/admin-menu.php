@@ -51,9 +51,12 @@ if ($user) :
 										<li><?php echo HTML::anchor("post/new", __("Add content")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/post", __("All")); ?></li>
+										<li><?php echo HTML::anchor("admin/post", __("All"), array("class" => "link")); ?></li>
 										<?php foreach ($types as $type) : ?>
-											<li><?php echo HTML::anchor("admin/post/?type=".$type->id, $type->name); ?></li>
+											<li>
+												<?php echo HTML::anchor("admin/post/?type=".$type->id, $type->name, array("class" => "link")); ?>
+												<?php echo HTML::anchor("admin/post/new?type=".$type->id, __("Add"), array("class" => "add")); ?>												
+											</li>
 										<?php endforeach; ?>
 									</ul>
 								</div>

@@ -36,7 +36,7 @@
 		<div id="content" class="container-fluid">
 		
 			<?php if (true) : ?>
-			<div id="system-alert" class="alert alert-block">
+			<div id="system-alert" class="alert alert-block fade in">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<?php echo __("<strong>Warning!</strong> Someone else is editing this content. It's advised that you don't edit it at the same time."); ?>
 			</div>
