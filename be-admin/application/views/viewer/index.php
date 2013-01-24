@@ -6,10 +6,9 @@
 // echo "</pre>";
 ?>
 
+<h1><?php echo $data->title; ?></h1>
 <?php
-	echo $contents->type;
-	echo $contents->title;
-	echo $contents->content;
-	
+	echo $post->type;
+	echo $data->content;
 	// echo $contents->title;
 ?>

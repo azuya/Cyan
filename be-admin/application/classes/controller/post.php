@@ -105,6 +105,8 @@ class Controller_Post extends Controller_Admin {
 
 		// Strul med ->with():
 		// http://stackoverflow.com/questions/5685021/tables-not-joining-in-kohana-3-1-orm
+		$post = Model_Post::loadByID($post_id);
+		/*
 		$post = ORM::factory('post')
 		// ->with('post_data') // ->with('dept')->with('div')
 			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
@@ -114,6 +116,7 @@ class Controller_Post extends Controller_Admin {
 			->where('post_data.language', '=' , 1)
 			->find();
 		echo "<br><br><br>".Database::instance()->last_query;
+		*/
 
 		$view = new View('post/single');
 		$view->set("content", $post);
@@ -143,8 +146,12 @@ class Controller_Post extends Controller_Admin {
 	public function action_edit()
 	{
 		$post_id = $this->request->param('id');
-		// $post = new Model_Post($post_id);
-		$post = Model_Post::loadByID($post_id);
+		
+		// Get post
+		$post = new Model_Post($post_id);
+		
+		// Get post data
+		$data = $post->datas->where('post_id', '=' , $post_id)->find();
 
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
@@ -153,7 +160,8 @@ class Controller_Post extends Controller_Admin {
 		$breadcrumbs = Breadcrumbs::render();
 
 		$this->template->content = View::factory(self::MODULE.'/edit')
-			->bind('content', $post)
+			->bind('post', $post)
+			->bind('data', $data)
 			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
 	}

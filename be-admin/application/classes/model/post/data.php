@@ -7,7 +7,7 @@ class Model_Post_Data extends ORM {
 		
 		// Belongs to only one post
 		'post' => array (
-			'model'     	=> 'data',
+			'model'     	=> 'post',
 			'foreign_key'   => 'post_id',
 		)
 	);

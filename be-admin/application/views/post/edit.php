@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="content-edit-<?php echo $content->id; ?>" class="screen active">
+<div id="content-edit-<?php echo $post->id; ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>
@@ -9,17 +9,17 @@
 	<div class="be-main">
 		<?php $errors = isset($errors) ? $errors : array(); ?>
 		<?php // echo $breadcrumbs; ?>
-		<?php isset($content->type) ? $content->type : $content->type = Arr::get($_GET, 'type', '0'); ?>
-		<?php echo Form::open('post/post/'.$content->id, array("class" => "form-horizontal")); ?>
-		<?php echo Nonce::nonce_field(($content->id) ? "be-update-post-".$content->id : "be-create-post"); ?>
+		<?php isset($post->type) ? $post->type : $post->type = Arr::get($_GET, 'type', '0'); ?>
+		<?php echo Form::open('post/post/'.$post->id, array("class" => "form-horizontal")); ?>
+		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">
 				<h1>
-					<?php echo Form::checkbox('active', 1, (bool) $content->active, array("id" => "active", "class" => "big")); ?>
+					<?php echo Form::checkbox('active', 1, (bool) $post->active, array("id" => "active", "class" => "big")); ?>
 					<?php echo __("Add new content"); ?>
 					
 					<span class="dropdown">
-						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $content->type; ?><span class="caret"></span></small>
+						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $post->type; ?><span class="caret"></span></small>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 							<?php
 							$types = ORM::factory('type')->find_all();
@@ -42,24 +42,24 @@
 		<div class="be-content">
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
-			<?php echo Form::hidden('type', $content->type, array("placeholder" => __("type"), "id" => "type")); ?>
+			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"), "id" => "type")); ?>
 
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>
 				<div class="controls">
-					<?php echo Form::input('title', $content->title, array("placeholder" => __("Title"), "id" => "title")); ?>
+					<?php echo Form::input('title', $data->title, array("placeholder" => __("Title"), "id" => "title")); ?>
 					<span class="label label-important"><?php echo Arr::get($errors, 'title');?></span>
 				</div>
 			</div>
 			 
 			<div class="control-group">
 				<?php echo Form::label('content', __("Content"), array("class" => "control-label", "placeholder" => __("Content"))); ?>
-				<div class="controls"><?php echo Form::textarea('content', $content->content, array("placeholder" => __("Content"), "id" => "content", "class" => "ckeditor")); ?></div>
+				<div class="controls"><?php echo Form::textarea('content', $data->content, array("placeholder" => __("Content"), "id" => "content", "class" => "ckeditor")); ?></div>
 			</div>
 		 
 			<div class="control-group">
 				<?php echo Form::label('testar', __("Testar"), array("class" => "control-label", "for" => "testar")); ?>
-				<div class="controls"><?php echo Form::input('testar', $content->testar, array("placeholder" => __("Testar"), "id" => "testar")); ?></div>
+				<div class="controls"><?php echo Form::input('testar', $post->testar, array("placeholder" => __("Testar"), "id" => "testar")); ?></div>
 			</div>
 
 		</div>

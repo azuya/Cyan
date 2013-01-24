@@ -43,7 +43,13 @@ class Controller_Viewer extends Controller_Base {
 			"offset"	=> $offset,
 		);
 		*/
-		$post = Model_Post::loadByID($post_id);
+		// $post = Model_Post::loadByID($post_id);
+
+		// Get post
+		$post = new Model_Post($post_id);
+		
+		// Get post data
+		$data = $post->datas->where('post_id', '=' , $post_id)->find();
 
 		// echo "<pre>";
 		// print_r($post);
@@ -51,7 +57,8 @@ class Controller_Viewer extends Controller_Base {
 
 
 		$this->template->content = View::factory('viewer/index')
-			->bind('contents', $post)
+			->bind('post', $post)
+			->bind('data', $data)
 			->set('query', $this->request->query())
 			->set('id', $post_id);
 	}
