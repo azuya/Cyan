@@ -35,11 +35,11 @@ if ($user) :
 										<li><?php echo HTML::anchor("admin/post/", sprintf(__("%d new content"), 2)); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/help", __("Help")); ?></li>
-										<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org"); ?></li>
-										<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", "Support forums"); ?></li>
+										<li><?php echo HTML::anchor("admin/help", __("Help"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org", array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", "Support forums", array("class" => "link")); ?></li>
 										<li class="divider"></li>
-										<li><?php echo HTML::anchor("admin/about", sprintf(__("About %s"), $site["bliss_engine"]["name"])); ?></li>
+										<li><?php echo HTML::anchor("admin/about", sprintf(__("About %s"), $site["bliss_engine"]["name"]), array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -48,14 +48,16 @@ if ($user) :
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
-										<li><?php echo HTML::anchor("post/new", __("Add content")); ?></li>
+										<li><?php echo HTML::anchor("#", __("All content")); ?></li>
+										<li><?php echo HTML::anchor("#", __("Newest content")); ?></li>
+										<li><?php echo HTML::anchor("#", __("Last updated content")); ?></li>
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/post", __("All"), array("class" => "link")); ?></li>
 										<?php foreach ($types as $type) : ?>
 											<li>
 												<?php echo HTML::anchor("admin/post/?type=".$type->id, $type->name, array("class" => "link")); ?>
-												<?php echo HTML::anchor("admin/post/new?type=".$type->id, __("Add"), array("class" => "add")); ?>												
+												<?php echo HTML::anchor("admin/post/new?type=".$type->id, __("Add"), array("class" => "add btn btn-primary btn-small")); ?>												
 											</li>
 										<?php endforeach; ?>
 									</ul>
@@ -70,7 +72,8 @@ if ($user) :
 										<li><?php echo HTML::anchor("admin/post/upload", __("Upload file"), array("class" => "btn")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/post/?type=file", __("All files")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file", __("All files"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file", __("Images"), array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -79,11 +82,13 @@ if ($user) :
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
-										<li><?php echo HTML::anchor("admin/user", __("Users")); ?></li>
+										<li><?php echo HTML::anchor("#", __("All users")); ?></li>
+										<li><?php echo HTML::anchor("#", __("Newest users")); ?></li>
+										<li><?php echo HTML::anchor("#", __("Last updated users")); ?></li>
 										<li><?php echo HTML::anchor("admin/user/new", __("Add user"), array("class" => "btn")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/user", __("Users")); ?></li>
+										<li><?php echo HTML::anchor("admin/user", __("Users"), array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -93,10 +98,10 @@ if ($user) :
 					<ul class="nav pull-right">
 
 						<?php if ($cid) : ?>
-						<li><?php echo HTML::anchor("admin/post/edit/".$cid, '<i class="icon-edit icon-white"></i>', array("id" => "edit-trigger", "class" => "no-dropdown")); ?></li>
+						<li><?php echo HTML::anchor("admin/post/edit/".$cid, '<i class="icon-edit icon-white"></i>'.'<span> '.__("Edit").'</span>', array("id" => "edit-trigger", "class" => "no-dropdown")); ?></li>
 						<?php endif; ?>
 
-						<li><?php echo HTML::anchor("admin/search", '<i class="icon-search icon-white"></i>', array("id" => "search-trigger")); ?>
+						<li><?php echo HTML::anchor("admin/search", '<i class="icon-search icon-white"></i>'.'<span> '.__("Search").'</span>', array("id" => "search-trigger")); ?>
 							<div class="submenu submenu-search">
 								<div class="inner">
 									<div id="be-search" class="container-fluid">
@@ -108,35 +113,37 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/setting", '<i class="icon-cog icon-white"></i>'); ?>
+						<li><?php echo HTML::anchor("admin/setting", '<i class="icon-cog icon-white"></i>'.'<span> '.__("Configuration").'</span>'); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
 
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/type", __("Content types")); ?></li>
-										<li><?php echo HTML::anchor("admin/option", __("Options")); ?></li>
-										<li><?php echo HTML::anchor("admin/language", __("Languages")); ?></li>
+										<li><?php echo HTML::anchor("admin/type", __("Content types"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/option", __("Options"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/language", __("Languages"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/subsites", __("Subsites"), array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/user/profile", '<i class="icon-user icon-white"></i>'); ?>
-							<div class="submenu">
+						<li><?php echo HTML::anchor("admin/user/profile", '<i class="icon-user icon-white"></i>'.'<span> '.__("Profile").'</span>'); ?>
+							<div class="submenu submenu-profile">
 								<div class="inner">
-									<ul class="menu">
-										<li><?php echo HTML::anchor("admin/user/profile", __("My profile")); ?></li>
-										<li class="divider"></li>
-										<li><?php echo HTML::anchor("user/logout", __("Logout")); ?></li>
-									</ul>
-									<ul class="items">
-										<li>
-											<img data-src="holder.js/50x50">
-										</li>
-										<li>Item två</li>
-										<li>En sak till och så</li>
-									</ul>
+									<div class="top">
+										<div class="photo">
+											<img data-src="holder.js/100x100" class="photo">
+											<?php echo HTML::anchor("user/logout", __("Change photo"), array("class" => "change-photo")); ?>
+										</div>
+										<div>
+											<h4><?php echo HTML::anchor("admin/user/profile", trim($user->username." ".$user->first_name . " " . $user->last_name)); ?></h4>
+											<p><?php echo $user->email; ?></p>
+										</div>
+									</div>
+									<div class="bottom">
+										<?php echo HTML::anchor("user/logout", __("Logout"), array("class" => "btn btn-primary")); ?>
+									</div>
 								</div>
 							</div>
 						</li>

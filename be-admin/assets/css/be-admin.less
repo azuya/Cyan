@@ -11,6 +11,7 @@
 
 @padding-border:		10px;
 @submenuWidth:			200px;
+@submenuHeight:			130px;
 
 html {
 	height: 100%;
@@ -63,6 +64,12 @@ header.admin {
 	ul.nav {
 		height: @navbarHeight;
 		
+		> li > a {
+			> span {
+				display: none;
+			}
+		}
+
 		> li.active {
 			border-bottom: 4px solid @grayLighter;
 			
@@ -91,19 +98,21 @@ header.admin {
 		background: @grayLighter;
 		display: block;
 		width: 100%;
+		height: @submenuHeight;
 		position: fixed;
-		top: -150px;
+		top: -200px;
 		left: 0;
 		border-bottom: 1px solid @grayLight;
 		.box-shadow(~"0 1px 2px rgba(0,0,0,.2)");
 		.transition(~"top ease .3s");
 		z-index: -1;
+		overflow: hidden;
 	
 		.inner {
 			ul {
 				list-style: none outside none;
 				margin: 0;
-				height: 130px;
+				height: @submenuHeight;
 			
 				&.menu {
 					border-right: 1px solid lighten(@grayLight,20%);
@@ -120,7 +129,8 @@ header.admin {
 
 						&:hover {
 							text-decoration: none;
-							background: lighten(@grayLight,10%);
+							background: @linkColor;
+							color: @white;
 						}
 					}
 	
@@ -131,34 +141,42 @@ header.admin {
 					left: 0;
 					right: 0;
 					left: @submenuWidth;
+					width: auto;
+					height: @submenuHeight;
+					overflow: scroll;
 				
 					> li {
 						display: block;
 						position: relative;
 						height: 100%;
 						float: left;
-						margin-right: 5px;
-						height: 110px;
+						border-right: 1px solid lighten(@grayLight,30%);
 
 						> a.link {
 							color: @textColor;
 							display: block;
 							padding: 4px 10px;
-							height: 102px;
-							width: 80px;
-							margin: 10px 0;
+							height: 122px;
+							width: 90px;
 
 							&:hover {
 								text-decoration: none;
-								background: lighten(@grayLight,10%);
+								background: lighten(@grayLight,30%);
+							}
+						}
+						
+						&:hover {
+							> a.add {
+								display: block;
 							}
 						}
 						
 						> a.add {
-							background: #0f0;
+							display: none;
 							position: absolute;
-							bottom: 0;
-							right: 0;
+							bottom: 10px;
+							left: 10px;
+							right: 10px;
 						}
 					}
 				}
@@ -200,6 +218,45 @@ header.admin {
 				height: 40px;
 				margin-left: 5px;
 				width: 90px;
+			}
+		}
+
+		&.submenu-profile {
+			width: 320px;
+			height: auto;
+			padding: 10px;
+			right: 10px;
+			left: inherit;
+			.border-radius(0 0 @borderRadiusLarge @borderRadiusLarge);
+
+			div.top {
+				> div {
+					display: inline-block;
+					position: relative;
+				}
+			
+				div.photo {
+					margin-right: @padding-border;
+								
+					a.change-photo {
+						background: #0f0;
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						width: 100%;
+						text-align: center;
+						display: none;
+						background: @linkColor;
+						color: @white;
+					}
+				}
+			}
+			
+			div.bottom {
+				border-top: 1px solid lighten(@grayLight,20%);
+				padding: @padding-border 0;
+				margin-top: @padding-border;
+				text-align: right;
 			}
 		}
 	}
@@ -290,13 +347,15 @@ footer.admin {
 	-moz-transition: bottom 250ms ease-in-out;
 	-webkit-transition: bottom 250ms ease-in-out;
 
+	/*
 	background: @linkColor;
 	color: @white;
-	
 	.border-radius(@baseBorderRadius @baseBorderRadius 0 0);
+	border-width: 0;
+	*/
+
 	.box-shadow(0 1px 2px rgba(0,0,0,.5));
 
-	border-width: 0;
 	display: block;
 	font-size: 15px;
 	text-align: center;
@@ -435,8 +494,30 @@ footer.admin {
 }
 
 @media (max-width: 979px) {
-	header.admin .submenu {
-		display: none;
+	header.admin {
+	
+		.submenu {
+			display: none;
+		}
+		
+		ul.nav {
+			height: auto;
+		
+			> li {
+			
+				> a {
+					> span {
+						display: inline;
+					}
+				}
+			}
+		}
+
+		ul.nav.pull-right {
+			> li {
+				border-left: none;
+			}
+		}
 	}
 
 	.navbar .btn-navbar {

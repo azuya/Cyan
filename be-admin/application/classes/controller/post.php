@@ -128,7 +128,9 @@ class Controller_Post extends Controller_Admin {
 	public function action_new()
 	{
 		$post = new Model_Post();
+		$data = new Model_Post_Data();
 
+		/*
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post"));
 		// Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
@@ -137,6 +139,22 @@ class Controller_Post extends Controller_Admin {
 
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('content', $post)
+			->bind('breadcrumbs', $breadcrumbs)
+			->set('query', $this->request->query());
+		*/
+		
+		// Get post data
+		// $data = $post->datas->where('post_id', '=' , "")->find();
+
+		// Create the pagination object
+		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
+		// Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
+		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 2"));
+		$breadcrumbs = Breadcrumbs::render();
+
+		$this->template->content = View::factory(self::MODULE.'/edit')
+			->bind('post', $post)
+			->bind('data', $data)
 			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
 
@@ -185,6 +203,7 @@ class Controller_Post extends Controller_Admin {
 	{
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
+		$data = $post->datas->where('post_id', '=' , $post_id)->find();
 
 		// Nonce ----------------------------------
 		if ($post_id) {
@@ -197,26 +216,55 @@ class Controller_Post extends Controller_Admin {
 		// Load the user information
 		$user = Auth::instance()->get_user();
 
-		$values = $this->request->post();
-		$values["author"]  = $user->id;
-		$values["active"]  = ! empty($values['active']);
+		$request_val = $this->request->post();
+
+		echo "<pre>";
+		print_r($request_val);
+		echo "</pre>";
+
+		$post_val["author"]  = $user->id;
+		$post_val["active"]  = ! empty($post_val['active']);
 
 		// Only created
 		if (!$post_id)
 		{
-			$values["created_date"] = date('Y-m-d H:i:s');
+			$post_val["created_date"] = date('Y-m-d H:i:s');
+			$data_val["created_date"] = date('Y-m-d H:i:s');
 		}
 		else
 		{
-			$values["modified_date"] = date('Y-m-d H:i:s');
+			$post_val["modified_date"] = date('Y-m-d H:i:s');
+			$data_val["modified_date"] = date('Y-m-d H:i:s');
 		}
 
-		$post->values($values); // populate $posts object from $_POST array
+		echo "post_val<pre>";
+		print_r($post_val);
+		echo "</pre>";
+
+		$data_val["title"] = $request_val["title"];
+		// $data_val["excerpt"] = $request_val["excerpt"];
+		$data_val["content"] = $request_val["content"];
+		$data_val["author"]  = $user->id;
+
+		echo "data_val<pre>";
+		print_r($data_val);
+		echo "</pre>";
+
+		$post->values($post_val); // populate $post object from $_POST array
+		$data->values($data_val); // populate $data object from $_POST array
+
 		$errors = array();
 
 		try
 		{
 			$post->save(); // saves post to database
+			
+			echo "<pre>";
+			print_r($post);
+			echo "</pre>";
+			die();
+			
+			$data->save(); // saves post to database
 			$this->redirect(self::MODULE);
 		}
 
@@ -225,7 +273,8 @@ class Controller_Post extends Controller_Admin {
 			$errors = $ex->errors('validation');
 
 			$view = new View('post/edit');
-			$view->set("content", $post);
+			$view->set("post", $post);
+			$view->set("data", $data);
 			$view->set('errors', $errors);
 
 			$this->template->set('content', $view);

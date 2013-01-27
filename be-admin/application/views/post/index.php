@@ -117,7 +117,11 @@ $types = ORM::factory('type')->find_all();
 				<thead>
 					<tr>
 						<th style="width:60%;"><?php echo __("Title"); ?></th>
+						
+						<?php if (!$selected_type): ?>
 						<th style="width:20%;"><?php echo __("Type"); ?></th>
+						<?php endif; ?>
+						
 						<th style="width:10%;"><?php echo __("Author"); ?></th>
 						<th style="width:10%;"></th>
 					</tr>
@@ -145,7 +149,11 @@ $types = ORM::factory('type')->find_all();
 						    	<span class="muted">goff!</span>
 					    	</div>
 					    </td>
+
+						<?php if (!$selected_type): ?>
 					    <td><?php echo $post_type; ?></td>
+						<?php endif; ?>
+
 					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
 					    <td>
 					    	<div class="row-show-on-hover">

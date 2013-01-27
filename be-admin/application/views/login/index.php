@@ -23,24 +23,26 @@
 		<div class="controls"><?php echo Form::password('password', '', array("placeholder" => __("Password"), "id" => "password")); ?></div>
  
 		<?php echo Form::submit('login', __('Login'), array('class'=>'btn btn-primary btn-block btn-large', "id" => "login")); ?>
+
 	</div>
 
 </div>
 <?php echo Form::close(); ?>
 
+	<!--
+	<p style="text-align:center;">Powered by <a href="http://www.blissengine.org"><?php echo $site["bliss_engine"]["name"]; ?></a>, Copyright &copy; 2013</p>
+	
 	<div class="controls">
 	<label class="checkbox"><?php echo Form::checkbox('remember'); ?> <?php echo __("Remember Me"); ?></label>
 	</div>
 
-
-	<!--
 	<?php echo Form::label('remember', __("Remember Me"), array("class" => "control-label")); ?>
 	<div class="controls"><?php echo Form::checkbox('remember'); ?></div>
-	-->
 
 	<div class="controls">
 	<p><?php echo __("Or") ?> <?php echo HTML::anchor('user/register', __('Create a new account')); ?></p>
 	</div>
+	-->
 
 <!--
 <div style="position: fixed; bottom: 0; width: 100%;">

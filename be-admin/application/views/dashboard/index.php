@@ -1,5 +1,9 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
+<?php
+	// Load the user information
+	$user = Auth::instance()->get_user();
+?>
 <div id="dashboard-index" class="screen active">
 
 	<div class="be-tools">
@@ -9,7 +13,7 @@
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo __("Dashboard"); ?> <small><?php echo __("News since last login"); ?></small></h1>
+				<h1><?php echo __("Dashboard"); ?> <small><?php echo __("Since"); ?> <?php echo Date::fuzzy_span(strtotime($user->last_login)); ?></small></h1>
 			</div>
 		</div>
 		

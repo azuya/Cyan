@@ -4,6 +4,7 @@ $user = Auth::instance()->get_user();
 ?>
 
 <? if ($user) : ?>
+<!--
 <footer class="admin">
 	<div class="inner">
 
@@ -11,7 +12,8 @@ $user = Auth::instance()->get_user();
 
 	<div>
 </footer>
+-->
 
 <!-- Scroll to top -->
-<button id="scroll-to-top" class="offscreen" type="button">&uarr;</button>
+<button id="scroll-to-top" class="btn btn-primary offscreen" type="button">&uarr;</button>
 <? endif; ?>

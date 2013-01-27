@@ -1,6 +1,17 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="content-edit-<?php echo $post->id; ?>" class="screen active">
+<?php if (true) : ?>
+<div id="system-alert" class="alert alert-block fade in">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<?php echo __("<strong>Warning!</strong> Someone else is editing this content. It's advised that you don't edit it at the same time."); ?>
+</div>
+<?php endif; ?>
+
+<?php
+	$container_id = ($post->id) ? "content-edit-".$post->id: "content-new-";
+?>
+
+<div id="<?php echo $container_id; ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>
@@ -10,7 +21,7 @@
 		<?php $errors = isset($errors) ? $errors : array(); ?>
 		<?php // echo $breadcrumbs; ?>
 		<?php isset($post->type) ? $post->type : $post->type = Arr::get($_GET, 'type', '0'); ?>
-		<?php echo Form::open('post/post/'.$post->id, array("class" => "form-horizontal")); ?>
+		<?php echo Form::open('admin/post/post/'.$post->id, array("class" => "form-horizontal")); ?>
 		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">

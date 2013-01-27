@@ -52,11 +52,25 @@ $(document).ready(function(){
 		return false;
 	});
 
-	$("header.admin").mouseleave(function() {
-		$(this).find(".submenu").removeClass("active");
-		$(this).find("li.active").removeClass("active");
-	});
+	//$("header.admin").mouseleave(function() {
+	//	$(this).find(".submenu").removeClass("active");
+	//	$(this).find("li.active").removeClass("active");
+	//});
 	
+	$(document).mouseup(function(e) {
+	    var container = $(".submenu");
+	    if (container.has(e.target).length === 0) {
+	        container.removeClass("active");
+	        $(this).find("li.active").removeClass("active");
+	    }
+	});	
+
+	$("div.photo").hover(function() {
+		$(this).find("a.change-photo").show();
+	}, function() {
+		$(this).find("a.change-photo").hide();
+	});
+
 	$("#search-trigger").click(function() {
 		$("#q").focus();
 	});
