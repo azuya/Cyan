@@ -15,7 +15,6 @@
 <?php require 'header.php'; ?>
 <?php Theme::get_header(); ?>
 
-
 	<!-- Content -->
 	<div id="content">
     <?php echo $content; ?>

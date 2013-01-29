@@ -22,9 +22,9 @@ class Controller_Post extends Controller_Admin {
 
 		// $posts = new Model_Post();
 		$data = array(
-			"type"  => $type,
-			"limit"  => $limit,
-			"offset" => $offset,
+			"type"		=> $type,
+			"limit"		=> $limit,
+			"offset"	=> $offset,
 		);
 		$posts = Model_Post::load($data);
 
@@ -218,12 +218,14 @@ class Controller_Post extends Controller_Admin {
 
 		$request_val = $this->request->post();
 
-		echo "<pre>";
-		print_r($request_val);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($request_val);
+		// echo "</pre>";
+		// echo "[".$request_val['type']."]";
 
-		$post_val["author"]  = $user->id;
-		$post_val["active"]  = ! empty($post_val['active']);
+		$post_val["author"]	= $user->id;
+		$post_val["active"]	= ! empty($request_val['active']);
+		$post_val["type"] 	= $request_val['type'];
 
 		// Only created
 		if (!$post_id)
@@ -237,20 +239,22 @@ class Controller_Post extends Controller_Admin {
 			$data_val["modified_date"] = date('Y-m-d H:i:s');
 		}
 
-		echo "post_val<pre>";
-		print_r($post_val);
-		echo "</pre>";
+		// echo "post_val<pre>";
+		// print_r($post_val);
+		// echo "</pre>";
 
-		$data_val["title"] = $request_val["title"];
+		$data_val["title"]		= $request_val["title"];
 		// $data_val["excerpt"] = $request_val["excerpt"];
-		$data_val["content"] = $request_val["content"];
-		$data_val["author"]  = $user->id;
-
-		echo "data_val<pre>";
-		print_r($data_val);
-		echo "</pre>";
+		$data_val["content"]	= $request_val["content"];
+		$data_val["author"]		= $user->id;
+		$data_val["alias"]		= URL::title($request_val["title"], " ", true);
 
 		$post->values($post_val); // populate $post object from $_POST array
+
+		// echo "data_val<pre>";
+		// print_r($data_val);
+		// echo "</pre>";
+
 		$data->values($data_val); // populate $data object from $_POST array
 
 		$errors = array();
@@ -259,12 +263,27 @@ class Controller_Post extends Controller_Admin {
 		{
 			$post->save(); // saves post to database
 			
-			echo "<pre>";
-			print_r($post);
-			echo "</pre>";
-			die();
+			// echo "<pre>";
+			// print_r($post);
+			// echo "</pre>";
 			
+			// echo "ID: [".$post->id."]";
+
+			$data_val["post_id"]  = $post->id;
+			
+			// echo "data_val<pre>";
+			// print_r($data_val);
+			// echo "</pre>";
+	
+			$data->values($data_val); // populate $data object from $_POST array
 			$data->save(); // saves post to database
+
+			// echo "<pre>";
+			// print_r($data);
+			// echo "</pre>";
+
+			// echo "saved?";
+
 			$this->redirect(self::MODULE);
 		}
 

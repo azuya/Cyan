@@ -37,9 +37,9 @@ class Model_Post extends ORM {
 
 	public function rules() {
 		return array (
-			'title' => array ( // property name to validate
-				array('not_empty'), // validation type
-			),
+			// 'title' => array ( // property name to validate
+			// 	array('not_empty'), // validation type
+			// ),
 			/*
 			'post' => array (
 				array('not_empty'),

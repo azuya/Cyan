@@ -20,7 +20,7 @@
 	<div class="be-main">
 		<?php $errors = isset($errors) ? $errors : array(); ?>
 		<?php // echo $breadcrumbs; ?>
-		<?php isset($post->type) ? $post->type : $post->type = Arr::get($_GET, 'type', '0'); ?>
+		<?php $post->type = ($post->type != "") ? $post->type : $post->type = Arr::get($_GET, 'type', '0'); ?>
 		<?php echo Form::open('admin/post/post/'.$post->id, array("class" => "form-horizontal")); ?>
 		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">

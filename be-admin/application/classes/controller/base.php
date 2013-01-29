@@ -72,12 +72,10 @@ class Controller_Base extends Controller_Template {
 				'description' => $this->_config['meta']['description'],
 			);
 
-
 			$this->template->styles = array();
 			$this->template->scripts = array();
 
 			$this->template->ui_ = array();
-
 		}
 	}
 
@@ -126,7 +124,7 @@ class Controller_Base extends Controller_Template {
 			$this->template->scripts = array_merge($scripts, $this->template->scripts);
 		}
 		*/
-
+		
 		$this->template->title = empty($this->template->title)?
 			$this->_config['site']['title'] :
 			$this->template->title . $this->_config['site']['title_suffix'];
