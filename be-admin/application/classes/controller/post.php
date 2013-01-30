@@ -21,65 +21,15 @@ class Controller_Post extends Controller_Admin {
 		$offset = ($offset > 0) ? $offset : 0;
 
 		// $posts = new Model_Post();
-		$data = array(
+		$query = array(
 			"type"		=> $type,
 			"limit"		=> $limit,
 			"offset"	=> $offset,
 		);
-		$posts = Model_Post::load($data);
+		$data = Model_Post::load($query);
 
-		/*
-		// $post = ORM::factory('post'); // loads all post object from table
-		$post = ORM::factory('post')
-			// ->with('post_data') // ->with('dept')->with('div')
-			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
-			->join('post_data', 'LEFT')
-			->on('post_data.post_id', '=', 'post.id')
-			// ->where('post_data.language', '=' , 1)
-			->find_all();
-
-		// Count items
-		if ($type['type'])
-		{
-			$count = $post->reset(FALSE)
-				->where('type', '=', $query['type'])
-				->count_all(); // 'active', '=', 1
-		}
-		else
-		{
-			// $count = $post->reset(FALSE)
-			//	->count_all(); // 'active', '=', 1
-			$count = $post->count(); // 'active', '=', 1
-			echo "count[$count]";
-
-		}
-
-		// Get subset (limit)
-		$offset = ($page-1) * $this->_config['ui_settings']['limit_items'];
-		$offset = ($offset > 0) ? $offset : 0;
-
-		if ($type['type'])
-		{
-			$posts = $post->limit($this->_config['ui_settings']['limit_items'])
-						->where('type', '=', $query['type'])
-						->order_by('title', 'asc')
-						->offset($offset)
-						->find_all();
-		}
-		else
-		{
-			$posts = $post->limit($this->_config['ui_settings']['limit_items'])
-						->offset($offset)
-						->order_by('title', 'asc')
-						->find_all();
-		}
-		*/
-
-
-
-
-		$count = $posts["count"];
-		$posts = $posts["items"];
+		$count = $data["count"];
+		$posts = $data["items"];
 
 		// Create the pagination object
 		$pagination = Pagination::factory(array(

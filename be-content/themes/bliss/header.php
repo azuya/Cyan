@@ -14,7 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/assets/css/style.css">
 
 	<?php Theme::be_header(); ?>
-
 	<!--
     <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans">
 	<script src="<?php echo URL::site(null, true, false); ?>be-admin/js/jquery-1.8.3.min.js"></script>
@@ -25,12 +24,23 @@
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	
+
+	<!-- OpenGraph for facebook -->	
+	<meta property="og:title" content="<?php echo $title; ?>">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://blisslegacy/index.php?special=article&amp;id=487">
+	<meta property="og:image" content="http://blisslegacy/files/articles/487/glyphicons-417-rss.png">
+	<meta property="og:site_name" content="<?php echo $site["site"]["title"]; ?>">
+	<meta property="og:description" content="Elementum dictum phasellus adipiscing aenean urna ipsum at aliquam. Non in lacus fusce nibh accumsan rhoncus a mollis libero: Pellentesque ullamcorper nisl dapibus phasellus. &#8230;">
+	<!-- OpenGraph for facebook -->	
+
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/ico/apple-touch-icon-144-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo URL::site(null, true, false); ?>be-content/themes/bliss/ico/apple-touch-icon-57-precomposed.png">
 </head> 
 <body>
-	
-	*** OVERALL HEADER ***<br>
+
+<header>
+*** OVERALL HEADER ***
+</header>

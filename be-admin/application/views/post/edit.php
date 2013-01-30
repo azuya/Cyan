@@ -1,12 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<?php if (true) : ?>
-<div id="system-alert" class="alert alert-block fade in">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<?php echo __("<strong>Warning!</strong> Someone else is editing this content. It's advised that you don't edit it at the same time."); ?>
-</div>
-<?php endif; ?>
-
 <?php
 	$container_id = ($post->id) ? "content-edit-".$post->id: "content-new-";
 ?>

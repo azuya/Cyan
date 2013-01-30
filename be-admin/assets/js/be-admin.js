@@ -85,6 +85,16 @@ $(document).ready(function(){
 		$(this).find(".row-show-on-hover").hide();		
 	});
 	
+	// Padding on body if logged into admin
+	$("body").css("padding-top", "44px");
+	
+	// System alerts
+	var alert_text = '<div id="system-alert" class="alert alert-block fade in">'
+		+ '<button type="button" class="close" data-dismiss="alert">&times;</button>'
+		+ '<strong>Warning!</strong> Someone else is editing this content. It\'s advised that you don\'t edit it at the same time.'
+		+ '</div>';
+	$("#be-container").prepend(alert_text);
+	
 	/* 
 	 * !Bootstrap
 	 */

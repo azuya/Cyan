@@ -1,5 +1,6 @@
-	--- OVERALL FOOTER ---<br>
-
-	<?php Theme::be_footer(); ?>
+<footer>
+--- OVERALL FOOTER ---
+</footer>
+<?php Theme::be_footer(); ?>
 </body>
 </html>
