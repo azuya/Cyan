@@ -13,6 +13,8 @@
 @submenuWidth:			200px;
 @submenuHeight:			130px;
 
+@iconPath:				"../img/be-sprite-white.png";
+
 html {
 	height: 100%;
 }
@@ -67,6 +69,10 @@ header.admin {
 			> span {
 				display: none;
 			}
+
+			> i {
+				margin-right: 5px;
+			}
 		}
 
 		> li.active {
@@ -75,8 +81,8 @@ header.admin {
 			> a {
 				text-shadow: none;
 				
-				> i.icon-white {
-					background-image: url("../img/glyphicons-halflings.png");
+				> i {
+					background-image: url("../img/be-sprite.png");
 				}
 			}
 		}
@@ -91,6 +97,10 @@ header.admin {
 	
 	ul.nav.pull-right > li {
 		border-left: 1px solid darken(@linkColor,5%);
+		
+		a > i {
+			margin-right: 0;
+		}
 	}
 	
 	.submenu {
@@ -203,10 +213,7 @@ header.admin {
 			.border-radius(0 0 @borderRadiusLarge @borderRadiusLarge);
 			
 			input#q {
-				background-image: url("../img/be-sprite.png");
 				padding-left: 46px;
-				background-repeat: no-repeat;
-				background-position: 8px -93px;
 				font-size: 120%;
 				height: 30px;
 				margin: 0;
@@ -319,14 +326,6 @@ footer.admin {
 		}
 	}
 
-	#username {
-		background-position: 8px 11px;
-	}
-
-	#password {
-		background-position: 8px -44px;
-	}
-	
 	#login {
 		margin-top: 10px;
 	}
@@ -532,6 +531,8 @@ footer.admin {
 }
 
 /* Imports */
+@import 'be-sprite.less';
+
 @import 'datepicker.less';
 @import 'colorpicker.less';
 @import 'timepicker.less';

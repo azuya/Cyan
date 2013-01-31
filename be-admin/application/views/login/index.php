@@ -17,10 +17,10 @@
 		<? endif; ?>
 		
 		<?php //echo Form::label('username', __("Username or Email"), array("class" => "control-label", "for" => "username")); ?>
-		<div class="controls"><?php echo Form::input('username', HTML::chars(Arr::get($_POST, 'username')), array("placeholder" => __("Username or Email"), "id" => "username")); ?></div>
+		<div class="controls"><?php echo Form::input('username', HTML::chars(Arr::get($_POST, 'username')), array("class" => "input50-envelope", "placeholder" => __("Username or Email"), "id" => "username")); ?></div>
 	 
 		<?php //echo Form::label('password', __("Password"), array("class" => "control-label", "placeholder" => __("Password"))); ?>
-		<div class="controls"><?php echo Form::password('password', '', array("placeholder" => __("Password"), "id" => "password")); ?></div>
+		<div class="controls"><?php echo Form::password('password', '', array("class" => "input50-lock", "placeholder" => __("Password"), "id" => "password")); ?></div>
  
 		<?php echo Form::submit('login', __('Login'), array('class'=>'btn btn-primary btn-block btn-large', "id" => "login")); ?>
 

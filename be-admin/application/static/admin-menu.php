@@ -43,7 +43,7 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/post", '<i class="icon-file icon-white"></i> '.__("Content")); ?>
+						<li><?php echo HTML::anchor("admin/post", '<i class="icon40-page"></i> '.__("Content")); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -63,7 +63,7 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/media", '<i class="icon-picture icon-white"></i> '.__("Media")); ?>
+						<li><?php echo HTML::anchor("admin/media", '<i class="icon40-images"></i> '.__("Media")); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -77,7 +77,7 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/user", '<i class="icon-user icon-white"></i> '.__("Users")); ?>
+						<li><?php echo HTML::anchor("admin/user", '<i class="icon40-users"></i> '.__("Users")); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -97,22 +97,22 @@ if ($user) :
 					<ul class="nav pull-right">
 
 						<?php if ($cid) : ?>
-						<li><?php echo HTML::anchor("admin/post/edit/".$cid, '<i class="icon-edit icon-white"></i>'.'<span> '.__("Edit").'</span>', array("id" => "edit-trigger", "class" => "no-dropdown")); ?></li>
+						<li><?php echo HTML::anchor("admin/post/edit/".$cid, '<i class="icon40-edit"></i>'.'<span> '.__("Edit").'</span>', array("id" => "edit-trigger", "class" => "no-dropdown")); ?></li>
 						<?php endif; ?>
 
-						<li><?php echo HTML::anchor("admin/search", '<i class="icon-search icon-white"></i>'.'<span> '.__("Search").'</span>', array("id" => "search-trigger")); ?>
+						<li><?php echo HTML::anchor("admin/search", '<i class="icon40-search"></i>'.'<span> '.__("Search").'</span>', array("id" => "search-trigger")); ?>
 							<div class="submenu submenu-search">
 								<div class="inner">
 									<div id="be-search" class="container-fluid">
 										<?php echo Form::open('search', array('method' => 'get')); ?>
-										<?php echo Form::input('q', '', array("id" => "q", "placeholder" => sprintf(__("Search %s"), $site["site"]["title"]))); ?>
+										<?php echo Form::input('q', '', array("id" => "q", "class" => "input50-search", "placeholder" => sprintf(__("Search %s"), $site["site"]["title"]))); ?>
 										<?php echo Form::submit('submit', __('Search'), array('class'=>'btn btn-primary')) ?>
 										<?php echo Form::close(); ?>
 									</div>
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/setting", '<i class="icon-cog icon-white"></i>'.'<span> '.__("Configuration").'</span>'); ?>
+						<li><?php echo HTML::anchor("admin/setting", '<i class="icon40-cog"></i>'.'<span> '.__("Configuration").'</span>'); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -127,7 +127,7 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/user/profile", '<i class="icon-user icon-white"></i>'.'<span> '.__("Profile").'</span>'); ?>
+						<li><?php echo HTML::anchor("admin/user/profile", '<i class="icon40-user"></i>'.'<span> '.__("Profile").'</span>'); ?>
 							<div class="submenu submenu-profile">
 								<div class="inner">
 									<div class="top">

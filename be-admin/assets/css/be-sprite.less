@@ -1,0 +1,44 @@
+// Icon 20 x 20 (40 x 40 matrix)
+[class^="icon40-"],
+[class*=" icon40-"] {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	.ie7-restore-right-whitespace();
+	line-height: 20px;
+	vertical-align: text-top;
+	background-image: url("@{iconPath}");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	margin-top: -3px;
+}
+
+.icon-matrix (@x: 0, @y: 0) {
+	background-position: -((@x - 1) * 40px) -((@y - 1) * 40px);
+}
+
+.icon40-page { .icon-matrix(1, 1) }
+.icon40-images { .icon-matrix(2, 1) }
+.icon40-user { .icon-matrix(3, 1) }
+.icon40-users { .icon-matrix(4, 1) }
+.icon40-search { .icon-matrix(5, 1) }
+.icon40-cog { .icon-matrix(6, 1) }
+.icon40-edit { .icon-matrix(14, 1) }
+.icon40-remove-red { .icon-matrix(4, 2) }
+
+// Icon 26 x 26 (50 x 50 matrix)
+.icon-matrix50 (@y: 0) {
+	background-position: -767px -((@y - 1) * 50px - 5px);
+}
+
+.input50-envelope,
+.input50-lock,
+.input50-search {
+	background-image: url("@{iconPath}");
+	background-repeat: no-repeat;
+	background-position: -770px 0;
+}
+.input50-envelope { background-position: -767px 10px; }
+.input50-lock { background-position: -767px -44px; }
+.input50-search { background-position: -767px -94px; }
+
