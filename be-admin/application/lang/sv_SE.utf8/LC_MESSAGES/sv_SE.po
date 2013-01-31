@@ -1,0 +1,547 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bliss Engine\n"
+"POT-Creation-Date: 2013-01-31 08:39+0100\n"
+"PO-Revision-Date: 2013-01-31 08:39+0100\n"
+"Last-Translator: Anders <anders@bobolo.se>\n"
+"Language-Team: Bobolo <anders@bobolo.se>\n"
+"Language: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: /Users/anders/Sites/Bliss-Engine/be-admin\n"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php:46
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/bootstrap.php:47
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:87
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:80
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:90
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-tools.php:5
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/index.php:12
+msgid "Users"
+msgstr "Användare"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/classes/controller/post.php:100
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/classes/controller/post.php:125
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:45
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:46
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-tools.php:3
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:60
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:61
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:25
+msgid "Content"
+msgstr "Innehåll"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/messages/models/user/_external.php:5
+msgid "Please choose a password"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/messages/models/user/_external.php:8
+msgid "The password fields did not match."
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:28
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:32
+msgid "View site"
+msgstr "Visa sajt"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:30
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:31
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/dashboard/index.php:16
+msgid "Dashboard"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:32
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:34
+#, php-format
+msgid "%d messages"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:33
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:35
+#, php-format
+msgid "%d new content"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:35
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:38
+msgid "Help"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:39
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:41
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:47
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:50
+msgid "All content"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:59
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:59
+msgid "Add"
+msgstr "Lägg till"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:79
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:100
+msgid "Edit"
+msgstr "Redigera"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:83
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:115
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:48
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:50
+msgid "Configuration"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:85
+msgid "Site settings"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:93
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/index.php:12
+msgid "Types"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:103
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:15
+msgid "My profile"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/_admin-menu_old.php:105
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:144
+msgid "Logout"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:51
+msgid "Newest content"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:52
+msgid "Last updated content"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:55
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:92
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:94
+msgid "All"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:66
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:70
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-tools.php:4
+msgid "Media"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:71
+msgid "Upload file"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:74
+msgid "All files"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:75
+msgid "Images"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:84
+msgid "All users"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:85
+msgid "Newest users"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:86
+msgid "Last updated users"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:87
+msgid "Add user"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:103
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:109
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:20
+msgid "Search"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:108
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:122
+msgid "Content types"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:123
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/index.php:12
+msgid "Options"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:124
+msgid "Languages"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:125
+msgid "Subsites"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:130
+msgid "Profile"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-menu.php:136
+msgid "Change photo"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/static/admin-tools.php:6
+msgid "Settings"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/dashboard/index.php:16
+msgid "Since"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/errors/403.php:5
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/nonce/classes/nonce.php:148
+msgid "Permission denied"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/errors/404.php:5
+msgid "The content doesn't exist."
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/help/index.php:12
+msgid "User guide"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:9
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:9
+msgid ""
+"Welcome to login to :site! Enter your username or email address and password "
+"in the form below."
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:15
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:15
+msgid "Lost your password?"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:20
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:20
+msgid "Username or Email"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:23
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:43
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:44
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:23
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:56
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:57
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:40
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:42
+msgid "Password"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:25
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:25
+msgid "Login"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:36
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:39
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:32
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:37
+msgid "Remember Me"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:43
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:42
+msgid "Or"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/login/index.php:43
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/login.php:42
+msgid "Create a new account"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/edit.php:14
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:23
+msgid "Add new content"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/edit.php:18
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:22
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:19
+msgid "Submit"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/edit.php:26
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/edit.php:27
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/index.php:25
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:32
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:34
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/index.php:24
+msgid "Name"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/edit.php:32
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/edit.php:33
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/index.php:26
+msgid "Value"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/option/index.php:16
+msgid "New option"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:61
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:63
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:4
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:6
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:61
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:63
+msgid "First"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:67
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:69
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:10
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:12
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:67
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:69
+msgid "Previous"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:83
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:85
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:26
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:28
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:83
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:85
+msgid "Next"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:89
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/pagination/floating.php:91
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:32
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/basic.php:34
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:89
+#: /Users/anders/Sites/Bliss-Engine/be-admin/modules/pagination/views/pagination/floating.php:91
+msgid "Last"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:41
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:24
+msgid "Save"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:49
+msgid "type"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:52
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:54
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:70
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:119
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:46
+msgid "Title"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:65
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/edit.php:66
+msgid "Testar"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:20
+msgid "Files"
+msgstr "Filer"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:36
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:50
+msgid "New content"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:48
+msgid "Manage content types"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:50
+msgid "Choose content type"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:63
+msgid "items"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:67
+msgid "Sort"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:71
+msgid "Content type"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:73
+msgid "Created date"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:74
+msgid "Modified date"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:79
+msgid "Filter"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:106
+msgid "Export data"
+msgstr "Exportera data"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:122
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:47
+msgid "Type"
+msgstr "Typ"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:125
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:48
+msgid "Author"
+msgstr "Författare"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/post/index.php:145
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:67
+msgid "View"
+msgstr "Visa"
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:18
+#, php-format
+msgid "Search for '%s'"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:29
+#, php-format
+msgid "%d items found"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/search/index.php:40
+#, php-format
+msgid "%d items found, displaying %d to %d."
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:18
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/index.php:16
+msgid "New type"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:40
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:42
+msgid "Alias"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:56
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:58
+msgid "Display"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:64
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/type/edit.php:66
+msgid "Description"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:30
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:31
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/index.php:25
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:36
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:37
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:24
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:26
+msgid "Username"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:36
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/edit.php:37
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/index.php:26
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:51
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:52
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:32
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:34
+msgid "Email"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/index.php:16
+msgid "New user"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:41
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:42
+msgid "First name"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:46
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:47
+msgid "Last name"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:61
+msgid "Number of logins"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/profile.php:62
+msgid "Last login"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:7
+msgid "Register new user"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:13
+#, php-format
+msgid "Fill in the form below to register an account with %s."
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:48
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:50
+msgid "Confirm password"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/application/views/user/register.php:59
+msgid "Register"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/kohana/error.php:63
+msgid "PHP internal call"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/kohana/error.php:67
+msgid "arguments"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/kohana/error.php:89
+msgid "Environment"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/kohana/error.php:92
+msgid "Included files"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/kohana/error.php:103
+msgid "Loaded extensions"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/profiler/stats.php:24
+msgid "Benchmark"
+msgstr ""
+
+#: /Users/anders/Sites/Bliss-Engine/be-admin/system/views/profiler/stats.php:63
+msgid "Application Execution"
+msgstr ""
