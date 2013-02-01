@@ -95,17 +95,28 @@ $(document).ready(function(){
 		+ '</div>';
 	$("#be-container").prepend(alert_text);
 	
+	// Progress animation
+	var alert_text = '<div id="system-progress" class="">'
+		+ '<i class="progress-icon rotate-infinite"></i><br>'
+		+ 'Loading'
+		+ '</div>';
+	$("body").append(alert_text);
+	
 	/* 
-	 * !Bootstrap
+	 * !Bootstrap inits
 	 */
 	
 	// Tooltip
 	$("*[rel=tooltip]")
 		.tooltip({
-			animation:	false,
+			animation:	true,
 			delay:		{ show: 500, hide: 100 },
 			placement:	'top',
 		});
+
+	$("*[rel=tooltip]").on('click', function () {
+		$(this).tooltip('hide')
+	})
 
     // Popover
 	$("a[rel=popover]")

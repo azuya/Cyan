@@ -13,19 +13,17 @@ $types = ORM::factory('type')->find_all();
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-				<h1>
-					<?php
+				<h1><?php
 					$selected_type = isset($_GET['type']) ? $_GET['type'] : "";
 					if ($selected_type == "file") {
-						echo __("Files");
+						echo __("Media");
 					} else if ($selected_type) {
 				        $filter_type = new Model_Type($selected_type);						
 						echo $filter_type->name;
 					} else {
 						echo __("Content");						
 					}
-					?>
-				</h1>
+				?></h1>
 			</div>
 			
 			<div class="actions left">
@@ -52,8 +50,6 @@ $types = ORM::factory('type')->find_all();
 				}
 				
 				?>
-				
-				<small class="be-tooltip" rel="tooltip" title="Tooltip är coolt och fungerar ju från start!">?</small>
 				
 			</div>
 			
@@ -99,7 +95,7 @@ $types = ORM::factory('type')->find_all();
 				</div>
 				
 				<div class="btn-group pull-right hidden-phone">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" rel="tooltip" data-placement="bottom" data-original-title="<?php echo __("More options here"); ?>">
 						<i class="icon-align-justify"></i>
 					</a>
 					<ul class="dropdown-menu">

@@ -18,10 +18,8 @@
 		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">
-				<h1>
-					<?php echo Form::checkbox('active', 1, (bool) $post->active, array("id" => "active", "class" => "big")); ?>
+				<h1><?php echo Form::checkbox('active', 1, (bool) $post->active, array("id" => "active", "class" => "big")); ?>
 					<?php echo __("Add new content"); ?>
-					
 					<span class="dropdown">
 						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $post->type; ?><span class="caret"></span></small>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -33,7 +31,6 @@
 							?>
 						</ul>
 					</span>
-					
 				</h1>
 			</div>
 
