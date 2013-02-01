@@ -87,10 +87,11 @@ class Controller_Base extends Controller_Template {
 	 */
 	public function after()
 	{
+	
 		// If ajax call, show only the content, no layout needed
 		if($this->_isAjax)
 		{
-			$this->request->response()->body($this->template->content);
+			$this->response->body($this->template->content);
 			return;
 		}
 
@@ -125,7 +126,7 @@ class Controller_Base extends Controller_Template {
 		}
 		*/
 		
-		$this->template->title = empty($this->template->title)?
+		$this->template->title = empty($this->template->title) ?
 			$this->_config['site']['title'] :
 			$this->template->title . $this->_config['site']['title_suffix'];
 

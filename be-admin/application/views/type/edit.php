@@ -1,6 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="type-edit-<?php echo $content->id; ?>" class="screen active">
+<?php
+	$type = Arr::get($_GET, 'type', '0');
+	
+	if ($type != "") {
+		$container_id = ($type) ? "admin-type-new-type-".$type : "admin-type-new-type";
+	} else {
+		$container_id = ($post->id) ? "admin-post-edit-".$post->id : "admin-type-new-type";
+	}
+?>
+
+<div id="<?php echo $content->id; ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>

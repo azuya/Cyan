@@ -1,7 +1,12 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
 <?php
-	$container_id = ($post->id) ? "content-edit-".$post->id: "content-new-";
+	$type = Arr::get($_GET, 'type', '0');
+	if ($type != "0") {
+		$container_id = ($type) ? "admin-post-new-type-".$type : "admin-post-new-type-";
+	} else {
+		$container_id = ($post->id) ? "admin-post-edit-".$post->id : "admin-post";
+	}
 ?>
 
 <div id="<?php echo $container_id; ?>" class="screen active">

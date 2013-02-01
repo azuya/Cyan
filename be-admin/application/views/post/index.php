@@ -4,12 +4,12 @@
 $types = ORM::factory('type')->find_all();
 ?>
 
-<div id="content-index" class="screen active">
+<?php
+	$type = Arr::get($_GET, 'type', '0');
+	$container_id = ($type) ? "admin-post-type-".$type : "admin-post";
+?>
+<div id="<?php echo $container_id; ?>" class="screen active">
 	
-	<div class="be-tools">
-		<?php include("be-admin/application/static/admin-tools.php"); ?>
-	</div>
-		
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">

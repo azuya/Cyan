@@ -92,7 +92,7 @@ class Controller_Base_Controller extends Controller_Template {
 		// If ajax call, show only the content, no layout needed
 		if($this->_isAjax)
 		{
-			$this->request->response()->body($this->template->content);
+			$this->response->body($this->template->content);
 			return;
 		}
 
