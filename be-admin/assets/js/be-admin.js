@@ -98,7 +98,6 @@ $(document).ready(function(){
 	// Progress animation
 	var alert_text = '<div id="system-progress" class="">'
 		+ '<i class="progress-icon rotate-infinite"></i><br>'
-		+ 'Loading'
 		+ '</div>';
 	$("body").append(alert_text);
 	
