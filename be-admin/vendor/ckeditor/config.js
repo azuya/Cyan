@@ -29,7 +29,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// need to have in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscript';
 	
-	config.removePlugins = 'elementspath';
-	config.resize_enabled = false;
+	// config.removePlugins = 'elementspath';
+	config.resize_enabled = true;
 
 };

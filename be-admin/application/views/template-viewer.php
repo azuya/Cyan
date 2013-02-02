@@ -1,5 +1,6 @@
 <?php require $site["bliss_engine"]["site_content"].'themes/'.$site["site"]["theme"].'/index.php'; ?>
 
+<br>i18n ----------------<br>
 <?php
 // ---
 putenv("LC_ALL=sv_SE");

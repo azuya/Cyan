@@ -4,7 +4,7 @@
 	// Load the user information
 	$user = Auth::instance()->get_user();
 ?>
-<div id="admin-dashboard" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php // include("be-admin/application/static/admin-tools.php"); ?>

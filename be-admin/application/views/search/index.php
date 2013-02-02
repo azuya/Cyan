@@ -4,7 +4,7 @@
 $types = ORM::factory('type')->find_all();
 ?>
 
-<div id="content-search" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 	
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>

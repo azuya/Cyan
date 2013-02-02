@@ -2,14 +2,9 @@
  
 <?php
 	$type = Arr::get($_GET, 'type', '0');
-	if ($type != "0") {
-		$container_id = ($type) ? "admin-post-new-type-".$type : "admin-post-new-type-";
-	} else {
-		$container_id = ($post->id) ? "admin-post-edit-".$post->id : "admin-post";
-	}
 ?>
 
-<div id="<?php echo $container_id; ?>" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>

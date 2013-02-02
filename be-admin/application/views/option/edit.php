@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="option-edit-<?php echo $content->id; ?>" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>
@@ -8,7 +8,7 @@
 	
 	<div class="be-main">
 		
-		<?php echo Form::open('option/post/'.$content->id, array("class" => "form-horizontal")); ?>
+		<?php echo Form::open('admin/option/post/'.$content->id, array("class" => "form-horizontal")); ?>
 		<div class="be-header">
 			<div class="title">
 				<h1><?php echo __("Add new content"); ?></h1>

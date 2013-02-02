@@ -4,11 +4,7 @@
 $types = ORM::factory('type')->find_all();
 ?>
 
-<?php
-	$type = Arr::get($_GET, 'type', '0');
-	$container_id = ($type) ? "admin-post-type-".$type : "admin-post";
-?>
-<div id="<?php echo $container_id; ?>" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 	
 	<div class="be-main">
 		<div class="be-header">

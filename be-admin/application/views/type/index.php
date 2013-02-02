@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<div id="admin-type" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>
@@ -13,7 +13,7 @@
 			</div>
 
 			<div class="actions left">
-				<?php echo HTML::anchor("type/new", "<i class=\"icon-plus-sign\"></i> ".__("New type"), array("class" => "btn")); ?>
+				<?php echo HTML::anchor("admin/type/new", "<i class=\"icon-plus-sign\"></i> ".__("New type"), array("class" => "btn")); ?>
 			</div>
 		</div>
 		
@@ -28,10 +28,10 @@
 				<tbody>
 					<?php foreach ($contents as $content) : ?>
 					<tr>
-					    <td><?php echo HTML::anchor("type/edit/".$content->id, $content->name); ?></td>
+					    <td><?php echo HTML::anchor("admin/type/edit/".$content->id, $content->name); ?></td>
 					    <td>
 					    	<div class="row-show-on-hover">
-					    	<?php echo HTML::anchor("type/delete/".$content->id, "Delete"); ?>
+					    	<?php echo HTML::anchor("admin/type/delete/".$content->id, "Delete"); ?>
 					    	</div>
 					    </td>
 					</tr>

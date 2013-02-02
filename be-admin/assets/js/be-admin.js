@@ -183,6 +183,9 @@ function go_to_page(href) {
     container.removeClass("active");
     $(this).find("li.active").removeClass("active");
 
+    // Apply CKEditor
+    CKEDITOR.replace('textarea-id');
+
 	// Add to history
 	window.history.pushState(null, "", href);
 }

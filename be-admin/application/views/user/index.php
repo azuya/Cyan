@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 
-<div id="admin-user" class="screen active">
+<div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 	
 	<div class="be-tools">
 		<?php include("be-admin/application/static/admin-tools.php"); ?>
