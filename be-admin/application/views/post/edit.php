@@ -18,7 +18,7 @@
 		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo Form::checkbox('active', 1, (bool) $post->active, array("id" => "active", "class" => "big")); ?>
+				<h1><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?>
 					<?php echo __("Add new content"); ?>
 					<span class="dropdown">
 						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $post->type; ?><span class="caret"></span></small>
@@ -43,24 +43,24 @@
 		<div class="be-content">
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
-			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"), "id" => "type")); ?>
+			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"))); ?>
 
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>
 				<div class="controls">
-					<?php echo Form::input('title', $data->title, array("placeholder" => __("Title"), "id" => "title")); ?>
+					<?php echo Form::input('title', $data->title, array("placeholder" => __("Title"))); ?>
 					<span class="label label-important"><?php echo Arr::get($errors, 'title');?></span>
 				</div>
 			</div>
 			 
 			<div class="control-group">
 				<?php echo Form::label('content', __("Content"), array("class" => "control-label", "placeholder" => __("Content"))); ?>
-				<div class="controls"><?php echo Form::textarea('content', $data->content, array("placeholder" => __("Content"), "id" => "content", "class" => "ckeditor")); ?></div>
+				<div class="controls"><?php echo Form::textarea('content', $data->content, array("placeholder" => __("Content"), "class" => "ckeditor")); ?></div>
 			</div>
 		 
 			<div class="control-group">
 				<?php echo Form::label('testar', __("Testar"), array("class" => "control-label", "for" => "testar")); ?>
-				<div class="controls"><?php echo Form::input('testar', $post->testar, array("placeholder" => __("Testar"), "id" => "testar")); ?></div>
+				<div class="controls"><?php echo Form::input('testar', $post->testar, array("placeholder" => __("Testar"))); ?></div>
 			</div>
 
 		</div>

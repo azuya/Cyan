@@ -3,7 +3,7 @@
 $user = Auth::instance()->get_user();
 
 if ($user) :
-	$types = ORM::factory('type')->find_all();
+	$types = ORM::factory('type')->order_by('sort', 'asc')->find_all();
 
 	$query = $_GET;
 	$cid = isset($query['c']) ? $query['c'] : "";
@@ -28,17 +28,19 @@ if ($user) :
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
-										<li><?php echo HTML::anchor("admin/dashboard/", '<i class="icon-star"></i> '.__("Dashboard")); ?></li>
-										<li><?php echo HTML::anchor(".", '<i class="icon-star"></i> '.__("View site")); ?></li>
+										<li><?php echo HTML::anchor("admin/dashboard/", '<i class="icon-home"></i> '.__("Dashboard")); ?></li>
+										<li><?php echo HTML::anchor(".", '<i class="icon-eye-open"></i> '.__("View site")); ?></li>
+										<!--
 										<li class="divider"></li>
 										<li><?php echo HTML::anchor("admin/messages/", sprintf(__("%d messages"), 3)); ?></li>
 										<li><?php echo HTML::anchor("admin/post/", sprintf(__("%d new content"), 2)); ?></li>
+										-->
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/help", __("Help"), array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org", array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", "Support forums", array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/about", sprintf(__("About %s"), $site["bliss_engine"]["name"]), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/help", '<span class="text">'.__("Help").'</span>'.'<i class="icon60-help"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("http://www.blissengine.org/", '<span class="text">'."BlissEngine.org".'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", '<span class="text">'.__("Support forums").'</span>'.'<i class="icon60-megaphone"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/about", '<span class="text">'.__("About").'</span>'.'<i class="icon60-info"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -52,11 +54,13 @@ if ($user) :
 										<li><?php echo HTML::anchor("#", __("Last updated content")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/post", __("All"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("All content").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
 										<?php foreach ($types as $type) : ?>
 											<li>
-												<?php echo HTML::anchor("admin/post/?type=".$type->id, $type->name, array("class" => "link")); ?>
-												<?php echo HTML::anchor("admin/post/new?type=".$type->id, __("Add"), array("class" => "add btn btn-primary btn-small")); ?>												
+												<?php
+												$link = '<span class="text">'.$type->name.'</span>'.'<i class="icon60-'.$type->icon.'"></i><br>';
+												echo HTML::anchor("admin/post/?type=".$type->id, $link, array("class" => "link")); ?>
+												<?php echo HTML::anchor("admin/post/new?type=".$type->id, "", array("class" => "add")); ?>												
 											</li>
 										<?php endforeach; ?>
 									</ul>
@@ -68,11 +72,12 @@ if ($user) :
 								<div class="inner">
 									<ul class="menu">
 										<li><?php echo HTML::anchor("admin/post", __("Media")); ?></li>
-										<li><?php echo HTML::anchor("admin/post/upload", __("Upload file"), array("class" => "btn")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/post/?type=file", __("All files"), array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/post/?type=file", __("Images"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("All files").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/upload", '<span class="text">'.__("Upload files").'</span>'.'<i class="icon60-upload"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file", '<span class="text">'.__("Images").'</span>'.'<i class="icon60-images"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file", '<span class="text">'.__("Videos").'</span>'.'<i class="icon60-film"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -87,7 +92,8 @@ if ($user) :
 										<li><?php echo HTML::anchor("admin/user/new", __("Add user"), array("class" => "btn")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/user", __("Users"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("All users").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("Groups").'</span>'.'<i class="icon60-users"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -119,10 +125,10 @@ if ($user) :
 
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/type", __("Content types"), array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/option", __("Options"), array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/language", __("Languages"), array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/subsites", __("Subsites"), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/option", '<span class="text">'.__("Options").'</span>'.'<i class="icon60-cog"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/language", '<span class="text">'.__("Languages").'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/subsites", '<span class="text">'.__("Subsites").'</span>'.'<i class="icon60-boxes"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>

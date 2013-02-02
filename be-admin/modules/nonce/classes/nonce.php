@@ -55,7 +55,7 @@ class Nonce {
 		// echo "nonce_field($action, $name, $echo)";
 		
 		// $nonce_field = '<input type="text" id="' . $name . '" name="' . $name . '" value="' . Nonce::create_nonce($action) . '" />';
-		$nonce_field = Form::hidden($name, Nonce::create_nonce($action), array("id" => $name));
+		$nonce_field = Form::hidden($name, Nonce::create_nonce($action));
 		// if ($referer) {
 		// 	$nonce_field .= Nonce::referer_field(false);
 		// }

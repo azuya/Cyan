@@ -161,10 +161,13 @@ function go_to_page(href) {
 				
 				$("#be-container").append(data);
 				end_progress();
+
+				// Add to history
+				window.history.pushState(null, "", href);
 			},
 			error: function() {
 				end_progress();
-				modal('Error...', 'Ooops, something went wrong.', 'Buttons...');
+				modal('Ooops!', 'Something went wrong, it looks as if the page couldn\'t be loaded.');
 			}
 		});
 
@@ -184,10 +187,8 @@ function go_to_page(href) {
     $(this).find("li.active").removeClass("active");
 
     // Apply CKEditor
-    CKEDITOR.replace('textarea-id');
+    // CKEDITOR.replace('textarea-id');
 
-	// Add to history
-	window.history.pushState(null, "", href);
 }
 
 function start_progress() {
@@ -205,5 +206,25 @@ function end_progress() {
 }
 
 function modal(title, text, buttons) {
-	alert('modal()' + title + text + buttons);	
+
+	if (buttons == undefined) {
+		buttons = '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>';
+	}
+
+	var modal = '<div id="myModal" class="modal hide fade">'
+		+ '<div class="modal-header">'
+		+ '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
+		+ '<h3>' + title + '</h3>'
+		+ '</div>'
+		+ '<div class="modal-body">'
+		+ '<p>' + text + '</p>'
+		+ '</div>'
+		+ '<div class="modal-footer">'
+		+ buttons
+		+ '</div>'
+		+ '</div>';
+	$("body").append(modal);
+	
+	$('#myModal').modal({ });
+
 }

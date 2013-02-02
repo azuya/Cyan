@@ -11,7 +11,7 @@
 		<? if ($message) : ?>
 		<div class="alert alert-error">
 			<button type="button" class="close" data-dismiss="alert">×</button>
-			<?php echo $message; ?>
+			<?php echo $message; ?><br>
 			<?php echo Html::anchor('lost-password', __('Lost your password?')); ?>
 		</div>
 		<? endif; ?>

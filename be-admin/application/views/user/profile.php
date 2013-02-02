@@ -34,27 +34,27 @@
 						
 						<div class="control-group">
 							<?php echo Form::label('username', __("Username"), array("class" => "control-label", "for" => "username")); ?>
-							<div class="controls"><?php echo Form::input('username', $user->username, array("placeholder" => __("Username"), "id" => "username")); ?></div>
+							<div class="controls"><?php echo Form::input('username', $user->username, array("placeholder" => __("Username"))); ?></div>
 						</div>
 						 
 						<div class="control-group">
 							<?php echo Form::label('first_name', __("First name"), array("class" => "control-label", "for" => "first_name")); ?>
-							<div class="controls"><?php echo Form::input('first_name', '', array("placeholder" => __("First name"), "id" => "first_name")); ?></div>
+							<div class="controls"><?php echo Form::input('first_name', '', array("placeholder" => __("First name"))); ?></div>
 						</div>
 						 
 						<div class="control-group">
 							<?php echo Form::label('last_name', __("Last name"), array("class" => "control-label", "for" => "last_name")); ?>
-							<div class="controls"><?php echo Form::input('last_name', '', array("placeholder" => __("Last name"), "id" => "last_name")); ?></div>
+							<div class="controls"><?php echo Form::input('last_name', '', array("placeholder" => __("Last name"))); ?></div>
 						</div>
 						 
 						<div class="control-group">
 							<?php echo Form::label('email', __("Email"), array("class" => "control-label", "for" => "email")); ?>
-							<div class="controls"><?php echo Form::input('email', $user->email, array("placeholder" => __("Email"), "id" => "email")); ?></div>
+							<div class="controls"><?php echo Form::input('email', $user->email, array("placeholder" => __("Email"))); ?></div>
 						</div>
 						 
 						<div class="control-group">
 							<?php echo Form::label('password', __("Password"), array("class" => "control-label")); ?>
-							<div class="controls"><?php echo Form::password('password', '', array("placeholder" => __("Password"), "id" => "password")); ?></div>
+							<div class="controls"><?php echo Form::password('password', '', array("placeholder" => __("Password"))); ?></div>
 						</div>
 						 
 						<ul>
