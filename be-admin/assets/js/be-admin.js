@@ -76,11 +76,11 @@ $(document).ready(function(){
 		$("#q").focus();
 	});
 
-	$("#scroll-to-top").click(function() {
+	$(document).click(function() {
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
 	
-	$("table.table tr").hover(function(){
+	$(document).on('hover', 'table.table tr', function(){
 		$(this).find(".row-show-on-hover").show();		
 	}, function() {
 		$(this).find(".row-show-on-hover").hide();		
@@ -133,6 +133,10 @@ $(document).ready(function(){
 	
 });
 
+/*
+ * Go to a page -> Load new or switch DIV
+ * @param	String	Href of link
+ */
 function go_to_page(href) {
 
 	if (href.indexOf('#') == 0) {
@@ -143,21 +147,25 @@ function go_to_page(href) {
 	// Link to be used for ID
 	var link = href;
 
+	// This one must go later, don't hard code!
 	link = link.replace(/\/Bliss-Engine\//g, "");
+	
+	// Replace slashes with dashes
 	link = link.replace(/\//g, "-").toLowerCase();
-	console.log(link);
+	// console.log(link);
 	
 	var page_id = link.replace(/\//g, "-").toLowerCase();
 	var page_id = page_id.replace(/\?/g, "-");
+	var page_id = page_id.replace(/&/g, "-");
 	var page_id = page_id.replace(/=/g, "-");
 	var page_id = page_id.replace(/--/g, "-");
-	console.log('PageID: ' + page_id);
+	// console.log('PageID: ' + page_id);
 
 	// Load new page
 	if ($("#" + page_id).length == 0) {
 		start_progress();
 	
-		console.log("#" + page_id + ' finns inte');
+		console.log("#" + page_id + ' doesn\'t exist -> load');
 
 		$.ajax({
 			type: "GET",
@@ -174,14 +182,14 @@ function go_to_page(href) {
 			},
 			error: function() {
 				end_progress();
-				modal('Ooops!', 'Something went wrong, it looks as if the page couldn\'t be loaded.');
+				modal('Ooops!', 'Something went wrong, it looks as if the page couldn\'t be loaded. Check the link and try again?');
 			}
 		});
 		
 		
 	// Show page
 	} else {
-		console.log('Finns!: ' + "#" + page_id);
+		console.log('Exists: ' + "#" + page_id);
 	
 		$(".screen").removeClass("active");
 		$("#" + page_id).addClass("active");
@@ -195,8 +203,7 @@ function go_to_page(href) {
     $(this).find("li.active").removeClass("active");
 
     // Apply CKEditor
-    // CKEDITOR.replace('textarea-id');
-
+	// CKEDITOR.replaceAll();
 }
 
 function start_progress() {

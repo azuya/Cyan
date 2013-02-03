@@ -168,19 +168,19 @@
 							<tbody>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo HTML::anchor("admin/type/edit/"."1", "field name"); ?></td>
+									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
 									<td>Otto</td>
 									<td>@mdo</td>
 								</tr>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo HTML::anchor("admin/type/edit/"."1", "field name"); ?></td>
+									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
 									<td>Thornton</td>
 									<td>@fat</td>
 								</tr>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo HTML::anchor("admin/type/edit/"."1", "field name"); ?></td>
+									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
 									<td>the Bird</td>
 									<td>@twitter</td>
 								</tr>

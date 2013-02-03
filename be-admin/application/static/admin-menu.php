@@ -38,6 +38,7 @@ if ($user) :
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/help", '<span class="text">'.__("Help").'</span>'.'<i class="icon60-help"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/news", '<span class="text">'.__("Bliss News").'</span>'.'<i class="icon60-wifi"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("http://www.blissengine.org/", '<span class="text">'."BlissEngine.org".'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", '<span class="text">'.__("Support forums").'</span>'.'<i class="icon60-megaphone"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/about", '<span class="text">'.__("About").'</span>'.'<i class="icon60-info"></i><br>', array("class" => "link")); ?></li>
@@ -74,10 +75,10 @@ if ($user) :
 										<li><?php echo HTML::anchor("admin/post", __("Media")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("All files").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file", '<span class="text">'.__("All files").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/post/upload", '<span class="text">'.__("Upload files").'</span>'.'<i class="icon60-upload"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/post/?type=file", '<span class="text">'.__("Images").'</span>'.'<i class="icon60-images"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/post/?type=file", '<span class="text">'.__("Videos").'</span>'.'<i class="icon60-film"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file&filetype=image", '<span class="text">'.__("Images").'</span>'.'<i class="icon60-images"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/post/?type=file&filetype=video", '<span class="text">'.__("Videos").'</span>'.'<i class="icon60-film"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
