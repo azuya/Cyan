@@ -13,8 +13,8 @@
 @submenuWidth:			200px;
 @submenuHeight:			130px;
 
-@iconPath:				"../img/be-sprite-white.png";
-@iconPathBlack:			"../img/be-sprite.png";
+@iconPath:				"../img/be-sprite.png";
+@iconPathWhite:			"../img/be-sprite-white.png";
 
 html {
 	height: 100%;
@@ -73,6 +73,7 @@ header.admin {
 
 			> i {
 				margin-right: 5px;
+				background-image: url("@{iconPathWhite}");
 			}
 		}
 
@@ -83,17 +84,26 @@ header.admin {
 				text-shadow: none;
 				
 				> i {
-					background-image: url("../img/be-sprite.png");
+					background-image: url("@{iconPath}");
 				}
 			}
 		}
-	}
-	
-	.navbar .nav > li > a.brand {
-		margin-left: -15px;
-		font-size: 17px;
-		width: (@submenuWidth - 26px);
-		border-right: 1px solid darken(@linkColor,5%);
+
+		> li.logo {
+			margin-left: -10px;
+		}
+		
+		> li > a.brand {
+			margin-left: 0;
+			font-size: 17px;
+			width: (@submenuWidth - 26px);
+			padding-left: 10px;
+		}
+
+		> li.content {
+			border-left: 1px solid darken(@linkColor,5%);
+		}
+		
 	}
 	
 	ul.nav.pull-right > li {
@@ -396,6 +406,12 @@ footer.admin {
 #system-alert {
 	.border-radius(0);
 	margin: 0;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	
+	background: fade(@warningBackground, 96%);
 }
 
 #system-progress {
@@ -578,6 +594,10 @@ footer.admin {
 	div.screen.active {
 		display: block;
 	}
+}
+
+.handle-move {
+	cursor: move;
 }
 
 @media (max-width: 979px) {

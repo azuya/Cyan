@@ -1,5 +1,5 @@
 /*
-@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js", "holder.js", "../../vendor/plupload/js/plupload.full.js";
+@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js", "holder.js", "jquery.nestable.js", "../../vendor/plupload/js/plupload.full.js";
 */
 
 // Starta jQuery
@@ -94,7 +94,7 @@ $(document).ready(function(){
 		+ '<button type="button" class="close" data-dismiss="alert">&times;</button>'
 		+ '<strong>Warning!</strong> Someone else is editing this content. It\'s advised that you don\'t edit it at the same time.'
 		+ '</div>';
-	$("#content-index").prepend(alert_text);
+	$("body").append(alert_text);
 	
 	/* 
 	 * !Bootstrap inits
@@ -124,12 +124,19 @@ $(document).ready(function(){
 			e.preventDefault()
 		});
 	
+	/*
+	 * Bootstrap fixes
+	 */
+	$(document).on("click", "label", function() {
+		$(this).parent().find('*[name="' + $(this).attr("for") + '"]').focus();
+	});
+	
 });
 
 function go_to_page(href) {
 
-	if (href == "#") {
-		console.log('Just hash (#)...');
+	if (href.indexOf('#') == 0) {
+		console.log('Starts with hash (#)...');
 		return false;
 	}
 
@@ -170,7 +177,8 @@ function go_to_page(href) {
 				modal('Ooops!', 'Something went wrong, it looks as if the page couldn\'t be loaded.');
 			}
 		});
-
+		
+		
 	// Show page
 	} else {
 		console.log('Finns!: ' + "#" + page_id);
@@ -193,10 +201,10 @@ function go_to_page(href) {
 
 function start_progress() {
     // System progress
-	var alert_text = '<div id="system-progress">'
+	var progress_text = '<div id="system-progress">'
 		+ '<i class="progress-icon rotate-infinite"></i><br>'
 		+ '</div>';
-	$("body").append(alert_text).fadeIn();
+	$("body").append(progress_text).fadeIn();
 }
 
 function end_progress() {

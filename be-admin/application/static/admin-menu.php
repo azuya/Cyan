@@ -24,7 +24,7 @@ if ($user) :
 
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><?php echo HTML::anchor("admin/dashboard/", $site["site"]["title"], array("class" => "brand hidden-tablet hidden-phone")); ?>
+						<li class="logo"><?php echo HTML::anchor("admin/dashboard/", $site["site"]["title"], array("class" => "brand hidden-tablet hidden-phone")); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -45,7 +45,7 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/post", '<i class="icon40-page"></i> '.__("Content")); ?>
+						<li class="content"><?php echo HTML::anchor("admin/post", '<i class="icon40-page"></i> '.__("Content")); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
