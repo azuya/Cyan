@@ -87,14 +87,14 @@ if ($user) :
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
-										<li><?php echo HTML::anchor("#", __("All users")); ?></li>
+										<li><?php echo HTML::anchor("admin/user", __("All users")); ?></li>
 										<li><?php echo HTML::anchor("#", __("Newest users")); ?></li>
 										<li><?php echo HTML::anchor("#", __("Last updated users")); ?></li>
 										<li><?php echo HTML::anchor("admin/user/new", __("Add user"), array("class" => "btn")); ?></li>
 									</ul>
 									<ul class="items">
-										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("All users").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("Groups").'</span>'.'<i class="icon60-users"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/user", '<span class="text">'.__("All users").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/user/group", '<span class="text">'.__("Groups").'</span>'.'<i class="icon60-users"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>

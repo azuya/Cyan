@@ -26,7 +26,7 @@
 						<li><a href="https://github.com/shadowhand/purifier">Purifier</a> <span class="muted">3.3 (Develop)</span></li>
 						<li><a href="https://github.com/shadowhand/bonafide">Bonafide</a> <span class="muted">3.2 (Develop)</span></li>
 					</ul>
-				<li><?php echo HTML::anchor("http://jquery.com/", "jQuery"); ?> <span class="muted">1.9.0</span></li>
+				<li><?php echo HTML::anchor("http://jquery.com/", "jQuery"); ?> <span class="muted">1.9.1</span></li>
 				<li><?php echo HTML::anchor("http://twitter.github.com/bootstrap/", "Bootstrap"); ?> <span class="muted">2.2.2</span></li>
 				<li><?php echo HTML::anchor("http://ckeditor.com/", "CKEditor"); ?> <span class="muted">4.0.1</span></li>
 				<li><?php echo HTML::anchor("http://www.entypo.com/", "The Entypo Pictogram Suite"); ?> by Daniel Bruce <span class="muted">2.0</span></li>

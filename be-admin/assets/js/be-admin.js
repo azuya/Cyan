@@ -172,9 +172,9 @@ function go_to_page(href) {
 			url: href,
 			data: "",
 			success: function(data) {
-				$("#be-container .screen").removeClass("active");
+				$("#content .screen").removeClass("active");
 				
-				$("#be-container").append(data);
+				$("#content").append(data);
 				end_progress();
 
 				// Add to history

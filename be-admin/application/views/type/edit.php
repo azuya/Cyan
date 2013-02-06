@@ -30,7 +30,7 @@
 			
 			<div class="tabbable"> <!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+					<li class="active"><a href="#basic" data-toggle="tab"><?php echo __("Basic"); ?></a></li>
 					<li><a href="#fields" data-toggle="tab"><?php echo __("Fields"); ?></a></li>
 					<li><a href="#access" data-toggle="tab"><?php echo __("Access"); ?></a></li>
 					<li><a href="#cache" data-toggle="tab"><?php echo __("Cache"); ?></a></li>
@@ -38,7 +38,7 @@
 				</ul>
 			
 				<div class="tab-content">
-					<div class="tab-pane active" id="tab1">
+					<div class="tab-pane active" id="basic">
 
 						<div class="control-group">
 							<?php echo Form::label('name', __("Name"), array("class" => "control-label", "for" => "name")); ?>

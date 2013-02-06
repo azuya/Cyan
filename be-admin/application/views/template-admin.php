@@ -36,9 +36,9 @@
 		<div id="content" class="container-fluid">
 		
 			<!-- Content -->
-			<div id="be-container">
+			<!-- <div id="be-container"> -->
 				<?php echo $content; ?>
-			</div>
+			<!-- </div> -->
 	
 		</div> <!-- / content wrapper -->
 	
