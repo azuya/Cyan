@@ -1,5 +1,10 @@
 /*
-@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js", "holder.js", "jquery.nestable.js", "../../vendor/plupload/js/plupload.full.js";
+@codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js";
+@codekit-append "holder.js", "jquery.nestable.js";
+
+@codekit-append "../../vendor/fileupload/js/vendor/jquery.ui.widget.js";
+@codekit-append "../../vendor/fileupload/js/iframe-transport.js";
+@codekit-append "../../vendor/fileupload/js/jquery.fileupload.js";
 */
 
 // Starta jQuery

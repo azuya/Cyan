@@ -251,4 +251,28 @@ class Controller_Post extends Controller_Admin {
 
 	}
 
+	// Upload file
+	public function action_upload()
+	{
+		$post_id = $this->request->param('id');
+		
+		// Get post
+		$post = new Model_Post($post_id);
+		
+		// Get post data
+		$data = $post->datas->where('post_id', '=' , $post_id)->find();
+
+		// Create the pagination object
+		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
+		// Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
+		Breadcrumbs::add(Breadcrumb::factory()->set_title("Crumb 2"));
+		$breadcrumbs = Breadcrumbs::render();
+
+		$this->template->content = View::factory(self::MODULE.'/upload')
+			// ->bind('post', $post)
+			// ->bind('data', $data)
+			->bind('breadcrumbs', $breadcrumbs)
+			->set('query', $this->request->query());
+	}
+
 }

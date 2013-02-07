@@ -127,6 +127,7 @@ if ($user) :
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/roles", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-user"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/option", '<span class="text">'.__("Options").'</span>'.'<i class="icon60-cog"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/language", '<span class="text">'.__("Languages").'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/subsites", '<span class="text">'.__("Subsites").'</span>'.'<i class="icon60-boxes"></i><br>', array("class" => "link")); ?></li>

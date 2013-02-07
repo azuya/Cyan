@@ -35,10 +35,11 @@ class UploadHandler
     );
 
     function __construct($options = null, $initialize = true) {
+        
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
-            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/files/',
-            'upload_url' => $this->get_full_url().'/files/',
+            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/../../../../../be-content/files/',
+            'upload_url' => $this->get_full_url().'/../../../../../be-content/files/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
