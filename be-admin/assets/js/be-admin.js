@@ -225,18 +225,23 @@ function end_progress() {
 	});
 }
 
-function modal(title, text, buttons) {
+function modal(title, text, image, buttons) {
 
 	if (buttons == undefined) {
 		buttons = '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>';
 	}
+	
+	// if (image) {
+		image = '<div class="icon"><i class="icon60-blue-exclamation"></i></div>';
+	// }
 
-	var modal = '<div id="myModal" class="modal hide fade">'
+	var modal = '<div id="modal-box" class="modal hide fade">'
 		+ '<div class="modal-header">'
 		+ '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
 		+ '<h3>' + title + '</h3>'
 		+ '</div>'
 		+ '<div class="modal-body">'
+		+ image
 		+ '<p>' + text + '</p>'
 		+ '</div>'
 		+ '<div class="modal-footer">'
@@ -245,6 +250,8 @@ function modal(title, text, buttons) {
 		+ '</div>';
 	$("body").append(modal);
 	
-	$('#myModal').modal({ });
+	$('#modal-box').modal({
+		
+	});
 
 }
