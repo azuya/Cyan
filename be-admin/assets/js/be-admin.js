@@ -7,7 +7,6 @@
 @codekit-append "../../vendor/fileupload/js/jquery.fileupload.js";
 */
 
-// Starta jQuery
 $(document).ready(function(){
 
 	// Calculate stickynav height if exist	
@@ -43,6 +42,7 @@ $(document).ready(function(){
 		});
 	// }
 
+	// Click for page chages
 	$(document).on("click", "a", function(e) {
 		
 		// Link URL
@@ -54,6 +54,12 @@ $(document).ready(function(){
 		return false;
 	});
 
+	// Popstate
+	$(window).bind("popstate", function(evt) {
+		console.log('POP to: ' + location.href);
+		go_to_page(location.href);
+	});
+	
 	$("header.admin ul.nav > li > a:not(.no-dropdown)").click(function() {
 		$("header.admin ul.nav").find("li.active").removeClass("active");
 		$(this).parent().addClass("active");
@@ -152,8 +158,10 @@ function go_to_page(href) {
 	// Link to be used for ID
 	var link = href;
 
-	// This one must go later, don't hard code!
+	// These must go later, don't hard code! **********************************************************
+	link = link.replace(/http:\/\/localhost\/Bliss-Engine\//g, "");
 	link = link.replace(/\/Bliss-Engine\//g, "");
+	// These must go later, don't hard code! **********************************************************
 	
 	// Replace slashes with dashes
 	link = link.replace(/\//g, "-").toLowerCase();
@@ -225,6 +233,32 @@ function end_progress() {
 	});
 }
 
+function browse_away_confirmation() {
+	console.log('browse_away_confirmation()');
+
+	end_progress();
+
+	/*
+	if (typeof tinyMCE === 'undefined') {
+		console.log('tinyMCE finns inte');
+
+		if ($('.formstatus').val() == '1') {
+			return i18n.form_modified;
+		}
+	
+	} else {
+		console.log('tinyMCE finns...');
+		
+		if (tinyMCE.activeEditor.isDirty()) {
+			return i18n.form_modified;
+		}
+		if ($('.formstatus').val() == '1') {
+			return i18n.form_modified;
+		}
+	}
+	*/
+}
+
 function modal(title, text, image, buttons) {
 
 	if (buttons == undefined) {
@@ -250,6 +284,7 @@ function modal(title, text, image, buttons) {
 		+ '</div>';
 	$("body").append(modal);
 	
+	// Open modal
 	$('#modal-box').modal({
 		
 	});
