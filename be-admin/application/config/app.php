@@ -8,7 +8,7 @@ return array(
 		'name'			=> 'Bliss Engine',
 		'version'		=> '0.1 Alpha',
 		'copyright'		=> '2013',
-		'jquery'		=> '1.9.0',
+		'jquery'		=> '1.9.1',
         'site_content'	=> DOCROOT.'be-content/',
         'file_upload'	=> DOCROOT.'be-content/files/',
 	),
