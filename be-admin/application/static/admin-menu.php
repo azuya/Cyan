@@ -24,7 +24,8 @@ if ($user) :
 
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="logo"><?php echo HTML::anchor("admin/dashboard/", $site["site"]["title"], array("class" => "brand hidden-tablet hidden-phone")); ?>
+						<li class="logo">
+							<?php echo HTML::anchor("admin/dashboard/", $site["site"]["title"], array("class" => "brand hidden-tablet hidden-phone")); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -46,7 +47,8 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li class="content"><?php echo HTML::anchor("admin/post", '<i class="icon40-page"></i> '.__("Content")); ?>
+						<li>
+							<?php echo HTML::anchor("admin/post", '<i class="icon40-page"></i> '.__("Content"), array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Your content is located here"))); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -68,7 +70,8 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/media", '<i class="icon40-images"></i> '.__("Media")); ?>
+						<li>
+							<?php echo HTML::anchor("admin/media", '<i class="icon40-images"></i> '.__("Media"), array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Manage and upload files"))); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -83,7 +86,8 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/user", '<i class="icon40-users"></i> '.__("Users")); ?>
+						<li>
+							<?php echo HTML::anchor("admin/user", '<i class="icon40-users"></i> '.__("Users"), array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Manage users, groups and access rights"))); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -107,7 +111,8 @@ if ($user) :
 						<li><?php echo HTML::anchor("admin/post/edit/".$cid, '<i class="icon40-edit"></i>'.'<span> '.__("Edit").'</span>', array("id" => "edit-trigger", "class" => "no-dropdown")); ?></li>
 						<?php endif; ?>
 
-						<li><?php echo HTML::anchor("admin/search", '<i class="icon40-search"></i>'.'<span> '.__("Search").'</span>', array("id" => "search-trigger")); ?>
+						<li>
+							<?php echo HTML::anchor("admin/search", '<i class="icon40-search"></i>'.'<span> '.__("Search").'</span>', array("id" => "search-trigger", "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Search your site"))); ?>
 							<div class="submenu submenu-search">
 								<div class="inner">
 									<div id="be-search" class="container-fluid">
@@ -119,7 +124,8 @@ if ($user) :
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/setting", '<i class="icon40-cog"></i>'.'<span> '.__("Configuration").'</span>'); ?>
+						<li>
+							<?php echo HTML::anchor("admin/setting", '<i class="icon40-cog"></i>'.'<span> '.__("Configuration").'</span>', array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Configure your site here"))); ?>
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
@@ -129,13 +135,15 @@ if ($user) :
 										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/roles", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-user"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/option", '<span class="text">'.__("Options").'</span>'.'<i class="icon60-cog"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/form", '<span class="text">'.__("Forms").'</span>'.'<i class="icon60-window"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/language", '<span class="text">'.__("Languages").'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/subsites", '<span class="text">'.__("Subsites").'</span>'.'<i class="icon60-boxes"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><?php echo HTML::anchor("admin/user/profile", '<i class="icon40-user"></i>'.'<span> '.__("Profile").'</span>'); ?>
+						<li>
+							<?php echo HTML::anchor("admin/user/profile", '<i class="icon40-user"></i>'.'<span> '.__("Profile").'</span>', array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Get to and update your profile here"))); ?>
 							<div class="submenu submenu-profile">
 								<div class="inner">
 									<div class="top">

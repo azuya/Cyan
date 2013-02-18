@@ -115,7 +115,7 @@ $(document).ready(function(){
 	$("*[rel=tooltip]")
 		.tooltip({
 			animation:	true,
-			delay:		{ show: 500, hide: 100 },
+			delay:		{ show: 1000, hide: 100 },
 			placement:	'top',
 		});
 
