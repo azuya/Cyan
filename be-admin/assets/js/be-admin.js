@@ -55,10 +55,12 @@ $(document).ready(function(){
 	});
 
 	// Popstate
-	$(window).bind("popstate", function(evt) {
-		console.log('POP to: ' + location.href);
-		go_to_page(location.href);
-	});
+	setTimeout(function() {
+		$(window).bind("popstate", function(e) {
+			console.log('POP to: ' + location.href);
+			go_to_page(location.href);
+		});
+	}, 500);
 	
 	$("header.admin ul.nav > li > a:not(.no-dropdown)").click(function() {
 		$("header.admin ul.nav").find("li.active").removeClass("active");
@@ -150,6 +152,13 @@ $(document).ready(function(){
  */
 function go_to_page(href) {
 
+	// If we are somewhere else (eg. page view)
+	if ($("#top").length == 0) {
+		// console.log("#top finns inte, ladda om");
+		window.location = href;
+		return;
+	}
+	
 	if (href.indexOf('#') == 0) {
 		console.log('Starts with hash (#)...');
 		return false;
