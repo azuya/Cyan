@@ -7,7 +7,7 @@ class Controller_Type extends Controller_Admin {
      
     public function action_index()
     {
-        $types = ORM::factory('type')->order_by('sort', 'asc')->find_all(); // loads all content object from table
+        $types = ORM::factory('type')->order_by('sort', 'asc')->order_by('name', 'asc')->find_all(); // loads all content object from table
          
         // $view = new View('content/index');
         // $view->set("content", $type); // set "posts" object to view

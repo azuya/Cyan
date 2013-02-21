@@ -186,6 +186,7 @@
 								</tr>
 							</tbody>
 						</table>
+						<?php echo HTML::anchor("admin/field/edit/"."1", '<i class="icon-plus"></i> '.__("Add field"), array('class'=>'btn')); ?>
 					</div>
 				
 					<div class="tab-pane" id="access">
