@@ -8,7 +8,7 @@ $user = Auth::instance()->get_user();
 <footer class="admin">
 	<div class="inner">
 
-		<p class="muted credit">Copyright &copy; <?php echo $site["bliss_engine"]["copyright"]; ?> by <a href="http://www.blissengine.org">Bobolo</a>.</p>
+		<p class="muted credit">Copyright &copy; <?php echo $site["enzyme"]["copyright"]; ?> by <a href="http://www.blissengine.org">Bobolo</a>.</p>
 
 	<div>
 </footer>

@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
 	<script src="<?php echo URL::site(null, true, false); ?>be-admin/js/jquery-1.8.3.min.js"></script>
 	-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["bliss_engine"]["jquery"]; ?>/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["enzyme"]["jquery"]; ?>/jquery.min.js"></script>
 	
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->

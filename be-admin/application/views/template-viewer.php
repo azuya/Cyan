@@ -1,4 +1,4 @@
-<?php require $site["bliss_engine"]["site_content"].'themes/'.$site["site"]["theme"].'/index.php'; ?>
+<?php require $site["enzyme"]["site_content"].'themes/'.$site["site"]["theme"].'/index.php'; ?>
 
 <br>i18n ----------------<br>
 <?php

@@ -4,8 +4,8 @@
  */
 
 return array(
-	'bliss_engine' => array(
-		'name'			=> 'Bliss Engine',
+	'enzyme' => array(
+		'name'			=> 'Enzyme',
 		'version'		=> '0.1 Alpha',
 		'copyright'		=> '2013',
 		'jquery'		=> '1.9.1',
@@ -14,8 +14,8 @@ return array(
 	),
 
     'site' => array(
-        'title'			=> 'Bliss Engine CMS',
-        'title_suffix'	=> ' | Bliss Engine CMS',
+        'title'			=> 'Enzyme',
+        'title_suffix'	=> ' | Enzyme',
         'theme'			=> 'bliss',
     ),
     

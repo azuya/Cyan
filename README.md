@@ -1,11 +1,11 @@
-# Bliss Engine CMS
+# Enzyme CMS
 
-[Bliss Engine](http://www.blissenginge.org/) is an elegant, open source, and object oriented HMVC CMS built using PHP5.
+[Enzyme](http://www.blissenginge.org/) is an elegant, open source, and object oriented HMVC CMS built using PHP5.
 
-Released under a [XXXX license](http://www.blissengine.org/license), Bliss Engine can be used legally for any open source, commercial, or personal project.
+Released under a [XXXX license](http://www.blissengine.org/license), Enzyme can be used legally for any open source, commercial, or personal project.
 
 ## Documentation
-Bliss Engine's documentation can be found at <http://www.blissengine.org/documentation>.
+Enzyme's documentation can be found at <http://www.blissengine.org/documentation>.
 
 ## Reporting bugs
 If you've stumbled across a bug, please help us out by [reporting the bug](http://www.blissengine.org/bugs/) you have found. Simply log in or register and submit a new issue, leaving as much information about the bug as possible, e.g.
