@@ -11,9 +11,15 @@ class Model_Post extends ORM {
 			'foreign_key'	=> 'post_id',
 		),
 
-		// A post can have many post_datas
-		'datas' => array(
+		// A post can have many post_data rows
+		'data' => array(
 			'model'			=> 'post_data',
+			'foreign_key'	=> 'post_id',
+		),
+
+		// A post can have many post_meta rows
+		'meta' => array(
+			'model'			=> 'post_meta',
 			'foreign_key'	=> 'post_id',
 		),
 
@@ -78,12 +84,12 @@ class Model_Post extends ORM {
 		
 		// $post = ORM::factory('post'); // loads all post object from table
 		$posts = ORM::factory('post')
-			->select('post_datas.title')->select('post_datas.excerpt')->select('post_datas.content')
-			->join('post_datas', 'LEFT')->on('post_datas.post_id', '=', 'post.id');
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
 		// Language
 		$language = isset($data["language"]) ? $data["language"] : 1;
-		// $posts->where('post_datas.language', '=' , $language);
+		// $posts->where('post_data.language', '=' , $language);
 		
 		// Type
 		if (isset($data["type"])) {
@@ -121,12 +127,12 @@ class Model_Post extends ORM {
 		
 		// $post = ORM::factory('post'); // loads all post object from table
 		$post = ORM::factory('post')
-			->select('post_datas.title')->select('post_datas.excerpt')->select('post_datas.content')
-			->join('post_datas', 'LEFT')->on('post_datas.post_id', '=', 'post.id');
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
 		// Language
 		$language = isset($data["language"]) ? $data["language"] : 1;
-		$post->where('post_datas.language', '=' , $language);
+		$post->where('post_data.language', '=' , $language);
 		$post->where('post.id', '=' , $post_id);
 		
 		// Find

@@ -94,7 +94,7 @@ class Controller_Post extends Controller_Admin {
 		*/
 		
 		// Get post data
-		// $data = $post->datas->where('post_id', '=' , "")->find();
+		// $data = $post->data->where('post_id', '=' , "")->find();
 
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
@@ -119,7 +119,7 @@ class Controller_Post extends Controller_Admin {
 		$post = new Model_Post($post_id);
 		
 		// Get post data
-		$data = $post->datas->where('post_id', '=' , $post_id)->find();
+		$data = $post->data->where('post_id', '=' , $post_id)->find();
 
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
@@ -153,7 +153,7 @@ class Controller_Post extends Controller_Admin {
 	{
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
-		$data = $post->datas->where('post_id', '=' , $post_id)->find();
+		$data = $post->data->where('post_id', '=' , $post_id)->find();
 
 		// Nonce ----------------------------------
 		if ($post_id) {
@@ -260,7 +260,7 @@ class Controller_Post extends Controller_Admin {
 		$post = new Model_Post($post_id);
 		
 		// Get post data
-		$data = $post->datas->where('post_id', '=' , $post_id)->find();
+		$data = $post->data->where('post_id', '=' , $post_id)->find();
 
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));

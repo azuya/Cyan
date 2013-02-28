@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
  
-class Model_Post_Data extends ORM {
-    
-	protected $_table_name = 'post_data';
+class Model_Post_Meta extends ORM {
+
+	protected $_table_name = 'post_meta';
     // protected $_primary_key = 'type'; 
 
 	protected $_belongs_to = array (

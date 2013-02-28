@@ -49,7 +49,7 @@ class Controller_Viewer extends Controller_Base {
 		$post = new Model_Post($post_id);
 		
 		// Get post data
-		$data = $post->datas->where('post_id', '=' , $post_id)->find();
+		$data = $post->data->where('post_id', '=' , $post_id)->find();
 
 		// echo "<pre>";
 		// print_r($post);
