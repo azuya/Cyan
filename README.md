@@ -17,4 +17,4 @@ If you've stumbled across a bug, please help us out by [reporting the bug](http:
 This will help us to fix the bug as quickly as possible, and if you'd like to fix it yourself feel free to [fork us on GitHub](https://github.com/andersd/Cyan) and submit a pull request!
 
 Website: [http://www.cyancms.com](http://www.cyancms.com)
-Follow : [https://www.facebook.com/Cyan-CMS](https://www.facebook.com/Cyan-CMS)
+Follow: [https://www.facebook.com/pages/Cyan-CMS/429940027022700](https://www.facebook.com/pages/Cyan-CMS/429940027022700)
