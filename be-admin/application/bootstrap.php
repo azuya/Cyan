@@ -95,7 +95,7 @@ Kohana::$environment = ($_SERVER['SERVER_NAME'] !== 'localhost') ? Kohana::PRODU
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'		=> '/Bliss-Engine/',
+	'base_url'		=> '/',
 	'index_file'	=> false,
 	//'caching'		=> false, // true
 	'profile'    => Kohana::$environment !== Kohana::PRODUCTION,

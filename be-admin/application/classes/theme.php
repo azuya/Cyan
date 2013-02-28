@@ -11,7 +11,7 @@
 class Theme {
 
 	/**
-	 * Draws header with all dependencies for Enzyme
+	 * Draws header with all dependencies for Cyan
 	 *
 	 */
 	public static function get_header()
@@ -23,7 +23,7 @@ class Theme {
 	}
 
 	/**
-	 * Draws footer with all dependencies for Enzyme
+	 * Draws footer with all dependencies for Cyan
 	 *
 	 */
 	public static function get_footer()
@@ -37,11 +37,11 @@ class Theme {
 	    $site = Kohana::$config->load('app');
 
 	    // Load theme's overall footer
-		require $site["enzyme"]["site_content"].'themes/bliss/footer.php';
+		require $site["cyan"]["site_content"].'themes/bliss/footer.php';
 	}
 
 	/**
-	 * Draws admin things for Enzyme <head>
+	 * Draws admin things for Cyan <head>
 	 *
 	 */
 	public static function be_header()
@@ -56,7 +56,7 @@ class Theme {
 	}
 
 	/**
-	 * Draws admin things for Enzyme for the very end of <body>
+	 * Draws admin things for Cyan for the very end of <body>
 	 *
 	 */
 	public static function be_footer()

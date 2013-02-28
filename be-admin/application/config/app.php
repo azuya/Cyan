@@ -4,8 +4,8 @@
  */
 
 return array(
-	'enzyme' => array(
-		'name'			=> 'Enzyme',
+	'cyan' => array(
+		'name'			=> 'Cyan',
 		'version'		=> '0.1 Alpha',
 		'copyright'		=> '2013',
 		'jquery'		=> '1.9.1',
@@ -14,8 +14,8 @@ return array(
 	),
 
     'site' => array(
-        'title'			=> 'Enzyme',
-        'title_suffix'	=> ' | Enzyme',
+        'title'			=> 'Cyan',
+        'title_suffix'	=> ' | Cyan',
         'theme'			=> 'bliss',
     ),
     

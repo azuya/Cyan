@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans">
 	<script src="<?php echo URL::site(null, true, false); ?>be-admin/js/jquery-1.8.3.min.js"></script>
 	-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["enzyme"]["jquery"]; ?>/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["cyan"]["jquery"]; ?>/jquery.min.js"></script>
 	
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -28,8 +28,8 @@
 	<!-- OpenGraph for facebook -->	
 	<meta property="og:title" content="<?php echo $title; ?>">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="http://blisslegacy/index.php?special=article&amp;id=487">
-	<meta property="og:image" content="http://blisslegacy/files/articles/487/glyphicons-417-rss.png">
+	<meta property="og:url" content="http://cyan/index.php?special=article&amp;id=487">
+	<meta property="og:image" content="http://cyan/files/articles/487/glyphicons-417-rss.png">
 	<meta property="og:site_name" content="<?php echo $site["site"]["title"]; ?>">
 	<meta property="og:description" content="Elementum dictum phasellus adipiscing aenean urna ipsum at aliquam. Non in lacus fusce nibh accumsan rhoncus a mollis libero: Pellentesque ullamcorper nisl dapibus phasellus. &#8230;">
 	<!-- OpenGraph for facebook -->	

@@ -36,7 +36,7 @@ if ($user) :
 							<li><?php echo HTML::anchor("http://www.blissengine.org/", "BlissEngine.org"); ?></li>
 							<li><?php echo HTML::anchor("http://www.blissengine.org/forum/", "Support forums"); ?></li>
 							<li class="divider"></li>
-							<li><?php echo HTML::anchor("admin/about", sprintf(__("About %s"), $site["enzyme"]["name"])); ?></li>
+							<li><?php echo HTML::anchor("admin/about", sprintf(__("About %s"), $site["cyan"]["name"])); ?></li>
 						</ul>
 					</li>
 					

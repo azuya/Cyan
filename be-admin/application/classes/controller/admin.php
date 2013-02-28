@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
- * Generic parent for all admin controllers in Enzyme
+ * Generic parent for all admin controllers in Cyan
  *
  * Author: Anders Dahlgren <anders@bobolo.se>
  * Created On: 2013-01-06

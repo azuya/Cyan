@@ -30,7 +30,7 @@
 <?php echo Form::close(); ?>
 
 	<!--
-	<p style="text-align:center;">Powered by <a href="http://www.blissengine.org"><?php echo $site["enzyme"]["name"]; ?></a>, Copyright &copy; 2013</p>
+	<p style="text-align:center;">Powered by <a href="http://www.blissengine.org"><?php echo $site["cyan"]["name"]; ?></a>, Copyright &copy; 2013</p>
 	
 	<div class="controls">
 	<label class="checkbox"><?php echo Form::checkbox('remember'); ?> <?php echo __("Remember Me"); ?></label>
