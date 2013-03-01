@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /be-admin/
+Disallow: /cyan/
 
 Disallow: /admin/
 Disallow: /user/login

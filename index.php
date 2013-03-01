@@ -6,14 +6,14 @@
  *
  * @link http://kohanaframework.org/guide/about.install#application
  */
-$application = 'be-admin/application';
+$application = 'cyan/application';
 
 /**
  * The directory in which your modules are located.
  *
  * @link http://kohanaframework.org/guide/about.install#modules
  */
-$modules = 'be-admin/modules';
+$modules = 'cyan/modules';
 
 /**
  * The directory in which the Kohana resources are located. The system
@@ -21,7 +21,7 @@ $modules = 'be-admin/modules';
  *
  * @link http://kohanaframework.org/guide/about.install#system
  */
-$system = 'be-admin/system';
+$system = 'cyan/system';
 
 /**
  * The default extension of resource files. If you change this, all resources
