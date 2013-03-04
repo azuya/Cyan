@@ -4,9 +4,9 @@
 // echo "<pre>";
 // print_r($contents);
 // echo "</pre>";
+// echo $data->title;
 ?>
 
-<h1><?php echo $data->title; ?></h1>
 <?php
 	// echo "Type[[".$post->type."]]";
 	echo $data->content;

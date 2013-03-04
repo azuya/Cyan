@@ -1,0 +1,150 @@
+// Icon 20 x 20 (40 x 40 matrix)
+[class^="icon40-"],
+[class*=" icon40-"] {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	.ie7-restore-right-whitespace();
+	line-height: 20px;
+	vertical-align: text-top;
+	background-image: url("@{iconPath}");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	margin-top: -3px;
+}
+
+.icon-matrix (@x: 0, @y: 0) {
+	background-position: -((@x - 1) * 40px) -((@y - 1) * 40px);
+}
+
+.icon40-page { .icon-matrix(1, 1) }
+.icon40-images { .icon-matrix(2, 1) }
+.icon40-user { .icon-matrix(3, 1) }
+.icon40-users { .icon-matrix(4, 1) }
+.icon40-search { .icon-matrix(5, 1) }
+.icon40-cog { .icon-matrix(6, 1) }
+.icon40-edit { .icon-matrix(14, 1) }
+.icon40-remove-red { .icon-matrix(4, 2) }
+
+.icon40-move { .icon-matrix(1, 4) }
+.icon40-ok { .icon-matrix(2, 4) }
+
+// Icon 26 x 26 (50 x 50 matrix)
+.icon-matrix50 (@y: 0) {
+	background-position: -767px -((@y - 1) * 50px - 5px);
+}
+
+.input50-envelope,
+.input50-lock,
+.input50-search {
+	background-image: url("@{iconPath}");
+	background-repeat: no-repeat;
+	background-position: -770px 0;
+}
+.input50-envelope { background-position: -767px 6px; }
+.input50-lock { background-position: -767px -44px; }
+.input50-search { background-position: -767px -94px; }
+
+
+
+// Icon 50 x 50 (60 x 60 matrix)
+[class^="icon60-"],
+[class*=" icon60-"] {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	.ie7-restore-right-whitespace();
+	line-height: 50px;
+	vertical-align: text-top;
+	background-image: url("@{iconPath}");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	margin-top: -3px;
+}
+
+.icon-matrix60 (@x: 0, @y: 0) {
+	background-position: -((@x - 1) * 60px) -(300px + (@y - 1) * 60px);
+}
+
+.icon60-comment { .icon-matrix60(1, 1) }
+.icon60-drive { .icon-matrix60(2, 1) }
+.icon60-wifi { .icon-matrix60(3, 1) }
+.icon60-users { .icon-matrix60(4, 1) }
+.icon60-tab { .icon-matrix60(5, 1) }
+.icon60-user { .icon-matrix60(6, 1) }
+.icon60-info { .icon-matrix60(7, 1) }
+.icon60-film { .icon-matrix60(8, 1) }
+.icon60-leaf { .icon-matrix60(9, 1) }
+.icon60-palette { .icon-matrix60(10, 1) }
+.icon60-compass { .icon-matrix60(11, 1) }
+.icon60-bell { .icon-matrix60(12, 1) }
+
+.icon60-earth { .icon-matrix60(1, 2) }
+.icon60-briefcase { .icon-matrix60(2, 2) }
+.icon60-notes { .icon-matrix60(3, 2) }
+.icon60-goosepen { .icon-matrix60(4, 2) }
+.icon60-bars { .icon-matrix60(5, 2) }
+.icon60-rocket { .icon-matrix60(6, 2) }
+.icon60-pamphlet { .icon-matrix60(7, 2) }
+.icon60-prize { .icon-matrix60(8, 2) }
+.icon60-box { .icon-matrix60(9, 2) }
+.icon60-piechart { .icon-matrix60(10, 2) }
+.icon60-basket { .icon-matrix60(11, 2) }
+.icon60-pen { .icon-matrix60(12, 2) }
+
+.icon60-bulb { .icon-matrix60(1, 3) }
+.icon60-cart { .icon-matrix60(2, 3) }
+.icon60-clock { .icon-matrix60(3, 3) }
+.icon60-tag { .icon-matrix60(4, 3) }
+.icon60-boxes { .icon-matrix60(5, 3) }
+.icon60-megaphone { .icon-matrix60(6, 3) }
+.icon60-camera { .icon-matrix60(7, 3) }
+.icon60-microphone { .icon-matrix60(8, 3) }
+.icon60-star { .icon-matrix60(9, 3) }
+.icon60-paperclip { .icon-matrix60(10, 3) }
+.icon60-inbox { .icon-matrix60(11, 3) }
+.icon60-flag { .icon-matrix60(12, 3) }
+
+.icon60-images { .icon-matrix60(1, 4) }
+.icon60-cabinet { .icon-matrix60(2, 4) }
+.icon60-folder { .icon-matrix60(3, 4) }
+.icon60-cloud { .icon-matrix60(4, 4) }
+.icon60-location { .icon-matrix60(5, 4) }
+.icon60-bookmark { .icon-matrix60(6, 4) }
+.icon60-pad { .icon-matrix60(7, 4) }
+.icon60-monitor { .icon-matrix60(8, 4) }
+.icon60-ink { .icon-matrix60(9, 4) }
+.icon60-book { .icon-matrix60(10, 4) }
+.icon60-page { .icon-matrix60(11, 4) }
+.icon60-calendar { .icon-matrix60(12, 4) }
+
+.icon60-heart { .icon-matrix60(1, 5) }
+.icon60-dots { .icon-matrix60(2, 5) }
+.icon60-upload { .icon-matrix60(3, 5) }
+.icon60-cog { .icon-matrix60(4, 5) }
+.icon60-help { .icon-matrix60(5, 5) }
+.icon60-window { .icon-matrix60(6, 5) }
+.icon60-printer { .icon-matrix60(7, 5) }
+.icon60-airplane { .icon-matrix60(8, 5) }
+.icon60-keyboard { .icon-matrix60(9, 5) }
+.icon60-database { .icon-matrix60(10, 5) }
+.icon60-paperplane { .icon-matrix60(11, 5) }
+.icon60-letter { .icon-matrix60(12, 5) }
+
+.icon60-cone { .icon-matrix60(1, 6) }
+.icon60-tag { .icon-matrix60(2, 6) }
+.icon60-clock { .icon-matrix60(3, 6) }
+.icon60-card { .icon-matrix60(4, 6) }
+.icon60-mobile { .icon-matrix60(5, 6) }
+.icon60-comments { .icon-matrix60(6, 6) }
+.icon60-directions { .icon-matrix60(7, 6) }
+.icon60-house { .icon-matrix60(8, 6) }
+.icon60-magnifier { .icon-matrix60(9, 6) }
+.icon60-note { .icon-matrix60(10, 6) }
+
+// Icons for modals
+.icon60-blue-exclamation-star { .icon-matrix60(1, 10) }
+.icon60-blue-info { .icon-matrix60(2, 10) }
+.icon60-blue-question { .icon-matrix60(3, 10) }
+.icon60-blue-exclamation { .icon-matrix60(4, 10) }
+

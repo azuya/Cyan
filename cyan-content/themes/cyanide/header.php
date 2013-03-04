@@ -17,7 +17,7 @@
 	<?php Theme::cyan_header(); ?>
 	<!--
     <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans">
-	<script src="<?php echo URL::site(null, true, false); ?>cyan/js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo URL::site(null, true, false); ?>cyan/js/jquery-<?php echo $site["cyan"]["jquery"]; ?>.min.js"></script>
 	-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["cyan"]["jquery"]; ?>/jquery.min.js"></script>
 	
@@ -45,3 +45,6 @@
 	<header>
 	<!-- *** OVERALL HEADER *** -->
 	</header>
+	
+	<!-- Content -->
+    <div class="container-narrow" id="content">

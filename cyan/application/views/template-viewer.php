@@ -4,7 +4,8 @@
 <br>i18n ----------------<br>
 -->
 <?php
-// ---
+// --- i18n
+/*
 putenv("LC_ALL=sv_SE");
 setlocale(LC_ALL, 'sv_SE.utf-8', 'swedish');
 if (function_exists("bindtextdomain")) {
@@ -18,5 +19,6 @@ if (function_exists("bindtextdomain")) {
 	// echo _("Users")."<br>";
 	// echo gettext("Users")."<br>";
 }
+*/
 // ---
 ?>

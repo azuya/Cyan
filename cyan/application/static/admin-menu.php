@@ -39,9 +39,9 @@ if ($user) :
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/help", '<span class="text">'.__("Help").'</span>'.'<i class="icon60-help"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/news", '<span class="text">'.__("Cyan News").'</span>'.'<i class="icon60-wifi"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/news", '<span class="text">'.__("Cyan News").'</span>'.'<i class="icon60-megaphone"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("http://www.cyancms.com/", '<span class="text">'."CyanCMS.com".'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("http://www.cyancms.com/forum/", '<span class="text">'.__("Support forums").'</span>'.'<i class="icon60-megaphone"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("http://www.cyancms.com/forum/", '<span class="text">'.__("Support forums").'</span>'.'<i class="icon60-comments"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/about", '<span class="text">'.__("About").'</span>'.'<i class="icon60-info"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>

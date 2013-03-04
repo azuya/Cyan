@@ -1,6 +1,15 @@
-	<footer>
-	<!-- *** OVERALL FOOTER *** -->
-	</footer>
+
+		<footer>
+			<!-- *** OVERALL FOOTER *** -->
+			<hr>
+			<div class="footer">
+				<p>&copy; Bobolo 2013</p>
+			</div>
+		</footer>
+
+    </div>
+    <!-- /Content -->
+
 	<?php Theme::cyan_footer(); ?>
 	
 	<script type="text/javascript">

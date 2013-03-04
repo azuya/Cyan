@@ -137,9 +137,11 @@ $types = ORM::factory('type')->find_all();
 						    		<?php echo HTML::anchor("?c=".$post->id, "<i class=\"icon-eye-open\"></i> ".__("View")); ?>
 						    	</span>
 					    	</div>
+					    	<!--
 					    	<div class="row-overlay">
 						    	<span class="muted">goff!</span>
 					    	</div>
+					    	-->
 					    </td>
 
 						<?php if (!$selected_type): ?>

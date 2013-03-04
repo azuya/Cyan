@@ -29,7 +29,7 @@ class Controller_Login extends Controller_Base {
 			}
 			else
 			{
-				$message = 'Login failed';
+				$message = __('Login failed. You provided the wrong password and or username. Please try again.');
 			}
 		}
 		
@@ -60,7 +60,7 @@ class Controller_Login extends Controller_Base {
 			}
 			else
 			{
-				$message = 'Login failed';
+				$message = __('Login failedaaa');
 			}
 		}
 

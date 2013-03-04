@@ -69,7 +69,7 @@
 							<div class="controls">
 								<?php
 									$options = array(
-																				"airplane"	=> __("Airplane"),
+										"airplane"	=> __("Airplane"),
 										"bars"		=> __("Bars"),
 										"basket"	=> __("Basket"),
 										"bell"		=> __("Bell"),
@@ -177,29 +177,29 @@
 							<thead>
 								<tr>
 									<th width="50px;"></th>
-									<th><?php echo __("Name"); ?></th>
 									<th><?php echo __("Label"); ?></th>
+									<th><?php echo __("Name"); ?></th>
 									<th><?php echo __("Type"); ?></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
+									<td><?php echo HTML::anchor("admin/field/edit/"."1", "Title"); ?></td>
 									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
-									<td>Otto</td>
-									<td>@mdo</td>
+									<td><?php echo __("Text"); ?></td>
 								</tr>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
+									<td><?php echo HTML::anchor("admin/field/edit/"."1", "Text"); ?></td>
 									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
-									<td>Thornton</td>
-									<td>@fat</td>
+									<td><?php echo __("HTML"); ?></td>
 								</tr>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
+									<td><?php echo HTML::anchor("admin/field/edit/"."1", "Color"); ?></td>
 									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
-									<td>the Bird</td>
-									<td>@twitter</td>
+									<td><?php echo __("Dropdown"); ?></td>
 								</tr>
 							</tbody>
 						</table>

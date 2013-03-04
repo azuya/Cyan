@@ -6,7 +6,7 @@
 	<div class="modal-body">
 	 
 		<h2><?php echo $site["site"]["title"]; ?></h2>
-		<p class="lead"><?php echo __("Welcome to login to :site! Enter your username or email address and password in the form below.", array(":site" => $site["site"]["title"])); ?></p>
+		<p class="lead"><?php echo __("Enter your username or email address and password in the form below to login to :site.", array(":site" => $site["site"]["title"])); ?></p>
 
 		<? if ($message) : ?>
 		<div class="alert alert-error">

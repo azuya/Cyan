@@ -23,7 +23,17 @@ class Controller_Search extends Controller_Admin {
 		}
 		else
 		{
+
+			/*
 			$count = $post->reset(FALSE)
+				->where('title', 'LIKE', "%".$query['q']."%")
+				->or_where('content', 'LIKE', "%".$query['q']."%")
+				->count_all(); // 'active', '=', 1
+			*/
+
+			$count = $post->reset(FALSE)
+				->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+				->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id')
 				->where('title', 'LIKE', "%".$query['q']."%")
 				->or_where('content', 'LIKE', "%".$query['q']."%")
 				->count_all(); // 'active', '=', 1

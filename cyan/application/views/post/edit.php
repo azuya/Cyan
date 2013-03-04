@@ -58,10 +58,12 @@
 				<div class="controls"><?php echo Form::textarea('content', $data->content, array("placeholder" => __("Content"), "class" => "ckeditor")); ?></div>
 			</div>
 		 
+			<!--
 			<div class="control-group">
 				<?php echo Form::label('testar', __("Testar"), array("class" => "control-label", "for" => "testar")); ?>
 				<div class="controls"><?php echo Form::input('testar', $post->testar, array("placeholder" => __("Testar"))); ?></div>
 			</div>
+			-->
 
 		</div>
 		<?php echo Form::close(); ?>

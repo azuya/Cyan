@@ -27,7 +27,7 @@
 						<li><a href="https://github.com/shadowhand/bonafide">Bonafide</a> – 3.2 <span class="muted">(Develop)</span></li>
 					</ul>
 				<li><?php echo HTML::anchor("http://jquery.com/", "jQuery"); ?> – <span class="muted">1.9.1</span></li>
-				<li><?php echo HTML::anchor("http://twitter.github.com/bootstrap/", "Bootstrap"); ?> – <span class="muted">2.3.0</span></li>
+				<li><?php echo HTML::anchor("http://twitter.github.com/bootstrap/", "Bootstrap"); ?> – <span class="muted">2.3.1</span></li>
 				<li><?php echo HTML::anchor("http://ckeditor.com/", "CKEditor"); ?> – <span class="muted">4.0.1</span></li>
 				<li><?php echo HTML::anchor("http://www.entypo.com/", "The Entypo Pictogram Suite"); ?> by Daniel Bruce – <span class="muted">2.0</span></li>
 			</ul>

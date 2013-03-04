@@ -8,11 +8,11 @@
 	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">	
 	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>cyan/assets/css/admin.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>cyan/assets/css/cyan-admin.css">
 
 	<!--
 	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
-	<script src="<?php echo URL::site(null, true, false); ?>cyan/js/jquery-1.8.3.min.js"></script>
+	<script src="<?php echo URL::site(null, true, false); ?>cyan/js/jquery-<?php echo $site["cyan"]["jquery"]; ?>.min.js"></script>
 	-->
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["cyan"]["jquery"]; ?>/jquery.min.js"></script>
