@@ -44,8 +44,6 @@
 	</div>
 	-->
 
-<!--
-<div style="position: fixed; bottom: 0; width: 100%;">
-<p style="text-align:center;">Copyright &copy; 2013 Bobolo – Visit <a href="http://www.cyancms.com">cyancms.com</a> for more information</p>
+<div class="login-footer hidden-phone">
+<p><?php echo $site["cyan"]["name"]; ?> – Version <?php echo $site["cyan"]["version"]; ?> – Copyright &copy; 2013 <a href="http://www.bobolo.se">Bobolo</a> – <a href="http://www.cyancms.com">cyancms.com</a></p>
 </div>
--->

@@ -355,6 +355,29 @@ footer.admin {
 	}
 }
 
+div.login-footer {
+	position: fixed;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	
+	color: lighten(@textColor, 20%);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+	
+	p {
+		margin: 0;
+		text-align: center;
+	}
+	
+	a {
+		color: lighten(@textColor, 20%);
+		
+		&:hover {
+			color: lighten(@textColor, 40%);
+		}
+	}
+}
+
 .dropdown-menu {
 	margin: 4px 0 0 0;
 	border: none;
