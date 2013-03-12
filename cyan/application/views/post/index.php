@@ -108,6 +108,7 @@ $types = ORM::factory('type')->find_all();
 			<table class="table table-hover table-condensed">
 				<thead>
 					<tr>
+						<th style="width:40px"></th>
 						<th style="width:60%;"><?php echo __("Title"); ?></th>
 						
 						<?php if (!$selected_type): ?>
@@ -130,6 +131,10 @@ $types = ORM::factory('type')->find_all();
 						$post_type = ($post->type == "file") ? $post->mime_type : $post->type;
 					?>
 					<tr<?php echo $classes; ?>>
+					    <td>
+					    	<span class="icon40-star"></span>
+					    </td>
+
 					    <td>
 					    	<div>
 						    	<?php echo HTML::anchor("admin/post/edit/".$post->id, Text::limit_chars($post->title, 50, "…", true)); ?>

@@ -33,6 +33,13 @@ class Controller_Api extends Controller {
 	// TO keep user's momiloop login info
 	protected $_userData;
 
+	// The response
+	protected $api_response = array(
+		"code"		=> 0,
+		"message"	=> "",
+		"data"		=> array(),
+	);
+
 	/**
 	 * The before() method is called before your controller action.
 	 * In our template controller we override this method so that we can
@@ -51,10 +58,16 @@ class Controller_Api extends Controller {
 
 		View::set_global('site', $this->_config);
 
-		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
-		{
-			$this->_isAjax = true;
-		}
+		define('API_SUCCESS', 1);
+		define('API_FAILURE', -1);
+	
+		// Validate API-key
+		$this->validate_key(isset($this->_params["key"]) ? $this->_params["key"] : "");
+		
+		// if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+		// {
+		// 	$this->_isAjax = true;
+		// }
 
 	}
 
@@ -67,19 +80,43 @@ class Controller_Api extends Controller {
 	public function after()
 	{
 		// If ajax call, show only the content, no layout needed
-		if($this->_isAjax)
-		{
-			
-			$this->response->body($this->template->content);
-			return;
-		}
+		// if($this->_isAjax)
+		// {
+		// 	
+		// 	$this->response->body($this->template->content);
+		// 	return;
+		// }
+		
+		// Show API response
+		$this->show_response();
 
 		parent::after();
 	}
 
 	public function action_index()
 	{
-		echo "This is the API";
+		$data = array(
+			"test"		=> "Anders is the best!",
+		);
+	
+		$this->api_response["code"] = API_SUCCESS;
+		$this->api_response["message"] = "This is the API";
+		$this->api_response["data"] = $data;
+
 	}
 
+	protected function validate_key($api_key) {
+		if ($api_key != "12345") {
+			$this->api_response["code"] = API_FAILURE;
+			$this->api_response["message"] = "API key failed";
+			unset($this->api_response["data"]);
+
+			$this->show_response();
+			die();
+		}
+	}
+
+	protected function show_response() {
+		echo json_encode($this->api_response);
+	}
 }

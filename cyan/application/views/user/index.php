@@ -22,6 +22,7 @@
 			<table class="table table-hover table-condensed">
 				<thead>
 					<tr>
+						<th style="width:40px"></th>
 						<th style="width:60%;"><?php echo __("Username"); ?></th>
 						<th style="width:40%;"><?php echo __("Email"); ?></th>
 					</tr>
@@ -36,7 +37,10 @@
 						}
 					?>
 					<tr<?php echo $classes; ?>>
-					    <td><?php echo HTML::anchor("user/edit/".$user->id, "<i class=\"icon-user\"></i> ".$user->username); ?></td>
+					    <td>
+					    	<span class="icon40-star"></span>
+					    </td>
+					    <td><?php echo HTML::anchor("user/edit/".$user->id, $user->username); ?></td>
 					    <td><?php echo $user->email; ?></td>
 					</tr>
 					<?php endforeach; ?>
