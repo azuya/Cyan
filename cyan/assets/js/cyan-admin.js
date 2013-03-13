@@ -33,11 +33,14 @@ $(document).ready(function(){
 			}
 			*/
 			
+			/*
+			// Scroll to top
 			if (y >= 40) {
 				$("#scroll-to-top").removeClass('offscreen');
 			} else {
 				$("#scroll-to-top").addClass('offscreen');
 			}
+			*/
 			
 		});
 	// }

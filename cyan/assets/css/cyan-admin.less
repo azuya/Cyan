@@ -440,7 +440,7 @@ div.login-footer {
 	position: fixed;
 	z-index: (@zindexModal + 1);
 
-	background: fade(@linkColor, 80%);
+	background: @linkColor;
 	color: @white;
 	
 	top: 50%;
@@ -464,28 +464,28 @@ div.login-footer {
 
 @-webkit-keyframes rotate-360 {
     from {
-        -webkit-transform: rotate(360deg);
+        -webkit-transform: rotate(0deg);
     }
     to {
-        -webkit-transform: rotate(0deg);
+        -webkit-transform: rotate(360deg);
     }
 }
 
 @-moz-keyframes rotate-360 {
     from {
-        -moz-transform: rotate(360deg);
+        -moz-transform: rotate(0deg);
     }
     to {
-        -moz-transform: rotate(0deg);
+        -moz-transform: rotate(360deg);
     }
 }
 
 @keyframes rotate-360 {
     from {
-        transform: rotate(360deg);
+        transform: rotate(0deg);
     }
     to {
-        transform: rotate(0deg);
+        transform: rotate(360deg);
     }
 }
 

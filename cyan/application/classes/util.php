@@ -6,13 +6,9 @@ class Util {
 	 * Creates a form input. If no type is specified, a "text" type input will
 	 * be returned.
 	 *
-	 *     echo Form::input('username', $username);
+	 *		echo Util::get_page_id();
 	 *
-	 * @param   string  input name
-	 * @param   string  input value
-	 * @param   array   html attributes
-	 * @return  string
-	 * @uses    HTML::attributes
+	 * @return  ID
 	 */
 	public static function get_page_id()
 	{
@@ -42,5 +38,29 @@ class Util {
 		return $id;
 	}
 
+	/**
+	 * Format date
+	 *
+	 *		echo Util::input('username', $username);
+	 *
+	 * @param   string  date
+	 * @return  string	Formatted date
+	 */
+	public static function date_relative($date)
+	{
+		// echo "date_relative($date)";
+		
+		if (intval($date) == 0) {
+			return "–";
+		}
+		
+		if (date('Y', strtotime($date)) == date('Y')) {
+			$nice_date = date('j M', strtotime($date));
+		} else {
+			$nice_date = date('Y-m-d', strtotime($date));
+		}
+		
+		return $nice_date;
+	}
 }
 ?>

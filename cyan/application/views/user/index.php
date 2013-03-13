@@ -38,7 +38,7 @@
 					?>
 					<tr<?php echo $classes; ?>>
 					    <td>
-					    	<span class="icon40-star"></span>
+					    	<span class="icon40-star<?php echo ($user->star) ? '-filled' : '';?>"></span>
 					    </td>
 					    <td><?php echo HTML::anchor("user/edit/".$user->id, $user->username); ?></td>
 					    <td><?php echo $user->email; ?></td>
