@@ -109,14 +109,16 @@ $types = ORM::factory('type')->find_all();
 				<thead>
 					<tr>
 						<th style="width:40px"></th>
-						<th style="width:50%;"><?php echo __("Title"); ?></th>
 						
 						<?php if (!$selected_type): ?>
+						<th style="width:50%;"><?php echo __("Title"); ?></th>
 						<th style="width:20%;"><?php echo __("Type"); ?></th>
+						<?php else: ?>
+						<th style="width:70%;"><?php echo __("Title"); ?></th>
 						<?php endif; ?>
 						
-						<th style="width:10%;"><?php echo __("Author"); ?></th>
-						<th style="width:10%;"><?php echo __("Modified"); ?></th>
+						<th style="width:10%;" class="hidden-phone"><?php echo __("Author"); ?></th>
+						<th style="width:10%;" class="hidden-phone"><?php echo __("Modified"); ?></th>
 						<th style="width:10%;"></th>
 					</tr>
 				</thead>
@@ -154,8 +156,8 @@ $types = ORM::factory('type')->find_all();
 					    <td><?php echo $post_type; ?></td>
 						<?php endif; ?>
 
-					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
-					    <td><?php echo Util::date_relative($post->modified_date); ?> <small><?php echo $post->modified_by; ?></small></td>
+					    <td class="hidden-phone"><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
+					    <td class="hidden-phone"><?php echo Util::date_relative($post->modified_date); ?> <small><?php echo $post->modified_by; ?></small></td>
 					    <td>
 					    	<div class="row-show-on-hover">
 					    	<?php echo HTML::anchor(Nonce::nonce_url("admin/post/delete/".$post->id, "be-delete-post-".$post->id), '<i class="icon40-remove-red"></i>'); ?>
