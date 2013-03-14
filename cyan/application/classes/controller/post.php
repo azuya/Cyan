@@ -176,6 +176,7 @@ class Controller_Post extends Controller_Admin {
 		$post_val["author"]	= $user->id;
 		$post_val["active"]	= ! empty($request_val['active']);
 		$post_val["type"] 	= $request_val['type'];
+		$post_val["star"] 	= $request_val['star'];
 
 		// Only created
 		if (!$post_id)

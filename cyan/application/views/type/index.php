@@ -9,7 +9,9 @@
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo __("Types"); ?></h1>
+				<div class="heading">
+					<h1><?php echo __("Types"); ?></h1>
+				</div>
 			</div>
 
 			<div class="actions left">

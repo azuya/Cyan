@@ -21,8 +21,8 @@ html {
 }
 
 body {
-	height: 100%;
 	/*
+	height: 100%;
 	padding: 0;
 	margin: 0;
 	min-width: 320px;
@@ -541,17 +541,46 @@ div.login-footer {
 			border-bottom: 1px solid lighten(@grayLight, 10%);
 	
 			div.title {
-				float: left;
-				margin-right: 10px;
-
-				h1 {
-					margin: 0;
-					padding: 0;
+				
+				> .button {
 					height: @page_header_height;
 					line-height: @page_header_height;
-					font-size: (@baseFontSize * 2);
-					white-space: nowrap;
+					float: left;
+					position: relative;
+
+					a {
+						width: 20px;
+						height: 20px;
+						display: block;
+						margin: 15px 10px 15px 0;
+
+						opacity: 0.5;
+
+						&:hover {
+							opacity: 1;
+						}
+					}
+					
 				}
+
+				> .heading {
+					height: @page_header_height;
+					line-height: @page_header_height;
+					display: inline-block;
+					float: left;
+					margin: 0 10px 0 0;
+
+					h1 {
+						margin: 0;
+						padding: 0;
+						height: @page_header_height;
+						line-height: @page_header_height;
+						font-size: (@baseFontSize * 2);
+						white-space: nowrap;
+					}
+
+				}
+
 				
 			}
 
@@ -607,6 +636,38 @@ div.login-footer {
 		
 		div.be-content {
 			padding: (@page_header_height + 20px) @padding-border 10px @padding-border;
+			overflow: scroll;
+			
+			&::-webkit-scrollbar {
+				height: 16px;
+				overflow: visible;
+				width: 16px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background-color: rgba(0,0,0,.2);
+				background-clip: padding-box;
+				border: solid transparent;
+				border-width: 1px 1px 1px 6px;
+				min-height: 28px;
+				padding: 100px 0 0;
+				box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+			}
+			
+			&::-webkit-scrollbar-button {
+				height: 0;
+				width: 0;
+			}
+			
+			&::-webkit-scrollbar-track {
+				background-clip: padding-box;
+				border: solid transparent;
+				border-width: 0 0 0 4px;
+			}
+			
+			&::-webkit-scrollbar-corner {
+				background: transparent;
+			}
 		}
 	}
 
@@ -680,6 +741,8 @@ div.login-footer {
 }
 
 /* Imports */
+@import 'kohana.less';
+
 @import 'cyan-sprite.less';
 
 @import 'datepicker.less';

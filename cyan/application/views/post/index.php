@@ -9,17 +9,19 @@ $types = ORM::factory('type')->find_all();
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-				<h1><?php
-					$selected_type = isset($_GET['type']) ? $_GET['type'] : "";
-					if ($selected_type == "file") {
-						echo __("Media");
-					} else if ($selected_type) {
-				        $filter_type = new Model_Type($selected_type);						
-						echo $filter_type->name;
-					} else {
-						echo __("Content");						
-					}
-				?></h1>
+				<div class="heading">
+					<h1><?php
+						$selected_type = isset($_GET['type']) ? $_GET['type'] : "";
+						if ($selected_type == "file") {
+							echo __("Media");
+						} else if ($selected_type) {
+					        $filter_type = new Model_Type($selected_type);						
+							echo $filter_type->name;
+						} else {
+							echo __("Content");						
+						}
+					?></h1>
+				</div>
 			</div>
 			
 			<div class="actions left">

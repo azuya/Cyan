@@ -18,20 +18,28 @@
 		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?>
-					<?php echo __("Add new content"); ?>
-					<span class="dropdown">
-						<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $post->type; ?><span class="caret"></span></small>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<?php
-							$types = ORM::factory('type')->find_all();
-							foreach ($types as $type) {
-								echo "<li>".HTML::anchor("admin/post/index/?type=".$type->id, $type->name)."</li>";
-							}
-							?>
-						</ul>
-					</span>
-				</h1>
+				<div class="button">
+					<?php echo HTML::anchor("admin/post/?type=".$post->type, "", array("class" => "icon40-chevron-left navigation-prev")); ?>
+				</div>
+				<div class="heading">
+					<h1><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?>
+						<?php echo ($post->id) ? $data->title : __("Add new content"); ?>
+						<span class="dropdown">
+							<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $post->type; ?><span class="caret"></span></small>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								<?php
+								$types = ORM::factory('type')->find_all();
+								foreach ($types as $type) {
+									echo "<li>".HTML::anchor("admin/post/index/?type=".$type->id, $type->name)."</li>";
+								}
+								?>
+							</ul>
+						</span>
+					</h1>
+				</div>
+				<div class="button">
+					<?php echo HTML::anchor("#", '&nbsp;', array("class" => "star-toggle icon40-star".(($post->star) ? "-filled" : ""), "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Your content is located here"))); ?>
+				</div>
 			</div>
 
 			<div class="actions">
@@ -44,6 +52,7 @@
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
 			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"))); ?>
+			<?php echo Form::hidden('star', $post->star); ?>
 
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>

@@ -52,9 +52,28 @@ $(document).ready(function(){
 		var href = $(this).attr('href');
 		
 		// Go to this page
-		go_to_page(href);
+		if ($(this).hasClass("external")) {
+			window.location = href;
+
+		// Internal
+		} else {
+			go_to_page(href);
+		}
 
 		return false;
+	});
+
+	// Toggle star
+	$(document).on("click", "a.star-toggle", function(e) {
+		if ($('form input[name="star"]').val() == 0) {
+			$('form input[name="star"]').val('1');
+			$(this).removeClass('icon40-star');
+			$(this).addClass('icon40-star-filled');
+		} else {
+			$('form input[name="star"]').val('0');
+			$(this).removeClass('icon40-star-filled');
+			$(this).addClass('icon40-star');
+		}
 	});
 
 	// Popstate

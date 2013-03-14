@@ -12,10 +12,18 @@
 
 		<div class="be-header">
 			<div class="title">
-				<h1>
-					<?php echo Form::checkbox('active', 1, (bool) $content->active, array("class" => "big")); ?>
-					<span id="headline-username"><?php echo $content->username; ?></span>
-				</h1>
+				<div class="button">
+					<?php echo HTML::anchor("admin/user/", "", array("class" => "icon40-chevron-left navigation-prev")); ?>
+				</div>
+				<div class="heading">
+					<h1>
+						<?php echo Form::checkbox('active', 1, (bool) $content->active, array("class" => "big")); ?>
+						<span id="headline-username"><?php echo $content->username; ?></span>
+					</h1>
+				</div>
+				<div class="button">
+					<?php echo HTML::anchor("#", '&nbsp;', array("class" => "star-toggle icon40-star".(($content->star) ? "-filled" : ""), "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Your content is located here"))); ?>
+				</div>
 			</div>
 
 			<div class="actions">
@@ -26,6 +34,8 @@
 		<div class="be-content">
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
+			<?php echo Form::hidden('star', $content->star); ?>
+
 			<div class="control-group">
 				<?php echo Form::label('username', __("Username"), array("class" => "control-label", "for" => "username")); ?>
 				<div class="controls"><?php echo Form::input('username', $content->username, array("placeholder" => __("Username"))); ?></div>

@@ -11,13 +11,18 @@
 		<?php echo Form::open('admin/type/post/'.$content->id, array("class" => "form-horizontal")); ?>
 		<div class="be-header">
 			<div class="title">
-				<h1><?php
-					if ($content->id) {
-						echo $content->name;
-					} else {
-						echo __("New type");
-					}
-				?></h1>
+				<div class="button">
+					<?php echo HTML::anchor("admin/type/", "", array("class" => "icon40-chevron-left navigation-prev")); ?>
+				</div>
+				<div class="heading">
+					<h1><?php
+						if ($content->id) {
+							echo $content->name;
+						} else {
+							echo __("New type");
+						}
+					?></h1>
+				</div>
 			</div>
 
 			<div class="actions">

@@ -13,7 +13,9 @@
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo __("Dashboard"); ?> <small><?php echo __("Since"); ?> <?php echo Date::fuzzy_span(strtotime($user->last_login)); ?></small></h1>
+				<div class="heading">
+					<h1><?php echo __("Dashboard"); ?> <small><?php echo __("Since"); ?> <?php echo Date::fuzzy_span(strtotime($user->last_login)); ?></small></h1>
+				</div>
 			</div>
 		</div>
 		

@@ -13,14 +13,16 @@ $types = ORM::factory('type')->find_all();
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-				<h1><?php
-					if ($query["q"]) {
-						echo sprintf(__("Search for '%s'"), $query["q"]);
-					} else {
-						echo __("Search");
-					}
-					?>
-				</h1>
+				<div class="heading">
+					<h1><?php
+						if ($query["q"]) {
+							echo sprintf(__("Search for '%s'"), $query["q"]);
+						} else {
+							echo __("Search");
+						}
+						?>
+					</h1>
+				</div>
 			</div>
 			
 			<div class="actions">
@@ -43,6 +45,7 @@ $types = ORM::factory('type')->find_all();
 			<table class="table table-hover table-condensed">
 				<thead>
 					<tr>
+						<th style="width:40px"></th>
 						<th style="width:60%;"><?php echo __("Title"); ?></th>
 						<th style="width:20%;"><?php echo __("Type"); ?></th>
 						<th style="width:10%;"><?php echo __("Author"); ?></th>
@@ -60,6 +63,9 @@ $types = ORM::factory('type')->find_all();
 						}
 					?>
 					<tr<?php echo $classes; ?>>
+					    <td>
+					    	<span class="icon40-star<?php echo ($post->star) ? '-filled' : '';?>"></span>
+					    </td>
 					    <td>
 					    	<div>
 						    	<?php echo HTML::anchor("admin/post/edit/".$post->id, Text::limit_chars($post->title, 50, "…", true)); ?>

@@ -127,6 +127,10 @@ class Controller_User extends Controller_Base {
 				// Normalise username_nice
 				$_POST["username_nice"] = URL::title($_POST["username"], " ", true);
 
+				if ($_POST["username_nice"] == "") {
+					$_POST["username_nice"] = URL::title($_POST["email"], " ", true);
+				}
+
 				$id = $this->request->param('id');
 				
 				$user = new Model_User($id);

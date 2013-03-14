@@ -9,7 +9,9 @@
 	<div class="be-main">
 		<div class="be-header">
 			<div class="title">
-			<h1><?php echo $site["cyan"]["name"]; ?> <small><?php echo $site["cyan"]["version"]; ?></small></h1>
+				<div class="heading">
+					<h1><?php echo $site["cyan"]["name"]; ?> <small><?php echo $site["cyan"]["version"]; ?></small></h1>
+				</div>
 			</div>
 		</div>
 		
@@ -35,7 +37,7 @@
 			<h2>Stuff</h2>
 			
 			<p>
-				<a href="https://github.com/andersd/Cyan">Cyan on GitHub</a>
+				<a href="https://github.com/andersd/Cyan" class="external">Cyan on GitHub</a>
 			</p>
 		</div>
 	</div> <!-- be-main -->
