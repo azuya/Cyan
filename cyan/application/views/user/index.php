@@ -26,7 +26,8 @@
 					<tr>
 						<th style="width:40px"></th>
 						<th style="width:60%;"><?php echo __("Username"); ?></th>
-						<th style="width:40%;"><?php echo __("Email"); ?></th>
+						<th style="width:30%;"><?php echo __("Email"); ?></th>
+						<th style="width:10%;" class="hidden-phone"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,6 +45,11 @@
 					    </td>
 					    <td><?php echo HTML::anchor("user/edit/".$user->id, $user->username); ?></td>
 					    <td><?php echo $user->email; ?></td>
+					    <td class="hidden-phone">
+						    <div class="tools">
+						    	<?php echo HTML::anchor(Nonce::nonce_url("admin/user/delete/".$user->id, "be-delete-post-".$user->id), '<i class="icon40-times"></i>'); ?>
+						    </div>
+					    </td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>

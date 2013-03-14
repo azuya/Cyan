@@ -31,10 +31,10 @@
 					<?php foreach ($contents as $content) : ?>
 					<tr>
 					    <td><?php echo HTML::anchor("admin/type/edit/".$content->id, $content->name); ?></td>
-					    <td>
-					    	<div class="row-show-on-hover">
-					    	<?php echo HTML::anchor(Nonce::nonce_url("admin/type/delete/".$content->id, "be-delete-post-".$content->id), '<i class="icon40-remove-red"></i>'); ?>
-					    	</div>
+					    <td class="hidden-phone">
+						    <div class="tools">
+						    	<?php echo HTML::anchor(Nonce::nonce_url("admin/type/delete/".$content->id, "be-delete-post-".$content->id), '<i class="icon40-times"></i>'); ?>
+						    </div>
 					    </td>
 					</tr>
 					<?php endforeach; ?>

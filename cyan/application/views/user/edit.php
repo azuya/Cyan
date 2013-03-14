@@ -17,7 +17,6 @@
 				</div>
 				<div class="heading">
 					<h1>
-						<?php echo Form::checkbox('active', 1, (bool) $content->active, array("class" => "big")); ?>
 						<span id="headline-username"><?php echo $content->username; ?></span>
 					</h1>
 				</div>
@@ -36,6 +35,10 @@
 			
 			<?php echo Form::hidden('star', $content->star); ?>
 
+			<div class="control-group">
+				<?php echo Form::label('active', __("Active"), array("class" => "control-label", "for" => "active")); ?>
+				<div class="controls"><?php echo Form::checkbox('active', 1, (bool) $content->active, array("class" => "big")); ?></div>
+			</div>
 			<div class="control-group">
 				<?php echo Form::label('username', __("Username"), array("class" => "control-label", "for" => "username")); ?>
 				<div class="controls"><?php echo Form::input('username', $content->username, array("placeholder" => __("Username"))); ?></div>

@@ -37,19 +37,20 @@ $types = ORM::factory('type')->find_all();
 		
 		<div class="be-content">
 			<?php
-			if ($query["q"])
-			{ 
-				echo "<p>".sprintf(__("%d items found, displaying %d to %d."), $item_count, 1, 999)."</p>";
-			}
+			// if ($query["q"])
+			// { 
+			// 	echo "<p>".sprintf(__("%d items found, displaying %d to %d."), $item_count, 1, 999)."</p>";
+			// }
 			?>
 			<table class="table table-hover table-condensed">
 				<thead>
 					<tr>
 						<th style="width:40px"></th>
-						<th style="width:60%;"><?php echo __("Title"); ?></th>
+						<th style="width:50%;"><?php echo __("Title"); ?></th>
 						<th style="width:20%;"><?php echo __("Type"); ?></th>
-						<th style="width:10%;"><?php echo __("Author"); ?></th>
-						<th style="width:10%;"></th>
+						<th style="width:10%;" class="hidden-phone"><?php echo __("Author"); ?></th>
+						<th style="width:10%;" class="hidden-phone"><?php echo __("Modified"); ?></th>
+						<th style="width:10%;" class="hidden-phone"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,12 +67,10 @@ $types = ORM::factory('type')->find_all();
 					    <td>
 					    	<span class="icon40-star<?php echo ($post->star) ? '-filled' : '';?>"></span>
 					    </td>
+
 					    <td>
 					    	<div>
 						    	<?php echo HTML::anchor("admin/post/edit/".$post->id, Text::limit_chars($post->title, 50, "…", true)); ?>
-						    	<span class="row-show-on-hover">
-						    		<?php echo HTML::anchor("?c=".$post->id, "<i class=\"icon-eye-open\"></i> ".__("View")); ?>
-						    	</span>
 					    	</div>
 					    	<!--
 					    	<div class="row-overlay">
@@ -79,12 +78,15 @@ $types = ORM::factory('type')->find_all();
 					    	</div>
 					    	-->
 					    </td>
+
 					    <td><?php echo $post->type; ?></td>
-					    <td><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
-					    <td>
-					    	<div class="row-show-on-hover">
-					    	<?php echo HTML::anchor("admin/content/delete/".$post->id, "Delete"); ?>
-					    	</div>
+					    <td class="hidden-phone"><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
+					    <td class="hidden-phone"><?php echo Util::date_relative($post->modified_date); ?> <small><?php echo $post->modified_by; ?></small></td>
+					    <td class="hidden-phone">
+						    <div class="tools">
+					    		<?php echo HTML::anchor("?c=".$post->id, "<i class=\"icon-eye-open\"></i>"); ?>
+						    	<?php echo HTML::anchor(Nonce::nonce_url("admin/post/delete/".$post->id, "be-delete-post-".$post->id), '<i class="icon40-times"></i>'); ?>
+						    </div>
 					    </td>
 					</tr>
 					<?php endforeach; ?>

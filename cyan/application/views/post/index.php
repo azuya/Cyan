@@ -118,10 +118,9 @@ $types = ORM::factory('type')->find_all();
 						<?php else: ?>
 						<th style="width:70%;"><?php echo __("Title"); ?></th>
 						<?php endif; ?>
-						
 						<th style="width:10%;" class="hidden-phone"><?php echo __("Author"); ?></th>
 						<th style="width:10%;" class="hidden-phone"><?php echo __("Modified"); ?></th>
-						<th style="width:10%;"></th>
+						<th style="width:10%;" class="hidden-phone"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -143,9 +142,6 @@ $types = ORM::factory('type')->find_all();
 					    <td>
 					    	<div>
 						    	<?php echo HTML::anchor("admin/post/edit/".$post->id, Text::limit_chars($post->title, 50, "…", true)); ?>
-						    	<span class="row-show-on-hover">
-						    		<?php echo HTML::anchor("?c=".$post->id, "<i class=\"icon-eye-open\"></i> ".__("View")); ?>
-						    	</span>
 					    	</div>
 					    	<!--
 					    	<div class="row-overlay">
@@ -160,10 +156,11 @@ $types = ORM::factory('type')->find_all();
 
 					    <td class="hidden-phone"><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
 					    <td class="hidden-phone"><?php echo Util::date_relative($post->modified_date); ?> <small><?php echo $post->modified_by; ?></small></td>
-					    <td>
-					    	<div class="row-show-on-hover">
-					    	<?php echo HTML::anchor(Nonce::nonce_url("admin/post/delete/".$post->id, "be-delete-post-".$post->id), '<i class="icon40-remove-red"></i>'); ?>
-					    	</div>
+					    <td class="hidden-phone">
+						    <div class="tools">
+					    		<?php echo HTML::anchor("?c=".$post->id, "<i class=\"icon-eye-open\"></i>"); ?>
+						    	<?php echo HTML::anchor(Nonce::nonce_url("admin/post/delete/".$post->id, "be-delete-post-".$post->id), '<i class="icon40-times"></i>'); ?>
+						    </div>
 					    </td>
 					</tr>
 					<?php endforeach; ?>

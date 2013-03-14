@@ -22,8 +22,7 @@
 					<?php echo HTML::anchor("admin/post/?type=".$post->type, "", array("class" => "icon40-chevron-left navigation-prev")); ?>
 				</div>
 				<div class="heading">
-					<h1><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?>
-						<?php echo ($post->id) ? $data->title : __("Add new content"); ?>
+					<h1><?php echo ($post->id) ? $data->title : __("Add new content"); ?>
 						<span class="dropdown">
 							<small class="dropdown-toggle" data-toggle="dropdown"><?php echo $post->type; ?><span class="caret"></span></small>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -53,6 +52,11 @@
 			
 			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"))); ?>
 			<?php echo Form::hidden('star', $post->star); ?>
+
+			<div class="control-group">
+				<?php echo Form::label('active', __("Active"), array("class" => "control-label", "for" => "active")); ?>
+				<div class="controls"><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?></div>
+			</div>
 
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>

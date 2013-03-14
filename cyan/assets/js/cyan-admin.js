@@ -121,12 +121,16 @@ $(document).ready(function(){
 	});
 	
 	// Hover buttons in tables
+	/*
 	$(document).on('mouseenter', 'table.table tbody tr', function(){
 		$(this).find(".row-show-on-hover").show();
 	});
 	$(document).on('mouseleave', 'table.table tbody tr', function(){
 		$(this).find(".row-show-on-hover").hide();
 	});
+	*/
+	
+	
 
 	// Padding on body if logged into admin
 	$("body").css("padding-top", "44px");
