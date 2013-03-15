@@ -223,20 +223,28 @@ function go_to_page(href) {
 	if ($("#" + page_id).length == 0) {
 		start_progress();
 	
-		console.log("#" + page_id + ' doesn\'t exist -> load');
+		console.log("#" + page_id + " doesn't exist -> load");
 
 		$.ajax({
 			type: "GET",
 			url: href,
 			data: "",
 			success: function(data) {
-				$("#content .screen").removeClass("active");
-				
-				$("#content").append(data);
-				end_progress();
 
 				// Add to history
 				window.history.pushState(null, "", href);
+
+				// Hide other content
+				$("#content .screen").removeClass("active");
+				
+				// Append new content
+				$("#content").append(data);
+
+				// Apply CKEditor
+				// CKEDITOR.replace('.ckeditor');
+
+				end_progress();
+
 			},
 			error: function() {
 				end_progress();
@@ -244,11 +252,13 @@ function go_to_page(href) {
 			}
 		});
 		
-		
-	// Show page
+	// Show existing page
 	} else {
 		console.log('Exists: ' + "#" + page_id);
 	
+		// Add to history
+		window.history.pushState(null, "", href);
+
 		$(".screen").removeClass("active");
 		$("#" + page_id).addClass("active");
 
