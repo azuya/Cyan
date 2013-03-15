@@ -9,6 +9,7 @@
 	<div class="be-main">
 		
 		<?php echo Form::open('admin/type/post/'.$content->id, array("class" => "form-horizontal")); ?>
+		<?php echo Nonce::nonce_field(($content->id) ? "be-update-type-".$content->id : "be-create-type"); ?>
 		<div class="be-header">
 			<div class="title">
 				<div class="button">
@@ -150,15 +151,7 @@
 								<span class="label label-important"><?php echo Arr::get($errors, 'icon');?></span>
 							</div>
 						</div>
-									
-						<div class="control-group">
-							<?php echo Form::label('configuration', __("Configuration"), array("class" => "control-label", "for" => "configuration")); ?>
-							<div class="controls">
-								<?php echo Form::textarea('configuration', $content->configuration, array("placeholder" => __("Configuration"))); ?>
-								<span class="label label-important"><?php echo Arr::get($errors, 'configuration');?></span>
-							</div>
-						</div>
-									
+								
 						<div class="control-group">
 							<?php echo Form::label('display', __("Display"), array("class" => "control-label", "for" => "display")); ?>
 							<div class="controls">
@@ -178,6 +171,13 @@
 					</div> <!-- tab-pane -->
 				
 					<div class="tab-pane" id="fields">
+					
+						<?php
+						echo "<pre>";
+						print_r($content->fields);
+						echo "</pre>";
+						?>
+					
 						<table class="table">
 							<thead>
 								<tr>
@@ -185,30 +185,60 @@
 									<th><?php echo __("Label"); ?></th>
 									<th><?php echo __("Name"); ?></th>
 									<th><?php echo __("Type"); ?></th>
+									<th></th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="nestable">
+								
+								<!-- De som finns -->
+								<?php foreach($content->fields as $field) : ?>
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo HTML::anchor("admin/field/edit/"."1", "Title"); ?></td>
-									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
-									<td><?php echo __("Text"); ?></td>
+									<td><?php echo Form::input('field_label[]', $field["label"], array("placeholder" => __("Label here"))); ?></td>
+									<td><?php echo Form::input('field_name[]', $field["name"], array("placeholder" => __("Field name"))); ?></td>
+									<td><?php
+										$types = array(
+											"input"		=> __("Text"),
+											"textarea"	=> __("Textarea"),
+											"html"		=> __("HTML"),
+											"select"	=> __("Select"),
+											"checkbox"	=> __("Checkboxes"),
+											"radio"		=> __("Radio buttons"),
+										);
+									?>
+									<?php echo Form::select('field_type[]', $types, $field["type"]); ?>
 								</tr>
+								<?php endforeach; ?>
+								<!-- De som finns -->
+
+								<!--
 								<tr>
 									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo HTML::anchor("admin/field/edit/"."1", "Text"); ?></td>
-									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
-									<td><?php echo __("HTML"); ?></td>
+									<td><?php echo Form::input('field_label[]', $content->name, array("placeholder" => __("Label here"))); ?></td>
+									<td><?php echo Form::input('field_name[]', $content->name, array("placeholder" => __("Field name"))); ?></td>
+									<td><?php
+										$types = array(
+											"input"		=> __("Text"),
+											"textarea"	=> __("Textarea"),
+											"html"		=> __("HTML"),
+											"select"	=> __("Select"),
+											"checkbox"	=> __("Checkboxes"),
+											"radio"		=> __("Radio buttons"),
+										);
+									?>
+									<?php echo Form::select('field_type[]', $types, $content->icon); ?>
+									</td>
+									<td>
+									    <div class="tools">
+									    	<?php echo HTML::anchor("#", '<i class="icon40-times"></i>'); ?>
+									    </div>
+									</td>
 								</tr>
-								<tr>
-									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo HTML::anchor("admin/field/edit/"."1", "Color"); ?></td>
-									<td><?php echo HTML::anchor("admin/field/edit/"."1", "field name"); ?></td>
-									<td><?php echo __("Dropdown"); ?></td>
-								</tr>
+								-->
+								
 							</tbody>
 						</table>
-						<?php echo HTML::anchor("admin/field/edit/"."1", '<i class="icon-plus"></i> '.__("Add field"), array('class'=>'btn')); ?>
+						<?php echo HTML::anchor("#", '<i class="icon-plus"></i> '.__("Add field"), array('class'=>'btn add-field')); ?>
 					</div>
 				
 					<div class="tab-pane" id="access">
@@ -229,6 +259,15 @@
 
 		</div>
 		<?php echo Form::close(); ?>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				$(document).on('click', '.add-field', function() {
+					$('table.table tbody tr:last-child').clone().appendTo('table.table tbody');
+				});
+				
+			});
+		</script>
 		
 	</div> <!-- be-main -->
 

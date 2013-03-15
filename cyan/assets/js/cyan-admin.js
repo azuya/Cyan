@@ -7,7 +7,7 @@
 @codekit-append "../../vendor/fileupload/js/jquery.fileupload.js";
 */
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	// Calculate stickynav height if exist	
 	// if (sticky.length) {
@@ -17,7 +17,7 @@ $(document).ready(function(){
 		// var stickybottom = $('#content_bottom').offset().top - parseFloat($('#content_bottom').css('marginTop').replace(/auto/, 0));
 		   
 		// Add scroll event listener
-		$(window).scroll(function(event){
+		$(window).scroll(function(event) {
 
 			var y = $(this).scrollTop();
 			/*
@@ -120,17 +120,25 @@ $(document).ready(function(){
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
 	
-	// Hover buttons in tables
-	/*
-	$(document).on('mouseenter', 'table.table tbody tr', function(){
-		$(this).find(".row-show-on-hover").show();
-	});
-	$(document).on('mouseleave', 'table.table tbody tr', function(){
-		$(this).find(".row-show-on-hover").hide();
-	});
-	*/
+	// Nestable
 	
-	
+	var updateOutput = function(e)
+    {
+        
+        console.log('updateOutput!');
+        
+        var list   = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+    
+    $('.nestable').nestable({
+        group: 1
+    }).on('change', updateOutput);
 
 	// Padding on body if logged into admin
 	$("body").css("padding-top", "44px");

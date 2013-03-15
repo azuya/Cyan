@@ -38,6 +38,8 @@ class Controller_Type extends Controller_Admin {
         $id = $this->request->param('id');
         $type = new Model_Type($id);
  
+        $type->fields = unserialize($type->fields);
+ 
         // $view = new View('content/edit');
         // $view->set("content", $type);
         // $this->response->body($view);
@@ -62,9 +64,56 @@ class Controller_Type extends Controller_Admin {
     
         $id = $this->request->param('id');
         $type = new Model_Type($id);
-        $type->values($_POST); // populate $type object from $_POST array
+        
+        $field_names = $_POST["field_name"];
+        unset($_POST["field_name"]);
+        
+        $field_labels = $_POST["field_label"];
+        unset($_POST["field_label"]);
+
+        $field_types = $_POST["field_type"];
+        unset($_POST["field_type"]);
+
+
+        echo "<pre>";
+        print_r($field_names);
+        echo "</pre>";
+        
+        echo "<pre>";
+        print_r($field_labels);
+        echo "</pre>";
+        
+        echo "<pre>";
+        print_r($field_types);
+        echo "</pre>";
+        
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+        
+        $fields = array();
+        for ($i = 0; $i <= count($field_names)-1; $i++) {
+	        $fields[$i] = array(
+	        	"name"		=> $field_names[$i],
+	        	"label"		=> $field_labels[$i],
+	        	"type"		=> $field_types[$i],
+	        );
+        }
+        
+        
+        $_POST["fields"] = serialize($fields);
+        
+        $type->values($_POST);
 		$errors = array();
 		
+		// Nonce ----------------------------------
+		if ($id) {
+			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-update-type-".$id)) { Nonce::nonce_error(); }
+		} else {
+			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-create-type")) { Nonce::nonce_error(); }
+		}
+		// ----------------------------------------
+
 		try
 		{
 			$type->save(); // saves content to database
