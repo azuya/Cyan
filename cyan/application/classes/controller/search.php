@@ -32,7 +32,7 @@ class Controller_Search extends Controller_Admin {
 			*/
 
 			$count = $post->reset(FALSE)
-				->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+				->select('post_data.title')->select('post_data.excerpt')->select('post_data.body')
 				->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id')
 				->where('title', 'LIKE', "%".$query['q']."%")
 				->or_where('content', 'LIKE', "%".$query['q']."%")

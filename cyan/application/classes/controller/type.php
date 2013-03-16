@@ -37,7 +37,6 @@ class Controller_Type extends Controller_Admin {
     {
         $id = $this->request->param('id');
         $type = new Model_Type($id);
- 
         $type->fields = unserialize($type->fields);
  
         // $view = new View('content/edit');
@@ -74,30 +73,21 @@ class Controller_Type extends Controller_Admin {
         $field_types = $_POST["field_type"];
         unset($_POST["field_type"]);
 
+        $field_properties = $_POST["field_properties"];
+        unset($_POST["field_properties"]);
 
-        echo "<pre>";
-        print_r($field_names);
-        echo "</pre>";
-        
-        echo "<pre>";
-        print_r($field_labels);
-        echo "</pre>";
-        
-        echo "<pre>";
-        print_r($field_types);
-        echo "</pre>";
-        
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
-        
         $fields = array();
         for ($i = 0; $i <= count($field_names)-1; $i++) {
-	        $fields[$i] = array(
-	        	"name"		=> $field_names[$i],
-	        	"label"		=> $field_labels[$i],
-	        	"type"		=> $field_types[$i],
-	        );
+	        
+	        if ($field_labels[$i] != "") {
+		        $fields[$i] = array(
+		        	"name"		=> ($field_names[$i]) ? URL::title($field_names[$i], "-", true) : URL::title($field_labels[$i], "-", true),
+		        	"label"		=> $field_labels[$i],
+		        	"type"		=> $field_types[$i],
+		        	"properties"=> $field_properties[$i],
+		        );
+	        }
+
         }
         
         

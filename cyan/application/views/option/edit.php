@@ -9,13 +9,25 @@
 	<div class="be-main">
 		
 		<?php echo Form::open('admin/option/post/'.$content->id, array("class" => "form-horizontal")); ?>
+		<?php echo Nonce::nonce_field(($content->id) ? "be-update-option-".$content->id : "be-create-option"); ?>
 		<div class="be-header">
 			<div class="title">
-				<h1><?php echo __("Add new content"); ?></h1>
+				<div class="button">
+					<?php echo HTML::anchor("admin/option/", "", array("class" => "icon40-chevron-left navigation-prev")); ?>
+				</div>
+				<div class="heading">
+					<h1><?php
+						if ($content->id) {
+							echo $content->option_name;
+						} else {
+							echo __("New option");
+						}
+					?></h1>
+				</div>
 			</div>
 
-			<div class="actions">
-				<?php echo Form::submit('submit', __('Submit'), array('class'=>'btn btn-primary')); ?>
+			<div class="actions masterbutton">
+				<?php echo Form::submit('submit', __('Save'), array('class'=>'btn')); ?>
 			</div>
 		</div>
 		

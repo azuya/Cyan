@@ -1,9 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
  
-<?php
-	$type = Arr::get($_GET, 'type', '0');
-?>
-
 <div id="<?php echo Util::get_page_id(); ?>" class="screen active">
 
 	<div class="be-tools">
@@ -28,8 +24,8 @@
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 								<?php
 								$types = ORM::factory('type')->find_all();
-								foreach ($types as $type) {
-									echo "<li>".HTML::anchor("admin/post/index/?type=".$type->id, $type->name)."</li>";
+								foreach ($types as $t) {
+									echo "<li>".HTML::anchor("admin/post/index/?type=".$t->id, $t->name)."</li>";
 								}
 								?>
 							</ul>
@@ -41,8 +37,8 @@
 				</div>
 			</div>
 
-			<div class="actions">
-				<?php echo Form::submit('submit', __('Save'), array('class'=>'btn btn-primary')); ?>
+			<div class="actions masterbutton">
+				<?php echo Form::submit('submit', __('Save'), array('class'=>'btn')); ?>
 				<?php // echo HTML::anchor("admin/post", "<i class=\"icon-align-justify\"></i>", array('class'=>'btn')); ?>
 			</div>
 		</div>
@@ -58,6 +54,21 @@
 				<div class="controls"><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?></div>
 			</div>
 
+			<?php
+			if ($type->fields) { ?>
+				<?php foreach ($type->fields as $field) : ?>
+					<div class="control-group">
+						<?php echo Form::label($field["name"], __($field["label"]), array("class" => "control-label", "for" => $field["label"])); ?>
+						<div class="controls">
+							<?php $value = isset($data->{$field["name"]}) ? $data->{$field["name"]}: ''; ?>
+							<?php echo Form::form_field($field, $value); ?>
+							<span class="label label-important"><?php echo Arr::get($errors, $field["name"]);?></span>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			<?php } ?>
+
+			<!--
 			<div class="control-group">
 				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>
 				<div class="controls">
@@ -71,7 +82,6 @@
 				<div class="controls"><?php echo Form::textarea('content', $data->content, array("placeholder" => __("Content"), "class" => "ckeditor")); ?></div>
 			</div>
 		 
-			<!--
 			<div class="control-group">
 				<?php echo Form::label('testar', __("Testar"), array("class" => "control-label", "for" => "testar")); ?>
 				<div class="controls"><?php echo Form::input('testar', $post->testar, array("placeholder" => __("Testar"))); ?></div>

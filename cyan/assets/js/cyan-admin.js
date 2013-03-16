@@ -1,6 +1,6 @@
 /*
 @codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js";
-@codekit-append "holder.js", "jquery.nestable.js";
+@codekit-append "holder.js", "jquery-sortable.js";
 
 @codekit-append "../../vendor/fileupload/js/vendor/jquery.ui.widget.js";
 @codekit-append "../../vendor/fileupload/js/iframe-transport.js";
@@ -120,8 +120,8 @@ $(document).ready(function() {
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
 	
-	// Nestable
-	
+	// Sortable
+	/*
 	var updateOutput = function(e)
     {
         
@@ -139,16 +139,17 @@ $(document).ready(function() {
     $('.nestable').nestable({
         group: 1
     }).on('change', updateOutput);
+    */
+    
+    $(document).on('click', '.remove-row', function() {
+	    $(this).parents('tr').remove();
+    });
+
+    // System alert
+    // system_alert("Warning!", "Someone else is editing this content. It's advised that you don't edit it at the same time.");
 
 	// Padding on body if logged into admin
 	$("body").css("padding-top", "44px");
-	
-	// System alerts
-	var alert_text = '<div id="system-alert" class="alert alert-block fade in">'
-		+ '<button type="button" class="close" data-dismiss="alert">&times;</button>'
-		+ '<strong>Warning!</strong> Someone else is editing this content. It\'s advised that you don\'t edit it at the same time.'
-		+ '</div>';
-	$("body").append(alert_text);
 	
 	/* 
 	 * !Bootstrap inits
@@ -188,6 +189,20 @@ $(document).ready(function() {
 });
 
 /*
+ * System alert
+ * @param	String	Title
+ * @param	String	Message
+ * @param	String	Icon
+ */
+function system_alert(title, message, icon) {
+	var alert_text = '<div id="system-alert" class="alert alert-block fade in">'
+		+ '<button type="button" class="close" data-dismiss="alert">&times;</button>'
+		+ '<strong>' + title + '</strong> ' + message
+		+ '</div>';
+	$("body").append(alert_text);
+}
+
+/*
  * Go to a page -> Load new or switch DIV
  * @param	String	Href of link
  */
@@ -203,7 +218,7 @@ function go_to_page(href) {
 	}
 	
 	if (href.indexOf('#') == 0) {
-		console.log('Starts with hash (#)...');
+		console.log('-- Starts with hash (#)...');
 		return false;
 	}
 

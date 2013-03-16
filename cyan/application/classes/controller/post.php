@@ -80,6 +80,10 @@ class Controller_Post extends Controller_Admin {
 		$post = new Model_Post();
 		$data = new Model_Post_Data();
 
+		// Get type data
+        $type = new Model_Type(Arr::get($_GET, 'type', '0'));
+        $type->fields = isset($type->fields) ? unserialize($type->fields) : '';
+
 		/*
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post"));
@@ -105,6 +109,7 @@ class Controller_Post extends Controller_Admin {
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('post', $post)
 			->bind('data', $data)
+			->bind('type', $type)
 			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
 
@@ -121,6 +126,10 @@ class Controller_Post extends Controller_Admin {
 		// Get post data
 		$data = $post->data->where('post_id', '=' , $post_id)->find();
 
+		// Get type data
+        $type = new Model_Type($post->type);
+        $type->fields = isset($type->fields) ? unserialize($type->fields) : '';
+        
 		// Create the pagination object
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__("Content"))->set_url("admin/post/"));
 		// Breadcrumbs::add(Breadcrumb::factory()->set_title("En till här")->set_url("http://www.bobolo.se/"));
@@ -130,6 +139,7 @@ class Controller_Post extends Controller_Admin {
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('post', $post)
 			->bind('data', $data)
+			->bind('type', $type)
 			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
 	}
@@ -184,29 +194,57 @@ class Controller_Post extends Controller_Admin {
 			$post_val["created_date"] = date('Y-m-d H:i:s');
 			$data_val["created_date"] = date('Y-m-d H:i:s');
 		}
-		else
-		{
-			$post_val["modified_date"] = date('Y-m-d H:i:s');
-			$data_val["modified_date"] = date('Y-m-d H:i:s');
-		}
+
+		$post_val["modified_date"] = date('Y-m-d H:i:s');
+		$data_val["modified_date"] = date('Y-m-d H:i:s');
+		$post_val["modified_by"] = $user->id;
+		$data_val["modified_by"] = $user->id;
 
 		// echo "post_val<pre>";
 		// print_r($post_val);
 		// echo "</pre>";
 
-		$data_val["title"]		= $request_val["title"];
-		// $data_val["excerpt"] = $request_val["excerpt"];
-		$data_val["content"]	= $request_val["content"];
+		$data_val["title"]		= isset($request_val["title"]) ? $request_val["title"] : '';
+		$data_val["excerpt"]	= isset($request_val["excerpt"]) ? $request_val["excerpt"] : '';
+		$data_val["body"]		= isset($request_val["body"]) ? $request_val["body"] : '';
 		$data_val["author"]		= $user->id;
-		$data_val["alias"]		= URL::title($request_val["title"], " ", true);
+		$data_val["alias"]		= URL::title($request_val["title"], "-", true);
 
 		$post->values($post_val); // populate $post object from $_POST array
-
-		// echo "data_val<pre>";
-		// print_r($data_val);
-		// echo "</pre>";
-
 		$data->values($data_val); // populate $data object from $_POST array
+
+		echo "<pre>";
+		print_r(array_keys($post_val));
+		echo "</pre>";
+		
+		echo "<pre>";
+		print_r(array_keys($data_val));
+		echo "</pre>";
+		
+		$meta_val = $request_val;
+		
+		foreach (array_keys($post_val) as $key) {
+			unset($meta_val[$key]);
+		}
+		
+		foreach (array_keys($data_val) as $key) {
+			unset($meta_val[$key]);
+		}
+		
+		unset($meta_val["_benonce"]);
+		unset($meta_val["submit"]);
+		
+		// echo "Att bli meta:";
+		// echo "<pre>";
+		// print_r($meta_val);
+		// echo "</pre>";
+		// 
+		// $meta = $post->data->where('post_id', '=' , $post_id)->find();
+		// $meta->values($meta_val); // populate $data object from $_POST array
+		// $meta->save();
+		// 
+		// echo "dies...";
+		// die();
 
 		$errors = array();
 

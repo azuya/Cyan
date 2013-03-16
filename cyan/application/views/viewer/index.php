@@ -9,6 +9,6 @@
 
 <?php
 	// echo "Type[[".$post->type."]]";
-	echo $data->content;
+	echo $data->body;
 	// echo $contents->title;
 ?>

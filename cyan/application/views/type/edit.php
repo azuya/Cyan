@@ -26,8 +26,8 @@
 				</div>
 			</div>
 
-			<div class="actions">
-				<?php echo Form::submit('submit', __('Save'), array('class'=>'btn btn-primary')); ?>
+			<div class="actions masterbutton">
+				<?php echo Form::submit('submit', __('Save'), array('class'=>'btn')); ?>
 			</div>
 		</div>
 		
@@ -172,73 +172,195 @@
 				
 					<div class="tab-pane" id="fields">
 					
-						<?php
-						echo "<pre>";
-						print_r($content->fields);
-						echo "</pre>";
-						?>
-					
-						<table class="table">
+						<table class="table table-hover">
 							<thead>
 								<tr>
 									<th width="50px;"></th>
-									<th><?php echo __("Label"); ?></th>
-									<th><?php echo __("Name"); ?></th>
-									<th><?php echo __("Type"); ?></th>
-									<th></th>
+									<th style="width:30%;"><?php echo __("Label"); ?></th>
+									<th style="width:30%;"><?php echo __("Name"); ?></th>
+									<th style="width:20%;"><?php echo __("Type"); ?></th>
+									<th style="width:20%;"></th>
 								</tr>
 							</thead>
-							<tbody class="nestable">
-								
+							<tbody class="sorted_table">
+
+								<?php
+								$types = array(
+									"text"		=> __("Text"),
+									"textarea"	=> __("Textarea"),
+									"html"		=> __("HTML"),
+									"select"	=> __("Select"),
+									"checkbox"	=> __("Checkboxes"),
+									"radio"		=> __("Radio buttons"),
+									"email"		=> __("Email"),
+									"url"		=> __("URL"),
+									"files"		=> __("Files"),
+									"images"	=> __("Images"),
+									"date"		=> __("Date"),
+									"int"		=> __("Integer"),
+									"float"		=> __("Float"),
+								);
+								?>
+
 								<!-- De som finns -->
+								<?php if(is_array($content->fields) && count($content->fields) > 0) : ?>
+								<?php $field_id = 0; ?>
 								<?php foreach($content->fields as $field) : ?>
-								<tr>
-									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo Form::input('field_label[]', $field["label"], array("placeholder" => __("Label here"))); ?></td>
-									<td><?php echo Form::input('field_name[]', $field["name"], array("placeholder" => __("Field name"))); ?></td>
-									<td><?php
-										$types = array(
-											"input"		=> __("Text"),
-											"textarea"	=> __("Textarea"),
-											"html"		=> __("HTML"),
-											"select"	=> __("Select"),
-											"checkbox"	=> __("Checkboxes"),
-											"radio"		=> __("Radio buttons"),
-										);
+									<?php
+									$field_id++;
+									$field["properties"] = isset($field["properties"]) ? $field["properties"] : '';
 									?>
-									<?php echo Form::select('field_type[]', $types, $field["type"]); ?>
-								</tr>
+									<tr data-id="<?php echo $field_id;?>">
+										<td><span class="icon40-move handle-move"></span></td>
+										<td><?php echo Form::input('field_label[]', $field["label"], array("placeholder" => __("Label here"))); ?></td>
+										<td><?php echo Form::input('field_name[]', $field["name"], array("placeholder" => __("Field name"))); ?></td>
+										<td><?php echo Form::select('field_type[]', $types, $field["type"]); ?></td>
+										<td>
+											<?php echo Form::hidden('field_properties[]', $field["properties"]); ?>
+										    <div class="tools">
+										    	<?php echo HTML::anchor("#", '<i class="icon-cog"></i>', array('class' => 'field-properties')); ?>
+										    	<?php echo HTML::anchor("#", '<i class="icon40-times"></i>', array("class" => "remove-row")); ?>
+										    </div>
+										</td>
+									</tr>
 								<?php endforeach; ?>
+								<?php endif; ?>
 								<!-- De som finns -->
 
-								<!--
-								<tr>
+								<tr class="clone-source" data-id="">
 									<td><span class="icon40-move handle-move"></span></td>
-									<td><?php echo Form::input('field_label[]', $content->name, array("placeholder" => __("Label here"))); ?></td>
-									<td><?php echo Form::input('field_name[]', $content->name, array("placeholder" => __("Field name"))); ?></td>
-									<td><?php
-										$types = array(
-											"input"		=> __("Text"),
-											"textarea"	=> __("Textarea"),
-											"html"		=> __("HTML"),
-											"select"	=> __("Select"),
-											"checkbox"	=> __("Checkboxes"),
-											"radio"		=> __("Radio buttons"),
-										);
-									?>
-									<?php echo Form::select('field_type[]', $types, $content->icon); ?>
-									</td>
+									<td><?php echo Form::input('field_label[]', '', array("placeholder" => __("Label here"))); ?></td>
+									<td><?php echo Form::input('field_name[]', '', array("placeholder" => __("Field name"))); ?></td>
+									<td><?php echo Form::select('field_type[]', $types, ''); ?></td>
 									<td>
+										<?php echo Form::hidden('field_properties[]', '{"maxlength":"","min-value":"","max-value":"","placeholder":"","required":"","strip-tags":"","help-text":"","allowed-extensions":"","resize-images":"","max-width":"","max-height":"","max-files":"","class":"","helper":"","items":""}'); ?>
 									    <div class="tools">
-									    	<?php echo HTML::anchor("#", '<i class="icon40-times"></i>'); ?>
+									    	<?php echo HTML::anchor("#", '<i class="icon-cog"></i>', array('class' => 'field-properties')); ?>
+									    	<?php echo HTML::anchor("#", '<i class="icon40-times"></i>', array("class" => "remove-row")); ?>
 									    </div>
 									</td>
 								</tr>
-								-->
 								
 							</tbody>
 						</table>
 						<?php echo HTML::anchor("#", '<i class="icon-plus"></i> '.__("Add field"), array('class'=>'btn add-field')); ?>
+
+						<div id="modal-field-properties" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="label-field-properties" aria-hidden="true">
+							<input type="hidden" id="row-id">
+							
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3 id="label-field-properties"><span>Field</span> <small><?php echo __("Properties"); ?></small></h3>
+							</div>
+							<div class="modal-body">
+								<div class="control-group" data-for="text">
+									<label class="control-label" for="maxlength"><?php echo __("Max length"); ?></label>
+									<div class="controls">
+										<input type="text" id="maxlength" placeholder="<?php echo __("Max length"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="int float">
+									<label class="control-label" for="min-value"><?php echo __("Min value"); ?></label>
+									<div class="controls">
+										<input type="text" id="min-value" placeholder="<?php echo __("Min value"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="int float">
+									<label class="control-label" for="max-value"><?php echo __("Max value"); ?></label>
+									<div class="controls">
+										<input type="text" id="max-value" placeholder="<?php echo __("Max value"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="text textarea">
+									<label class="control-label" for="placeholder"><?php echo __("Placeholder"); ?></label>
+									<div class="controls">
+										<input type="text" id="placeholder" placeholder="<?php echo __("Placeholder"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="textarea">
+									<label class="control-label" for="rows"><?php echo __("Rows"); ?></label>
+									<div class="controls">
+										<input type="text" id="rows" placeholder="<?php echo __("Number of rows"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="all">
+									<label class="control-label" for="required"></label>
+									<div class="controls">
+										<label class="checkbox"><input type="checkbox" id="required"> <?php echo __("Required"); ?></label>
+									</div>
+								</div>
+								<div class="control-group" data-for="text textarea">
+									<label class="control-label" for="strip-tags"></label>
+									<div class="controls">
+										<label class="checkbox"><input type="checkbox" id="strip-tags"> <?php echo __("Strip tags"); ?></label>
+									</div>
+								</div>
+								<div class="control-group" data-for="all">
+									<label class="control-label" for="help-text"><?php echo __("Help text"); ?></label>
+									<div class="controls">
+										<textarea type="text" id="help-text" placeholder="<?php echo __("Help text"); ?>"></textarea>
+										<span class="help-block"><?php echo __("Additional information describing this field and/or instructions on how to enter the content."); ?></span>
+									</div>
+								</div>
+								<div class="control-group" data-for="images files">
+									<label class="control-label" for="allowed-extensions"><?php echo __("Allowed extensions"); ?></label>
+									<div class="controls">
+										<input type="text" id="allowed-extensions" placeholder="<?php echo __("Allowed extensions"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="images">
+									<label class="control-label" for="resize-images"><?php echo __("Resize images"); ?></label>
+									<div class="controls">
+										<label class="checkbox"><input type="checkbox" id="resize-images"> <?php echo __("Resize images"); ?></label>
+									</div>
+								</div>
+								<div class="control-group" data-for="images">
+									<label class="control-label" for="max-width"><?php echo __("Max width"); ?></label>
+									<div class="controls">
+										<input type="text" id="max-width" placeholder="<?php echo __("Max width"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="images">
+									<label class="control-label" for="max-height"><?php echo __("Max height"); ?></label>
+									<div class="controls">
+										<input type="text" id="max-height" placeholder="<?php echo __("Max height"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="images">
+									<label class="control-label" for="max-max-files"><?php echo __("Max files"); ?></label>
+									<div class="controls">
+										<input type="text" id="max-files" placeholder="<?php echo __("Max files"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="all">
+									<label class="control-label" for="class"><?php echo __("Class(es)"); ?></label>
+									<div class="controls">
+										<input type="text" id="class" placeholder="<?php echo __("Class(es)"); ?>">
+									</div>
+								</div>
+								<div class="control-group" data-for="text">
+									<label class="control-label" for="helper"><?php echo __("Helper"); ?></label>
+									<div class="controls">
+										<select type="text" id="helper">
+											<option value="">– <?php echo __("None"); ?> –</option>
+											<option value="date-picker"><?php echo __("Date picker"); ?></option>
+											<option value="color-picker"><?php echo __("Color picker"); ?></option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group" data-for="select radio checkbox">
+									<label class="control-label" for="items"><?php echo __("Items"); ?></label>
+									<div class="controls">
+										<textarea type="text" id="items" placeholder="<?php echo __("Items"); ?>"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo __("Cancel"); ?></button>
+								<button class="btn btn-primary save-field-properties"><?php echo __("Save"); ?></button>
+							</div>
+						</div>
+
 					</div>
 				
 					<div class="tab-pane" id="access">
@@ -263,7 +385,106 @@
 			$(document).ready(function() {
 				
 				$(document).on('click', '.add-field', function() {
-					$('table.table tbody tr:last-child').clone().appendTo('table.table tbody');
+					$('table.table tbody tr.clone-source').clone().removeClass('clone-source').appendTo('table.table tbody');
+				});
+				
+				// Sortable rows
+				$('.sorted_table').sortable({
+					containerSelector: 'tbody',
+					itemSelector: 'tr',
+					handle: '.handle-move',
+					placeholder: '<tr class="placeholder"><td colspan="5"></td></tr>'
+				})
+
+				// Field properties
+				$(document).on('click', '.field-properties', function() {
+					var clicked_row = $(this).parents('tr');
+
+					var field_type = $(clicked_row).find('select[name="field_type[]"]').val();
+					// console.log(field_type);
+
+					var field_properties_string = $(clicked_row).find('input[name="field_properties[]"]').val();
+
+					if (field_properties_string != '') {
+						var field_properties = JSON.parse(field_properties_string);
+						// console.log(field_properties);
+						
+						$.each(field_properties, function(index, value) {
+							// console.log(index + ':' + value);
+							if ($('#' + index).attr('type') == 'checkbox') {
+								if (value != '') {
+									$('#' + index).attr('checked', true);
+								} else {
+									$('#' + index).attr('checked', false);
+								}
+								
+							} else {
+								$('#' + index).val(value);
+							}
+						});
+					}
+					
+					// Row-id
+					$('#modal-field-properties #row-id').val($(clicked_row).attr("data-id"));
+
+					// Title
+					$('#modal-field-properties .modal-header h3 span').html($(clicked_row).find('input[name="field_label[]"]').val());
+					
+					// Type
+					$('#modal-field-properties .modal-header h3 small').html($(clicked_row).find('select[name="field_type[]"] option:selected').text());
+					
+					// Show / hide field properties
+					$("#modal-field-properties div.control-group").each(function(index) {
+						
+						// Show property
+						if ($(this).data('for').indexOf(field_type) !== -1 || $(this).data('for') == 'all') {
+							$(this).show();
+						
+						// Hide property
+						} else {
+							$(this).hide();
+						}
+						
+  					});
+  					
+					$('#modal-field-properties').modal();
+				});
+				
+				$(document).on('click', '.save-field-properties', function() {
+					
+					var properties = {};
+					$("#modal-field-properties div.control-group div.controls").each(function(index) {
+						var property = $(this).find("select, textarea, input");
+						var name = $(property).attr('id');
+						var value = '';
+						
+						if ($(property).attr('type') == "checkbox") {
+							if ($(property).is(':checked')) {
+								value = 'true';
+							} else {
+								value = '';
+							}
+						} else {
+							value = $(property).val();
+						}
+						properties[name] = value;
+					});
+					
+					// console.log(properties);
+					// console.log(JSON.stringify(properties));
+					
+					// console.log(JSON.stringify($('#modal-field-properties').serializeObject()));
+					// var fields = $('#modal-field-properties').serialize();
+					// console.log(fields);
+					
+					var field_properties = JSON.stringify(properties);
+					
+					// Put values back in field row in table
+					$('tr[data-id=' + $('#modal-field-properties #row-id').val() + ']').find('input[name="field_properties[]"]').val(field_properties);
+					
+					// Close modal
+					$('#modal-field-properties').modal('hide');
+					return false;
 				});
 				
 			});

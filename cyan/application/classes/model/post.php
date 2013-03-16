@@ -84,7 +84,7 @@ class Model_Post extends ORM {
 		
 		// $post = ORM::factory('post'); // loads all post object from table
 		$posts = ORM::factory('post')
-			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.body')
 			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
 		// Language
@@ -127,7 +127,7 @@ class Model_Post extends ORM {
 		
 		// $post = ORM::factory('post'); // loads all post object from table
 		$post = ORM::factory('post')
-			->select('post_data.title')->select('post_data.excerpt')->select('post_data.content')
+			->select('post_data.title')->select('post_data.excerpt')->select('post_data.body')
 			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
 		// Language

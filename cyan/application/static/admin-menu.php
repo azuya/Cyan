@@ -30,7 +30,7 @@ if ($user) :
 								<div class="inner">
 									<ul class="menu">
 										<li><?php echo HTML::anchor("admin/dashboard/", '<i class="icon-home"></i> '.__("Dashboard")); ?></li>
-										<li><?php echo HTML::anchor(".", '<i class="icon-eye-open"></i> '.__("View site")); ?></li>
+										<li><?php echo HTML::anchor("/", '<i class="icon-eye-open"></i> '.__("View site")); ?></li>
 										<!--
 										<li class="divider"></li>
 										<li><?php echo HTML::anchor("admin/messages/", sprintf(__("%d messages"), 3)); ?></li>
@@ -55,6 +55,7 @@ if ($user) :
 										<li><?php echo HTML::anchor("#", __("All content")); ?></li>
 										<li><?php echo HTML::anchor("#", __("Newest content")); ?></li>
 										<li><?php echo HTML::anchor("#", __("Last updated content")); ?></li>
+										<li><?php echo HTML::anchor("admin/type/", __("Manage content types")); ?></li>
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/post", '<span class="text">'.__("All content").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
@@ -133,11 +134,12 @@ if ($user) :
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/roles", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-user"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/module", '<span class="text">'.__("Modules").'</span>'.'<i class="icon60-cabinet"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/role", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-user"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/option", '<span class="text">'.__("Options").'</span>'.'<i class="icon60-cog"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/form", '<span class="text">'.__("Forms").'</span>'.'<i class="icon60-window"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/language", '<span class="text">'.__("Languages").'</span>'.'<i class="icon60-earth"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/sites", '<span class="text">'.__("Sites").'</span>'.'<i class="icon60-boxes"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/site", '<span class="text">'.__("Sites").'</span>'.'<i class="icon60-boxes"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
