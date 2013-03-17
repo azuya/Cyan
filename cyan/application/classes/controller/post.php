@@ -26,10 +26,10 @@ class Controller_Post extends Controller_Admin {
 			"limit"		=> $limit,
 			"offset"	=> $offset,
 		);
-		$data = Model_Post::load($query);
+		$items = Model_Post::load($query);
 
-		$count = $data["count"];
-		$posts = $data["items"];
+		$count = $items["count"];
+		$posts = $items["items"];
 
 		// Create the pagination object
 		$pagination = Pagination::factory(array(
@@ -125,8 +125,17 @@ class Controller_Post extends Controller_Admin {
 		
 		// Get post data
 		$data = $post->data->where('post_id', '=' , $post_id)->find();
-
-		// Get type data
+		
+		// Get post meta
+		$meta = $post->meta->where('post_id', '=' , $post_id)->find_all();
+		$meta_objects = array();
+		foreach ($meta as $obj)
+		{
+			// echo "<pre>".$obj->key."=".$obj->value."</pre>";
+			$meta_objects[$obj->key] = $obj;
+		}      
+		
+		// Get type
         $type = new Model_Type($post->type);
         $type->fields = isset($type->fields) ? unserialize($type->fields) : '';
         
@@ -139,6 +148,7 @@ class Controller_Post extends Controller_Admin {
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('post', $post)
 			->bind('data', $data)
+			->bind('meta', $meta_objects)
 			->bind('type', $type)
 			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
@@ -188,6 +198,10 @@ class Controller_Post extends Controller_Admin {
 		$post_val["type"] 	= $request_val['type'];
 		$post_val["star"] 	= $request_val['star'];
 
+		// Get type data
+        $type = new Model_Type($post_val["type"]);
+        $type->fields = isset($type->fields) ? unserialize($type->fields) : '';
+
 		// Only created
 		if (!$post_id)
 		{
@@ -200,26 +214,23 @@ class Controller_Post extends Controller_Admin {
 		$post_val["modified_by"] = $user->id;
 		$data_val["modified_by"] = $user->id;
 
-		// echo "post_val<pre>";
-		// print_r($post_val);
-		// echo "</pre>";
-
 		$data_val["title"]		= isset($request_val["title"]) ? $request_val["title"] : '';
 		$data_val["excerpt"]	= isset($request_val["excerpt"]) ? $request_val["excerpt"] : '';
 		$data_val["body"]		= isset($request_val["body"]) ? $request_val["body"] : '';
 		$data_val["author"]		= $user->id;
 		$data_val["alias"]		= URL::title($request_val["title"], "-", true);
 
-		$post->values($post_val); // populate $post object from $_POST array
-		$data->values($data_val); // populate $data object from $_POST array
+		$post->values($post_val);
+		$data->values($data_val);
 
-		echo "<pre>";
-		print_r(array_keys($post_val));
-		echo "</pre>";
+		// Put the rest in meta
+		// echo "<pre>";
+		// print_r(array_keys($post_val));
+		// echo "</pre>";
 		
-		echo "<pre>";
-		print_r(array_keys($data_val));
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r(array_keys($data_val));
+		// echo "</pre>";
 		
 		$meta_val = $request_val;
 		
@@ -231,21 +242,10 @@ class Controller_Post extends Controller_Admin {
 			unset($meta_val[$key]);
 		}
 		
+		// Remove others
 		unset($meta_val["_benonce"]);
 		unset($meta_val["submit"]);
 		
-		// echo "Att bli meta:";
-		// echo "<pre>";
-		// print_r($meta_val);
-		// echo "</pre>";
-		// 
-		// $meta = $post->data->where('post_id', '=' , $post_id)->find();
-		// $meta->values($meta_val); // populate $data object from $_POST array
-		// $meta->save();
-		// 
-		// echo "dies...";
-		// die();
-
 		$errors = array();
 
 		try
@@ -271,6 +271,62 @@ class Controller_Post extends Controller_Admin {
 			// print_r($data);
 			// echo "</pre>";
 
+			/*
+			// Remove old meta tags
+			$query_delete = DB::delete('post_meta')->where('post_id', '=', $post->id);
+			echo "$query_delete<br>";
+			$result = $query_delete->execute();
+
+			$query_insert = DB::insert('post_meta', array('post_id', 'key', 'value'))->values(array($post->id, 'fred', 'p@5sW0Rd'));
+			echo "$query_insert<br>";
+			// $result = $query_insert->execute();
+			*/
+			
+			// echo "meta_val för post_id: $post_id<pre>";
+			// print_r($meta_val);
+			// echo "</pre>";
+
+			$query_delete = DB::delete('post_meta')->where('post_id', '=', $post->id);
+			// echo "$query_delete<br>";
+			$result = $query_delete->execute();
+
+			foreach($meta_val as $key => $value) {
+				
+				if ($value != "") {
+					
+					$meta = $post->meta->where('post_id', '=' , $post_id)->where('key', '=' , $key)->find();
+					// echo "<pre>";
+					// print_r($meta);
+					// echo "</pre>";
+					// echo Database::instance()->last_query;
+					
+					$meta_key_value = array(
+						"site_id"	=> 0,
+						"post_id"	=> $post_id,
+						"key"		=> $key,
+						"value"		=> $value,
+					);
+					
+					// echo "Insert... $key=$value<br>";
+					// $query_insert = DB::insert('post_meta', array('post_id', 'key', 'value'))->values(array($post->id, trim($key), trim($value)));
+					// echo "$query_insert<br>";
+					// $result = $query_insert->execute();
+
+					$meta->values($meta_key_value); // populate $data object from $_POST array
+					$meta->save(); // saves post to database
+					// echo Database::instance()->last_query;
+				}
+		
+				// $meta = $post->meta->where('post_id', '=' , $post_id)->where('key', '=' , $key)->find();
+				// $meta->values($meta_key_value);
+				// $meta->save();
+				
+			}
+			// echo Database::instance()->last_query;
+			
+			// echo "<p>dies...</p>";
+			// die();
+	
 			// echo "saved?";
 
 			$this->redirect(self::MODULE);
@@ -280,9 +336,15 @@ class Controller_Post extends Controller_Admin {
 		{
 			$errors = $ex->errors('validation');
 
+			echo "<pre>";
+			print_r($errors);
+			echo "</pre>";
+
 			$view = new View('post/edit');
-			$view->set("post", $post);
-			$view->set("data", $data);
+			$view->bind("post", $post);
+			$view->bind("data", $data);
+			$view->bind('type', $type);
+			// $view->set("meta", $meta);
 			$view->set('errors', $errors);
 
 			$this->template->set('content', $view);

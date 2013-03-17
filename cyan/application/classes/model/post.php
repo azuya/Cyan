@@ -69,15 +69,15 @@ class Model_Post extends ORM {
 	}
 	*/
 	
-	public static function load($data = array("")) {
+	public static function load($query = array("")) {
 		// echo "load($data)<br>";
 		
-		if (!is_array($data)) {
-			$data["id"] = $data;
+		if (!is_array($query)) {
+			$query["id"] = $query;
 		}
 		
 		// echo "<pre>";
-		// print_r($data);
+		// print_r($query);
 		// echo "</pre>";
 		
 		$result = array("items" => array(), "count" => 0);
@@ -88,17 +88,17 @@ class Model_Post extends ORM {
 			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
 		// Language
-		$language = isset($data["language"]) ? $data["language"] : 1;
+		$language = isset($query["language"]) ? $query["language"] : 1;
 		// $posts->where('post_data.language', '=' , $language);
 		
 		// Type
-		if (isset($data["type"])) {
-			$posts->where('type', '=' , $data["type"]);
+		if (isset($query["type"])) {
+			$posts->where('type', '=' , $query["type"]);
 		}
 
 		// Limit & offset
-		$posts->limit($data["limit"]);
-		$posts->offset($data["offset"]);
+		$posts->limit($query["limit"]);
+		$posts->offset($query["offset"]);
 			
 		// Find all
 		$result["items"] = $posts->find_all();
@@ -106,8 +106,8 @@ class Model_Post extends ORM {
 
 		// Count
 		$count = $posts->reset(FALSE);
-		if (isset($data["type"])) {
-			$posts->where('type', '=' , $data["type"]);
+		if (isset($query["type"])) {
+			$posts->where('type', '=' , $query["type"]);
 		}
 		$result["count"] = $posts->count_all(); // 'active', '=', 1
 		// echo "<br><br><br>count_all(): ".Database::instance()->last_query;
@@ -128,6 +128,8 @@ class Model_Post extends ORM {
 		// $post = ORM::factory('post'); // loads all post object from table
 		$post = ORM::factory('post')
 			->select('post_data.title')->select('post_data.excerpt')->select('post_data.body')
+			// ->select('post_meta.key')->select('post_meta.value')
+			// ->join('post_meta', 'LEFT')->on('post_meta.post_id', '=', 'post.id')
 			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
 		// Language

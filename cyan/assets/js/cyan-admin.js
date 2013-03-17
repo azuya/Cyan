@@ -120,27 +120,6 @@ $(document).ready(function() {
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
 	
-	// Sortable
-	/*
-	var updateOutput = function(e)
-    {
-        
-        console.log('updateOutput!');
-        
-        var list   = e.length ? e : $(e.target),
-            output = list.data('output');
-        if (window.JSON) {
-            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-        } else {
-            output.val('JSON browser support required for this demo.');
-        }
-    };
-    
-    $('.nestable').nestable({
-        group: 1
-    }).on('change', updateOutput);
-    */
-    
     $(document).on('click', '.remove-row', function() {
 	    $(this).parents('tr').remove();
     });
@@ -178,6 +157,11 @@ $(document).ready(function() {
 		.click(function(e) {
 			e.preventDefault()
 		});
+	
+	// Datepicker
+	$('.datepicker').datepicker({
+		format:			'yyyy-mm-dd'
+	});
 	
 	/*
 	 * Bootstrap fixes

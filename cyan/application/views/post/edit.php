@@ -57,36 +57,24 @@
 			<?php
 			if ($type->fields) { ?>
 				<?php foreach ($type->fields as $field) : ?>
+					<?php $field["properties"] = json_decode($field["properties"]); ?>
+
 					<div class="control-group">
 						<?php echo Form::label($field["name"], __($field["label"]), array("class" => "control-label", "for" => $field["label"])); ?>
 						<div class="controls">
 							<?php $value = isset($data->{$field["name"]}) ? $data->{$field["name"]}: ''; ?>
 							<?php echo Form::form_field($field, $value); ?>
 							<span class="label label-important"><?php echo Arr::get($errors, $field["name"]);?></span>
+							<?php if ($field["properties"]->helpinline) : ?>
+							<span class="help-inline"><?php echo $field["properties"]->helpinline; ?></span>
+							<?php endif; ?>
+							<?php if ($field["properties"]->helpblock) : ?>
+							<span class="help-block"><?php echo $field["properties"]->helpblock; ?></span>
+							<?php endif; ?>
 						</div>
 					</div>
 				<?php endforeach; ?>
 			<?php } ?>
-
-			<!--
-			<div class="control-group">
-				<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>
-				<div class="controls">
-					<?php echo Form::input('title', $data->title, array("placeholder" => __("Title"))); ?>
-					<span class="label label-important"><?php echo Arr::get($errors, 'title');?></span>
-				</div>
-			</div>
-			 
-			<div class="control-group">
-				<?php echo Form::label('content', __("Content"), array("class" => "control-label", "placeholder" => __("Content"))); ?>
-				<div class="controls"><?php echo Form::textarea('content', $data->content, array("placeholder" => __("Content"), "class" => "ckeditor")); ?></div>
-			</div>
-		 
-			<div class="control-group">
-				<?php echo Form::label('testar', __("Testar"), array("class" => "control-label", "for" => "testar")); ?>
-				<div class="controls"><?php echo Form::input('testar', $post->testar, array("placeholder" => __("Testar"))); ?></div>
-			</div>
-			-->
 
 		</div>
 		<?php echo Form::close(); ?>

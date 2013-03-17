@@ -20,7 +20,7 @@ class Model_Post_Meta extends ORM {
 				array('not_empty'), // validation type
 			),
 
-			'title' => array ( // property name to validate
+			'key' => array ( // property name to validate
 				array('not_empty'), // validation type
 			),
 		);

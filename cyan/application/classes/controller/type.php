@@ -53,6 +53,10 @@ class Controller_Type extends Controller_Admin {
         $id = $this->request->param('id');
         $type = new Model_Type($id);
  
+		// Nonce ----------------------------------
+		if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-delete-type-".$id)) { Nonce::nonce_error(); }
+		// ----------------------------------------
+
         $type->delete();
         $this->redirect(self::MODULE);
     }
@@ -89,7 +93,6 @@ class Controller_Type extends Controller_Admin {
 	        }
 
         }
-        
         
         $_POST["fields"] = serialize($fields);
         

@@ -36,10 +36,11 @@ class Form extends Kohana_Form {
 	public static function form_field($field, $value = "")
 	{
 		$field["placeholder"] = isset($field["placeholder"]) ? $field["placeholder"] : $field["label"];
-		$field["properties"] = json_decode($field["properties"]);
+		// $field["properties"] = json_decode($field["properties"]);
 	
 		$attributes = array(
-			"placeholder" => $field["placeholder"],
+			"placeholder"	=> $field["placeholder"],
+			"class"			=> isset($field["properties"]->class) ? $field["properties"]->class : '',
 		);
 
 		if (isset($field["properties"]->required) and $field["properties"]->required == true) {
@@ -48,9 +49,13 @@ class Form extends Kohana_Form {
 		
 		switch($field["type"])
 		{
-			case "text":
+			case "textfield":
 				if (isset($field["properties"]->maxlength) and $field["properties"]->maxlength > 0) {
 					$attributes["maxlength"] = $field["properties"]->maxlength;
+				}
+				
+				if (isset($field["properties"]->helper) and $field["properties"]->helper == 'date-picker') {
+					$attributes["class"] .= " datepicker";
 				}
 				
 				return Form::input($field["name"], $value, $attributes);

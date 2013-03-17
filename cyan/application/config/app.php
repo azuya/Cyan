@@ -6,7 +6,7 @@
 return array(
 	'cyan' => array(
 		'name'			=> 'Cyan',
-		'version'		=> '0.1 Alpha',
+		'version'		=> '0.1.1 Alpha',
 		'copyright'		=> '2013',
 		'jquery'		=> '1.9.1',
         'site_content'	=> DOCROOT.'cyan-content/',

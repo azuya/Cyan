@@ -7526,8 +7526,6 @@ tr.dragged {
 }
 .table td {
   white-space: nowrap;
-  overflow: hidden;
-  position: relative;
 }
 .table td a {
   color: #4d4d4d;
@@ -7659,8 +7657,12 @@ input.big[type="checkbox"]:checked {
 .modal textarea {
   width: 336px;
 }
-.modal span.help-block {
+.help-inline,
+.help-block {
   color: #999999;
+}
+.help-block {
+  margin-top: 6.666666666666667px;
 }
 /*!
  * Bootstrap Responsive v2.2.2

@@ -186,7 +186,7 @@
 
 								<?php
 								$types = array(
-									"text"		=> __("Text"),
+									"textfield"	=> __("Text"),
 									"textarea"	=> __("Textarea"),
 									"html"		=> __("HTML"),
 									"select"	=> __("Select"),
@@ -200,6 +200,8 @@
 									"int"		=> __("Integer"),
 									"float"		=> __("Float"),
 								);
+								
+								$system_field_names = array("title", "body", "excerpt");
 								?>
 
 								<!-- De som finns -->
@@ -213,7 +215,12 @@
 									<tr data-id="<?php echo $field_id;?>">
 										<td><span class="icon40-move handle-move"></span></td>
 										<td><?php echo Form::input('field_label[]', $field["label"], array("placeholder" => __("Label here"))); ?></td>
-										<td><?php echo Form::input('field_name[]', $field["name"], array("placeholder" => __("Field name"))); ?></td>
+										<td>
+											<?php if (in_array($field["name"], $system_field_names)) : ?>
+												<i class="icon-tag" style="opacity:0.5;"></i>
+											<?php endif; ?>
+											<?php echo Form::input('field_name[]', $field["name"], array("placeholder" => __("Field name"))); ?>
+										</td>
 										<td><?php echo Form::select('field_type[]', $types, $field["type"]); ?></td>
 										<td>
 											<?php echo Form::hidden('field_properties[]', $field["properties"]); ?>
@@ -233,7 +240,7 @@
 									<td><?php echo Form::input('field_name[]', '', array("placeholder" => __("Field name"))); ?></td>
 									<td><?php echo Form::select('field_type[]', $types, ''); ?></td>
 									<td>
-										<?php echo Form::hidden('field_properties[]', '{"maxlength":"","min-value":"","max-value":"","placeholder":"","required":"","strip-tags":"","help-text":"","allowed-extensions":"","resize-images":"","max-width":"","max-height":"","max-files":"","class":"","helper":"","items":""}'); ?>
+										<?php echo Form::hidden('field_properties[]', '{"maxlength":"","minvalue":"","maxvalue":"","placeholder":"","required":"","striptags":"","helpblock":"","helpinline":"","allowedextensions":"","resizeimages":"","maxwidth":"","maxheight":"","maxfiles":"","class":"","helper":"","items":""}'); ?>
 									    <div class="tools">
 									    	<?php echo HTML::anchor("#", '<i class="icon-cog"></i>', array('class' => 'field-properties')); ?>
 									    	<?php echo HTML::anchor("#", '<i class="icon40-times"></i>', array("class" => "remove-row")); ?>
@@ -253,25 +260,25 @@
 								<h3 id="label-field-properties"><span>Field</span> <small><?php echo __("Properties"); ?></small></h3>
 							</div>
 							<div class="modal-body">
-								<div class="control-group" data-for="text">
+								<div class="control-group" data-for="textfield">
 									<label class="control-label" for="maxlength"><?php echo __("Max length"); ?></label>
 									<div class="controls">
 										<input type="text" id="maxlength" placeholder="<?php echo __("Max length"); ?>">
 									</div>
 								</div>
 								<div class="control-group" data-for="int float">
-									<label class="control-label" for="min-value"><?php echo __("Min value"); ?></label>
+									<label class="control-label" for="minvalue"><?php echo __("Min value"); ?></label>
 									<div class="controls">
-										<input type="text" id="min-value" placeholder="<?php echo __("Min value"); ?>">
+										<input type="text" id="minvalue" placeholder="<?php echo __("Min value"); ?>">
 									</div>
 								</div>
 								<div class="control-group" data-for="int float">
-									<label class="control-label" for="max-value"><?php echo __("Max value"); ?></label>
+									<label class="control-label" for="maxvalue"><?php echo __("Max value"); ?></label>
 									<div class="controls">
-										<input type="text" id="max-value" placeholder="<?php echo __("Max value"); ?>">
+										<input type="text" id="maxvalue" placeholder="<?php echo __("Max value"); ?>">
 									</div>
 								</div>
-								<div class="control-group" data-for="text textarea">
+								<div class="control-group" data-for="textfield textarea">
 									<label class="control-label" for="placeholder"><?php echo __("Placeholder"); ?></label>
 									<div class="controls">
 										<input type="text" id="placeholder" placeholder="<?php echo __("Placeholder"); ?>">
@@ -289,56 +296,49 @@
 										<label class="checkbox"><input type="checkbox" id="required"> <?php echo __("Required"); ?></label>
 									</div>
 								</div>
-								<div class="control-group" data-for="text textarea">
-									<label class="control-label" for="strip-tags"></label>
+								<div class="control-group" data-for="textfield textarea">
+									<label class="control-label" for="striptags"></label>
 									<div class="controls">
-										<label class="checkbox"><input type="checkbox" id="strip-tags"> <?php echo __("Strip tags"); ?></label>
-									</div>
-								</div>
-								<div class="control-group" data-for="all">
-									<label class="control-label" for="help-text"><?php echo __("Help text"); ?></label>
-									<div class="controls">
-										<textarea type="text" id="help-text" placeholder="<?php echo __("Help text"); ?>"></textarea>
-										<span class="help-block"><?php echo __("Additional information describing this field and/or instructions on how to enter the content."); ?></span>
+										<label class="checkbox"><input type="checkbox" id="striptags"> <?php echo __("Strip tags"); ?></label>
 									</div>
 								</div>
 								<div class="control-group" data-for="images files">
-									<label class="control-label" for="allowed-extensions"><?php echo __("Allowed extensions"); ?></label>
+									<label class="control-label" for="allowedextensions"><?php echo __("Allowed extensions"); ?></label>
 									<div class="controls">
-										<input type="text" id="allowed-extensions" placeholder="<?php echo __("Allowed extensions"); ?>">
+										<input type="text" id="allowedextensions" placeholder="<?php echo __("Allowed extensions"); ?>">
 									</div>
 								</div>
 								<div class="control-group" data-for="images">
-									<label class="control-label" for="resize-images"><?php echo __("Resize images"); ?></label>
+									<label class="control-label" for="resizeimages"><?php echo __("Resize images"); ?></label>
 									<div class="controls">
-										<label class="checkbox"><input type="checkbox" id="resize-images"> <?php echo __("Resize images"); ?></label>
+										<label class="checkbox"><input type="checkbox" id="resizeimages"> <?php echo __("Resize images"); ?></label>
 									</div>
 								</div>
 								<div class="control-group" data-for="images">
-									<label class="control-label" for="max-width"><?php echo __("Max width"); ?></label>
+									<label class="control-label" for="maxwidth"><?php echo __("Max width"); ?></label>
 									<div class="controls">
-										<input type="text" id="max-width" placeholder="<?php echo __("Max width"); ?>">
+										<input type="text" id="maxwidth" placeholder="<?php echo __("Max width"); ?>">
 									</div>
 								</div>
 								<div class="control-group" data-for="images">
-									<label class="control-label" for="max-height"><?php echo __("Max height"); ?></label>
+									<label class="control-label" for="maxheight"><?php echo __("Max height"); ?></label>
 									<div class="controls">
-										<input type="text" id="max-height" placeholder="<?php echo __("Max height"); ?>">
+										<input type="text" id="maxheight" placeholder="<?php echo __("Max height"); ?>">
 									</div>
 								</div>
 								<div class="control-group" data-for="images">
-									<label class="control-label" for="max-max-files"><?php echo __("Max files"); ?></label>
+									<label class="control-label" for="maxfiles"><?php echo __("Max files"); ?></label>
 									<div class="controls">
-										<input type="text" id="max-files" placeholder="<?php echo __("Max files"); ?>">
+										<input type="text" id="maxfiles" placeholder="<?php echo __("Max files"); ?>">
 									</div>
 								</div>
 								<div class="control-group" data-for="all">
-									<label class="control-label" for="class"><?php echo __("Class(es)"); ?></label>
+									<label class="control-label" for="class"><?php echo __("CSS classes"); ?></label>
 									<div class="controls">
-										<input type="text" id="class" placeholder="<?php echo __("Class(es)"); ?>">
+										<input type="text" id="class" placeholder="<?php echo __("CSS classes"); ?>">
 									</div>
 								</div>
-								<div class="control-group" data-for="text">
+								<div class="control-group" data-for="textfield">
 									<label class="control-label" for="helper"><?php echo __("Helper"); ?></label>
 									<div class="controls">
 										<select type="text" id="helper">
@@ -351,7 +351,20 @@
 								<div class="control-group" data-for="select radio checkbox">
 									<label class="control-label" for="items"><?php echo __("Items"); ?></label>
 									<div class="controls">
-										<textarea type="text" id="items" placeholder="<?php echo __("Items"); ?>"></textarea>
+										<textarea id="items" placeholder="<?php echo __("Items"); ?>"></textarea>
+									</div>
+								</div>
+								<div class="control-group" data-for="all">
+									<label class="control-label" for="helpinline"><?php echo __("Inline help text"); ?></label>
+									<div class="controls">
+										<input type="text" id="helpinline" placeholder="<?php echo __("Inline help text"); ?>"></textarea>
+									</div>
+								</div>
+								<div class="control-group" data-for="all">
+									<label class="control-label" for="helpblock"><?php echo __("Help text"); ?></label>
+									<div class="controls">
+										<textarea id="helpblock" placeholder="<?php echo __("Help text"); ?>"></textarea>
+										<span class="help-block"><?php echo __("Additional information describing this field and/or instructions on how to enter the content."); ?></span>
 									</div>
 								</div>
 							</div>
@@ -395,7 +408,7 @@
 					handle: '.handle-move',
 					placeholder: '<tr class="placeholder"><td colspan="5"></td></tr>'
 				})
-
+				
 				// Field properties
 				$(document).on('click', '.field-properties', function() {
 					var clicked_row = $(this).parents('tr');

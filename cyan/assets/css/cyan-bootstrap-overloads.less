@@ -2,8 +2,8 @@
 
 	td {
 		white-space: nowrap;
-		overflow: hidden;
-		position: relative;
+		// overflow: hidden;
+		// position: relative;
 	
 		a {
 			color: @textColor;
@@ -177,7 +177,13 @@ input.big[type="checkbox"]:checked {
 		width: 336px;
 	}
 	
-	span.help-block {
-		color: @grayLight;
-	}
+}
+
+.help-inline,
+.help-block {
+	color: @grayLight;
+}
+
+.help-block {
+	margin-top: @baseLineHeight / 3;
 }
