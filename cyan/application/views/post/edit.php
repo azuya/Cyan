@@ -62,7 +62,12 @@
 					<div class="control-group">
 						<?php echo Form::label($field["name"], __($field["label"]), array("class" => "control-label", "for" => $field["label"])); ?>
 						<div class="controls">
-							<?php $value = isset($data->{$field["name"]}) ? $data->{$field["name"]}: ''; ?>
+							<?php
+							$value = isset($data->{$field["name"]}) ? $data->{$field["name"]} : '';
+							if ($value == "") {
+								$value = isset($meta[$field["name"]]) ? $meta[$field["name"]] : '';
+							}
+							?>
 							<?php echo Form::form_field($field, $value); ?>
 							<span class="label label-important"><?php echo Arr::get($errors, $field["name"]);?></span>
 							<?php if ($field["properties"]->helpinline) : ?>

@@ -128,12 +128,20 @@ class Controller_Post extends Controller_Admin {
 		
 		// Get post meta
 		$meta = $post->meta->where('post_id', '=' , $post_id)->find_all();
+		// echo "<pre>";
+		// print_r($meta);
+		// echo "</pre>";
+		
 		$meta_objects = array();
 		foreach ($meta as $obj)
 		{
 			// echo "<pre>".$obj->key."=".$obj->value."</pre>";
-			$meta_objects[$obj->key] = $obj;
+			$meta_objects[$obj->key] = $obj->value;
 		}      
+		
+		// echo "<pre>";
+		// print_r($meta_objects);
+		// echo "</pre>";
 		
 		// Get type
         $type = new Model_Type($post->type);
@@ -148,8 +156,8 @@ class Controller_Post extends Controller_Admin {
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('post', $post)
 			->bind('data', $data)
-			->bind('meta', $meta_objects)
 			->bind('type', $type)
+			->bind('meta', $meta_objects)
 			->bind('breadcrumbs', $breadcrumbs)
 			->set('query', $this->request->query());
 	}
@@ -302,7 +310,7 @@ class Controller_Post extends Controller_Admin {
 					
 					$meta_key_value = array(
 						"site_id"	=> 0,
-						"post_id"	=> $post_id,
+						"post_id"	=> $post->id,
 						"key"		=> $key,
 						"value"		=> $value,
 					);
