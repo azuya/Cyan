@@ -5982,6 +5982,9 @@ header.admin ul.nav.pull-right > li {
   border-right: 0;
   border-left: 1px solid #43a2c4;
 }
+header.admin ul.nav.pull-right > li > a > i {
+  margin-right: 0;
+}
 header.admin .submenu {
   background: #ffffff;
   display: block;
@@ -6066,7 +6069,7 @@ header.admin .submenu .inner ul.items > li > a.link i {
   margin: 15px auto 0 auto;
 }
 header.admin .submenu .inner ul.items > li:hover {
-  background: #e5e5e5;
+  background: rgba(86, 172, 202, 0.05);
 }
 header.admin .submenu .inner ul.items > li:hover > a.add {
   display: block;
@@ -6150,6 +6153,40 @@ header.admin .submenu.submenu-profile div.bottom {
   padding: 10px 0;
   margin-top: 10px;
   text-align: right;
+}
+header.admin .submenu.submenu-notifications {
+  width: 320px;
+  height: auto;
+  right: 10px;
+  left: inherit;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+header.admin .submenu.submenu-notifications ul {
+  height: auto;
+}
+header.admin .submenu.submenu-notifications ul > li {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #e5e5e5;
+}
+header.admin .submenu.submenu-notifications ul > li > a {
+  display: block;
+  color: #333333;
+  padding: 0 10px;
+}
+header.admin .submenu.submenu-notifications ul > li > a:hover {
+  background: rgba(86, 172, 202, 0.05);
+}
+header.admin .submenu.submenu-notifications ul > li > a > i {
+  display: inline-block;
+  width: 14px;
+  opacity: 0.5;
+  margin-right: 5px;
+}
+header.admin .submenu.submenu-notifications ul > li:last-child {
+  border-bottom: none;
 }
 footer.admin {
   height: 50px;

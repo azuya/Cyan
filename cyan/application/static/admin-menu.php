@@ -130,7 +130,6 @@ if ($user) :
 							<div class="submenu">
 								<div class="inner">
 									<ul class="menu">
-
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
@@ -165,7 +164,15 @@ if ($user) :
 							</div>
 						</li>
 						<li>
-							<?php echo HTML::anchor("#", '<i class="icon40-dot"></i>'.'<span> '.__("Notifications").'</span>', array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("You have no unread notifications"))); ?>
+							<?php echo HTML::anchor("#", '<i class="icon40-dot-empty"></i>'.'<span> '.__("Notifications").'</span>', array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("You have no unread notifications"))); ?>
+							<div class="submenu submenu-notifications">
+								<div class="inner">
+									<ul class="">
+										<li><?php echo HTML::anchor("admin", '<i class="icon-envelope"></i> '.sprintf(__("%d messages"), 3), array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin", '<i></i> '.sprintf(__("%d new items to moderate"), 12), array("class" => "link")); ?></li>
+									</ul>
+								</div>
+							</div>
 						</li>
 					</ul>
 				</div>
