@@ -164,6 +164,9 @@ if ($user) :
 								</div>
 							</div>
 						</li>
+						<li>
+							<?php echo HTML::anchor("#", '<i class="icon40-dot"></i>'.'<span> '.__("Notifications").'</span>', array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("You have no unread notifications"))); ?>
+						</li>
 					</ul>
 				</div>
 

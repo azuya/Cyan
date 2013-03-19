@@ -67,12 +67,12 @@ $(document).ready(function() {
 	$(document).on("click", "a.star-toggle", function(e) {
 		if ($('form input[name="star"]').val() == 0) {
 			$('form input[name="star"]').val('1');
-			$(this).removeClass('icon40-star');
-			$(this).addClass('icon40-star-filled');
+			$(this).removeClass('icon40-star-empty');
+			$(this).addClass('icon40-star');
 		} else {
 			$('form input[name="star"]').val('0');
-			$(this).removeClass('icon40-star-filled');
-			$(this).addClass('icon40-star');
+			$(this).removeClass('icon40-star');
+			$(this).addClass('icon40-star-empty');
 		}
 	});
 
@@ -138,8 +138,8 @@ $(document).ready(function() {
 	$("*[rel=tooltip]")
 		.tooltip({
 			animation:	true,
-			delay:		{ show: 1000, hide: 100 },
-			placement:	'top',
+			delay:		{ show: 700, hide: 200 },
+			// placement:	'top',
 		});
 
 	$("*[rel=tooltip]").on('click', function () {

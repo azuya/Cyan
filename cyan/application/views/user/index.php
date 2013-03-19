@@ -41,9 +41,9 @@
 					?>
 					<tr<?php echo $classes; ?>>
 					    <td>
-					    	<span class="icon40-star<?php echo ($user->star) ? '-filled' : '';?>"></span>
+					    	<span class="icon40-star<?php echo (!$user->star) ? '-empty' : '';?>"></span>
 					    </td>
-					    <td><?php echo HTML::anchor("user/edit/".$user->id, $user->username); ?></td>
+					    <td><?php echo HTML::anchor("admin/user/edit/".$user->id, $user->username); ?></td>
 					    <td><?php echo $user->email; ?></td>
 					    <td class="hidden-phone">
 						    <div class="tools">

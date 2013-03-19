@@ -65,7 +65,7 @@ $types = ORM::factory('type')->find_all();
 					?>
 					<tr<?php echo $classes; ?>>
 					    <td>
-					    	<span class="icon40-star<?php echo ($post->star) ? '-filled' : '';?>"></span>
+					    	<span class="icon40-star<?php echo (!$post->star) ? '-empty' : '';?>"></span>
 					    </td>
 
 					    <td>

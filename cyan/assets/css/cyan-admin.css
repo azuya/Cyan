@@ -5216,7 +5216,7 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
   text-align: center;
   text-decoration: none;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.8);
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -5233,28 +5233,28 @@ input[type="submit"].btn.btn-mini {
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #000000;
+  border-top-color: rgba(0, 0, 0, 0.8);
 }
 .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
-  border-right-color: #000000;
+  border-right-color: rgba(0, 0, 0, 0.8);
 }
 .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
-  border-left-color: #000000;
+  border-left-color: rgba(0, 0, 0, 0.8);
 }
 .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000000;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
 }
 .popover {
   position: absolute;
@@ -6749,6 +6749,27 @@ tr.dragged {
 .icon40-cog {
   background-position: -200px 0px;
 }
+.icon40-globe {
+  background-position: -240px 0px;
+}
+.icon40-bell {
+  background-position: -280px 0px;
+}
+.icon40-calendar {
+  background-position: -320px 0px;
+}
+.icon40-flag {
+  background-position: -360px 0px;
+}
+.icon40-lightning {
+  background-position: -400px 0px;
+}
+.icon40-house {
+  background-position: -440px 0px;
+}
+.icon40-list {
+  background-position: -480px 0px;
+}
 .icon40-edit {
   background-position: -520px 0px;
 }
@@ -6776,14 +6797,26 @@ tr.dragged {
 .icon40-ok {
   background-position: -40px -120px;
 }
-.icon40-star-filled {
+.icon40-star {
   background-position: -80px -120px;
 }
-.icon40-star {
+.icon40-star-empty {
   background-position: -120px -120px;
 }
 .icon40-times {
   background-position: -160px -120px;
+}
+.icon40-heart {
+  background-position: -200px -120px;
+}
+.icon40-heart-empty {
+  background-position: -240px -120px;
+}
+.icon40-dot {
+  background-position: -280px -120px;
+}
+.icon40-dot-empty {
+  background-position: -320px -120px;
 }
 .input50-envelope,
 .input50-lock,

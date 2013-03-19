@@ -21,7 +21,7 @@
 					</h1>
 				</div>
 				<div class="button">
-					<?php echo HTML::anchor("#", '&nbsp;', array("class" => "star-toggle icon40-star".(($content->star) ? "-filled" : ""), "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Your content is located here"))); ?>
+					<?php echo HTML::anchor("#", '&nbsp;', array("class" => "star-toggle icon40-star".((!$content->star) ? "-empty" : ""), "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Your content is located here"))); ?>
 				</div>
 			</div>
 
