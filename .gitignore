@@ -2,3 +2,4 @@
 /cyan/application/logs/
 */.DS_Store/*
 .gitignore
+/_db/
