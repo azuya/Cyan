@@ -126,6 +126,9 @@ $(document).ready(function() {
 
     // System alert
     // system_alert("Warning!", "Someone else is editing this content. It's advised that you don't edit it at the same time.");
+    
+    // Notification indicator
+    notification("Label here", "http://cyan/admin/", "icon-envelope");
 
 	// Padding on body if logged into admin
 	$("body").css("padding-top", "44px");
@@ -185,6 +188,23 @@ function system_alert(title, message, icon) {
 		+ '</div>';
 	$("body").append(alert_text);
 }
+
+/*
+ * System alert
+ * @param	String	Title
+ * @param	String	Message
+ * @param	String	Icon
+ */
+function notification(title, url, icon) {	
+	$("#notifications ul").append('<li><a href="' + url + '"><i class="' + icon + '"></i>' + title + '</a></li>');
+
+	// Set notification indicator
+	$("#notification-indicator i").attr('class', 'icon40-dot');
+}
+
+
+
+
 
 /*
  * Go to a page -> Load new or switch DIV

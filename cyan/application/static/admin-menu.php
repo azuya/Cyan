@@ -164,14 +164,12 @@ if ($user) :
 							</div>
 						</li>
 						<li>
-							<?php echo HTML::anchor("#", '<i class="icon40-dot-empty"></i>'.'<span> '.__("Notifications").'</span>', array("rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("You have no unread notifications"))); ?>
-							<div class="submenu submenu-notifications">
-								<div class="inner">
-									<ul class="">
-										<li><?php echo HTML::anchor("admin", '<i class="icon-envelope"></i> '.sprintf(__("%d messages"), 3), array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin", '<i></i> '.sprintf(__("%d new items to moderate"), 12), array("class" => "link")); ?></li>
-									</ul>
-								</div>
+							<?php echo HTML::anchor("#", '<i class="icon40-dot-empty"></i>'.'<span> '.__("Notifications").'</span>', array("id" => "notification-indicator", "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("You have no unread notifications"))); ?>
+							<div class="submenu submenu-notifications" id="notifications">
+								<ul>
+									<li><?php echo HTML::anchor("admin", '<i class="icon-envelope"></i> '.sprintf(__("%d messages"), 3), array("class" => "link")); ?></li>
+									<li><?php echo HTML::anchor("admin", '<i></i> '.sprintf(__("%d new items to moderate"), 12), array("class" => "link")); ?></li>
+								</ul>
 							</div>
 						</li>
 					</ul>
