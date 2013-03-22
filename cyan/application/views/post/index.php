@@ -107,9 +107,11 @@ $types = ORM::factory('type')->find_all();
 		
 		<div class="be-content">
 			
+			<form>
 			<table class="table table-hover table-condensed">
 				<thead>
 					<tr>
+						<th style="width:40px"></th>
 						<th style="width:40px"></th>
 						
 						<?php if (!$selected_type): ?>
@@ -135,6 +137,10 @@ $types = ORM::factory('type')->find_all();
 						$post_type = ($post->type == "file") ? $post->mime_type : $post->type;
 					?>
 					<tr<?php echo $classes; ?>>
+					    <td>
+						    <?php // echo HTML::anchor("#", '&nbsp;', array("name" => "post[]", "value" => $post->id, "class" => "check-toggle icon40-check-empty")); ?>
+					    	<input type="checkbox" class="check icon40-check-empty" name="post[]" value="<?php echo $post->id; ?>">
+					    </td>
 					    <td>
 					    	<span class="icon40-star<?php echo (!$post->star) ? '-empty' : '';?>"></span>
 					    </td>
@@ -166,6 +172,7 @@ $types = ORM::factory('type')->find_all();
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			</form>
 			
 			<?php echo $pagination; ?>
 			

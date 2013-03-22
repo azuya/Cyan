@@ -76,6 +76,49 @@ $(document).ready(function() {
 		}
 	});
 
+	// Table rows' checkboxes
+	$(document).on("click", 'tr', function(e) {
+	
+		console.log('bing!');
+
+		if($(this).find('input.check[type="checkbox"]').attr('checked') == true) {
+			console.log('är ikryssad');
+			
+			$(this).find('input.check[type="checkbox"]').attr('checked', false);
+			$(this).removeClass("active");
+		} else {
+			console.log('inte kryssad just nu');
+
+			$(this).find('input.check[type="checkbox"]').attr('checked', true);
+			$(this).addClass("active");
+			
+		}
+
+		/*
+		$(this).find('.input[type="checkbox"]')
+		
+		if($(this).children("td").children('input').is(':checked')) {
+			$(this).children("td").children('input').attr('checked', false);
+			$(this).removeClass("selected_row");
+		} else {
+			$(this).children("td").children('input').attr('checked', true);
+
+		$(this).addClass('icon40-check');
+		$(this).addClass('icon40-check');
+	
+		if ($('form input[name="check"]').val() == 0) {
+			$('form input[name="check"]').val('1');
+			$(this).removeClass('icon40-check-empty');
+			$(this).addClass('icon40-check');
+		} else {
+			$('form input[name="star"]').val('0');
+			$(this).removeClass('icon40-check');
+			$(this).addClass('icon40-check-empty');
+		}
+		*/
+		
+	});
+
 	// Popstate
 	setTimeout(function() {
 		$(window).bind("popstate", function(e) {

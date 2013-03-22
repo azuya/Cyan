@@ -5,12 +5,6 @@ class Model_Post extends ORM {
 	// Contains relations
 	protected $_has_many = array(
 
-		// A post can have many comments
-		'comments' => array(
-			'model'			=> 'comment',
-			'foreign_key'	=> 'post_id',
-		),
-
 		// A post can have many post_data rows
 		'data' => array(
 			'model'			=> 'post_data',
@@ -20,6 +14,12 @@ class Model_Post extends ORM {
 		// A post can have many post_meta rows
 		'meta' => array(
 			'model'			=> 'post_meta',
+			'foreign_key'	=> 'post_id',
+		),
+
+		// A post can have many comments
+		'comments' => array(
+			'model'			=> 'comment',
 			'foreign_key'	=> 'post_id',
 		),
 
@@ -70,7 +70,7 @@ class Model_Post extends ORM {
 	*/
 	
 	public static function load($query = array("")) {
-		// echo "load($data)<br>";
+		// echo "load($query)<br>";
 		
 		if (!is_array($query)) {
 			$query["id"] = $query;

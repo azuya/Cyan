@@ -133,6 +133,8 @@ if ($user) :
 									</ul>
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/category", '<span class="text">'.__("Categories").'</span>'.'<i class="icon60-basket"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/tags", '<span class="text">'.__("Tags").'</span>'.'<i class="icon60-tag"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/module", '<span class="text">'.__("Modules").'</span>'.'<i class="icon60-cabinet"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/role", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-user"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/option", '<span class="text">'.__("Options").'</span>'.'<i class="icon60-cog"></i><br>', array("class" => "link")); ?></li>

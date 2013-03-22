@@ -214,14 +214,14 @@
 									?>
 									<tr data-id="<?php echo $field_id;?>">
 										<td><span class="icon40-move handle-move"></span></td>
-										<td><?php echo Form::input('field_label[]', $field["label"], array("placeholder" => __("Label here"))); ?></td>
+										<td><?php echo Form::input('field_label[]', $field["label"], array("class" => "clean", "placeholder" => __("Label here"))); ?></td>
 										<td>
 											<?php if (in_array($field["name"], $system_field_names)) : ?>
 												<i class="icon-tag" style="opacity:0.5;"></i>
 											<?php endif; ?>
-											<?php echo Form::input('field_name[]', $field["name"], array("placeholder" => __("Field name"))); ?>
+											<?php echo Form::input('field_name[]', $field["name"], array("class" => "clean", "placeholder" => __("Field name"))); ?>
 										</td>
-										<td><?php echo Form::select('field_type[]', $types, $field["type"]); ?></td>
+										<td><?php echo Form::select('field_type[]', $types, $field["type"], array("class" => "clean")); ?></td>
 										<td>
 											<?php echo Form::hidden('field_properties[]', $field["properties"]); ?>
 										    <div class="tools">

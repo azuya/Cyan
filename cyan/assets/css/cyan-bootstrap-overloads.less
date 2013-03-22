@@ -5,6 +5,10 @@
 		// overflow: hidden;
 		// position: relative;
 	
+		input[type="radio"], input[type="checkbox"] {
+			margin-top: -3px;
+		}
+		
 		a {
 			color: @textColor;
 			
@@ -17,36 +21,6 @@
 			display: block;
 			position: absolute;
 			width: 100%;
-		}
-		
-		> input, > select {
-			border-color: transparent;
-			background: none;
-			.box-shadow(none);
-			padding: 0;
-			height: auto;
-			cursor: pointer;
-			margin: -1px 0;
-		
-			&:hover {
-				border-color: transparent;
-			}
-		
-			&:focus {
-				height: @baseLineHeight;
-				padding: 4px 6px;
-				background-color: @inputBackground;
-				margin-top: -5px;
-				margin-bottom: -5px;
-				margin-left: -6px;
-				border-color: darken(@inputBorder,20%);
-			}
-		}
-		
-		> select {
-			-webkit-appearance: none;
-			height: 20px;
-			line-height: 20px;
 		}
 	}
 

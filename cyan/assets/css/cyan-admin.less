@@ -304,7 +304,7 @@ header.admin {
 		}
 
 		&.submenu-notifications {
-			width: 320px;
+			width: 250px;
 			height: auto;
 			right: 10px;
 			left: inherit;
@@ -801,6 +801,48 @@ tr.dragged {
 		direction: ltr;
 		cursor: pointer;
 	}
+}
+
+input.clean, select.clean {
+	background: transparent;
+	border-color: transparent;
+	.box-shadow(none);
+	padding: 0;
+	height: auto;
+	cursor: pointer;
+	margin: -1px 0;
+
+	&:hover {
+		border-color: transparent;
+	}
+
+	&:focus {
+		height: @baseLineHeight;
+		padding: 4px 6px;
+		background-color: @inputBackground;
+		margin-top: -5px;
+		margin-bottom: -5px;
+		margin-left: -6px;
+		border-color: darken(@inputBorder,20%);
+	}
+}
+
+select.clean {
+	-webkit-appearance: none;
+	height: 20px;
+	line-height: 20px;
+}
+
+input[type='checkbox'] {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+}
+
+input[type='checkbox']:checked {
+	background-position: -440px -120px;
 }
 
 @media (max-width: 979px) {

@@ -220,6 +220,9 @@ table th[class*="span"],
   &.info td {
     background-color: @infoBackground;
   }
+  &.active td {
+    background-color: fade(@dropdownLinkBackgroundActive, 10%);
+  }
 }
 
 // Hover states for .table-hover
