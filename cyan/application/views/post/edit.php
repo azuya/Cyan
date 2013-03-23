@@ -35,6 +35,9 @@
 				<div class="button">
 					<?php echo HTML::anchor("#", '&nbsp;', array("class" => "star-toggle icon40-star".((!$post->star) ? "-empty" : ""), "rel" => "tooltip", "data-placement" => "bottom", "data-original-title" => __("Your content is located here"))); ?>
 				</div>
+				<div class="button">
+					<?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "check icon40-check".((!$post->star) ? "-empty" : ""))); ?>
+				</div>
 			</div>
 
 			<div class="actions masterbutton">
@@ -49,10 +52,12 @@
 			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"))); ?>
 			<?php echo Form::hidden('star', $post->star); ?>
 
+			<!--
 			<div class="control-group">
 				<?php echo Form::label('active', __("Active"), array("class" => "control-label", "for" => "active")); ?>
-				<div class="controls"><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "big")); ?></div>
+				<div class="controls"><?php echo Form::checkbox('active', 1, (bool) $post->active, array("class" => "check icon40-check-empty")); ?></div>
 			</div>
+			-->
 
 			<?php
 			if ($type->fields) { ?>

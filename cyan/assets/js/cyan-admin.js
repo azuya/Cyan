@@ -1,6 +1,6 @@
 /*
 @codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js";
-@codekit-append "holder.js", "jquery-sortable.js";
+@codekit-append "holder.js", "jquery.sortable.js", "jquery.chosen.min.js";
 
 @codekit-append "../../vendor/fileupload/js/vendor/jquery.ui.widget.js";
 @codekit-append "../../vendor/fileupload/js/iframe-transport.js";
@@ -77,11 +77,11 @@ $(document).ready(function() {
 	});
 
 	// Table rows' checkboxes
-	$(document).on("click", 'tr', function(e) {
+	$(document).on("click", 'table.checkable tr', function(e) {
 	
 		console.log('bing!');
 
-		if($(this).find('input.check[type="checkbox"]').attr('checked') == true) {
+		if($(this).hasClass('active')) {
 			console.log('är ikryssad');
 			
 			$(this).find('input.check[type="checkbox"]').attr('checked', false);
@@ -176,6 +176,9 @@ $(document).ready(function() {
 	// Padding on body if logged into admin
 	$("body").css("padding-top", "44px");
 	
+	// Chosen
+	$("select").chosen();
+	
 	/* 
 	 * !Bootstrap inits
 	 */
@@ -266,6 +269,11 @@ function go_to_page(href) {
 	
 	if (href.indexOf('#') == 0) {
 		console.log('-- Starts with hash (#)...');
+		return false;
+	}
+
+	if (href.indexOf('javascript:') == 0) {
+		console.log('-- Starts with javascript:...');
 		return false;
 	}
 

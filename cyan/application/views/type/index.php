@@ -10,7 +10,7 @@
 		<div class="be-header">
 			<div class="title">
 				<div class="heading">
-					<h1><?php echo __("Types"); ?></h1>
+					<h1><?php echo __("Content types"); ?></h1>
 				</div>
 			</div>
 

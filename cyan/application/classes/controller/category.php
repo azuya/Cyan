@@ -47,9 +47,16 @@ class Controller_Category extends Controller_Admin {
 		$category = new Model_Category();
 		$data = new Model_Category_Data();
 
+		$category_objects = ORM::factory('category')->where('id', '!=' , $category->id)->find_all();
+		$categories[] = array();
+		$categories[0] = "– ".__("None"." –");
+		foreach ($category_objects as $c) {
+			$categories[$c->id] = $c->title;
+		}
+
 		$this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('category', $category)
-			->bind('data', $data)
+			->set('categories', $categories)
 			->set('query', $this->request->query());
 
 	}
@@ -60,12 +67,26 @@ class Controller_Category extends Controller_Admin {
         $id = $this->request->param('id');
         $category = new Model_Category($id);
 
-		// Get post data
-		$data = $category->data->where('category_id', '=' , $id)->find();
- 
+        // Other categories
+		$category_objects = ORM::factory('category')->where('id', '!=' , $category->id)->find_all();
+		$categories[] = array();
+		$categories[0] = "– ".__("None"." –");
+		foreach ($category_objects as $c) {
+			$categories[$c->id] = $c->title;
+		}
+
+		// Content types
+		$types_objects = ORM::factory('type')->find_all();
+		$types[] = array();
+		$types[0] = "– ".__("All"." –");
+		foreach ($types_objects as $t) {
+			$types[$t->id] = $t->name;
+		}
+
         $this->template->content = View::factory(self::MODULE.'/edit')
 			->bind('category', $category)
-			->bind('data', $data)
+			->set('categories', $categories)
+			->set('types', $types)
         	->set('query', $this->request->query());
     }
  
@@ -89,7 +110,7 @@ class Controller_Category extends Controller_Admin {
     
 		$id = $this->request->param('id');
 		$category = new Model_Category($id);
-		$data = $category->data->where('category_id', '=' , $id)->find();
+		// $data = $category->data->where('category_id', '=' , $id)->find();
 
 		// Nonce ----------------------------------
 		if ($id) {
@@ -103,15 +124,14 @@ class Controller_Category extends Controller_Admin {
 		$user = Auth::instance()->get_user();
 
 		$request_val = $this->request->post();
+		
+		$data_val["parent_id"]	= isset($request_val["parent_id"])		? $request_val["parent_id"]			: 0;
+		$data_val["title"]		= isset($request_val["title"])			? $request_val["title"]				: '';
+		$data_val["description"]= isset($request_val["description"])	? $request_val["description"]		: '';
+		$data_val["alias"]		= ($request_val["alias"])				? $request_val["alias"]				: URL::title($request_val["title"], "-", true);
 
-		$category_val["parent_id"]	= isset($request_val["parent_id"]) ? $request_val["parent_id"] : 0;
-
-		$data_val["title"]		= isset($request_val["title"]) ? $request_val["title"] : '';
-		$data_val["description"]= isset($request_val["description"]) ? $request_val["description"] : '';
-		$data_val["alias"]		= ($request_val["alias"]) ? $request_val["alias"] : URL::title($request_val["title"], "-", true);
-
-		$category->values($category_val);
-		$data->values($data_val);
+		$category->values($data_val);
+		// $data->values($data_val);
 
 		try
 		{
@@ -123,14 +143,14 @@ class Controller_Category extends Controller_Admin {
 			
 			// echo "ID: [".$category->id."]";
 
-			$data_val["category_id"]  = $category->id;
+			// $data_val["category_id"]  = $category->id;
 			
 			// echo "data_val<pre>";
 			// print_r($data_val);
 			// echo "</pre>";
 	
-			$data->values($data_val); // populate $data object from $_POST array
-			$data->save(); // saves post to database
+			// $data->values($data_val); // populate $data object from $_POST array
+			// $data->save(); // saves post to database
 
 			$this->redirect(self::MODULE);
 		}

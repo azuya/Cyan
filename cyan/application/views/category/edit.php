@@ -18,7 +18,7 @@
 				<div class="heading">
 					<h1><?php
 						if ($category->id) {
-							echo $data->title;
+							echo $category->title;
 						} else {
 							echo __("New category");
 						}
@@ -33,7 +33,6 @@
 		
 		<div class="be-content">
 			<?php $errors = isset($errors) ? $errors : array(); ?>
-			
 			<!--
 			<div class="tabbable">
 				<ul class="nav nav-tabs">
@@ -51,7 +50,7 @@
 						<div class="control-group">
 							<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>
 							<div class="controls">
-								<?php echo Form::input('title', $data->title, array("placeholder" => __("Title"))); ?>
+								<?php echo Form::input('title', $category->title, array("placeholder" => __("Title"))); ?>
 								<span class="label label-important"><?php echo Arr::get($errors, 'title');?></span>
 							</div>
 						</div>
@@ -59,15 +58,16 @@
 						<div class="control-group">
 							<?php echo Form::label('alias', __("Alias"), array("class" => "control-label", "for" => "alias")); ?>
 							<div class="controls">
-								<?php echo Form::input('alias', $data->alias, array("placeholder" => __("Alias"))); ?>
+								<?php echo Form::input('alias', $category->alias, array("placeholder" => __("Alias"))); ?>
 								<span class="label label-important"><?php echo Arr::get($errors, 'alias');?></span>
 							</div>
 						</div>
 									
 						<div class="control-group">
-							<?php echo Form::label('parent_id', __("parent"), array("class" => "control-label", "for" => "parent_id")); ?>
+							<?php echo Form::label('parent_id', __("Parent"), array("class" => "control-label", "for" => "parent_id")); ?>
 							<div class="controls">
-								<?php echo Form::input('parent_id', $category->parent_id, array("placeholder" => __("Parent"))); ?>
+								<?php // echo Form::input('parent_id', $category->parent_id, array("placeholder" => __("Parent"))); ?>
+								<?php echo Form::select('parent_id', $categories, $category->parent_id); ?>
 								<span class="label label-important"><?php echo Arr::get($errors, 'parent_id');?></span>
 							</div>
 						</div>
@@ -75,11 +75,19 @@
 						<div class="control-group">
 							<?php echo Form::label('description', __("Description"), array("class" => "control-label", "for" => "description")); ?>
 							<div class="controls">
-								<?php echo Form::textarea('description', $data->description, array("placeholder" => __("Description"))); ?>
+								<?php echo Form::textarea('description', $category->description, array("placeholder" => __("Description"))); ?>
 								<span class="label label-important"><?php echo Arr::get($errors, 'description');?></span>
 							</div>
 						</div>
 						
+						<div class="control-group">
+							<?php echo Form::label('available', __("Belongs to"), array("class" => "control-label", "for" => "belongs_to")); ?>
+							<div class="controls">
+								<?php echo Form::select('belongs_to', $types, $category->belongs_to, array('multiple' => 'multiple')); ?>
+								<span class="label label-important"><?php echo Arr::get($errors, 'belongs_to');?></span>
+							</div>
+						</div>
+									
 					<!-- </div> -->  <!-- tab-pane -->
 				
 				<!-- </div> --> <!-- tab-content -->

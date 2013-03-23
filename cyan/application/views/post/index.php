@@ -108,7 +108,7 @@ $types = ORM::factory('type')->find_all();
 		<div class="be-content">
 			
 			<form>
-			<table class="table table-hover table-condensed">
+			<table class="table table-hover table-condensed checkable">
 				<thead>
 					<tr>
 						<th style="width:40px"></th>
