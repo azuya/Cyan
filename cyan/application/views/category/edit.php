@@ -46,7 +46,6 @@
 				<div class="tab-content">
 					<div class="tab-pane active" id="basic">
 				-->
-
 						<div class="control-group">
 							<?php echo Form::label('title', __("Title"), array("class" => "control-label", "for" => "title")); ?>
 							<div class="controls">
@@ -83,7 +82,7 @@
 						<div class="control-group">
 							<?php echo Form::label('available', __("Belongs to"), array("class" => "control-label", "for" => "belongs_to")); ?>
 							<div class="controls">
-								<?php echo Form::select('belongs_to', $types, $category->belongs_to, array('multiple' => 'multiple')); ?>
+								<?php echo Form::select('belongs_to[]', $types, $category->belongs_to, array('multiple' => 'multiple')); ?>
 								<span class="label label-important"><?php echo Arr::get($errors, 'belongs_to');?></span>
 							</div>
 						</div>

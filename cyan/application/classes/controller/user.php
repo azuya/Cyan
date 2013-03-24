@@ -257,4 +257,18 @@ class Controller_User extends Controller_Base {
 		}
 	}
 
+	// edit user fields
+	public function action_fields()
+	{
+		$id = $this->request->param('id');
+		$options = new Model_Option();
+		$options->load("user_fields");
+
+		$fields = unserialize($options);
+
+		$this->template->content = View::factory(self::MODULE.'/fields')
+			->bind('content', $fields)
+			->set('query', $this->request->query());
+	}
+
 }

@@ -8087,6 +8087,14 @@ input[type='checkbox']:checked {
 /* @end */
 .table td {
   white-space: nowrap;
+  /*
+		> div {
+			display: block;
+			position: absolute;
+			width: 100%;
+		}
+		*/
+
 }
 .table td input[type="radio"],
 .table td input[type="checkbox"] {
@@ -8098,10 +8106,8 @@ input[type='checkbox']:checked {
 .table td a:hover {
   text-decoration: underline;
 }
-.table td > div {
-  display: block;
-  position: absolute;
-  width: 100%;
+.table td small {
+  color: #999999;
 }
 .table .row-overlay {
   background: #fff;

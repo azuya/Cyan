@@ -187,6 +187,7 @@
 								<?php
 								$types = array(
 									"textfield"	=> __("Text"),
+									"password"	=> __("Password"),
 									"textarea"	=> __("Textarea"),
 									"html"		=> __("HTML"),
 									"select"	=> __("Select"),
@@ -202,6 +203,24 @@
 								);
 								
 								$system_field_names = array("title", "body", "excerpt");
+								
+								if ($content->id == "") {
+									echo "new";
+									$content->fields = array(
+										array(
+											"label"			=> "Title",
+											"name"			=> "title",
+											"type"			=> "textfield",
+											"properties"	=> '{"maxlength":"","minvalue":"","maxvalue":"","placeholder":"","rows":"","required":"","striptags":"","allowedextensions":"","resizeimages":"","maxwidth":"","maxheight":"","maxfiles":"","class":"","helper":"","items":"","helpinline":"","helpblock":""}',
+										),
+										array(
+											"label"			=> "Body",
+											"name"			=> "body",
+											"type"			=> "html",
+											"properties"	=> '{"maxlength":"","minvalue":"","maxvalue":"","placeholder":"","rows":"","required":"","striptags":"","allowedextensions":"","resizeimages":"","maxwidth":"","maxheight":"","maxfiles":"","class":"","helper":"","items":"","helpinline":"","helpblock":""}',
+										),
+									);
+								}
 								?>
 
 								<!-- De som finns -->

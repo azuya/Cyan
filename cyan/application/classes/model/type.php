@@ -15,7 +15,7 @@ class Model_Type extends ORM {
 	public function rules() {
 		return array (
 			
-			'title' => array ( // property name to validate
+			'name' => array ( // property name to validate
 				array('not_empty'), // validation type
 			),
 			

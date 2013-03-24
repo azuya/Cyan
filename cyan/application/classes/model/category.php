@@ -53,7 +53,7 @@ class Model_Category extends ORM {
 		$categories = ORM::factory('category')
 			// ->select('category_data.title')->select('category_data.description')
 			// ->join('category_data', 'LEFT')->on('category_data.category_id', '=', 'category.id')
-			->order_by('parent_id', 'ASC')->order_by('title', 'ASC');
+			->order_by('sort', 'ASC');
 			
 		// Language
 		$language = isset($query["language"]) ? $query["language"] : 1;

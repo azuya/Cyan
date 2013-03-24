@@ -25,6 +25,8 @@ class Controller_Post extends Controller_Admin {
 			"type"		=> $type,
 			"limit"		=> $limit,
 			"offset"	=> $offset,
+			
+			"join"		=> array("users", "types"),
 		);
 		$items = Model_Post::load($query);
 
@@ -183,16 +185,17 @@ class Controller_Post extends Controller_Admin {
 		$post = new Model_Post($post_id);
 		$data = $post->data->where('post_id', '=' , $post_id)->find();
 
+		// Load the user information
+		$user = Auth::instance()->get_user();
+
 		// Nonce ----------------------------------
 		if ($post_id) {
 			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-update-post-".$post_id)) { Nonce::nonce_error(); }
 		} else {
 			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-create-post")) { Nonce::nonce_error(); }
+			$post_val["author"]	= $user->id;
 		}
 		// ----------------------------------------
-
-		// Load the user information
-		$user = Auth::instance()->get_user();
 
 		$request_val = $this->request->post();
 
@@ -201,7 +204,6 @@ class Controller_Post extends Controller_Admin {
 		// echo "</pre>";
 		// echo "[".$request_val['type']."]";
 
-		$post_val["author"]	= $user->id;
 		$post_val["active"]	= ! empty($request_val['active']);
 		$post_val["type"] 	= $request_val['type'];
 		$post_val["star"] 	= $request_val['star'];

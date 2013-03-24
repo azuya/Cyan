@@ -66,8 +66,21 @@ class Controller_Type extends Controller_Admin {
     {
     
         $id = $this->request->param('id');
+
+		// Nonce ----------------------------------
+		if ($id) {
+			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-update-type-".$id)) { Nonce::nonce_error(); }
+		} else {
+			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-create-type")) { Nonce::nonce_error(); }
+		}
+		// ----------------------------------------
+
         $type = new Model_Type($id);
         
+        // Alias
+        $_POST["alias"]	= ($_POST["alias"]) ? URL::title($_POST["alias"], "-", true) : URL::title($_POST["name"], "-", true);
+
+        // Fields
         $field_names = $_POST["field_name"];
         unset($_POST["field_name"]);
         
@@ -93,20 +106,11 @@ class Controller_Type extends Controller_Admin {
 	        }
 
         }
-        
         $_POST["fields"] = serialize($fields);
         
         $type->values($_POST);
 		$errors = array();
 		
-		// Nonce ----------------------------------
-		if ($id) {
-			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-update-type-".$id)) { Nonce::nonce_error(); }
-		} else {
-			if (!Nonce::verify_nonce($_REQUEST["_benonce"], "be-create-type")) { Nonce::nonce_error(); }
-		}
-		// ----------------------------------------
-
 		try
 		{
 			$type->save(); // saves content to database

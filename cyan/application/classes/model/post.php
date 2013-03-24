@@ -87,6 +87,30 @@ class Model_Post extends ORM {
 			->select('post_data.title')->select('post_data.excerpt')->select('post_data.body')
 			->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id');
 			
+		// Joins
+		if (isset($query["join"])) {
+			
+			// echo "joins";
+			// echo "<pre>";
+			// print_r($query["join"]);
+			// echo "</pre>";
+			
+			// Users / Authors
+			if (in_array("users", $query["join"])) {
+				$posts->join('users', 'LEFT')->on('users.id', '=', 'post.author');
+				$posts->select(array('users.username', 'author_name'));
+
+				$posts->join(array('users', 'u2'), 'LEFT')->on('u2.id', '=', 'post.modified_by');
+				$posts->select(array('u2.username', 'modified_by_name'));
+			}
+			
+			// Types
+			if (in_array("types", $query["join"])) {
+				$posts->join('types', 'LEFT')->on('types.id', '=', 'post.type');
+				$posts->select(array('types.name', 'type_name'));
+			}
+		}
+
 		// Language
 		$language = isset($query["language"]) ? $query["language"] : 1;
 		// $posts->where('post_data.language', '=' , $language);
@@ -100,7 +124,7 @@ class Model_Post extends ORM {
 		$posts->limit($query["limit"]);
 		$posts->offset($query["offset"]);
 			
-		// Find all
+		// Execute query -> Find all
 		$result["items"] = $posts->find_all();
 		// echo "<br><br><br>load(): ".Database::instance()->last_query;
 
@@ -111,7 +135,6 @@ class Model_Post extends ORM {
 		}
 		$result["count"] = $posts->count_all(); // 'active', '=', 1
 		// echo "<br><br><br>count_all(): ".Database::instance()->last_query;
-
 		// echo "[".$result["count"]."]<br>";
 
 

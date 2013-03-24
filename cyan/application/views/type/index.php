@@ -33,7 +33,7 @@
 					    <td><?php echo HTML::anchor("admin/type/edit/".$content->id, $content->name); ?></td>
 					    <td class="hidden-phone">
 						    <div class="tools">
-						    	<?php echo HTML::anchor(Nonce::nonce_url("admin/type/delete/".$content->id, "be-delete-post-".$content->id), '<i class="icon40-times"></i>'); ?>
+						    	<?php echo HTML::anchor(Nonce::nonce_url("admin/type/delete/".$content->id, "be-delete-type-".$content->id), '<i class="icon40-times"></i>'); ?>
 						    </div>
 					    </td>
 					</tr>

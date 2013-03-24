@@ -66,6 +66,9 @@ class Controller_Category extends Controller_Admin {
     {
         $id = $this->request->param('id');
         $category = new Model_Category($id);
+        
+        // Fix values
+        $category->belongs_to = unserialize($category->belongs_to);
 
         // Other categories
 		$category_objects = ORM::factory('category')->where('id', '!=' , $category->id)->find_all();
@@ -124,11 +127,12 @@ class Controller_Category extends Controller_Admin {
 		$user = Auth::instance()->get_user();
 
 		$request_val = $this->request->post();
-		
+				
 		$data_val["parent_id"]	= isset($request_val["parent_id"])		? $request_val["parent_id"]			: 0;
 		$data_val["title"]		= isset($request_val["title"])			? $request_val["title"]				: '';
 		$data_val["description"]= isset($request_val["description"])	? $request_val["description"]		: '';
-		$data_val["alias"]		= ($request_val["alias"])				? $request_val["alias"]				: URL::title($request_val["title"], "-", true);
+		$data_val["alias"]		= isset($request_val["alias"])			? $request_val["alias"]				: URL::title($request_val["title"], "-", true);
+		$data_val["belongs_to"]	= isset($request_val["belongs_to"])		? serialize($request_val["belongs_to"]) : null;
 
 		$category->values($data_val);
 		// $data->values($data_val);

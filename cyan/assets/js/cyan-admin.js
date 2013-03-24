@@ -176,10 +176,10 @@ $(document).ready(function() {
 	// Padding on body if logged into admin
 	$("body").css("padding-top", "44px");
 	
-	// Chosen
-	$("select").chosen();
+	// Attache jQuery plugins
+	attach_jquery();
 	
-	/* 
+	/*
 	 * !Bootstrap inits
 	 */
 	
@@ -222,6 +222,18 @@ $(document).ready(function() {
 });
 
 /*
+ * Attach jQuery things
+ */
+function attach_jquery() {
+
+	console.log('attach_jquery()');
+
+	// Chosen
+	$("select").chosen();
+	
+}
+
+/*
  * System alert
  * @param	String	Title
  * @param	String	Message
@@ -236,9 +248,9 @@ function system_alert(title, message, icon) {
 }
 
 /*
- * System alert
+ * Add notification to notification area
  * @param	String	Title
- * @param	String	Message
+ * @param	String	Url on link
  * @param	String	Icon
  */
 function notification(title, url, icon) {	
@@ -320,6 +332,9 @@ function go_to_page(href) {
 
 				// Apply CKEditor
 				// CKEDITOR.replace('.ckeditor');
+
+				// Add stuff
+				attach_jquery();
 
 				end_progress();
 

@@ -2,6 +2,7 @@
 
 <?php
 $types = ORM::factory('type')->find_all();
+$user = Auth::instance()->get_user();
 ?>
 
 <div id="<?php echo Util::get_page_id(); ?>" class="screen active">
@@ -128,13 +129,23 @@ $types = ORM::factory('type')->find_all();
 				<tbody>
 					<?php foreach ($contents as $post) : ?>
 					<?php
+						
+						// Class
 						if ($post->active) {
 							$classes = "";
 						} else {
 							$classes = " class=\"inactive\"";
 						}
 						
-						$post_type = ($post->type == "file") ? $post->mime_type : $post->type;
+						// Type
+						$post_type = ($post->type == "file") ? $post->mime_type : $post->type_name;
+						
+						// Modified by
+						$modified_by = ($post->modified_by != $user->id) ? ' <small>'.$post->modified_by_name.'</small>' : '';
+						
+						// Author
+						$author_name = ($post->author != $user->id) ? HTML::anchor("admin/user/edit/".$post->author, $post->author_name) : '';
+						
 					?>
 					<tr<?php echo $classes; ?>>
 					    <td>
@@ -160,8 +171,8 @@ $types = ORM::factory('type')->find_all();
 					    <td><?php echo $post_type; ?></td>
 						<?php endif; ?>
 
-					    <td class="hidden-phone"><?php echo HTML::anchor("admin/user/edit/".$post->author, $post->author); ?></td>
-					    <td class="hidden-phone"><?php echo Util::date_relative($post->modified_date); ?> <small><?php echo $post->modified_by; ?></small></td>
+					    <td class="hidden-phone"><?php echo $author_name; ?></td>
+					    <td class="hidden-phone"><?php echo Util::date_relative($post->modified_date); ?><?php echo $modified_by; ?></td>
 					    <td class="hidden-phone">
 						    <div class="tools">
 					    		<?php echo HTML::anchor("?c=".$post->id, "<i class=\"icon-eye-open\"></i>"); ?>
