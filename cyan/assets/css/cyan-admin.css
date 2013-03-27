@@ -5202,7 +5202,7 @@ input[type="submit"].btn.btn-mini {
   filter: alpha(opacity=100);
 }
 .tooltip.top {
-  margin-top: -3px;
+  margin-top: -8px;
 }
 .tooltip.right {
   margin-left: 3px;
@@ -6405,11 +6405,24 @@ div.login-footer a:hover {
   height: 50px;
   border-bottom: 1px solid #b3b3b3;
 }
+#top #content div.be-main div.be-header:hover div.title > .button.back {
+  opacity: 0.3;
+}
 #top #content div.be-main div.be-header div.title > .button {
   height: 50px;
   line-height: 50px;
   float: left;
   position: relative;
+  -webkit-transition: opacity ease .3s;
+  -moz-transition: opacity ease .3s;
+  -o-transition: opacity ease .3s;
+  transition: opacity ease .3s;
+}
+#top #content div.be-main div.be-header div.title > .button.back {
+  opacity: 0;
+}
+#top #content div.be-main div.be-header div.title > .button.back:hover {
+  opacity: 1;
 }
 #top #content div.be-main div.be-header div.title > .button a {
   width: 20px;
@@ -6672,7 +6685,7 @@ div.login-footer a:hover {
   background-color: #cfcfcf \9;
 }
 #top #content div.be-main div.be-content {
-  padding: 70px 10px 10px 10px;
+  padding: 70px 10px 0 10px;
 }
 #top #content div.be-main div.be-content::-webkit-scrollbar {
   height: 16px;
@@ -6702,6 +6715,9 @@ div.login-footer a:hover {
 }
 #top #content div.be-main div.be-content.scrollable {
   overflow: scroll;
+}
+#top #content div.be-main > form {
+  margin: 0;
 }
 #top #content div.screen {
   display: none;
@@ -6770,11 +6786,51 @@ select.clean {
   height: 20px;
   line-height: 20px;
 }
+.table-fields .chzn-container > a {
+  background: transparent;
+  border-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  height: 20px;
+  line-height: 19px;
+  margin-top: -1px;
+  padding-left: 0;
+}
+.table-fields .chzn-container > a > div {
+  display: none;
+}
+.table-fields .chzn-container-active > .chzn-single-with-drop {
+  padding: 6px 0 0 8px;
+  margin-top: -7px;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: 0 1px 0 #fff inset;
+  -moz-box-shadow: 0 1px 0 #fff inset;
+  box-shadow: 0 1px 0 #fff inset;
+  background-color: #eee;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(20%, #eeeeee), color-stop(80%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #eeeeee 20%, #ffffff 80%);
+  background-image: -moz-linear-gradient(top, #eeeeee 20%, #ffffff 80%);
+  background-image: -o-linear-gradient(top, #eeeeee 20%, #ffffff 80%);
+  background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.table-fields .chzn-container-active > .chzn-single-with-drop > div {
+  display: block;
+}
 .indent1 {
   display: inline-block;
   width: 20px;
 }
 input[type='checkbox'] {
+  background-image: url("../img/cyan-sprite.png");
+  background-position: -480px -120px;
   -webkit-appearance: none;
   -webkit-user-select: none;
   display: inline-block;
@@ -8174,6 +8230,11 @@ input.big[type="checkbox"]:checked {
 .form-horizontal .controls > div.label {
   margin-top: 5px;
 }
+.form-horizontal .controls input[type="radio"],
+.form-horizontal .controls input[type="checkbox"] {
+  margin-top: -1px;
+  margin-right: 5px;
+}
 .form-horizontal .control-group {
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -8203,6 +8264,9 @@ input.big[type="checkbox"]:checked {
 }
 .help-block {
   margin-top: 6.666666666666667px;
+}
+.tab-content {
+  overflow: visible;
 }
 /*!
  * Bootstrap Responsive v2.2.2

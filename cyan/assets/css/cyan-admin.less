@@ -595,6 +595,12 @@ div.login-footer {
 			height: @page_header_height;
 			border-bottom: 1px solid lighten(@grayLight, 10%);
 	
+			&:hover {
+				div.title > .button.back {
+					opacity: 0.3;
+				}
+			}
+	
 			div.title {
 				
 				> .button {
@@ -602,6 +608,15 @@ div.login-footer {
 					line-height: @page_header_height;
 					float: left;
 					position: relative;
+					.transition(~"opacity ease .3s");
+
+					&.back {
+						opacity: 0;
+					
+						&:hover {
+							opacity: 1;
+						}
+					}
 
 					a {
 						width: 20px;
@@ -609,10 +624,8 @@ div.login-footer {
 						display: block;
 						margin: 15px 10px 15px 0;
 
-						&:hover {
-						}
 					}
-					
+
 				}
 
 				> .heading {
@@ -716,7 +729,7 @@ div.login-footer {
 		}
 		
 		div.be-content {
-			padding: (@page_header_height + 20px) @padding-border 10px @padding-border;
+			padding: (@page_header_height + 20px) @padding-border 0 @padding-border;
 			
 			&::-webkit-scrollbar {
 				height: 16px;
@@ -752,6 +765,10 @@ div.login-footer {
 			&.scrollable {
 				overflow: scroll;
 			}
+		}
+		
+		> form {
+			margin: 0;
 		}
 		
 	}
@@ -833,12 +850,58 @@ select.clean {
 	line-height: 20px;
 }
 
+.table-fields {
+
+	.chzn-container > a {
+		background: transparent;
+		border-color: transparent;
+		.box-shadow(none);
+		height: 20px;
+		line-height: 19px;
+		margin-top: -1px;
+		padding-left: 0;
+		
+		> div {
+			display: none;
+		}
+	}
+	
+	.chzn-container-active > .chzn-single-with-drop {
+		padding: 6px 0 0 8px;
+		margin-top: -7px;
+		
+		border: 1px solid @inputBorder;
+		-webkit-box-shadow: 0 1px 0 #fff inset;
+		-moz-box-shadow   : 0 1px 0 #fff inset;
+		box-shadow        : 0 1px 0 #fff inset;
+		background-color: #eee;
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0 );
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(20%, #eeeeee), color-stop(80%, #ffffff));
+		background-image: -webkit-linear-gradient(top, #eeeeee 20%, #ffffff 80%);
+		background-image: -moz-linear-gradient(top, #eeeeee 20%, #ffffff 80%);
+		background-image: -o-linear-gradient(top, #eeeeee 20%, #ffffff 80%);
+		background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);
+		-webkit-border-bottom-left-radius : 0;
+		-webkit-border-bottom-right-radius: 0;
+		-moz-border-radius-bottomleft : 0;
+		-moz-border-radius-bottomright: 0;
+		border-bottom-left-radius : 0;
+		border-bottom-right-radius: 0;
+
+		> div {
+			display: block;
+		}
+	}
+}
+
 .indent1 {
 	display: inline-block;
 	width: 20px;
 }
 
 input[type='checkbox'] {
+	background-image: url("../img/cyan-sprite.png");
+	background-position: -480px -120px;
 	-webkit-appearance: none;
 	-webkit-user-select: none;
 	display: inline-block;

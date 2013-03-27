@@ -150,7 +150,7 @@ $user = Auth::instance()->get_user();
 					<tr<?php echo $classes; ?>>
 					    <td>
 						    <?php // echo HTML::anchor("#", '&nbsp;', array("name" => "post[]", "value" => $post->id, "class" => "check-toggle icon40-check-empty")); ?>
-					    	<input type="checkbox" class="check icon40-check-empty" name="post[]" value="<?php echo $post->id; ?>">
+					    	<input type="checkbox" name="post[]" value="<?php echo $post->id; ?>">
 					    </td>
 					    <td>
 					    	<span class="icon40-star<?php echo (!$post->star) ? '-empty' : '';?>"></span>

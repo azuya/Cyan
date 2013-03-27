@@ -12,7 +12,7 @@
 		<?php echo Nonce::nonce_field(($content->id) ? "be-update-type-".$content->id : "be-create-type"); ?>
 		<div class="be-header">
 			<div class="title">
-				<div class="button">
+				<div class="button back">
 					<?php echo HTML::anchor("admin/type/", "", array("class" => "icon40-chevron-left navigation-prev")); ?>
 				</div>
 				<div class="heading">
@@ -172,7 +172,7 @@
 				
 					<div class="tab-pane" id="fields">
 					
-						<table class="table table-hover">
+						<table class="table table-hover table-fields">
 							<thead>
 								<tr>
 									<th width="50px;"></th>

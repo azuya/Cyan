@@ -101,7 +101,6 @@ if ($user) :
 										<li><?php echo HTML::anchor("admin/user", '<span class="text">'.__("All users").'</span>'.'<i class="icon60-dots"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/usergroup", '<span class="text">'.__("User groups").'</span>'.'<i class="icon60-users"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/role", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-users"></i><br>', array("class" => "link")); ?></li>
-										<li><?php echo HTML::anchor("admin/user/fields", '<span class="text">'.__("User fields").'</span>'.'<i class="icon60-tag"></i><br>', array("class" => "link")); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -136,6 +135,7 @@ if ($user) :
 									<ul class="items">
 										<li><?php echo HTML::anchor("admin/type", '<span class="text">'.__("Content types").'</span>'.'<i class="icon60-box"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/category", '<span class="text">'.__("Categories").'</span>'.'<i class="icon60-basket"></i><br>', array("class" => "link")); ?></li>
+										<li><?php echo HTML::anchor("admin/user/fields", '<span class="text">'.__("User fields").'</span>'.'<i class="icon60-tag"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/tags", '<span class="text">'.__("Tags").'</span>'.'<i class="icon60-tag"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/module", '<span class="text">'.__("Modules").'</span>'.'<i class="icon60-cabinet"></i><br>', array("class" => "link")); ?></li>
 										<li><?php echo HTML::anchor("admin/role", '<span class="text">'.__("Roles").'</span>'.'<i class="icon60-user"></i><br>', array("class" => "link")); ?></li>

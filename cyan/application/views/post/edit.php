@@ -14,7 +14,7 @@
 		<?php echo Nonce::nonce_field(($post->id) ? "be-update-post-".$post->id : "be-create-post"); ?>
 		<div class="be-header">
 			<div class="title">
-				<div class="button">
+				<div class="button back">
 					<?php echo HTML::anchor("admin/post/?type=".$post->type, "", array("class" => "icon40-chevron-left navigation-prev")); ?>
 				</div>
 				<div class="heading">
