@@ -37,6 +37,16 @@ class Controller_User extends Controller_Base {
 		$this->template->content = View::factory(self::MODULE.'/index')->bind('contents', $users);
 	}
 
+	public function action_view()
+	{
+		$user_id = $this->request->param('id');
+		$user = new Model_User($user_id);
+
+		$this->template->content = View::factory(self::MODULE.'/view')
+			->bind('content', $user)
+			->set('query', $this->request->query());
+	}
+
 	public function action_register()
 	{
 		$this->template->content = View::factory(self::MODULE.'/register')

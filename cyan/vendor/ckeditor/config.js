@@ -32,4 +32,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.removePlugins = 'elementspath';
 	config.resize_enabled = true;
 
+	config.contentsCss = '/cyan-content/themes/cyanide/assets/css/style.css';
+
 };

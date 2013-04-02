@@ -27,7 +27,7 @@ class Controller_Search extends Controller_Admin {
 			/*
 			$count = $post->reset(FALSE)
 				->where('title', 'LIKE', "%".$query['q']."%")
-				->or_where('content', 'LIKE', "%".$query['q']."%")
+				->or_where('body', 'LIKE', "%".$query['q']."%")
 				->count_all(); // 'active', '=', 1
 			*/
 
@@ -35,7 +35,7 @@ class Controller_Search extends Controller_Admin {
 				->select('post_data.title')->select('post_data.excerpt')->select('post_data.body')
 				->join('post_data', 'LEFT')->on('post_data.post_id', '=', 'post.id')
 				->where('title', 'LIKE', "%".$query['q']."%")
-				->or_where('content', 'LIKE', "%".$query['q']."%")
+				->or_where('body', 'LIKE', "%".$query['q']."%")
 				->count_all(); // 'active', '=', 1
 			
 		}
@@ -48,7 +48,7 @@ class Controller_Search extends Controller_Admin {
 		{
 			$posts = $post->limit($this->_config['ui_settings']['limit_items'])
 						->where('title', 'LIKE', "%".$query['q']."%")
-						->or_where('content', 'LIKE', "%".$query['q']."%")
+						->or_where('body', 'LIKE', "%".$query['q']."%")
 						->order_by('title', 'asc')
 						->offset($offset)
 						->find_all();
@@ -57,7 +57,7 @@ class Controller_Search extends Controller_Admin {
 		{
 			$posts = $post->limit($this->_config['ui_settings']['limit_items'])
 						->where('title', 'LIKE', "%".$query['q']."%")
-						->or_where('content', 'LIKE', "%".$query['q']."%")
+						->or_where('body', 'LIKE', "%".$query['q']."%")
 						->order_by('title', 'asc')
 						->offset($offset)
 						->find_all();

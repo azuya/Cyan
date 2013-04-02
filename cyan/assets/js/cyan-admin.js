@@ -1,6 +1,7 @@
 /*
 @codekit-append "bootstrap-colorpicker.js", "bootstrap-datepicker.js", "bootstrap-timepicker.js";
-@codekit-append "holder.js", "jquery.sortable.js", "jquery.chosen.min.js";
+@codekit-append "holder.js", "jquery.sortable.js";
+@codekit-append "jquery.chosen.min.js", "jquery.icheck.min.js";
 
 @codekit-append "../../vendor/fileupload/js/vendor/jquery.ui.widget.js";
 @codekit-append "../../vendor/fileupload/js/iframe-transport.js";
@@ -231,6 +232,13 @@ function attach_jquery() {
 	// Chosen
 	$("select").chosen();
 	
+	// iCheck
+	$('input').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue'
+		// increaseArea: '20%' // optional
+	});
+
 }
 
 /*

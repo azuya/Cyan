@@ -50,7 +50,7 @@ class Theme {
 		$user = Auth::instance()->get_user();
 	
 	    if ($user) {
-			echo '<link rel="stylesheet" type="text/css" href="'.URL::site(null, true, false).'cyan/assets/css/cyan-admin.css">';
+			echo HTML::style(URL::site(null, true, false).'cyan/assets/css/cyan-admin.css');
 	    }
 	
 	}

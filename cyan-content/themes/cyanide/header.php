@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo I18n::lang(); ?>">
 <head> 
 	<title><?php echo $title; ?></title> 
     <meta charset="utf-8">
@@ -9,22 +9,8 @@
 	<meta name="description" content="<?php echo $meta['description'] ?>">
 	<meta name="language" content="<?php echo I18n::lang(); ?>">
 
-	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">
-	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
-
-	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>cyan-content/themes/<?php echo $site["site"]["theme"]; ?>/assets/css/style.css">
-
-	<?php Theme::cyan_header(); ?>
-	<!--
-    <link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans">
-	<script src="<?php echo URL::site(null, true, false); ?>cyan/js/jquery-<?php echo $site["cyan"]["jquery"]; ?>.min.js"></script>
-	-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["cyan"]["jquery"]; ?>/jquery.min.js"></script>
-	
-	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	<!-- Mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=320.1">
 
 	<!-- OpenGraph for facebook -->	
 	<meta property="og:title" content="<?php echo $title; ?>">
@@ -34,6 +20,19 @@
 	<meta property="og:site_name" content="<?php echo $site["site"]["title"]; ?>">
 	<meta property="og:description" content="Elementum dictum phasellus adipiscing aenean urna ipsum at aliquam. Non in lacus fusce nibh accumsan rhoncus a mollis libero: Pellentesque ullamcorper nisl dapibus phasellus. &#8230;">
 	<!-- OpenGraph for facebook -->	
+
+	<link rel="canonical" href="<?php echo URL::site(Request::detect_uri(),true); ?>">
+	<link rel="shortcut icon" href="<?php echo URL::site('favicon.png') ?>">
+
+	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>cyan-content/themes/<?php echo $site["site"]["theme"]; ?>/assets/css/style.css">
+
+	<?php Theme::cyan_header(); ?>
+	<?php echo HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/'.$site["cyan"]["jquery"].'/jquery.min.js'); ?>
+	
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<?php echo HTML::script('http://html5shim.googlecode.com/svn/trunk/html5.js'); ?>
+	<![endif]-->
 
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo URL::site(null, true, false); ?>cyan-content/themes/<?php echo $site["site"]["theme"]; ?>/ico/apple-touch-icon-144-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo URL::site(null, true, false); ?>cyan-content/themes/<?php echo $site["site"]["theme"]; ?>/ico/apple-touch-icon-114-precomposed.png">
