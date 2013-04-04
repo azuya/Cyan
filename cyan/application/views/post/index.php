@@ -141,7 +141,7 @@ $user = Auth::instance()->get_user();
 						$post_type = ($post->type == "file") ? $post->mime_type : $post->type_name;
 						
 						// Modified by
-						$modified_by = ($post->modified_by != $user->id && $post->modified_by_name != '') ? ' <small>'.HTML::anchor("admin/user/view/".$post->modified_by, $post->modified_by_name).'</small>' : '';
+						$modified_by = ($post->modified_by != $user->id && $post->modified_by_name != '') ? ' <small>'.HTML::anchor("admin/user/view/".$post->modified_by, $post->modified_by_name).'</small>' : ' <small>'.__('Me').'</small>';
 						// $author_name = ($post->author != $user->id) ? HTML::anchor("admin/user/view/".$post->author, $post->author_name) : '';
 						
 						// Author

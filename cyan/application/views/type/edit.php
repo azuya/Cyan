@@ -100,7 +100,6 @@
 										"cone"		=> __("Cone"),
 										"database"	=> __("Database"),
 										"directions"=> __("Directions"),
-										"disk"		=> __("Disk"),
 										"dots"		=> __("Dots"),
 										"earth"		=> __("Earth"),
 										"filing"	=> __("Filing"),

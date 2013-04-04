@@ -8223,7 +8223,8 @@ input[type='checkbox']:checked {
 .table td a:hover {
   text-decoration: underline;
 }
-.table td small {
+.table td small,
+.table td small a {
   color: #999999;
 }
 .table .row-overlay {
