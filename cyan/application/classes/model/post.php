@@ -76,10 +76,6 @@ class Model_Post extends ORM {
 			$query["id"] = $query;
 		}
 		
-		// echo "<pre>";
-		// print_r($query);
-		// echo "</pre>";
-		
 		$result = array("items" => array(), "count" => 0);
 		
 		// $post = ORM::factory('post'); // loads all post object from table
@@ -118,6 +114,14 @@ class Model_Post extends ORM {
 		// Type
 		if (isset($query["type"])) {
 			$posts->where('type', '=' , $query["type"]);
+		}
+		
+		// Group by
+		$posts->group_by('id');
+
+		// Order by
+		if (isset($query["order_by"])) {
+			$posts->order_by($query["order_by"][0], $query["order_by"][1]);
 		}
 
 		// Limit & offset

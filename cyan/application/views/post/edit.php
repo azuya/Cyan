@@ -50,7 +50,19 @@
 			<?php $errors = isset($errors) ? $errors : array(); ?>
 			
 			<?php echo Form::hidden('type', $post->type, array("placeholder" => __("type"))); ?>
+
 			<?php echo Form::hidden('star', $post->star); ?>
+			<?php echo Form::input('color', $post->color); ?>
+
+			<?php echo Form::input('data_id', $data->id); ?>
+
+			<?php echo Form::input('site_id', $post->site_id); ?>
+			<?php echo Form::input('archive', $post->archive); ?>
+			<?php echo Form::input('layout', $post->layout); ?>
+			<?php echo Form::input('canonical_url', $post->canonical_url); ?>
+
+			<?php echo Form::input('revision', $data->revision); ?>
+			<?php echo Form::input('state', $data->state); ?>
 
 			<!--
 			<div class="control-group">

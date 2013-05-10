@@ -5,5 +5,8 @@ $user = Auth::instance()->get_user();
 
 if ($user) : ?>
 	<script src="<?php echo URL::site(null, true, false); ?>cyan/assets/js/cyan-admin.min.js"></script>
+	<!--
 	<script src="<?php echo URL::site(null, true, false); ?>cyan/vendor/ckeditor/ckeditor.js"></script>
+	-->
+	<script src="<?php echo URL::site(null, true, false); ?>cyan/vendor/redactor/redactor.min.js"></script>
 <? endif; ?>

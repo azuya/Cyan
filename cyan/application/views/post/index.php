@@ -116,13 +116,13 @@ $user = Auth::instance()->get_user();
 						<th style="width:40px"></th>
 						
 						<?php if (!$selected_type): ?>
-						<th style="width:50%;"><?php echo __("Title"); ?></th>
+						<th style="width:50%;"><?php echo HTML::anchor("admin/post/".URL::query(array('orderby' => 'title', 'order' => (isset($query['order']) && $query['order'] == 'asc') ? 'desc' : 'asc')), __("Title")); ?></th>
 						<th style="width:20%;"><?php echo __("Type"); ?></th>
 						<?php else: ?>
-						<th style="width:70%;"><?php echo __("Title"); ?></th>
+						<th style="width:70%;"><?php echo HTML::anchor("admin/post/".URL::query(array('orderby' => 'title', 'order' => (isset($query['order']) && $query['order'] == 'asc') ? 'desc' : 'asc')), __("Title")); ?></th>
 						<?php endif; ?>
-						<th style="width:10%;" class="hidden-phone"><?php echo __("Author"); ?></th>
-						<th style="width:10%;" class="hidden-phone"><?php echo __("Modified"); ?></th>
+						<th style="width:10%;"><?php echo HTML::anchor("admin/post/".URL::query(array('orderby' => 'author_name', 'order' => (isset($query['order']) && $query['order'] == 'asc') ? 'desc' : 'asc')), __("Author")); ?></th>
+						<th style="width:10%;"><?php echo HTML::anchor("admin/post/".URL::query(array('orderby' => 'modified_date', 'order' => (isset($query['order']) && $query['order'] == 'asc') ? 'desc' : 'asc')), __("Modified")); ?></th>
 						<th style="width:10%;" class="hidden-phone"></th>
 					</tr>
 				</thead>
@@ -146,6 +146,9 @@ $user = Auth::instance()->get_user();
 						
 						// Author
 						$author_name = ($post->author != $user->id) ? HTML::anchor("admin/user/view/".$post->author, $post->author_name) : '';
+
+						// Draft exits
+						$draft_exists = ($post->draft_exists) ? '<span class="label">'.__("New draft exists").'</span>' : '';
 						
 					?>
 					<tr<?php echo $classes; ?>>
@@ -160,6 +163,7 @@ $user = Auth::instance()->get_user();
 					    <td>
 					    	<div>
 						    	<?php echo HTML::anchor("admin/post/edit/".$post->id, Text::limit_chars($post->title, 50, "…", true)); ?>
+						    	<?php echo $draft_exists; ?>
 					    	</div>
 					    	<!--
 					    	<div class="row-overlay">

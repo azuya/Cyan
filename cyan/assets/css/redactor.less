@@ -1,15 +1,15 @@
 .redactor_box {
 	position: relative;
-	border: 1px solid #ddd;
+	// border: 1px solid @inputBorder;
 	overflow: visible;
 }
 .redactor_box, .redactor_box textarea {
-	background-color: #fff;
+	// background-color: #fff;
 }
 
 body .redactor_air {
 	position: absolute;
-	border: 1px solid #ddd;
+	border: 1px solid @inputBorder;
 	border-bottom: none;
 	z-index: 2;
 }
@@ -88,6 +88,7 @@ body .redactor_box_fullscreen {
 	background: #fff !important;
 	overflow: auto;
 	white-space: normal;
+	border: 1px solid @inputBorder;
 }
 .redactor_editor a {
 	color: #15c !important;
@@ -257,6 +258,7 @@ body .redactor_box_fullscreen {
 	line-height: 0 !important;
 	list-style: none !important;
 	font-size: 0;
+	/*
 	background: #f1f1f1;
 	background: -moz-linear-gradient(top,  #f1f1f1 0%, #e2e2e2 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f1f1), color-stop(100%,#e2e2e2));
@@ -265,9 +267,10 @@ body .redactor_box_fullscreen {
 	background: -ms-linear-gradient(top,  #f1f1f1 0%,#e2e2e2 100%);
 	background: linear-gradient(to bottom,  #f1f1f1 0%,#e2e2e2 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#e2e2e2',GradientType=0 );
+	*/
 	overflow: hidden !important;
 	height: 32px !important;
-	border-bottom: 1px solid #bbb;
+	// border-bottom: 1px solid #bbb;
 }
 body .redactor_air .redactor_toolbar {
 	padding-right: 2px !important;
@@ -282,17 +285,16 @@ body .redactor_air .redactor_toolbar {
 }
 .redactor_toolbar li.redactor_separator {
 	float: left;
-	height: 34px;
-	border-left: 1px solid #d3d3d3;
-	border-right: 1px solid #f1f1f1;
+	height: 22px;
+	border-left: 1px solid @inputBorder;
+	// border-right: 1px solid #f1f1f1;
 	padding: 0;
-	margin: 0 2px 0 3px !important;
+	margin: 6px 2px 0 3px !important;
 }
 .redactor_toolbar li a {
 	width: 25px;
 	height: 25px;
 	border: 1px solid transparent;
-	* border: 1px solid #eee;
 	display: block;
 	line-height: 0;
 	font-size: 0;
@@ -322,8 +324,8 @@ body .redactor_air .redactor_toolbar {
 }
 
 .redactor_toolbar li a:hover {
-	border-color: #98a6ba;
-	background-color: #dde4ef;
+	border-color: @linkColor;
+	background-color: fade(@linkColor, 20%);
 	outline: none;
 }
 .redactor_toolbar li a:active, .redactor_toolbar li a.redactor_act {
