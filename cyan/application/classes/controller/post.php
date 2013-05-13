@@ -208,13 +208,6 @@ class Controller_Post extends Controller_Admin {
 		$post = new Model_Post($post_id);
 		// $data = new Model_Post_Data($this->request->param('data_id'));
 		
-		if ($request_val["data_id"]) {
-			$data = $post->data->where('id', '=' , $request_val["data_id"])->find();
-			// echo "<br><br><br>Get data: ".Database::instance()->last_query."<br>";
-		} else {
-			$data = new Model_Post_Data();
-		}
-
 		// Load the user information
 		$user = Auth::instance()->get_user();
 
@@ -226,6 +219,13 @@ class Controller_Post extends Controller_Admin {
 			$post_val["author"]	= $user->id;
 		}
 		// ----------------------------------------
+
+		if ($request_val["data_id"]) {
+			$data = $post->data->where('id', '=' , $request_val["data_id"])->find();
+			// echo "<br><br><br>Get data: ".Database::instance()->last_query."<br>";
+		} else {
+			$data = new Model_Post_Data();
+		}
 
 		// echo "<pre>";
 		// print_r($request_val);
@@ -347,91 +347,58 @@ class Controller_Post extends Controller_Admin {
 				
 				// Make a new draft from a published version
 				if ($request_val["state"] == "new_draft" && $old_data_array["state"] == "published") {
-					// echo "Sätt att det finns ny draft!<br>";
 					// $data_val["state"] == "draft";
 					
-					unset($data_val["id"]);
-
 					// Update master
+					// echo "Sätt att det finns ny draft på mastern<br>";
 					$post_val["draft_exists"] = true;
-					$data_val["state"] = "draft";
 					$post->values($post_val);
 					$post->save();
+					// echo "<br><br><br>y: ".Database::instance()->last_query."<br>";
+
+					// echo "1. Skapa ny post med 'draft'<br>";
+					unset($data_val["id"]);
+					$data_val["state"] = "draft";
+					
+					$new_draft_post_data = new Model_Post_Data();
+					$new_draft_post_data->values($data_val);
+					$new_draft_post_data->save();
+					echo "<br><br><br>new draft post data: ".Database::instance()->last_query."<br>";
 				
 				// Publish a draft
 				} else if ($request_val["state"] == "published" && $old_data_array["state"] == "draft") {
-
-					// Make all others revisions
-					$query_update = DB::update('post_data')->set(array('state' => 'revision'))->where('post_id', '=', $post->id);
-					$result = $query_update->execute();
-					echo "<br><br><br>get old: ".Database::instance()->last_query."<br>";
 
 					// Update master
 					$post_val["draft_exists"] = false;
 					$post->values($post_val);
 					$post->save();
+					// echo "<br><br><br>x: ".Database::instance()->last_query."<br>";
+
+					$query_set_revisions = DB::update('post_data')->set(array('state' => 'revision'))->where('post_id', '=', $post->id);
+					$result = $query_set_revisions->execute();
+					// echo "<br><br><br>make others revisions: ".Database::instance()->last_query."<br>";
 				}
-
-				// echo "<pre>";
-				// print_r($old_data_array);
-				// echo "</pre>";	
-
-				// echo "<pre>";
-				// print_r($data->as_array());
-				// echo "</pre>";
-
-				// echo "Old: Array<pre>";
-				// print_r($old_data_array);
-				// echo "</pre>";
 				
-				$data->values($data_val);
-				// echo "data_valxxx<pre>";
-				// print_r($data_val);
-				// echo "</pre>";
+				// Save data
+				if ($request_val["state"] != "new_draft") {
+					$data->values($data_val);
+					$data->save();
+					// echo "<br><br><br>2: ".Database::instance()->last_query."<br>";
 
-				// echo "Data (orig):";
-				// echo "<pre>";
-				// print_r($data->as_array());
-				// echo "</pre>";
-				
-				// Save master data
-				$data->save();
-				// echo "<br><br><br>2: ".Database::instance()->last_query."<br>";
-
-				// Save the old version
-				$old_post_data = new Model_Post_Data();
-				$old_post_data->values($old_data_array);
-				$old_post_data->save();
-				// echo "<br><br><br>old: ".Database::instance()->last_query."<br>";
+					// Save the old version
+					$old_data_array["state"] = "revision";
+					
+					$old_post_data = new Model_Post_Data();
+					$old_post_data->values($old_data_array);
+					$old_post_data->save();
+					// echo "<br><br><br>old: ".Database::instance()->last_query."<br>";
+				}
 
 			// First save
 			} else {
 				$data->save();
 				// echo "<br><br><br>3: ".Database::instance()->last_query."<br>";
 			}
-
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";	
-
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";
-
-			/*
-			// Remove old meta tags
-			$query_delete = DB::delete('post_meta')->where('post_id', '=', $post->id);
-			echo "$query_delete<br>";
-			$result = $query_delete->execute();
-
-			$query_insert = DB::insert('post_meta', array('post_id', 'key', 'value'))->values(array($post->id, 'fred', 'p@5sW0Rd'));
-			echo "$query_insert<br>";
-			// $result = $query_insert->execute();
-			*/
-			
-			// echo "meta_val för post_id: $post_id<pre>";
-			// print_r($meta_val);
-			// echo "</pre>";
 
 			$query_delete = DB::delete('post_meta')->where('post_id', '=', $post->id);
 			// echo "$query_delete<br>";
@@ -471,9 +438,6 @@ class Controller_Post extends Controller_Admin {
 			}
 			// echo Database::instance()->last_query;
 			
-			// echo "<p>dies...</p>";
-			// die();
-	
 			// echo "saved?";
 
 			$this->redirect(self::MODULE);
