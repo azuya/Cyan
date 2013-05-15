@@ -238,6 +238,10 @@ function attach_jquery() {
 		radioClass: 'iradio_square-blue'
 		// increaseArea: '20%' // optional
 	});
+	
+	$('textarea.wysiwyg').redactor({
+		fixed: true
+	});
 
 }
 
@@ -321,7 +325,7 @@ function go_to_page(href) {
 	if ($("#" + page_id).length == 0) {
 		start_progress();
 	
-		console.log("#" + page_id + " doesn't exist -> load");
+		console.log("#" + page_id + " doesn't exist -> try to load");
 
 		$.ajax({
 			type: "GET",
@@ -337,9 +341,6 @@ function go_to_page(href) {
 				
 				// Append new content
 				$("#content").append(data);
-
-				// Apply CKEditor
-				// CKEDITOR.replace('.ckeditor');
 
 				// Add stuff
 				attach_jquery();
@@ -370,9 +371,6 @@ function go_to_page(href) {
     var container = $(".submenu");
     container.removeClass("active");
     $(this).find("li.active").removeClass("active");
-
-    // Apply CKEditor
-	// CKEDITOR.replaceAll();
 }
 
 function start_progress() {

@@ -11,9 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::site(null, true, false); ?>cyan/assets/css/cyan-admin.css">
 	<!--
 	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
-	<script src="<?php echo URL::site(null, true, false); ?>cyan/js/jquery-<?php echo $site["cyan"]["jquery"]; ?>.min.js"></script>
-	-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo $site["cyan"]["jquery"]; ?>/jquery.min.js"></script>
+	-->
+	<script src="<?php echo URL::site(null, true, false); ?>cyan/assets/js/jquery-<?php echo $site["cyan"]["jquery"]; ?>.min.js"></script>
 	
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->

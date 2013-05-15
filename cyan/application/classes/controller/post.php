@@ -14,6 +14,8 @@ class Controller_Post extends Controller_Admin {
 		$query = $this->request->query();
 		$page = isset($query['page']) ? $query['page'] : 0;
 		$type = isset($query['type']) ? $query['type'] : NULL;
+		$orderby = isset($query['orderby']) ? $query['orderby'] : NULL;
+		$order = isset($query['order']) ? $query['order'] : 'asc';
 
 		// Limit & Offset
 		$limit = $this->_config['ui_settings']['limit_items'];
@@ -23,11 +25,16 @@ class Controller_Post extends Controller_Admin {
 		// $posts = new Model_Post();
 		$query = array(
 			"type"		=> $type,
+			"join"		=> array("users", "types"),
 			"limit"		=> $limit,
 			"offset"	=> $offset,
-			
-			"join"		=> array("users", "types"),
 		);
+
+		// Ordering
+		if (isset($orderby)) {
+			$query["order_by"] = array($orderby, $order);
+		}
+
 		$items = Model_Post::load($query);
 
 		$count = $items["count"];
@@ -121,12 +128,26 @@ class Controller_Post extends Controller_Admin {
 	public function action_edit()
 	{
 		$post_id = $this->request->param('id');
+
+		// Revision
+		$query = $this->request->query();
 		
 		// Get post
 		$post = new Model_Post($post_id);
 		
+		$data = $post->data->where('post_id', '=' , $post_id);
+
 		// Get post data
-		$data = $post->data->where('post_id', '=' , $post_id)->find();
+		if (isset($query['revision'])) {
+			$data->where('revision', '=' , $query['revision']);
+		}
+
+		// Order
+		$data->order_by('revision', 'desc');
+		$data->find();
+		// echo "<br><br><br>load(): ".Database::instance()->last_query;
+		
+		// Ta den med högst revision (om man inte angett en egen revision då)
 		
 		// Get post meta
 		$meta = $post->meta->where('post_id', '=' , $post_id)->find_all();
@@ -181,10 +202,12 @@ class Controller_Post extends Controller_Admin {
 	// save the post
 	public function action_post()
 	{
+		$request_val = $this->request->post();
+
 		$post_id = $this->request->param('id');
 		$post = new Model_Post($post_id);
-		$data = $post->data->where('post_id', '=' , $post_id)->find();
-
+		// $data = new Model_Post_Data($this->request->param('data_id'));
+		
 		// Load the user information
 		$user = Auth::instance()->get_user();
 
@@ -197,51 +220,66 @@ class Controller_Post extends Controller_Admin {
 		}
 		// ----------------------------------------
 
-		$request_val = $this->request->post();
+		if ($request_val["data_id"]) {
+			$data = $post->data->where('id', '=' , $request_val["data_id"])->find();
+			// echo "<br><br><br>Get data: ".Database::instance()->last_query."<br>";
+		} else {
+			$data = new Model_Post_Data();
+		}
 
 		// echo "<pre>";
 		// print_r($request_val);
 		// echo "</pre>";
 		// echo "[".$request_val['type']."]";
 
+		// Post
 		$post_val["active"]	= ! empty($request_val['active']);
 		$post_val["type"] 	= $request_val['type'];
 		$post_val["star"] 	= $request_val['star'];
+		$post_val["color"] 	= $request_val['color'];
 
 		// Get type data
         $type = new Model_Type($post_val["type"]);
         $type->fields = isset($type->fields) ? unserialize($type->fields) : '';
 
-		// Only created
+		// Post created
 		if (!$post_id)
 		{
 			$post_val["created_date"] = date('Y-m-d H:i:s');
 			$data_val["created_date"] = date('Y-m-d H:i:s');
 		}
 
-		$post_val["modified_date"] = date('Y-m-d H:i:s');
-		$data_val["modified_date"] = date('Y-m-d H:i:s');
-		$post_val["modified_by"] = $user->id;
-		$data_val["modified_by"] = $user->id;
+		$post_val["modified_date"] = isset($request_val["modified_date"])	? $request_val["modified_date"] : date('Y-m-d H:i:s');
+		$post_val["modified_by"] = isset($request_val["modified_by"])		? $request_val["modified_by"]	: $user->id;
 
-		$data_val["title"]		= isset($request_val["title"]) ? $request_val["title"] : '';
-		$data_val["excerpt"]	= isset($request_val["excerpt"]) ? $request_val["excerpt"] : '';
-		$data_val["body"]		= isset($request_val["body"]) ? $request_val["body"] : '';
+		// Data
+		$data_val["modified_date"] = isset($request_val["modified_date"])	? $request_val["modified_date"] : date('Y-m-d H:i:s');
+		$data_val["modified_by"] = isset($request_val["modified_by"])		? $request_val["modified_by"]	: $user->id;
+
+		$data_val["title"]		= isset($request_val["title"])		? $request_val["title"]		: '';
+		$data_val["excerpt"]	= isset($request_val["excerpt"])	? $request_val["excerpt"]	: '';
+		$data_val["body"]		= isset($request_val["body"])		? $request_val["body"]		: '';
 		$data_val["author"]		= $user->id;
 		$data_val["alias"]		= URL::title($request_val["title"], "-", true);
-
+		$data_val["state"]		= isset($request_val["state"]) && $request_val["state"] != ""	? $request_val["state"]		: 'draft';
+		
+		// Revision
+		$post_rev = ORM::factory('post_data');
+			
+		// Language
+		$language = isset($data_val["language"]) ? $data_val["language"] : 1;
+		$post_rev->where('language', '=' , $language);
+		$post_rev->where('post_id', '=' , $post_id);
+		$post_rev->order_by('revision', 'desc');
+		$post_rev->find();
+		$post_rev = $post_rev->as_array();
+		// echo "old rev: ".$post_rev["revision"]."<br>";
+		$data_val["revision"]	= isset($post_rev["revision"]) ? ($post_rev["revision"] + 1) : 1;
+		// echo "ny rev:".$data_val["revision"]."<br>";
+		
 		$post->values($post_val);
-		$data->values($data_val);
 
 		// Put the rest in meta
-		// echo "<pre>";
-		// print_r(array_keys($post_val));
-		// echo "</pre>";
-		
-		// echo "<pre>";
-		// print_r(array_keys($data_val));
-		// echo "</pre>";
-		
 		$meta_val = $request_val;
 		
 		foreach (array_keys($post_val) as $key) {
@@ -261,40 +299,106 @@ class Controller_Post extends Controller_Admin {
 		try
 		{
 			$post->save(); // saves post to database
+			// echo "<br><br><br>post: ".Database::instance()->last_query."<br>";
 			
 			// echo "<pre>";
 			// print_r($post);
 			// echo "</pre>";
 			
-			// echo "ID: [".$post->id."]";
+			// echo "ID: [".$post->id."]<br>";
 
+			// Set ID of master
 			$data_val["post_id"]  = $post->id;
-			
+
+			// Set author
+			$data_val["author"] = $user->id;
+
+			$data->values($data_val);
 			// echo "data_val<pre>";
 			// print_r($data_val);
 			// echo "</pre>";
 	
-			$data->values($data_val); // populate $data object from $_POST array
-			$data->save(); // saves post to database
-
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";
-
-			/*
-			// Remove old meta tags
-			$query_delete = DB::delete('post_meta')->where('post_id', '=', $post->id);
-			echo "$query_delete<br>";
-			$result = $query_delete->execute();
-
-			$query_insert = DB::insert('post_meta', array('post_id', 'key', 'value'))->values(array($post->id, 'fred', 'p@5sW0Rd'));
-			echo "$query_insert<br>";
-			// $result = $query_insert->execute();
-			*/
+			// $data->values($data_val); // populate $data object from $_POST array
 			
-			// echo "meta_val för post_id: $post_id<pre>";
-			// print_r($meta_val);
-			// echo "</pre>";
+			// Save revision
+			if ($post_id) {
+				// echo "Post->ID: ".$post->id."<br>";
+	
+				// http://forum.kohanaframework.org/discussion/7902/cloningduplicating-an-orm-object/p1
+				// echo "State: [".$request_val["state"]."]<br>";
+				// echo "revision: [".$request_val["revision"]."]<br>";
+				
+				// echo "Hämta och spara undan gammal post<br>";
+				
+				// Get post
+				$old_post_data = new Model_Post_Data($request_val["data_id"]);
+				
+				// Get old post data
+				// echo "<br><br><br>get old: ".Database::instance()->last_query."<br>";
+				
+				// Get as array
+				$old_data_array = $old_post_data->as_array();
+				
+				// Remove ID to create new
+				unset($old_data_array["id"]);
+
+				// echo "new state[".$request_val["state"]."]<br>";
+				// echo "old state[".$old_data_array["state"]."]<br>";
+				
+				// Make a new draft from a published version
+				if ($request_val["state"] == "new_draft" && $old_data_array["state"] == "published") {
+					// $data_val["state"] == "draft";
+					
+					// Update master
+					// echo "Sätt att det finns ny draft på mastern<br>";
+					$post_val["draft_exists"] = true;
+					$post->values($post_val);
+					$post->save();
+					// echo "<br><br><br>y: ".Database::instance()->last_query."<br>";
+
+					// echo "1. Skapa ny post med 'draft'<br>";
+					unset($data_val["id"]);
+					$data_val["state"] = "draft";
+					
+					$new_draft_post_data = new Model_Post_Data();
+					$new_draft_post_data->values($data_val);
+					$new_draft_post_data->save();
+					echo "<br><br><br>new draft post data: ".Database::instance()->last_query."<br>";
+				
+				// Publish a draft
+				} else if ($request_val["state"] == "published" && $old_data_array["state"] == "draft") {
+
+					// Update master
+					$post_val["draft_exists"] = false;
+					$post->values($post_val);
+					$post->save();
+					// echo "<br><br><br>x: ".Database::instance()->last_query."<br>";
+
+					$query_set_revisions = DB::update('post_data')->set(array('state' => 'revision'))->where('post_id', '=', $post->id);
+					$result = $query_set_revisions->execute();
+					// echo "<br><br><br>make others revisions: ".Database::instance()->last_query."<br>";
+				}
+				
+				// Save data
+				if ($request_val["state"] != "new_draft") {
+					$data->values($data_val);
+					$data->save();
+					// echo "<br><br><br>2: ".Database::instance()->last_query."<br>";
+
+					// Save the old version
+					$old_data_array["state"] = "revision";
+					
+					$old_post_data = new Model_Post_Data();
+					$old_post_data->values($old_data_array);
+					$old_post_data->save();
+					// echo "<br><br><br>old: ".Database::instance()->last_query."<br>";
+				}
+
+			// First save
+			} else {
+				$data->save();
+				// echo "<br><br><br>3: ".Database::instance()->last_query."<br>";
+			}
 
 			$query_delete = DB::delete('post_meta')->where('post_id', '=', $post->id);
 			// echo "$query_delete<br>";
@@ -334,9 +438,6 @@ class Controller_Post extends Controller_Admin {
 			}
 			// echo Database::instance()->last_query;
 			
-			// echo "<p>dies...</p>";
-			// die();
-	
 			// echo "saved?";
 
 			$this->redirect(self::MODULE);

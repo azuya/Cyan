@@ -1,5 +1,13 @@
 .table {
 
+	th > a {
+		color: @textColor;
+		
+		&:hover {
+			color: @linkColor;
+		}
+	}
+
 	td {
 		white-space: nowrap;
 		// overflow: hidden;
@@ -176,4 +184,21 @@ input.big[type="checkbox"]:checked {
 
 .tab-content {
 	overflow: visible;
+}
+
+.pagination {
+	margin: 0;
+	
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: @white;
+	border-top: 1px solid lighten(@grayLight, 10%);
+
+	ul > li > a,
+	ul > li > span {
+		padding: 10px 10px;
+	}
+
 }

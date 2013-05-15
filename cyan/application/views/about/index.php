@@ -33,7 +33,7 @@
 					<ul>
 						<li><a href="http://www.eyecon.ro/bootstrap-datepicker/">Datepicker</a> – 12/3/2013</li>
 					</ul>
-				<li><?php echo HTML::anchor("http://ckeditor.com/", "CKEditor"); ?> – <span class="muted">4.0.1</span></li>
+				<!-- <li><?php echo HTML::anchor("http://ckeditor.com/", "CKEditor"); ?> – <span class="muted">4.0.1</span></li> -->
 				<li><?php echo HTML::anchor("http://www.entypo.com/", "The Entypo Pictogram Suite"); ?> by Daniel Bruce – <span class="muted">2.0</span></li>
 			</ul>
 			

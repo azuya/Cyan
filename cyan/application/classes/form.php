@@ -68,9 +68,7 @@ class Form extends Kohana_Form {
 				return Form::textarea($field["name"], $value, $attributes);
 				break;
 			case "html":
-			
-				$attributes["class"] = "ckeditor";
-			
+				$attributes["class"] = "wysiwyg";
 				return Form::textarea($field["name"], $value, $attributes);
 				break;
 			case "select":
